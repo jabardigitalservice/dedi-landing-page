@@ -20,6 +20,11 @@ export default {
   publicRuntimeConfig: {
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID
+    },
+    sentry: {
+      config: {
+        environment: process.env.SENTRY_ENVIRONMENT
+      }
     }
   },
 
@@ -44,7 +49,8 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     'nuxt-windicss',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/sentry'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,6 +65,23 @@ export default {
   // Google Analytics
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID // Use as fallback if no runtime config is provided
+  },
+
+  // Sentry
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    tracing: {
+      tracesSampleRate: 0.2,
+      vueOptions: {
+        tracing: true,
+        tracingOptions: {
+          hooks: ['mount', 'update'],
+          timeout: 2000,
+          trackComponents: true
+        }
+      },
+      browserOptions: {}
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
