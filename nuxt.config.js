@@ -70,6 +70,7 @@ export default {
   // Sentry
   sentry: {
     dsn: process.env.SENTRY_DSN,
+    disabled: process.env.SENTRY_DISABLED || false,
     tracing: {
       tracesSampleRate: 0.2,
       vueOptions: {
