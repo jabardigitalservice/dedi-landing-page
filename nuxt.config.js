@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'boilerplate-nuxt',
+    title: 'Desa Digital',
     htmlAttrs: {
       lang: 'en'
     },
@@ -14,6 +14,23 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  // Environment dynamic
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    },
+    sentry: {
+      config: {
+        environment: process.env.SENTRY_ENVIRONMENT
+      }
+    }
+  },
+
+  // Environment dynamic secure
+  privateRuntimeConfig: {
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -30,7 +47,10 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    'nuxt-windicss',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/sentry'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -41,6 +61,29 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  // Google Analytics
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID // Use as fallback if no runtime config is provided
+  },
+
+  // Sentry
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    disabled: process.env.SENTRY_DISABLED || false,
+    tracing: {
+      tracesSampleRate: process.env.SENTRY_SAMPLE_RATE,
+      vueOptions: {
+        tracing: true,
+        tracingOptions: {
+          hooks: ['mount', 'update'],
+          timeout: 2000,
+          trackComponents: true
+        }
+      },
+      browserOptions: {}
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
