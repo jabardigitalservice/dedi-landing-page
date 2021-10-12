@@ -61,8 +61,18 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios', // nuxt axios
+    'nuxt-breakpoints' // nuxt breakpoints
   ],
+
+  // Define breakpoints
+  breakpoints: {
+    // custom options
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
