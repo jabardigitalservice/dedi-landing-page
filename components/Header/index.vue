@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__container">
       <img v-if="$breakpoints.xs" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
-      <img v-else src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
+      <img v-else class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__action">
         <NuxtLink to="/about" class="header__about">
           Tentang Desa Digital
@@ -34,6 +34,10 @@ export default {
 
   &__icon{
     @apply cursor-pointer w-6 h-8;
+  }
+
+   &__icon-typo{
+    @apply cursor-pointer h-8;
   }
 
   &__about{
