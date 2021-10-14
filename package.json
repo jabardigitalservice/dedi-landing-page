@@ -12,13 +12,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@jabardigitalservice/jds-design-system": "0.0.3-beta.5",
     "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/sentry": "^5.1.4",
     "@sentry/node": "^6.13.3",
     "@sentry/tracing": "^6.13.3",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "nuxt-breakpoints": "^1.1.9"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
