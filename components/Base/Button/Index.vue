@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <jds-button v-bind="$props" v-on="$listeners" />
-  </div>
+  <jds-button v-bind="{...$props,...$attrs}" v-on="$listeners" />
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     variant: {
       type: String,
@@ -28,11 +27,16 @@ export default {
   // If component button design system improved in the future maybe this code not needed
 
 .jds-button {
-  @apply font-sans font-bold text-green-700 border-green-700 border;
+  @apply font-sans font-bold;
 
   &--secondary{
     @apply text-size-14px px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
-    sm:(py-[10px]) sm:active:(px-[15px] py-[9px] m-[1px]);
+    sm:(py-[10px]) sm:active:(px-[15px] py-[9px] m-[1px]) text-green-700 border-green-700 border;
+  }
+
+  &--tertiary{
+    @apply text-size-14px px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
+    sm:(py-[10px] px-2) sm:active:(px-[7px] py-[9px] m-[1px]) text-green-700;
   }
 }
 </style>
