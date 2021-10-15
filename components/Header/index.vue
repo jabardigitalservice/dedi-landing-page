@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header__container">
+    <div class="header__container wrapper">
       <img v-if="$breakpoints.xs" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img v-else class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__action">
