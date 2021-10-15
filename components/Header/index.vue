@@ -22,8 +22,8 @@ export default {
   box-shadow: 0px 4px 16px rgba(36, 45, 39, 0.06);
   @apply fixed backdrop-blur-sm bg-white opacity-85 w-full z-10;
 
-  &__container{
-    @apply px-4 sm:px-8 h-[60px] flex items-center justify-between max-w-screen-xl xl:(mx-auto p-0);
+  &__container {
+    @apply h-[60px] flex items-center justify-between;
   }
 
   &__action{
