@@ -34,7 +34,7 @@
       background-image: url('~/assets/images/MotifHeroBanner.png');
       background-size: calc(max(100%, 1440px)) auto;
       background-position-y: 100%;
-      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-0;
+      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0;
     }
   }
 
@@ -46,7 +46,7 @@
 
   &__desc {
     @apply text-center font-sans text-blue-gray-400
-    font-normal text-sm sm:text-left;;
+    font-normal text-sm sm:text-left;
   }
 
   &__cta {
