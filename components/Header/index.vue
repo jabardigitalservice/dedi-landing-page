@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header__container">
+    <div class="header__container wrapper">
       <img v-if="$breakpoints.xs" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img v-else class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__action">
@@ -22,8 +22,8 @@ export default {
   box-shadow: 0px 4px 16px rgba(36, 45, 39, 0.06);
   @apply fixed backdrop-blur-sm bg-white opacity-85 w-full z-10;
 
-  &__container{
-    @apply px-4 sm:px-8 h-[60px] flex items-center justify-between max-w-screen-xl xl:(mx-auto p-0);
+  &__container {
+    @apply h-[60px] flex items-center justify-between;
   }
 
   &__action{
