@@ -1,5 +1,10 @@
 <template>
-  <jds-button v-bind="{...$props,...$attrs}" v-on="$listeners" />
+  <jds-button v-bind="{...$props,...$attrs}" v-on="$listeners">
+    <div class="flex gap-1 items-center justify-center">
+      <slot name="icon" />
+      <slot name="label" />
+    </div>
+  </jds-button>
 </template>
 
 <script>
