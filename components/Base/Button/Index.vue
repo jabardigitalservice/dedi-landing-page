@@ -29,13 +29,19 @@ export default {
 .jds-button {
   @apply font-sans font-bold;
 
+  &--primary {
+     @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
+     bg-green-700 sm:(text-size-[14px] leading-[18px] px-[22px] py-[16px]
+     active:(px-[21px] py-[15px] m-[1px]));
+  }
+
   &--secondary{
-    @apply text-size-14px px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
+    @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
     sm:(py-[10px]) sm:active:(px-[15px] py-[9px] m-[1px]) text-green-700 border-green-700 border;
   }
 
   &--tertiary{
-    @apply text-size-14px px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
+    @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
     sm:(py-[10px] px-2) sm:active:(px-[7px] py-[9px] m-[1px]) text-green-700;
   }
 }
