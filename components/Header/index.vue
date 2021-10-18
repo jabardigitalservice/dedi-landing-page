@@ -1,8 +1,9 @@
 <template>
   <div class="header">
     <div class="header__container wrapper">
-      <img v-if="$breakpoints.xs" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
-      <img v-else class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
+      <img v-if="isXS" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
+      <img v-if="isXS === false" class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
+      <div v-if="isXS === null" class="header__icon-skeleton" />
       <div class="header__action">
         <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
         <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" />
@@ -13,7 +14,29 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      initIsXS: null
+    }
+  },
+  computed: {
+    isXS: {
+      get () {
+        return this.initIsXS
+      },
+      set (value) {
+        (value < 640) ? this.initIsXS = true : this.initIsXS = false
+      }
+    }
+  },
+  watch: {
+    '$breakpoints.xs' (value) {
+      this.initIsXS = value
+    }
+  },
+  mounted () {
+    this.isXS = window.screen.availWidth
+  }
 }
 </script>
 
@@ -28,6 +51,10 @@ export default {
 
   &__action{
     @apply flex items-center gap-[16px] sm:gap-6;
+  }
+
+  &__icon-skeleton {
+    @apply h-8 w-6 sm:w-40 bg-white rounded-md;
   }
 
   &__icon{
