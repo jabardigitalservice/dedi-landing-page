@@ -13,7 +13,7 @@
         <div class="contact-us__cta">
           <BaseButton class="contact-us__cta-btn">
             <template #icon>
-              <img src="~/assets/icons/Whatsapp.svg" alt="">
+              <img src="~/assets/icons/Whatsapp.svg" alt="Icon Whatsapp">
             </template>
             <template #label>
               Hubungi Tim Kami Via Whatsapp
