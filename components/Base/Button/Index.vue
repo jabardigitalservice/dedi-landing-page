@@ -2,7 +2,7 @@
   <jds-button v-bind="{...$props,...$attrs}" v-on="$listeners">
     <div class="flex gap-1 items-center justify-center">
       <slot name="icon" />
-      <slot name="label" />
+      <slot />
     </div>
   </jds-button>
 </template>
