@@ -27,7 +27,7 @@
     background-image: url('~/assets/images/HeroBanner.png');
     background-position-x: 30%;
     background-position-y: 100%;
-    @apply bg-no-repeat bg-cover w-screen h-full pt-[60px] relative;
+    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
 
     &::before {
       content: "";
