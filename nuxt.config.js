@@ -65,7 +65,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios', // nuxt axios
-    'nuxt-breakpoints', // nuxt breakpoints
     'portal-vue/nuxt' // nuxt portal
   ],
 

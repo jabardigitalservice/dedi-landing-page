@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <div class="header__container wrapper">
-      <img v-if="$breakpoints.xs" class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
-      <img v-else class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
+      <img class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
+      <img class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__action">
         <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
         <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" />
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="postcss">
@@ -30,12 +28,16 @@ export default {
     @apply flex items-center gap-[16px] sm:gap-6;
   }
 
+  &__icon-skeleton {
+    @apply h-8 w-6 sm:w-40 bg-white rounded-md;
+  }
+
   &__icon{
-    @apply cursor-pointer w-6 h-8;
+    @apply cursor-pointer w-6 h-8 sm:hidden;
   }
 
    &__icon-typo{
-    @apply cursor-pointer h-8;
+    @apply cursor-pointer h-8 hidden sm:block;
   }
 }
 </style>
