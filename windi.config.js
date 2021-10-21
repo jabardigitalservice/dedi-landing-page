@@ -3,7 +3,8 @@ export default {
   theme: {
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
-      serif: ['Lora', 'serif']
+      serif: ['Lora', 'serif'],
+      roboto: ['Roboto', 'serif']
     },
     colors: {
       white: '#FFF',
