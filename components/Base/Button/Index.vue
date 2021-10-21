@@ -1,5 +1,12 @@
 <template>
-  <jds-button v-bind="{...$props,...$attrs}" v-on="$listeners">
+  <jds-button
+    :class="{
+      'jds-button--circle' : variant === 'circle',
+      'jds-button--disabled' : variant === 'disabled',
+    }"
+    v-bind="{...$props,...$attrs}"
+    v-on="$listeners"
+  >
     <div class="flex gap-1 items-center justify-center">
       <slot name="icon" />
       <slot />
@@ -33,6 +40,16 @@ export default {
 
 .jds-button {
   @apply font-sans font-bold;
+
+  &--disabled {
+    @apply cursor-not-allowed text-sm px-[16px] py-[14px] text-gray-500 bg-gray-200
+    sm:(text-size-[14px] leading-[18px] px-[22px] py-[16px]);
+  }
+
+  &--circle {
+    @apply bg-green-700 p-[12px] rounded-full hover:bg-green-800
+    active:(p-[11px] m-[1px]);
+  }
 
   &--primary {
      @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])

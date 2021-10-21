@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalJoinDedi />
     <Header />
     <Nuxt />
   </div>
