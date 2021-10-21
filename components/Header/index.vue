@@ -18,7 +18,7 @@ export default {}
 <style lang="postcss">
 .header{
   box-shadow: 0px 4px 16px rgba(36, 45, 39, 0.06);
-  @apply fixed backdrop-blur-sm bg-white opacity-85 w-full z-10;
+  @apply fixed backdrop-filter backdrop-blur-[20px] bg-white bg-opacity-85 w-full z-10;
 
   &__container {
     @apply h-[60px] flex items-center justify-between;
