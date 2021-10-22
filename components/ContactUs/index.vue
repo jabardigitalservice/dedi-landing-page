@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="contact-us__cta">
-          <BaseButton class="contact-us__cta-btn">
+          <BaseButton class="contact-us__cta-btn" @click="onClickCTA">
             <template #icon>
               <img src="~/assets/icons/Whatsapp.svg" alt="Icon Whatsapp">
             </template>
@@ -25,7 +25,11 @@
 
 <script>
 export default {
-
+  methods: {
+    onClickCTA () {
+      window.open('https://api.whatsapp.com/send?phone=6281312848205', '_blank')
+    }
+  }
 }
 </script>
 
