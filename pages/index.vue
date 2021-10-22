@@ -1,6 +1,24 @@
 <template>
   <div>
-    <HeroBanner />
+    <HeroBanner @clickCTA="showModal" />
+    <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <ContactUs />
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      modalOpen: false
+    }
+  },
+  methods: {
+    showModal (value) {
+      this.modalOpen = value
+    },
+    closeModal (value) {
+      this.modalOpen = value
+    }
+  }
+}
+</script>
