@@ -12,13 +12,24 @@
           Perlu didiskusikan apa yang akan muncul.
         </p>
         <div class="hero-banner__cta">
-          <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" />
+          <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
         </div>
       </div>
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    onClickCTA () {
+      /**
+       * Trigger open popup join desa digital
+       */
+      this.$emit('clickCTA', true)
+    }
+  }
+}
+</script>
 <style lang="postcss">
 .hero-banner {
   @apply relative h-[540px] sm:h-[590px];
