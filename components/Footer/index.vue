@@ -15,8 +15,12 @@
         <div class="footer__info-phone">
           <img height="24" width="22" src="~/assets/icons/Phone.svg" alt="Icon Phone">
           <div>
-            <div class="footer__info-title">Telepon/whatsapp</div>
-            <div class="footer__info-desc">+62 22 423248</div>
+            <div class="footer__info-title">
+              Telepon/whatsapp
+            </div>
+            <div class="footer__info-desc">
+              +62 22 423248
+            </div>
           </div>
         </div>
         <div class="footer__info-logo">
@@ -180,7 +184,7 @@ export default {
     }
 
     &-text {
-      @apply grid grid-cols-1 gap-6 pt-6 transition-all duration-500 sm:gap-5;
+      @apply grid grid-cols-1 gap-6 pt-6 transition-all ease-in-out duration-700 overflow-hidden sm:gap-5;
 
       &-title {
         @apply text-white text-sm font-roboto sm:(font-sans leading-[23px]);
@@ -195,7 +199,7 @@ export default {
       }
 
       &--close {
-        @apply transform origin-top scale-y-0 overflow-hidden max-h-0 pt-0 sm:(scale-y-100 max-h-xs pt-6);
+        @apply max-h-0 pt-0 sm:(max-h-xs pt-6);
       }
     }
   }
@@ -224,7 +228,7 @@ export default {
     }
 
     &-logo {
-      @apply grid grid-cols-2 gap-6 pt-6 sm:gap-5 transition-all duration-500;
+      @apply grid grid-cols-2 gap-6 pt-6 sm:gap-5 transition-all ease-in-out duration-700 overflow-hidden;
 
       &-item {
         @apply flex gap-3 items-center;
@@ -239,7 +243,7 @@ export default {
       }
 
       &--close {
-        @apply transform origin-top scale-y-0 overflow-hidden max-h-0 pt-0 sm:(scale-y-100 max-h-xs pt-6);
+        @apply max-h-0 pt-0 sm:(max-h-xs pt-6);
       }
     }
   }
