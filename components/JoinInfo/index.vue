@@ -43,22 +43,16 @@
       </div>
       <div class="join-info__infografik">
         <img
-          v-if="isDesa"
-          :class="{
-            'join-info__infografik--active': isDesa,
-            'join-info__infografik---non-active': !isDesa,
-          }"
+          v-show="isDesa"
+          class="max-w-max"
           width="932"
           height="395"
           src="~/assets/images/InfoJoinDesa.png"
           alt="Info Bergabung Desa"
         >
         <img
-          v-if="isMitra"
-          :class="{
-            'join-info__infografik--active': isMitra,
-            'join-info__infografik--non-active': !isMitra,
-          }"
+          v-show="isMitra"
+          class="max-w-max"
           width="932"
           height="395"
           src="~/assets/images/InfoJoinMitra.png"
@@ -134,15 +128,7 @@ export default {
   }
 
   &__infografik {
-    @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center w-[932px] h-[395px];
-
-    &--active {
-      @apply max-w-max;
-    }
-
-    &--non-active {
-      @apply max-w-max;
-    }
+    @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center;
   }
 
   &__cta {
