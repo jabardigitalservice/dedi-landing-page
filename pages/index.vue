@@ -1,8 +1,9 @@
 <template>
   <div>
     <HeroBanner @clickCTA="showModal" />
-    <JoinDedi :show="modalOpen" @closeModal="closeModal" />
+    <JoinInfo @clickCTA="showModal" />
     <ContactUs />
+    <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
 </template>
 <script>
