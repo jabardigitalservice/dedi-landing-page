@@ -39,6 +39,7 @@ export default {
 
   &__main {
     background-image: url('~/assets/images/FooterBanner.png');
+    background-position-y: 100%;
     @apply bg-no-repeat bg-cover w-full h-full relative;
 
     &::before {
