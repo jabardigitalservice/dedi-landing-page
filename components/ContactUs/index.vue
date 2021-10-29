@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-us">
+  <div id="contact-us" class="contact-us">
     <div class="contact-us__main">
       <div class="relative px-4 pt-[100px]">
         <div class="flex flex-col gap-1">

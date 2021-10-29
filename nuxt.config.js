@@ -72,7 +72,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios', // nuxt axios
-    'portal-vue/nuxt' // nuxt portal
+    'portal-vue/nuxt', // nuxt portal
+    'vue-scrollto/nuxt' // nuxt vue scrollto
   ],
 
   // Define breakpoints
