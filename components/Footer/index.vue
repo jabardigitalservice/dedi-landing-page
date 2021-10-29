@@ -108,8 +108,8 @@
         </div>
       </div>
     </div>
-    <div class="footer__copyright">
-      <div class="footer__copyright-container wrapper">
+    <div class="footer__copyright wrapper">
+      <div class="footer__copyright-container">
         <img width="206" height="21" src="~/assets/logo/logo-jds.svg" alt="Logo Jabar Digital Service">
         <span class="footer__copyright-text">Copyright © {{ new Date().getFullYear() }}. All Rights Reserved</span>
       </div>
