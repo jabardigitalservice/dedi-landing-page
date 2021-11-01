@@ -52,19 +52,24 @@ export default {
   }
 
   &--primary {
-     @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
-     bg-green-700 sm:(text-size-[14px] leading-[18px] px-[22px] py-[16px]
+     @apply text-sm px-[16px] py-[14px] bg-green-700
+     active:(px-[15px] py-[13px] m-[1px])
+     sm:(leading-[18px] px-[22px] py-[16px]
      active:(px-[21px] py-[15px] m-[1px]));
   }
 
   &--secondary{
-    @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
-    sm:(py-[10px]) sm:active:(px-[15px] py-[9px] m-[1px]) text-green-700 border-green-700 border;
+    @apply text-sm px-[16px] py-[14px] text-green-700 border-green-700 border
+    active:(px-[15px] py-[13px] m-[1px])
+    sm:(leading-[18px] py-[10px])
+    sm:active:(px-[15px] py-[9px] m-[1px]);
   }
 
   &--tertiary{
-    @apply text-sm px-[16px] py-[14px] active:(px-[15px] py-[13px] m-[1px])
-    sm:(py-[10px] px-2) sm:active:(px-[7px] py-[9px] m-[1px]) text-green-700;
+    @apply text-sm px-[16px] py-[14px] text-green-700
+    active:(px-[15px] py-[13px] m-[1px])
+    sm:(leading-[18px] py-[10px] px-2)
+    sm:active:(px-[7px] py-[9px] m-[1px]);
   }
 }
 </style>
