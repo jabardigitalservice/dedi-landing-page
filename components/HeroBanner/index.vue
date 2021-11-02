@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-banner">
+  <div id="hero-banner" class="hero-banner">
     <div class="hero-banner__main">
       <div class="relative px-4 sm:pl-[15.5%]">
         <h3 class="hero-banner__title">

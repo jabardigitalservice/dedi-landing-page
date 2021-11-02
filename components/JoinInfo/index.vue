@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="join-info" class="wrapper">
     <div class="join-info">
       <h4 class="join-info__heading">
         Ingin Menjadi Bagian Dari Desa Digital?
