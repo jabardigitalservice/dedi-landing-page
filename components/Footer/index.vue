@@ -24,8 +24,8 @@
           </div>
         </div>
         <div class="footer__info-logo">
-          <img height="46" width="136" src="~/assets/logo/logo-diskom.png" alt="Logo Diskom">
-          <img height="46" width="137" src="~/assets/logo/logo-dpm.png" alt="Logo DPM">
+          <img class="self-start" height="46" width="136" src="~/assets/logo/logo-diskom.png" alt="Logo Diskom">
+          <img class="self-start" height="46" width="137" src="~/assets/logo/logo-dpm.png" alt="Logo DPM">
         </div>
       </div>
       <div class="footer__sitemap">
