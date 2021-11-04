@@ -13,15 +13,7 @@
       Testimoni Dari
     </div>
     <div class="flex gap-6">
-      <BaseChips active @click="onClickChips">
-        Semua
-      </BaseChips>
-      <BaseChips value="masyarakat" @click="onClickChips">
-        Masyarakat
-      </BaseChips>
-      <BaseChips value="mitra" @click="onClickChips">
-        Mitra
-      </BaseChips>
+      <BaseChipsGroup :values="listChips" @change="onClickChips" />
     </div>
   </div>
 </template>
@@ -33,7 +25,21 @@ export default {
       testimonials: [],
       query: {
         type: null
-      }
+      },
+      listChips: [
+        {
+          label: 'Semua',
+          value: 'semua'
+        },
+        {
+          label: 'Masyarakat',
+          value: 'masyarakat'
+        },
+        {
+          label: 'Mitra',
+          value: 'mitra'
+        }
+      ]
     }
   },
   async fetch () {
@@ -43,7 +49,7 @@ export default {
   methods: {
     onClickChips (value) {
       // console.log(value)
-      this.query.type = value
+      this.query.type = value === 'semua' ? '' : value
       this.$fetch()
     }
   }
