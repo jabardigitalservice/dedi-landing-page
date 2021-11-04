@@ -41,11 +41,15 @@
           </div>
         </div>
       </div>
+      <div class="w-full p-4 rounded-[12px] border border-blue-gray-50">
+        <div ref="maps" class="w-full h-[730px] rounded-[12px]" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Loader } from '@googlemaps/js-api-loader'
 export default {
   data () {
     return {
@@ -58,6 +62,28 @@ export default {
     },
     isMitra () {
       return this.joinSelected === 'Mitra'
+    }
+  },
+  async mounted () {
+    const resLocation = await this.$axios.get('/villages/list-with-location')
+    console.log(resLocation.data.data)
+    const loader = new Loader({
+      apiKey: 'AIzaSyBisT1SjBCXqWjGdUT2Iv7LnbdCWKU__7w',
+      version: 'weekly',
+      libraries: ['places']
+    })
+    const mapOptions = {
+      mapId: '3ddb735886cd57d',
+      center: { lat: -6.9169137, lng: 107.62003 },
+      zoom: 14
+    }
+
+    try {
+      const google = await loader.load()
+      // eslint-disable-next-line no-unused-vars
+      const map = new google.maps.Map(this.$refs.maps, mapOptions)
+    } catch (error) {
+      console.error(error)
     }
   }
 }
@@ -76,7 +102,7 @@ export default {
   }
 
   &__switch {
-    @apply h-[60px] max-w-[376px] rounded-[48px] bg-[#EBEEF3] mt-8 flex;
+    @apply h-[60px] max-w-[376px] rounded-[48px] bg-[#EBEEF3] my-8 flex;
 
     &--active {
       box-shadow: 0px 4px 12px rgba(0, 27, 61, 0.08);
@@ -94,14 +120,6 @@ export default {
         @apply px-5 py-4 text-blue-gray-400 text-[16px] leading-[19px] text-center;
       }
     }
-  }
-
-  &__infografik {
-    @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center;
-  }
-
-  &__cta {
-    @apply w-full active:(w-[calc(100%-2px)]) sm:(w-auto active:(w-auto));
   }
 
 }
