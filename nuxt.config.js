@@ -109,7 +109,7 @@ export default {
     dsn: process.env.SENTRY_DSN,
     disabled: process.env.SENTRY_DISABLED || false,
     tracing: {
-      tracesSampleRate: process.env.SENTRY_SAMPLE_RATE,
+      tracesSampleRate: parseFloat(process.env.SENTRY_SAMPLE_RATE),
       vueOptions: {
         tracing: true,
         tracingOptions: {
