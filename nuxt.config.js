@@ -20,12 +20,7 @@ export default {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
       { rel: 'manifest', href: '/favicon/site.webmanifest' },
       { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: '#5bbad5' },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', defer: true },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap', defer: true },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', defer: true }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }
     ]
   },
 
@@ -65,7 +60,8 @@ export default {
     '@nuxtjs/eslint-module',
     'nuxt-windicss',
     '@nuxtjs/google-analytics',
-    '@nuxtjs/sentry'
+    '@nuxtjs/sentry',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -85,8 +81,23 @@ export default {
     xl: 1280
   },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  googleFonts: {
+    families: {
+      Lato: {
+        wght: [100, 300, 400, 700, 900],
+        ital: [100, 300, 400, 700, 900]
+      },
+      Roboto: {
+        wght: [100, 300, 400, 500, 700, 900],
+        ital: [100, 300, 400, 500, 700, 900]
+      },
+      Lora: {
+        wght: [400, 500, 600, 700],
+        ital: [400, 500, 600, 700]
+      }
+    },
+    display: 'swap'
+  },
 
   // Google Analytics
   googleAnalytics: {
