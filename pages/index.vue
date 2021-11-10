@@ -1,6 +1,7 @@
 <template>
   <div>
     <HeroBanner @clickCTA="showModal" />
+    <TestimonialLists />
     <JoinInfo @clickCTA="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
