@@ -1,6 +1,7 @@
 <template>
   <div>
     <HeroBanner @clickCTA="showModal" />
+    <MapsDedi />
     <Testimonial />
     <JoinInfo @clickCTA="showModal" />
     <ContactUs />
