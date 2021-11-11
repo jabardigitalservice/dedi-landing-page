@@ -33,5 +33,13 @@ export default {
         800: '#022B55'
       }
     }
-  }
+  },
+  extend: {
+    lineClamp: {
+      sm: '3'
+    }
+  },
+  plugins: [
+    require('windicss/plugin/line-clamp')
+  ]
 }
