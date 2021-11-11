@@ -9,9 +9,20 @@
       }"
       @click="onClick(item.value)"
     >
-      <span :class="{ 'chips__label': isActive(item.value), 'chips__label--active': isActive(item.value)}">
+      <span
+        :class="{
+          'chips__label': isActive(item.value),
+          'chips__label--active': isActive(item.value)
+        }"
+      >
         {{ item.label }}
-        <img v-show="isActive(item.value)" width="14" height="14" src="@/assets/icons/ChecklistChips.svg" alt="ChecklistChips">
+        <img
+          v-show="isActive(item.value)"
+          width="14"
+          height="14"
+          src="@/assets/icons/ChecklistChips.svg"
+          alt="ChecklistChips"
+        >
       </span>
     </button>
   </div>
