@@ -54,8 +54,8 @@ export default {
   methods: {
     initialValue () {
       const allValues = this.values.map(item => item.value)
-      const [semua] = allValues
-      this.active = semua
+      const [firstValue] = allValues
+      this.active = firstValue
     },
     isActive (value) {
       return this.active === value
