@@ -96,7 +96,7 @@ export default {
 
 <style lang="postcss">
 .join-info {
-  @apply py-6 flex flex-col items-center sm:py-10;
+  @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
     @apply font-serif font-bold text-blue-gray-800 text-[24px] leading-[31px] text-center sm:(text-[37px] leading-[60px] mt-8);
@@ -107,22 +107,22 @@ export default {
   }
 
   &__switch {
-    @apply h-[60px] w-[376px] rounded-[48px] bg-[#EBEEF3] mt-8 flex;
+    @apply h-[60px] max-w-[376px] rounded-[48px] bg-[#EBEEF3] mt-8 flex;
 
     &--active {
       box-shadow: 0px 4px 12px rgba(0, 27, 61, 0.08);
-      @apply bg-white rounded-[48px] w-[184px] h-[52px] m-1 flex items-center justify-center transition-all delay-75;
+      @apply bg-white rounded-[48px] max-w-[184px] h-[52px] m-1 flex items-center justify-center transition-all delay-75;
 
       &-text {
-        @apply px-5 py-4 text-blue-gray-800 text-[16px] leading-[19px] font-bold;
+        @apply px-5 py-4 text-blue-gray-800 text-[16px] leading-[19px] font-bold text-center;
       }
     }
 
     &--non-active {
-      @apply rounded-[48px] w-[184px] h-[52px] m-1 flex items-center justify-center cursor-pointer;
+      @apply rounded-[48px] max-w-[184px] h-[52px] m-1 flex items-center justify-center cursor-pointer;
 
       &-text {
-        @apply px-5 py-4 text-blue-gray-400 text-[16px] leading-[19px];
+        @apply px-5 py-4 text-blue-gray-400 text-[16px] leading-[19px] text-center;
       }
     }
   }
