@@ -29,13 +29,15 @@
               :src="quoteGreen"
               alt="Quote Icon"
             >
-            <div
-              :class="{
-                'card__text':true,
-                'card__text--hover':isCardHovered(datas.id)
-              }"
-            >
-              {{ datas.description }}
+            <div class="card__text-container">
+              <div
+                :class="{
+                  'card__text':true,
+                  'card__text--hover':isCardHovered(datas.id)
+                }"
+              >
+                {{ datas.description }}
+              </div>
             </div>
             <div class="card__user">
               <img
@@ -65,9 +67,13 @@
           </div>
         </div>
       </swiper-slide>
-      <div slot="pagination" class=" swiper-pagination" />
-      <div slot="button-next" class="swiper-button-next navigation" />
-      <div slot="button-prev" class="swiper-button-prev navigation" />
+      <div slot="pagination" class=" swiper-pagination navigation__wrapper" />
+      <div slot="button-next" class="navigation navigation__wrapper swiper-button-next">
+        <jds-icon class="navigation__button-right" size="16px" name="chevron-right" />
+      </div>
+      <div slot="button-prev" class="navigation navigation__wrapper swiper-button-prev">
+        <jds-icon class="navigation__button-left" size="16px" name="chevron-left" />
+      </div>
     </swiper>
   </div>
 </template>
@@ -152,16 +158,22 @@ export default {
     @apply px-[36px] py-4;
   }
   &__text {
-    @apply my-6 h-[60px] text-sm text-center text-gray-600 line-clamp-3
-    sm:(h-[46px] leading-[23px] line-clamp-2)
-    lg:(my-[12px] h-[110px] w-[220px] leading-[23px] line-clamp-4);
+    @apply mt-6 text-sm text-center text-gray-600 line-clamp-3
+    sm:(leading-[23px] line-clamp-2)
+    lg:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
 
+    &-container{
+      @apply h-[60px]
+      sm:(h-[46px])
+      lg:(h-[110px]);
+    }
     &--hover{
       @apply text-white;
     }
   }
   &__user {
-    @apply flex gap-[12px];
+    @apply flex gap-[12px] mt-6
+    lg:(mt-12px);
 
     &-profile {
       &-name {
@@ -188,6 +200,12 @@ export default {
 .navigation{
   @apply hidden lg:(inline)
 }
+.navigation__wrapper{
+  @apply hidden lg:(inline mt-8)
+}
+.navigation__button-right, .navigation__button-left{
+  @apply w-[42px] h-[42px] rounded-1/2 bg-green-700 text-white
+}
 .swiper-container-horizontal > .swiper-pagination-bullets {
   position: relative;
   width: 100%;
@@ -210,5 +228,25 @@ export default {
   background: #069550;
   width: 16px;
   height: 16px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: unset;
+  bottom: 0;
+  width: unset;
+  height: unset;
+  margin-top: unset;
+}
+.swiper-button-prev.swiper-button-disabled .navigation__button-left,
+.swiper-button-next.swiper-button-disabled .navigation__button-right{
+  color: #BDBDBD;
+  background: #F5F5F5;
+  cursor: auto;
+  pointer-events: none;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  display: none;
 }
 </style>
