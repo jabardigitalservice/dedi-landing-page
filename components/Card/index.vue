@@ -207,46 +207,46 @@ export default {
   @apply w-[42px] h-[42px] rounded-1/2 bg-green-700 text-white
 }
 .swiper-container-horizontal > .swiper-pagination-bullets {
-  position: relative;
-  width: 100%;
-  bottom: -32px;
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative !important;
+  width: 100% !important;
+  bottom: -32px !important;
+  margin-bottom: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
 }
 .swiper-pagination-bullet {
-  width: 13px;
-  height: 13px;
-  border: #069550 2px solid;
-  margin-left: 8px;
-  background: none;
-  opacity: 1;
+  width: 13px !important;
+  height: 13px !important;
+  border: #069550 2px solid !important;
+  margin-left: 8px !important;
+  background: none !important;
+  opacity: 1 !important;
 }
 .swiper-pagination-bullet-active {
-  background: #069550;
-  width: 16px;
-  height: 16px;
+  background: #069550 !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 .swiper-button-prev,
 .swiper-button-next {
-  position: absolute;
-  top: unset;
-  bottom: 0;
-  width: unset;
-  height: unset;
-  margin-top: unset;
+  position: absolute !important;
+  top: unset !important;
+  bottom: 0 !important;
+  width: unset !important;
+  height: unset !important;
+  margin-top: unset !important;
 }
 .swiper-button-prev.swiper-button-disabled .navigation__button-left,
 .swiper-button-next.swiper-button-disabled .navigation__button-right{
-  color: #BDBDBD;
-  background: #F5F5F5;
-  cursor: auto;
-  pointer-events: none;
+  color: #BDBDBD !important;
+  background: #F5F5F5 !important;
+  cursor: auto !important;
+  pointer-events: none !important;
 }
 .swiper-button-prev:after,
 .swiper-button-next:after {
-  display: none;
+  display: none !important;
 }
 </style>
