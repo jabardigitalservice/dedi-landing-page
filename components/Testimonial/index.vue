@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper">
     <div class="testimonial">
-      <img class="testimonial__image" width="358" height="497" src="~/assets/images/Testimonials.svg" alt="Testimonials">
+      <img
+        class="testimonial__image"
+        width="358"
+        height="497"
+        src="~/assets/images/Testimonials.svg"
+        alt="Testimonials"
+      >
       <div class="testimonial__content">
         <h3 class="testimonial__content-title">
           Testimonial
@@ -51,8 +57,8 @@ export default {
   },
   async fetch () {
     const response = await this.$axios.get('/testimonials', { params: this.query })
-    const datas = response.data.data
-    this.testimonials = datas
+    const { ...data } = response.data
+    this.testimonials = data
   },
   methods: {
     onClickChips (value) {
@@ -94,7 +100,7 @@ export default {
     @apply text-center sm:(pl-11 text-left);
 
     &-title {
-      @apply font-serif text-[32px] leading-[37px] font-bold text-blue-gray-800
+      @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
       sm:(text-[37px] leading-[60px]);
     }
 
