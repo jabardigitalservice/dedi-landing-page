@@ -198,13 +198,13 @@ export default {
   }
 }
 .navigation{
-  @apply hidden lg:(inline)
+  @apply !hidden !lg:(inline)
 }
 .navigation__wrapper{
-  @apply hidden lg:(inline mt-8)
+  @apply !hidden !lg:(inline mt-8)
 }
 .navigation__button-right, .navigation__button-left{
-  @apply w-[42px] h-[42px] rounded-1/2 bg-green-700 text-white
+  @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
 }
 .swiper-container-horizontal > .swiper-pagination-bullets {
   position: relative !important;
