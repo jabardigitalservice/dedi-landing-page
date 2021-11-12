@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div id="footer" class="footer">
     <div class="footer__container wrapper">
       <div class="footer__info">
         <img width="166" height="36" src="~/assets/logo/logo-footer.svg" alt="Logo Desa Digital">
@@ -24,8 +24,8 @@
           </div>
         </div>
         <div class="footer__info-logo">
-          <img height="46" width="136" src="~/assets/logo/logo-diskom.png" alt="Logo Diskom">
-          <img height="46" width="137" src="~/assets/logo/logo-dpm.png" alt="Logo DPM">
+          <img class="self-start" height="46" width="136" src="~/assets/logo/logo-diskom.png" alt="Logo Diskom">
+          <img class="self-start" height="46" width="137" src="~/assets/logo/logo-dpm.png" alt="Logo DPM">
         </div>
       </div>
       <div class="footer__sitemap">
@@ -50,7 +50,7 @@
             'footer__sitemap-text--close': !isOpenSitemap
           }"
         >
-          <a href="#" class="footer__sitemap-text-item">
+          <a v-scroll-to="{ el: '#header' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Tentang Desa Digital</span>
           </a>
           <a href="#" class="footer__sitemap-text-item">
@@ -59,10 +59,10 @@
           <a href="#" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Testimoni User</span>
           </a>
-          <a href="#" class="footer__sitemap-text-item">
+          <a v-scroll-to="{ el: '#join-info' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Cara Bergabung</span>
           </a>
-          <a href="#" class="footer__sitemap-text-item">
+          <a v-scroll-to="{ el: '#contact-us' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Kontak Kami</span>
           </a>
         </div>
@@ -191,7 +191,7 @@ export default {
       }
 
       &-item {
-        @apply flex gap-3 items-center;
+        @apply flex gap-3 items-center cursor-pointer;
       }
 
       &--open {
