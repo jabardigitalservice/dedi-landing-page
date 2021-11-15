@@ -26,6 +26,7 @@
             </p>
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
+          <Card :testimonials="testimonials" />
         </div>
       </div>
     </div>
@@ -50,6 +51,7 @@ export default {
         }
       ],
       testimonials: [],
+      meta: [],
       query: {
         type: null
       }
@@ -58,7 +60,8 @@ export default {
   async fetch () {
     const response = await this.$axios.get('/testimonials', { params: this.query })
     const { ...data } = response.data
-    this.testimonials = data
+    this.testimonials = data.data
+    this.meta = data.meta
   },
   methods: {
     onClickChips (value) {
