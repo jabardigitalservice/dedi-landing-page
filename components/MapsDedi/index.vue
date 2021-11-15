@@ -72,7 +72,7 @@
           >
             <div class="maps__boxmaps-info-box">
               <div class="maps__boxmaps-info-box-title">
-                Total <span class="font-bold">{{ totalVillage }} Desa</span> telah bergabung
+                Total <strong>{{ totalVillage }} Desa</strong> telah bergabung
               </div>
               <div class="maps__boxmaps-info-box-subtitle">
                 Update per {{ updatedDate }}
