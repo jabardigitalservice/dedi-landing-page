@@ -146,6 +146,9 @@ export default {
 </script>
 
 <style lang="postcss">
+#card {
+  @apply sm:(w-[600px]) lg:(w-[800px]);
+}
 .card {
   @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-[378px]
   sm:(h-[182px] w-[495px])
@@ -185,7 +188,7 @@ export default {
         }
       }
       &-rule {
-        @apply text-gray-500 text-xs leading-[19px];
+        @apply text-gray-500 text-xs text-left leading-[19px];
 
         &--hover {
         @apply text-green-50;
