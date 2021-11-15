@@ -75,7 +75,7 @@
                 Total <span class="font-bold">{{ totalVillage }} Desa</span> telah bergabung
               </div>
               <div class="maps__boxmaps-info-box-subtitle">
-                Update per {{ new Date().toLocaleString('id', { month: 'long' }) }} {{ new Date().getFullYear() }}
+                Update per {{ updatedDate }}
               </div>
             </div>
           </div>
@@ -140,6 +140,9 @@ export default {
     },
     isMitra () {
       return this.joinSelected === 'Mitra'
+    },
+    updatedDate () {
+      return new Date().toLocaleString('id', { month: 'long', year: 'numeric' })
     }
   },
   mounted () {
