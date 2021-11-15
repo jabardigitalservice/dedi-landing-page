@@ -2,6 +2,7 @@
   <div>
     <HeroBanner @clickCTA="showModal" />
     <MapsDedi />
+    <Testimonial />
     <JoinInfo @clickCTA="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />

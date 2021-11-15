@@ -26,6 +26,9 @@ export default {
 
   // Environment dynamic
   publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL + '/' + process.env.VERSION_ENDPOINT
+    },
     googleAnalytics: {
       id: process.env.GOOGLE_ANALYTICS_ID
     },
