@@ -10,6 +10,8 @@ export default {
       white: '#FFF',
       black: '#000',
       green: {
+        50: '#E6F6EC',
+        600: '#16A75C',
         700: '#069550',
         800: '#008444'
       },
@@ -32,5 +34,8 @@ export default {
         800: '#022B55'
       }
     }
-  }
+  },
+  plugins: [
+    require('windicss/plugin/line-clamp')
+  ]
 }
