@@ -12,7 +12,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@jabardigitalservice/jds-design-system": "0.0.3-beta.5",
+    "@googlemaps/js-api-loader": "^1.12.8",
+    "@googlemaps/markerclusterer": "^1.0.11",
+    "@jabardigitalservice/jds-design-system": "0.0.3-beta.11",
     "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/sentry": "^5.1.4",
@@ -21,6 +23,8 @@
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "portal-vue": "^2.1.7",
+    "swiper": "^5.4.5",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
@@ -28,6 +32,7 @@
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/google-fonts": "^1.3.0",
     "@vue/test-utils": "^1.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.0.5",
