@@ -27,7 +27,7 @@
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
         </div>
-        <Card :testimonials="testimonials" />
+        <TestimonialLists :testimonials="testimonials" />
       </div>
     </div>
   </div>
@@ -93,14 +93,18 @@ export default {
     background-position-x: 750px;
   }
 
-  @apply py-6 bg-no-repeat sm:(h-[574px] grid grid-cols-[max-content,1fr] py-10) xl:(h-[660px] py-20);
+  @apply py-6 bg-no-repeat max-w-[1280px] sm:(grid grid-cols-[max-content,1fr] py-10) xl:(h-[660px] py-20);
 
   &__image {
     @apply hidden sm:(block);
   }
 
   &__content {
-    @apply flex flex-col text-center sm:(pl-11.5 text-left) lg:(pl-8);
+    @apply flex flex-col text-center
+    sm:(pl-11.5 max-w-[30vw] text-left)
+    md:(max-w-[39vw])
+    lg:(pl-8 max-w-[55vw])
+    xl:(pl-4 max-w-[890px]);
 
     &-title {
       @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
