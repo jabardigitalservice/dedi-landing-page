@@ -1,5 +1,6 @@
 export default {
   target: 'static',
+  loading: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Desa Digital',
@@ -129,6 +130,11 @@ export default {
   build: {
     transpile: [
       '@jabardigitalservice/jds-design-system'
-    ]
+    ],
+    postcss: {
+      plugins: {
+        'postcss-import': true
+      }
+    }
   }
 }
