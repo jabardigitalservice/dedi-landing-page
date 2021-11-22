@@ -115,11 +115,26 @@ export default {
           clickable: true
         },
         breakpoints: {
+          320: {
+            slidesPerView: 0.5
+          },
+          472: {
+            slidesPerView: 1.2
+          },
           640: {
-            slidesPerView: 1.15,
+            slidesPerView: 1,
             spaceBetween: 22
           },
+          768: {
+            slidesPerView: 0.5
+          },
           1024: {
+            slidesPerView: 1.15
+          },
+          1100: {
+            slidesPerView: 1.2
+          },
+          1280: {
             slidesPerView: 3
           }
         }
@@ -149,23 +164,23 @@ export default {
 .card {
   @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-[378px]
   sm:(h-[182px] w-[495px])
-  lg:(h-[222px] w-[276.33px]);
+  xl:(h-[222px] w-[276px]);
 
   &-hover {
     @apply bg-green-600;
   }
   &__container {
-    @apply px-[36px] py-4;
+    @apply px-[36px] py-4 xl:(px-[32px]);
   }
   &__text {
     @apply mt-6 text-sm text-center text-gray-600 line-clamp-3
     sm:(leading-[23px] line-clamp-2)
-    lg:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
+    xl:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
 
     &-container{
       @apply h-[60px]
       sm:(h-[46px])
-      lg:(h-[110px]);
+      xl:(h-[110px]);
     }
     &--hover{
       @apply text-white;
@@ -173,7 +188,7 @@ export default {
   }
   &__user {
     @apply flex gap-[12px] mt-6
-    lg:(mt-12px);
+    xl:(mt-12px);
 
     &-profile {
       &-name {
@@ -185,7 +200,7 @@ export default {
         }
       }
       &-rule {
-        @apply text-gray-500 text-xs leading-[19px];
+        @apply text-gray-500 text-xs text-left leading-[19px];
 
         &--hover {
         @apply text-green-50;
@@ -198,10 +213,10 @@ export default {
   }
 }
 .navigation{
-  @apply !hidden !lg:(inline)
+  @apply !hidden !xl:(inline)
 }
 .navigation__wrapper{
-  @apply !hidden !lg:(inline mt-8)
+  @apply !hidden !xl:(inline mt-8)
 }
 .navigation__button-right, .navigation__button-left{
   @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
@@ -210,6 +225,7 @@ export default {
   position: relative !important;
   width: 100% !important;
   bottom: -32px !important;
+  @apply xl:(bottom-[-20px]) !important;
   margin-bottom: 32px !important;
   display: flex !important;
   align-items: center !important;

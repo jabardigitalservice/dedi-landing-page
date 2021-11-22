@@ -20,13 +20,14 @@
             Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Enim aenean justo, adipiscing in lacinia mauris mauris vel.
           </p>
-          <div class="mt-4 lg:(inline-flex items-baseline) xl:(inline)">
+          <div class="mt-4 lg:(inline-flex items-baseline) xl:(justify-end)">
             <p class="testimonial__content-text">
               Testimoni dari
             </p>
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
         </div>
+        <TestimonialLists :testimonials="testimonials" />
       </div>
     </div>
   </div>
@@ -50,6 +51,7 @@ export default {
         }
       ],
       testimonials: [],
+      meta: [],
       query: {
         type: null
       }
@@ -58,7 +60,8 @@ export default {
   async fetch () {
     const response = await this.$axios.get('/testimonials', { params: this.query })
     const { ...data } = response.data
-    this.testimonials = data
+    this.testimonials = data.data
+    this.meta = data.meta
   },
   methods: {
     onClickChips (value) {
@@ -90,14 +93,18 @@ export default {
     background-position-x: 750px;
   }
 
-  @apply py-6 bg-no-repeat sm:(inline-flex py-10) xl:(py-20);
+  @apply py-6 bg-no-repeat max-w-[1280px] sm:(grid grid-cols-[max-content,1fr] py-10) xl:(h-[660px] py-20);
 
   &__image {
-    @apply hidden sm:(inline);
+    @apply hidden sm:(block);
   }
 
   &__content {
-    @apply text-center sm:(pl-11 text-left);
+    @apply flex flex-col text-center
+    sm:(pl-11.5 max-w-[30vw] text-left)
+    md:(max-w-[39vw])
+    lg:(pl-8 max-w-[55vw])
+    xl:(pl-4 max-w-[890px]);
 
     &-title {
       @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
@@ -110,7 +117,7 @@ export default {
     }
 
     &-description {
-      @apply font-sans text-sm leading-5 font-normal text-gray-700 sm:(leading-[23px]);
+      @apply font-sans text-sm leading-5 font-normal text-gray-700 sm:(leading-[23px]) xl:(w-[367px]);
     }
 
     &-text {
