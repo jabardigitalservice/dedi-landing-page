@@ -6,6 +6,11 @@ export default {
       serif: ['Lora', 'serif'],
       roboto: ['Roboto', 'serif']
     },
+    extend: {
+      screens: {
+        '2md': '960px'
+      }
+    },
     colors: {
       white: '#FFF',
       black: '#000',
