@@ -1,6 +1,7 @@
 <template>
   <div
     id="card"
+    class="relative"
   >
     <swiper
       ref="mySwiper"
@@ -116,26 +117,33 @@ export default {
         },
         breakpoints: {
           320: {
-            slidesPerView: 0.5
+            slidesPerView: 1
           },
           480: {
-            slidesPerView: 1.2
+            slidesPerView: 1.2,
+            spaceBetween: 22
           },
           640: {
-            slidesPerView: 1,
+            slidesPerView: 1.2,
             spaceBetween: 22
           },
           768: {
-            slidesPerView: 1.5
+            slidesPerView: 1.4
           },
           960: {
             slidesPerView: 1
           },
+          1024: {
+            slidesPerView: 1.2,
+            spaceBetween: 16
+          },
           1100: {
-            slidesPerView: 1.2
+            slidesPerView: 1.3,
+            spaceBetween: 16
           },
           1280: {
-            slidesPerView: 3
+            slidesPerView: 3,
+            spaceBetween: 16
           }
         }
       }
@@ -162,7 +170,7 @@ export default {
 
 <style lang="postcss">
 .card {
-  @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-[378px]
+  @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-full
   sm:(h-[182px] w-[495px])
   xl:(h-[222px] w-[276px]);
 
@@ -212,15 +220,19 @@ export default {
     }
   }
 }
+
 .navigation{
   @apply !hidden !xl:(inline)
 }
+
 .navigation__wrapper{
   @apply !hidden !xl:(inline mt-8)
 }
+
 .navigation__button-right, .navigation__button-left{
   @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
 }
+
 .swiper-container-horizontal > .swiper-pagination-bullets {
   position: relative !important;
   width: 100% !important;
@@ -232,6 +244,7 @@ export default {
   justify-content: center !important;
 
 }
+
 .swiper-pagination-bullet {
   width: 13px !important;
   height: 13px !important;
@@ -240,11 +253,21 @@ export default {
   background: none !important;
   opacity: 1 !important;
 }
+
 .swiper-pagination-bullet-active {
   background: #069550 !important;
   width: 16px !important;
   height: 16px !important;
 }
+
+.swiper-button-prev {
+  left: 0 !important;
+}
+
+.swiper-button-next {
+  right: 0 !important;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute !important;
@@ -254,6 +277,7 @@ export default {
   height: unset !important;
   margin-top: unset !important;
 }
+
 .swiper-button-prev.swiper-button-disabled .navigation__button-left,
 .swiper-button-next.swiper-button-disabled .navigation__button-right{
   color: #BDBDBD !important;
@@ -261,6 +285,11 @@ export default {
   cursor: auto !important;
   pointer-events: none !important;
 }
+
+.swiper-button-prev.swiper-button-disabled,.swiper-button-next.swiper-button-disabled {
+  opacity: 1 !important;
+}
+
 .swiper-button-prev:after,
 .swiper-button-next:after {
   display: none !important;
