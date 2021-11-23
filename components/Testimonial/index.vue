@@ -59,9 +59,9 @@ export default {
   },
   async fetch () {
     const response = await this.$axios.get('/testimonials', { params: this.query })
-    const { ...data } = response.data
-    this.testimonials = data.data
-    this.meta = data.meta
+    const { data, meta } = response.data
+    this.testimonials = data
+    this.meta = meta
   },
   methods: {
     onClickChips (value) {
