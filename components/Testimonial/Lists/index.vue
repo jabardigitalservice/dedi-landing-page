@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Card :testimonials="testimonials" />
   </div>
 </template>

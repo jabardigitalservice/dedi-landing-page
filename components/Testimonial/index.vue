@@ -93,16 +93,15 @@ export default {
     background-position-x: 750px;
   }
 
-  @apply py-6 bg-no-repeat max-w-[1280px] sm:(grid grid-cols-[max-content,1fr] py-10) xl:(h-[660px] py-20);
+  @apply py-6 bg-no-repeat sm:(grid grid-cols-[max-content,1fr] py-10) xl:(h-[660px] max-w-[1280px] py-20);
 
   &__image {
-    @apply hidden sm:(block);
+    @apply hidden 2md:(block);
   }
 
   &__content {
     @apply flex flex-col text-center
-    sm:(pl-11.5 max-w-[30vw] text-left)
-    md:(max-w-[39vw])
+    2md:(pl-11.5 max-w-[56.5vw] text-left)
     lg:(pl-8 max-w-[55vw])
     xl:(pl-4 max-w-[890px]);
 

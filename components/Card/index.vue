@@ -118,7 +118,7 @@ export default {
           320: {
             slidesPerView: 0.5
           },
-          472: {
+          480: {
             slidesPerView: 1.2
           },
           640: {
@@ -126,10 +126,10 @@ export default {
             spaceBetween: 22
           },
           768: {
-            slidesPerView: 0.5
+            slidesPerView: 1.5
           },
-          1024: {
-            slidesPerView: 1.15
+          960: {
+            slidesPerView: 1
           },
           1100: {
             slidesPerView: 1.2
