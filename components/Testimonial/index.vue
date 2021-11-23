@@ -27,7 +27,7 @@
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
         </div>
-        <CardTestimonials :testimonials="testimonials" />
+        <CardTestimonials :testimonials="mTestimonials" />
       </div>
     </div>
   </div>
@@ -62,6 +62,18 @@ export default {
     const { data, meta } = response.data
     this.testimonials = data
     this.meta = meta
+  },
+  computed: {
+    /**
+     * manipulation data avatar from backend for temporary dummy avatar
+     * this code in the future cloud be remove
+     */
+    mTestimonials () {
+      return this.testimonials.map((item) => {
+        item.avatar = `https://avatars.dicebear.com/api/micah/${item.name}.svg`
+        return item
+      })
+    }
   },
   methods: {
     onClickChips (value) {
