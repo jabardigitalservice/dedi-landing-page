@@ -1,6 +1,7 @@
 <template>
   <div
     id="card"
+    class="relative"
   >
     <swiper
       ref="mySwiper"
@@ -115,12 +116,34 @@ export default {
           clickable: true
         },
         breakpoints: {
-          640: {
-            slidesPerView: 1.15,
+          320: {
+            slidesPerView: 1
+          },
+          480: {
+            slidesPerView: 1.2,
             spaceBetween: 22
           },
+          640: {
+            slidesPerView: 1.2,
+            spaceBetween: 22
+          },
+          768: {
+            slidesPerView: 1.4
+          },
+          960: {
+            slidesPerView: 1
+          },
           1024: {
-            slidesPerView: 3
+            slidesPerView: 1.2,
+            spaceBetween: 16
+          },
+          1100: {
+            slidesPerView: 1.3,
+            spaceBetween: 16
+          },
+          1280: {
+            slidesPerView: 3,
+            spaceBetween: 16
           }
         }
       }
@@ -147,25 +170,25 @@ export default {
 
 <style lang="postcss">
 .card {
-  @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-[378px]
+  @apply bg-white border-1 border-[#E3E7ED] rounded-2xl h-[196px] w-full
   sm:(h-[182px] w-[495px])
-  lg:(h-[222px] w-[276.33px]);
+  xl:(h-[222px] w-[276px]);
 
   &-hover {
     @apply bg-green-600;
   }
   &__container {
-    @apply px-[36px] py-4;
+    @apply px-[36px] py-4 xl:(px-[32px]);
   }
   &__text {
     @apply mt-6 text-sm text-center text-gray-600 line-clamp-3
     sm:(leading-[23px] line-clamp-2)
-    lg:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
+    xl:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
 
     &-container{
       @apply h-[60px]
       sm:(h-[46px])
-      lg:(h-[110px]);
+      xl:(h-[110px]);
     }
     &--hover{
       @apply text-white;
@@ -173,7 +196,7 @@ export default {
   }
   &__user {
     @apply flex gap-[12px] mt-6
-    lg:(mt-12px);
+    xl:(mt-12px);
 
     &-profile {
       &-name {
@@ -185,7 +208,7 @@ export default {
         }
       }
       &-rule {
-        @apply text-gray-500 text-xs leading-[19px];
+        @apply text-gray-500 text-xs text-left leading-[19px];
 
         &--hover {
         @apply text-green-50;
@@ -197,25 +220,31 @@ export default {
     }
   }
 }
+
 .navigation{
-  @apply !hidden !lg:(inline)
+  @apply !hidden !xl:(inline)
 }
+
 .navigation__wrapper{
-  @apply !hidden !lg:(inline mt-8)
+  @apply !hidden !xl:(inline mt-8)
 }
+
 .navigation__button-right, .navigation__button-left{
   @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
 }
+
 .swiper-container-horizontal > .swiper-pagination-bullets {
   position: relative !important;
   width: 100% !important;
   bottom: -32px !important;
+  @apply xl:(bottom-[-20px]) !important;
   margin-bottom: 32px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 
 }
+
 .swiper-pagination-bullet {
   width: 13px !important;
   height: 13px !important;
@@ -224,11 +253,21 @@ export default {
   background: none !important;
   opacity: 1 !important;
 }
+
 .swiper-pagination-bullet-active {
   background: #069550 !important;
   width: 16px !important;
   height: 16px !important;
 }
+
+.swiper-button-prev {
+  left: 0 !important;
+}
+
+.swiper-button-next {
+  right: 0 !important;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute !important;
@@ -238,6 +277,7 @@ export default {
   height: unset !important;
   margin-top: unset !important;
 }
+
 .swiper-button-prev.swiper-button-disabled .navigation__button-left,
 .swiper-button-next.swiper-button-disabled .navigation__button-right{
   color: #BDBDBD !important;
@@ -245,6 +285,11 @@ export default {
   cursor: auto !important;
   pointer-events: none !important;
 }
+
+.swiper-button-prev.swiper-button-disabled,.swiper-button-next.swiper-button-disabled {
+  opacity: 1 !important;
+}
+
 .swiper-button-prev:after,
 .swiper-button-next:after {
   display: none !important;

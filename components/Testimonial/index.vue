@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
-    <div class="testimonial">
+  <div class="">
+    <div class="testimonial wrapper">
       <img
         class="testimonial__image"
-        width="358"
+        width="356"
         height="497"
         src="~/assets/images/Testimonials.svg"
         alt="Testimonials"
@@ -15,18 +15,19 @@
         <h4 class="testimonial__content-subtitle">
           Dari Para Pengguna Desa Digital
         </h4>
-        <div class="mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-end)">
+        <div class="testimonial__content-box-desc">
           <p class="testimonial__content-description">
             Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Enim aenean justo, adipiscing in lacinia mauris mauris vel.
           </p>
-          <div class="mt-4 lg:(inline-flex items-baseline) xl:(inline)">
+          <div class="testimonial__content-box-text">
             <p class="testimonial__content-text">
               Testimoni dari
             </p>
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
         </div>
+        <CardTestimonials :testimonials="mTestimonials" />
       </div>
     </div>
   </div>
@@ -50,6 +51,7 @@ export default {
         }
       ],
       testimonials: [],
+      meta: [],
       query: {
         type: null
       }
@@ -57,8 +59,21 @@ export default {
   },
   async fetch () {
     const response = await this.$axios.get('/testimonials', { params: this.query })
-    const { ...data } = response.data
+    const { data, meta } = response.data
     this.testimonials = data
+    this.meta = meta
+  },
+  computed: {
+    /**
+     * manipulation data avatar from backend for temporary dummy avatar
+     * this code in the future cloud be remove
+     */
+    mTestimonials () {
+      return this.testimonials.map((item) => {
+        item.avatar = `https://avatars.dicebear.com/api/micah/${item.name}.svg`
+        return item
+      })
+    }
   },
   methods: {
     onClickChips (value) {
@@ -90,14 +105,16 @@ export default {
     background-position-x: 750px;
   }
 
-  @apply py-6 bg-no-repeat sm:(inline-flex py-10) xl:(py-20);
+  @apply py-6 bg-no-repeat 2md:(flex items-start py-10) xl:(h-[660px] max-w-[1280px] py-20);
 
   &__image {
-    @apply hidden sm:(inline);
+    @apply hidden 2md:(block);
   }
 
   &__content {
-    @apply text-center sm:(pl-11 text-left);
+    @apply flex flex-col text-center overflow-hidden
+    2md:(pl-11.5 flex-1 text-left)
+    lg:(pl-8);
 
     &-title {
       @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
@@ -109,8 +126,16 @@ export default {
       sm:(mt-0 text-xl leading-[34px]);
     }
 
+    &-box-desc {
+      @apply mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-end);
+    }
+
+    &-box-text {
+      @apply mt-4 lg:(inline-flex items-baseline) xl:(justify-end);
+    }
+
     &-description {
-      @apply font-sans text-sm leading-5 font-normal text-gray-700 sm:(leading-[23px]);
+      @apply font-sans text-sm leading-5 font-normal text-gray-700 sm:(leading-[23px]) xl:(w-[367px]);
     }
 
     &-text {
