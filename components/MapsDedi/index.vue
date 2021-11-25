@@ -10,15 +10,15 @@
       <div class="maps-dedi__switch">
         <div
           :class="{
-            'maps-dedi__switch--active': isDesa,
-            'maps-dedi__switch--non-active': !isDesa,
+            'maps-dedi__switch--active': isvillage,
+            'maps-dedi__switch--non-active': !isvillage,
           }"
-          @click="joinSelected = 'Desa'"
+          @click="joinSelected = 'village'"
         >
           <div
             :class="{
-              'maps-dedi__switch--active-text': isDesa,
-              'maps-dedi__switch--non-active-text': !isDesa
+              'maps-dedi__switch--active-text': isvillage,
+              'maps-dedi__switch--non-active-text': !isvillage
             }"
           >
             Desa Tergabung
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div v-show="isDesa" class="maps">
+      <div v-show="isvillage" class="maps">
         <div class="maps__motif">
           <img src="~/assets/images/MotifDot.svg" alt="Motif Dot">
         </div>
@@ -72,7 +72,7 @@
           >
             <div class="maps__boxmaps-info-box">
               <div class="maps__boxmaps-info-box-title">
-                Total <strong>{{ totalVillage }} Desa</strong> telah bergabung
+                Total <strong>{{ totalVillage }} desa</strong> telah bergabung
               </div>
               <div class="maps__boxmaps-info-box-subtitle">
                 Update per {{ updatedDate }}
@@ -127,7 +127,7 @@ const mapOptions = {
 export default {
   data () {
     return {
-      joinSelected: 'Desa',
+      joinSelected: 'village',
       totalVillage: 0,
       isFullscreen: false,
       map: null,
@@ -139,8 +139,8 @@ export default {
     }
   },
   computed: {
-    isDesa () {
-      return this.joinSelected === 'Desa'
+    isvillage () {
+      return this.joinSelected === 'village'
     },
     isMitra () {
       return this.joinSelected === 'Mitra'
