@@ -102,7 +102,7 @@ export default {
       quoteWhite: require('~/assets/icons/QuoteWhite.svg'),
       hovered: null,
       swiperOptions: {
-        slidesPerView: 1,
+        slidesPerView: 'auto',
         paginationClickable: true,
         spaceBetween: 16,
         passiveListeners: true,
@@ -116,33 +116,10 @@ export default {
           clickable: true
         },
         breakpoints: {
-          320: {
-            slidesPerView: 1
-          },
-          480: {
-            slidesPerView: 1.2,
-            spaceBetween: 22
-          },
           640: {
-            slidesPerView: 1.2,
             spaceBetween: 22
-          },
-          768: {
-            slidesPerView: 1.4
-          },
-          960: {
-            slidesPerView: 1
-          },
-          1024: {
-            slidesPerView: 1.2,
-            spaceBetween: 16
-          },
-          1100: {
-            slidesPerView: 1.3,
-            spaceBetween: 16
           },
           1280: {
-            slidesPerView: 3,
             spaceBetween: 16
           }
         }
@@ -231,6 +208,14 @@ export default {
 
 .navigation__button-right, .navigation__button-left{
   @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
+}
+
+.swiper-slide {
+  @apply !sm:(w-[495px]) !xl:(w-[286px])
+}
+
+.swiper-wrapper {
+  @apply !w-full;
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets {
