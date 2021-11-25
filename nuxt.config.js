@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 export default {
   target: 'static',
   loading: false,
@@ -23,6 +25,11 @@ export default {
       { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: '#5bbad5' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }
     ]
+  },
+
+  // alias path
+  alias: {
+    mixins: resolve(__dirname, './mixins')
   },
 
   // Environment dynamic
