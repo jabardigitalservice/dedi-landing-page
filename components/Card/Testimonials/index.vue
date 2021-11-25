@@ -134,11 +134,19 @@ export default {
             slidesPerView: 1
           },
           1024: {
-            slidesPerView: 1.2,
+            slidesPerView: 1.15,
             spaceBetween: 16
           },
           1100: {
             slidesPerView: 1.3,
+            spaceBetween: 16
+          },
+          1150: {
+            slidesPerView: 1.4,
+            spaceBetween: 16
+          },
+          1240: {
+            slidesPerView: 1.5,
             spaceBetween: 16
           },
           1280: {
