@@ -215,27 +215,6 @@ export default {
       }
     },
     /**
-     * custom template info window
-     */
-    renderInfoWindow (item) {
-      return `
-        <div class="p-2 flex flex-col justify-start items-start">
-          <div class="max-w-[260px]">
-            <img class="w-[244px] h-[90px]" width="144" height="90" src="${item.images.length ? item.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')}" alt="Logo Dedi Abu Abu" />
-          </div> 
-          <div class="mt-2 font-roboto text-blue-gray-800 font-bold text-base leading-[26px]">${item.name}</div>
-          <div class="w-full flex justify-between items-center font-sans">
-            <div class="text-gray-500 text-sm leading-[23px]">
-              ${item.city.name}
-            </div>
-            <div class="bg-green-100 py-[2px] px-2 rounded-[6px] box-border">
-              <div class="text-green-800 text-xs leading-[19px] font-medium">Level ${item.level ? item.level : ''}</div>
-            </div>
-          </div>
-        </div>
-      `
-    },
-    /**
      * this function may need optimization for render thousand marker into google map
      * set thousand marker into google map with marker cluster
      */
@@ -398,6 +377,42 @@ export default {
         this.isFullscreen = true
         this.requestFullscreen()
       }
+    /**
+     * custom template info window
+     */
+    renderInfoWindow (item) {
+      return `
+        <div class="p-2 flex flex-col justify-start items-start">
+          <div class="max-w-[260px]">
+            <img class="w-[244px] h-[90px]" width="144" height="90" src="${item.images.length ? item.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')}" alt="Logo Dedi Abu Abu" />
+          </div> 
+          <div class="mt-2 font-roboto text-blue-gray-800 font-bold text-base leading-[26px]">${item.name}</div>
+          <div class="w-full flex justify-between items-center font-sans">
+            <div class="text-gray-500 text-sm leading-[23px]">
+              ${item.city.name}
+            </div>
+            <div 
+              :class="{
+                'bg-green-100 py-[2px] px-2 rounded-[6px] box-border' : true,
+                'bg-green-100': ${item.level === null || item.level === 4},
+                'bg-blue-100': ${item.level === 3},
+                'bg-yellow-100': ${item.level === 2},
+                'bg-red-100': ${item.level === 1},
+              }"
+            >
+              <div 
+                :class="{
+                  'text-xs leading-[19px] font-medium' : true,
+                  'text-green-800': ${item.level === null || item.level === 4},
+                  'text-blue-800': ${item.level === 3},
+                  'text-yellow-900': ${item.level === 2},
+                  'text-red-800': ${item.level === 1}
+                }"
+              >Level ${item.level ? item.level : ''}</div>
+            </div>
+          </div>
+        </div>
+      `
     }
   }
 }
