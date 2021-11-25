@@ -76,15 +76,6 @@ export default {
     'vue-scrollto/nuxt' // nuxt vue scrollto
   ],
 
-  // Define breakpoints
-  breakpoints: {
-    // custom options
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280
-  },
-
   googleFonts: {
     families: {
       Lato: {
