@@ -65,7 +65,8 @@ export default {
     'nuxt-windicss',
     '@nuxtjs/google-analytics',
     '@nuxtjs/sentry',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
