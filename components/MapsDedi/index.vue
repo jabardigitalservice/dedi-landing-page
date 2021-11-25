@@ -109,7 +109,7 @@
 
 <script>
 import { Loader } from '@googlemaps/js-api-loader'
-const debounce = require('lodash.debounce')
+import debounce from 'lodash/debounce'
 
 const loader = new Loader({
   apiKey: 'AIzaSyBisT1SjBCXqWjGdUT2Iv7LnbdCWKU__7w',

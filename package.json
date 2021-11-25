@@ -21,7 +21,7 @@
     "@sentry/node": "^6.13.3",
     "@sentry/tracing": "^6.13.3",
     "core-js": "^3.15.1",
-    "lodash.debounce": "^4.0.8",
+    "lodash": "^4.17.21",
     "nuxt": "^2.15.7",
     "portal-vue": "^2.1.7",
     "swiper": "^5.4.5",
