@@ -26,6 +26,16 @@ export default {
       return new Date().toLocaleString('id', { month: 'long', year: 'numeric' })
     }
   },
+  watch: {
+    '$fetchState.pending' (val) {
+      this.listVillageIsReady = false
+      if (!val) {
+        setTimeout(() => {
+          this.listVillageIsReady = true
+        }, 1000)
+      }
+    }
+  },
   mounted () {
     this.initialGoogleMap()
     this.initIntersectionObserver()
@@ -145,7 +155,7 @@ export default {
              */
             google.maps.event.addListener(marker, 'click', () => {
               this.isSidebarOpen = true
-              this.listVillage = this.listVillage.filter(village => village !== item)
+              this.listVillage = this.listVillage.filter(village => village.id !== item.id)
               this.listVillage.unshift(item)
               this.setInfoWindow(map, marker, item, google)
               this.$refs.listvillage.scrollTop = 0
@@ -302,17 +312,46 @@ export default {
      */
     initIntersectionObserver () {
       this.observer = new IntersectionObserver(([entry]) => {
-        if (entry && entry.isIntersecting) {
-          this.query = {
-            current_page: this.query.current_page + 1
-          }
+        if (entry && entry.isIntersecting && this.query.current_page < this.query.last_page) {
+          this.query = { ...this.query, current_page: this.query.current_page + 1 }
           this.$fetch()
         }
       })
 
       this.observer.observe(this.$refs.observer)
-    }
+    },
+    /**
+     * on click level
+     */
+    onClickChipLevel (value) {
+      this.query = {
+        ...this.query,
+        current_page: 1,
+        level: value === 'semua' ? '' : value
+      }
+      this.$fetch()
+    },
+    /**
+     * search village when user typed field search
+     */
+    onSearchVillage (value) {
+      if (value.length > 2) {
+        this.debounceSearch(value)
+      } else {
+        this.debounceSearch('')
+      }
+    },
+    /**
+     * make a delay request search village
+     */
+    debounceSearch: debounce(function (value) {
+      this.query = { ...this.query, name: value, current_page: 1 }
+      this.$fetch()
+    }, 1000)
   },
+  /**
+   * Destroy observer
+   */
   destroyed () {
     this.observer.disconnect()
   }

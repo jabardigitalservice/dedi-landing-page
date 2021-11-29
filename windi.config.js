@@ -18,6 +18,7 @@ export default {
         50: '#E3F2FD',
         100: '#BBDEFB',
         400: '#42A5F5',
+        600: '#1E88E5',
         800: '#1565C0'
       },
       pink: {

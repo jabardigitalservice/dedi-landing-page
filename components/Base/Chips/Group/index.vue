@@ -78,11 +78,11 @@ export default {
 
 <style lang="postcss">
 .chips-group {
-  @apply inline-flex flex-wrap gap-6 sm:(inline) lg:(inline-flex gap-5) xl:(my-0);
+  @apply inline-flex flex-wrap gap-6 lg:(inline-flex gap-5);
 }
 
 .chips {
-  @apply text-sm py-2 px-3 border bg-white border-blue-gray-50 rounded-[27px] focus:outline-none sm:(mr-5 mt-2) lg:(mr-0 mt-0);
+  @apply text-sm py-2 px-3 border bg-white border-blue-gray-50 rounded-[27px] focus:outline-none;
 
   &--active {
       @apply bg-green-700 pr-[6px];
