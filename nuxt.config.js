@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 export default {
   target: 'static',
   loading: false,
@@ -23,6 +25,11 @@ export default {
       { rel: 'mask-icon', href: '/favicon/safari-pinned-tab.svg', color: '#5bbad5' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }
     ]
+  },
+
+  // alias path
+  alias: {
+    mixins: resolve(__dirname, './mixins')
   },
 
   // Environment dynamic
@@ -65,7 +72,8 @@ export default {
     'nuxt-windicss',
     '@nuxtjs/google-analytics',
     '@nuxtjs/sentry',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -75,15 +83,6 @@ export default {
     'portal-vue/nuxt', // nuxt portal
     'vue-scrollto/nuxt' // nuxt vue scrollto
   ],
-
-  // Define breakpoints
-  breakpoints: {
-    // custom options
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280
-  },
 
   googleFonts: {
     families: {
