@@ -60,7 +60,7 @@
   }
 
   &__boxmaps {
-    @apply relative w-full border border-blue-gray-50 bg-white;
+    @apply relative w-full border border-blue-gray-50 bg-white overflow-hidden;
 
     &--fullsreen {
       @apply p-0 rounded-none;
@@ -68,6 +68,126 @@
 
     &--exitfullscreen {
       @apply p-4 rounded-[12px];
+    }
+
+    &-sidebar {
+      transition: all 0.2s cubic-bezier(0.86, 0, 0.07, 1);
+      @apply absolute top-0 py-4 h-full flex justify-start items-center z-1;
+
+      &--close {
+        @apply transform translate-x[calc(-100%+42px)] sm:-translate-x-[387px];
+      }
+
+      &--fullscreen{
+        @apply left-0 py-0;
+      }
+
+      &--exitfullscreen {
+        @apply left-4;
+      }
+
+      &-content {
+        @apply bg-white py-4 px-6 h-full w-[calc(100%-42px)] sm:w-[387px] rounded-r-lg;
+
+        &-text-join-dedi {
+          @apply mt-5 mb-6 text-gray-600 text-sm leading-[23px];
+        }
+
+        &-total-join-dedi {
+          @apply text-blue-gray-800;
+        }
+
+        &-list-village {
+          /* scrollbar-color: #E0E0E0 white; */
+          /* scrollbar-width: thin; */
+          @apply h-[438px] !sm:w-[353px] w-[calc(100%+14px)]  flex flex-row flex-wrap gap-2 
+          overflow-y-auto overflow-x-hidden;
+
+          &--close {
+            @apply overflow-y-hidden;
+          }
+
+          &::-webkit-scrollbar{
+            @apply w-[6px];
+          }
+
+          &::-webkit-scrollbar-track {
+            @apply bg-white;
+          }
+
+          &::-webkit-scrollbar-thumb {
+              @apply bg-gray-300 rounded-[6px];
+          }
+
+          &-item {
+            @apply flex flex-col gap-2 w-[calc(100%-8px)] sm:w-[339px];
+
+            &-separator {
+              @apply bg-gray-200 h-[1px] mx-2 w-[95%];
+            }
+
+            &-info {
+              @apply flex justify-between gap-3 p-2 cursor-pointer
+              hover:(bg-gray-200 rounded-[6px]);
+
+              &-detail {
+                @apply flex-1 sm:w-[238px] flex flex-col;
+
+                &-name {
+                  @apply text-blue-gray-800 text-sm leading-[23px] font-bold;
+                }
+
+                &-city {
+                  @apply text-gray-500 text-sm leading-[23px] mb-1;
+                }
+
+                &-list {
+                  @apply flex flex-row items-center gap-2;
+
+                  &-level {
+                    @apply py-[2px] px-2 py-[2px] rounded-[6px] 
+                    box-border text-xs leading-[19px] font-medium mb-3;
+
+                    &--green {
+                      @apply bg-green-100 text-green-800;
+                    }
+
+                    &--blue {
+                      @apply bg-blue-100 text-blue-800;
+                    }
+
+                    &--pink {
+                      @apply bg-pink-100 text-pink-800;
+                    }
+
+                    &--yellow {
+                      @apply bg-yellow-100 text-yellow-900;
+                    }
+                  }
+
+                  &-tema {
+                    @apply bg-blue-50 py-[2px] px-2 py-[2px] rounded-[6px] 
+                    box-border text-blue-400 text-xs leading-[19px] font-medium mb-3;
+                  }
+                }
+              }
+            }
+
+            &-image {
+              @apply bg-gray-100 w-[73px] h-[73px] rounded-lg 
+              flex items-center justify-center overflow-hidden;
+            }
+          }
+        }
+      }
+
+      &-arrow {
+      @apply flex justify-center items-center cursor-pointer;
+
+        &-icon {
+          @apply transform rotate-180;
+        }
+      }
     }
 
     &-map {
