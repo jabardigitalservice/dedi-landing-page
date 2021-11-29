@@ -273,12 +273,6 @@ export default {
     if (this.totalVillage < meta.total) {
       this.totalVillage = meta.total
     }
-  },
-  async fetch () {
-    const response = await this.$axios.get('/villages/list-with-location', { params: this.query })
-    const { data, meta } = response.data
-    this.listVillage = [...this.listVillage, ...data]
-    this.totalVillage = meta.total
   }
 }
 </script>
