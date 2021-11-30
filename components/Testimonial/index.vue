@@ -13,18 +13,19 @@
           Testimonial
         </h3>
         <h4 class="testimonial__content-subtitle">
-          Dari Para Pengguna Desa Digital
+          Kata Mereka Tentang Desa Digital
         </h4>
         <div class="testimonial__content-box-desc">
           <p class="testimonial__content-description">
-            Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Enim aenean justo, adipiscing in lacinia mauris mauris vel.
+            Manfaat Desa Digital telah dirasakan oleh berbagai pihak.
           </p>
           <div class="testimonial__content-box-text">
             <p class="testimonial__content-text">
               Testimoni dari
             </p>
-            <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
+            <div class="testimonial__content-box-chips">
+              <BaseChipsGroup class="testimonial__content-box-chips-group-chips" mandatory :values="listChips" @onChange="onClickChips" />
+            </div>
           </div>
         </div>
         <CardTestimonials v-if="testimonialIsReady" :testimonials="mTestimonials" />
@@ -129,6 +130,14 @@ export default {
     @apply flex flex-col text-center overflow-hidden
     2md:(pl-11.5 flex-1 text-left)
     lg:(pl-8);
+
+    &-box-chips {
+      @apply block overflow-x-scroll sm:(inline-flex overflow-x-hidden);
+
+      &-group-chips {
+        @apply !flex-nowrap;
+      }
+    }
 
     &-title {
       @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
