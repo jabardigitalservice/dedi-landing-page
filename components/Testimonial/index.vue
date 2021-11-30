@@ -27,7 +27,7 @@
             <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
           </div>
         </div>
-        <CardTestimonials :testimonials="mTestimonials" />
+        <CardTestimonials v-if="testimonialIsReady" :testimonials="mTestimonials" />
       </div>
     </div>
   </div>
@@ -51,6 +51,7 @@ export default {
         }
       ],
       testimonials: [],
+      testimonialIsReady: false,
       meta: [],
       query: {
         type: null
@@ -63,6 +64,14 @@ export default {
     this.testimonials = data
     this.meta = meta
   },
+  '$fetchState.pending' (val) {
+    this.testimonialIsReady = false
+    if (!val) {
+      setTimeout(() => {
+        this.testimonialIsReady = true
+      }, 1000)
+    }
+  },
   computed: {
     /**
      * manipulation data avatar from backend for temporary dummy avatar
@@ -74,6 +83,11 @@ export default {
         return item
       })
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.testimonialIsReady = true
+    }, 1000)
   },
   methods: {
     onClickChips (value) {
