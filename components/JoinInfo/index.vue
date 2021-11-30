@@ -47,7 +47,7 @@
           class="max-w-max"
           width="932"
           height="395"
-          src="~/assets/images/InfoJoinDesa.png"
+          src="~/assets/images/InfoJoinDesa.svg"
           alt="Info Bergabung Desa"
         >
         <img
@@ -55,7 +55,7 @@
           class="max-w-max"
           width="932"
           height="395"
-          src="~/assets/images/InfoJoinMitra.png"
+          src="~/assets/images/InfoJoinMitra.svg"
           alt="Info Bergabung Desa"
         >
       </div>
