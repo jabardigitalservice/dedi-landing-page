@@ -96,6 +96,10 @@ export default {
 
 <style lang="postcss">
 .join-info {
+  background-image: url('~/assets/images/BackgroundGabungDesaMitra.svg');
+  background-repeat: no-repeat;
+  background-position-x: 5%;
+  background-position-y: 75%;
   @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
