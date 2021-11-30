@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="maps-dedi" class="wrapper">
     <div class="maps-dedi">
       <h4 class="maps-dedi__heading">
         Data Perkembangan Desa Digital dan Mitra
@@ -88,10 +88,44 @@
             }"
           >
             <div class="maps__boxmaps-sidebar-content">
+              <div class="maps__boxmaps-sidebar-content-title">
+                Pencarian Desa Digital
+              </div>
+              <jds-search
+                class="maps__boxmaps-sidebar-content-search"
+                placeholder="Masukan nama desa"
+                icon
+                :button="false"
+                :value="search"
+                @input="onSearchVillage"
+              />
+              <div class="maps__boxmaps-sidebar-content-box-level-village">
+                <div class="maps__boxmaps-sidebar-content-text-level">
+                  Level Desa
+                </div>
+                <div class="maps__boxmaps-sidebar-content-text-about-dedi">
+                  Apa ini ?
+                </div>
+              </div>
+              <BaseChipsGroup class="maps__boxmaps-sidebar-content-chips" mandatory :values="listLevel" @onChange="onClickChipLevel" />
               <div class="maps__boxmaps-sidebar-content-text-join-dedi">
                 Total <strong class="maps__boxmaps-sidebar-content-total-join-dedi">{{ totalVillage }} desa</strong> telah bergabung
               </div>
+              <div v-show="!listVillageIsReady" class="maps__boxmaps-sidebar-content-skeleton">
+                <div v-for="(i, index) in 4" :key="index">
+                  <div class="maps__boxmaps-sidebar-content-skeleton-item">
+                    <div class="maps__boxmaps-sidebar-content-skeleton-info">
+                      <div class="maps__boxmaps-sidebar-content-skeleton-info-item-full animate-pulse" />
+                      <div class="maps__boxmaps-sidebar-content-skeleton-info-item-70 animate-pulse" />
+                      <div class="maps__boxmaps-sidebar-content-skeleton-info-item-30 animate-pulse" />
+                    </div>
+                    <div class="maps__boxmaps-sidebar-content-skeleton-image animate-pulse" />
+                  </div>
+                  <div class="maps__boxmaps-sidebar-content-skeleton-separator" />
+                </div>
+              </div>
               <div
+                v-show="listVillageIsReady"
                 ref="listvillage"
                 :class="{
                   'maps__boxmaps-sidebar-content-list-village':true,
@@ -182,6 +216,7 @@ export default {
   ],
   data () {
     return {
+      listVillageIsReady: true,
       joinSelected: 'village',
       totalVillage: 0,
       isFullscreen: false,
@@ -197,18 +232,47 @@ export default {
       markerOpenInfoWindow: {},
       focusMarker: null,
       observer: null,
+      search: '',
       query: {
         current_page: 1,
         per_page: 7
-      }
-
+      },
+      listLevel: [
+        {
+          label: 'Semua',
+          value: 'semua'
+        },
+        {
+          label: 'Lvl 1',
+          value: '1'
+        },
+        {
+          label: 'Lvl 2',
+          value: '2'
+        },
+        {
+          label: 'Lvl 3',
+          value: '3'
+        },
+        {
+          label: 'Lvl 4',
+          value: '4'
+        }
+      ]
     }
   },
   async fetch () {
     const response = await this.$axios.get('/villages/list-with-location', { params: this.query })
     const { data, meta } = response.data
-    this.listVillage = [...this.listVillage, ...data]
-    this.totalVillage = meta.total
+    if (this.query.current_page > 1) {
+      this.listVillage = [...this.listVillage, ...data]
+    } else {
+      this.listVillage = data
+    }
+    this.query = { ...this.query, ...meta }
+    if (this.totalVillage < meta.total) {
+      this.totalVillage = meta.total
+    }
   }
 }
 </script>
