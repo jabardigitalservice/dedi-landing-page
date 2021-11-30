@@ -11,7 +11,7 @@
     >
       <span
         :class="{
-          'chips__label': isActive(item.value),
+          'chips__label': true,
           'chips__label--active': isActive(item.value)
         }"
       >
@@ -82,14 +82,14 @@ export default {
 }
 
 .chips {
-  @apply text-sm py-2 px-3 border bg-white border-blue-gray-50 rounded-[27px] focus:outline-none;
+  @apply whitespace-nowrap min-w-max text-sm py-2 px-3 border bg-white border-blue-gray-50 rounded-[27px] focus:outline-none;
 
   &--active {
-      @apply bg-green-700 pr-[6px];
-    }
+    @apply bg-green-700 pr-[6px];
+  }
 
   &__label {
-    @apply font-sans inline-flex gap-[6px] text-gray-800 leading-[18px] font-medium;
+    @apply font-sans inline-flex gap-[6px] text-blue-gray-800 leading-[18px] font-medium;
 
     &--active {
       @apply text-white leading-[18px] font-bold;
