@@ -13,21 +13,22 @@
           Testimonial
         </h3>
         <h4 class="testimonial__content-subtitle">
-          Dari Para Pengguna Desa Digital
+          Kata Mereka Tentang Desa Digital
         </h4>
         <div class="testimonial__content-box-desc">
           <p class="testimonial__content-description">
-            Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Enim aenean justo, adipiscing in lacinia mauris mauris vel.
+            Manfaat Desa Digital telah dirasakan oleh berbagai pihak.
           </p>
           <div class="testimonial__content-box-text">
             <p class="testimonial__content-text">
               Testimoni dari
             </p>
-            <BaseChipsGroup mandatory :values="listChips" @onChange="onClickChips" />
+            <div class="testimonial__content-box-chips">
+              <BaseChipsGroup class="testimonial__content-box-chips-group-chips" mandatory :values="listChips" @onChange="onClickChips" />
+            </div>
           </div>
         </div>
-        <CardTestimonials :testimonials="mTestimonials" />
+        <CardTestimonials v-if="testimonialIsReady" :testimonials="mTestimonials" />
       </div>
     </div>
   </div>
@@ -51,6 +52,7 @@ export default {
         }
       ],
       testimonials: [],
+      testimonialIsReady: false,
       meta: [],
       query: {
         type: null
@@ -63,6 +65,14 @@ export default {
     this.testimonials = data
     this.meta = meta
   },
+  '$fetchState.pending' (val) {
+    this.testimonialIsReady = false
+    if (!val) {
+      setTimeout(() => {
+        this.testimonialIsReady = true
+      }, 1000)
+    }
+  },
   computed: {
     /**
      * manipulation data avatar from backend for temporary dummy avatar
@@ -74,6 +84,11 @@ export default {
         return item
       })
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.testimonialIsReady = true
+    }, 1000)
   },
   methods: {
     onClickChips (value) {
@@ -116,6 +131,14 @@ export default {
     2md:(pl-11.5 flex-1 text-left)
     lg:(pl-8);
 
+    &-box-chips {
+      @apply block overflow-x-scroll sm:(inline-flex overflow-x-hidden);
+
+      &-group-chips {
+        @apply !flex-nowrap;
+      }
+    }
+
     &-title {
       @apply font-serif text-[32px] leading-[41px] font-bold text-blue-gray-800
       sm:(text-[37px] leading-[60px]);
@@ -127,7 +150,7 @@ export default {
     }
 
     &-box-desc {
-      @apply mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-end);
+      @apply mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-baseline);
     }
 
     &-box-text {
