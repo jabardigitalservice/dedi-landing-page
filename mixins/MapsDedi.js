@@ -348,15 +348,17 @@ export default {
     debounceSearch: debounce(function (value) {
       this.query = { ...this.query, name: value, current_page: 1 }
       this.$fetch()
+      this.search = value
     }, 1000),
     /**
      * open sidebar when dekstop screen
      */
     initSidebarOpen () {
       if (process.client && window.innerWidth > 640) {
-        this.isSidebarOpen = true
+        setTimeout(() => {
+          this.isSidebarOpen = true
+        }, 1200)
       }
-      // this.isSidebarOpen
     }
   },
   /**

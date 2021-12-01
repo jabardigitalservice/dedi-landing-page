@@ -72,7 +72,7 @@
 
     &-sidebar {
       transition: all 0.2s cubic-bezier(0.86, 0, 0.07, 1);
-      @apply absolute top-0 py-4 h-full flex justify-start items-center z-1;
+      @apply absolute top-0 py-4 h-full w-[calc(100%-16px)] sm:w-auto flex justify-start items-center z-1;
 
       &--close {
         @apply transform translate-x[calc(-100%+42px)] sm:-translate-x-[387px];
@@ -89,8 +89,20 @@
       &-content {
         @apply bg-white py-4 px-6 h-full w-[calc(100%-42px)] sm:w-[387px] rounded-r-lg;
 
+        &-empty-state {
+          @apply h-[438px] flex flex-col justify-center items-center;
+
+          &-title {
+            @apply text-base leading-[26px] font-medium text-blue-gray-700 text-center mt-8;
+          }
+
+          &-subtitle {
+            @apply mt-[12px] text-xs leading-[19px] text-center text-blue-gray-700;
+          }
+        }
+
         &-chips {
-          @apply !gap-2 sm:(!flex justify-between gap-0);
+          @apply gap-2 !flex-nowrap w-[0px] sm:(!flex justify-between gap-0 !w-full);
         }
 
         &-skeleton {
@@ -154,9 +166,10 @@
         }
 
         &-list-village {
-          /* scrollbar-color: #E0E0E0 white; */
-          /* scrollbar-width: thin; */
-          @apply h-[438px] !sm:w-[353px] w-[calc(100%+14px)]  flex flex-row flex-wrap gap-2 
+          scrollbar-color: #E0E0E0 white;
+          scrollbar-width: thin;
+          
+          @apply h-[438px] !sm:w-[353px] w-[calc(100%+14px)] flex flex-row flex-wrap content-start gap-2 
           overflow-y-auto overflow-x-hidden;
 
           &--close {
@@ -184,7 +197,7 @@
 
             &-info {
               @apply flex justify-between gap-3 p-2 cursor-pointer
-              hover:(bg-gray-200 rounded-[6px]);
+              hover:(bg-[#F0F3F5] rounded-[6px]);
 
               &-detail {
                 @apply flex-1 sm:w-[238px] flex flex-col;

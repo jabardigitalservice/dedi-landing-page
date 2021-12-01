@@ -107,9 +107,20 @@
                   Apa ini ?
                 </div>
               </div>
-              <BaseChipsGroup class="maps__boxmaps-sidebar-content-chips" mandatory :values="listLevel" @onChange="onClickChipLevel" />
+              <div class="overflow-x-scroll overflow-y-hidden sm:(w-full overflow-hidden h-min)">
+                <BaseChipsGroup class="maps__boxmaps-sidebar-content-chips" mandatory :values="listLevel" @onChange="onClickChipLevel" />
+              </div>
               <div class="maps__boxmaps-sidebar-content-text-join-dedi">
                 Total <strong class="maps__boxmaps-sidebar-content-total-join-dedi">{{ totalVillage }} desa</strong> telah bergabung
+              </div>
+              <div v-if="listVillageIsReady && !listVillage.length" class="maps__boxmaps-sidebar-content-empty-state">
+                <img width="125" height="160" src="~/assets/images/EmptyStateSearch.svg" alt="Empty State Search">
+                <div class="maps__boxmaps-sidebar-content-empty-state-title">
+                  Mohon maaf, pencarian dengan kata kunci <strong v-if="search" class="text-green-800">'{{ search }}'</strong> tidak dapat ditemukan.
+                </div>
+                <div class="maps__boxmaps-sidebar-content-empty-state-subtitle">
+                  Silahkan mencoba dengan kata kunci yang berbeda.
+                </div>
               </div>
               <div v-show="!listVillageIsReady" class="maps__boxmaps-sidebar-content-skeleton">
                 <div v-for="(i, index) in 4" :key="index">
@@ -164,7 +175,7 @@
                   </div>
                   <div class="maps__boxmaps-sidebar-content-list-village-item-separator" />
                 </div>
-                <div ref="observer" />
+                <div ref="observer" class="h-10 w-full" />
               </div>
             </div>
             <div class="maps__boxmaps-sidebar-arrow" @click="setSidebar">
