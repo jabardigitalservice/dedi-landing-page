@@ -89,6 +89,18 @@
       &-content {
         @apply bg-white py-4 px-6 h-full w-[calc(100%-42px)] sm:w-[387px] rounded-r-lg;
 
+        &-empty-state {
+          @apply h-[438px] flex flex-col justify-center items-center;
+
+          &-title {
+            @apply text-base leading-[26px] font-medium text-blue-gray-700 text-center mt-8;
+          }
+
+          &-subtitle {
+            @apply mt-[12px] text-xs leading-[19px] text-center text-blue-gray-700;
+          }
+        }
+
         &-chips {
           @apply gap-2 !flex-nowrap w-[0px] sm:(!flex justify-between gap-0 !w-full);
         }

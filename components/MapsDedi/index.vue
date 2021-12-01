@@ -113,12 +113,12 @@
               <div class="maps__boxmaps-sidebar-content-text-join-dedi">
                 Total <strong class="maps__boxmaps-sidebar-content-total-join-dedi">{{ totalVillage }} desa</strong> telah bergabung
               </div>
-              <div v-if="listVillageIsReady && !listVillage.length" class="h-[438px] flex flex-col justify-center items-center">
+              <div v-if="listVillageIsReady && !listVillage.length" class="maps__boxmaps-sidebar-content-empty-state">
                 <img width="125" height="160" src="~/assets/images/EmptyStateSearch.svg" alt="Empty State Search">
-                <div class="text-base leading-[26px] font-medium text-blue-gray-700 text-center mt-8">
+                <div class="maps__boxmaps-sidebar-content-empty-state-title">
                   Mohon maaf, pencarian dengan kata kunci <strong v-if="search" class="text-green-800">'{{ search }}'</strong> tidak dapat ditemukan.
                 </div>
-                <div class="mt-[12px] text-xs leading-[19px] text-center text-blue-gray-500">
+                <div class="maps__boxmaps-sidebar-content-empty-state-subtitle">
                   Silahkan mencoba dengan kata kunci yang berbeda.
                 </div>
               </div>
