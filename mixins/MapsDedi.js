@@ -355,9 +355,10 @@ export default {
      */
     initSidebarOpen () {
       if (process.client && window.innerWidth > 640) {
-        this.isSidebarOpen = true
+        setTimeout(() => {
+          this.isSidebarOpen = true
+        }, 1200)
       }
-      // this.isSidebarOpen
     }
   },
   /**
