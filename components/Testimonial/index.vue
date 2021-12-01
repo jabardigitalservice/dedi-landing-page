@@ -150,7 +150,7 @@ export default {
     }
 
     &-box-desc {
-      @apply mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-end);
+      @apply mt-6 mb-8 sm:(mt-7) xl:(mb-10 grid grid-cols-2 items-baseline);
     }
 
     &-box-text {
