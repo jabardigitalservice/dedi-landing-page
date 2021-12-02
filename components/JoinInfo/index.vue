@@ -44,7 +44,7 @@
       <div class="join-info__infografik">
         <img
           v-show="isDesa"
-          class="max-w-max"
+          class="max-w-max join-info__infografik-image"
           width="932"
           height="395"
           src="~/assets/images/InfoJoinDesa.svg"
@@ -52,7 +52,7 @@
         >
         <img
           v-show="isMitra"
-          class="max-w-max"
+          class="max-w-max join-info__infografik-image "
           width="932"
           height="395"
           src="~/assets/images/InfoJoinMitra.svg"
@@ -133,6 +133,11 @@ export default {
 
   &__infografik {
     @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center;
+
+    &-image {
+      width: 932px;
+      height: 395px;
+    }
   }
 
   &__cta {
