@@ -44,18 +44,18 @@
       <div class="join-info__infografik">
         <img
           v-show="isDesa"
-          class="max-w-max"
+          class="max-w-max join-info__infografik-image"
           width="932"
           height="395"
-          src="~/assets/images/InfoJoinDesa.png"
+          src="~/assets/images/InfoJoinDesa.svg"
           alt="Info Bergabung Desa"
         >
         <img
           v-show="isMitra"
-          class="max-w-max"
+          class="max-w-max join-info__infografik-image "
           width="932"
           height="395"
-          src="~/assets/images/InfoJoinMitra.png"
+          src="~/assets/images/InfoJoinMitra.svg"
           alt="Info Bergabung Desa"
         >
       </div>
@@ -96,6 +96,10 @@ export default {
 
 <style lang="postcss">
 .join-info {
+  background-image: url('~/assets/images/BackgroundGabungDesaMitra.svg');
+  background-repeat: no-repeat;
+  background-position-x: 5%;
+  background-position-y: 75%;
   @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
@@ -129,6 +133,11 @@ export default {
 
   &__infografik {
     @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center;
+
+    &-image {
+      width: 932px;
+      height: 395px;
+    }
   }
 
   &__cta {
