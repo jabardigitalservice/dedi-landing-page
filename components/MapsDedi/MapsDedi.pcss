@@ -101,6 +101,16 @@
           }
         }
 
+        &-box-chips{
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+          @apply overflow-x-scroll overflow-y-hidden sm:(w-full overflow-hidden h-min);
+
+          &::-webkit-scrollbar{
+            @apply hidden;
+          }
+        }
+
         &-chips {
           @apply gap-2 !flex-nowrap w-[0px] sm:(!flex justify-between gap-0 !w-full);
         }

@@ -107,7 +107,7 @@
                   Apa ini ?
                 </div>
               </div>
-              <div class="overflow-x-scroll overflow-y-hidden sm:(w-full overflow-hidden h-min)">
+              <div class="maps__boxmaps-sidebar-content-box-chips">
                 <BaseChipsGroup class="maps__boxmaps-sidebar-content-chips" mandatory :values="listLevel" @onChange="onClickChipLevel" />
               </div>
               <div class="maps__boxmaps-sidebar-content-text-join-dedi">
