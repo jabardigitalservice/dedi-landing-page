@@ -132,7 +132,13 @@ export default {
     lg:(pl-8);
 
     &-box-chips {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
       @apply block overflow-x-scroll sm:(inline-flex overflow-x-hidden);
+
+      &::-webkit-scrollbar{
+        @apply hidden;
+      }
 
       &-group-chips {
         @apply !flex-nowrap;
