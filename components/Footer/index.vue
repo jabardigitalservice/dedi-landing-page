@@ -53,7 +53,7 @@
           <a v-scroll-to="{ el: '#header' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Tentang Desa Digital</span>
           </a>
-          <a v-scroll-to="{ el: '#maps-dedi' }" class="footer__sitemap-text-item">
+          <a v-scroll-to="{ el: '#village-partner' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Data Perkembangan Desa Digital</span>
           </a>
           <a href="#" class="footer__sitemap-text-item">
