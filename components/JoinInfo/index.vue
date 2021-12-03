@@ -132,7 +132,7 @@ export default {
   }
 
   &__infografik {
-    @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start md:justify-center;
+    @apply w-full max-h-max overflow-x-auto my-8 flex items-center justify-start lg:justify-center;
 
     &-image {
       width: 932px;
