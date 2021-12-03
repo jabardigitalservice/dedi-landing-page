@@ -22,12 +22,12 @@ export default {
         800: '#1565C0'
       },
       pink: {
-        100: '#BBDEFB',
+        100: '#FFBFCF',
         800: '#C12357'
       },
       yellow: {
         100: '#FFEEB4',
-        900: '#C12357'
+        900: '#FF7500'
       },
       green: {
         50: '#E6F6EC',
