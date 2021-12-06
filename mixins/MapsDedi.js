@@ -16,12 +16,6 @@ const mapOptions = {
 
 export default {
   computed: {
-    isvillage () {
-      return this.joinSelected === 'village'
-    },
-    isMitra () {
-      return this.joinSelected === 'Mitra'
-    },
     updatedDate () {
       return new Date().toLocaleString('id', { month: 'long', year: 'numeric' })
     }
