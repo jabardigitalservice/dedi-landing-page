@@ -9,7 +9,7 @@ export default {
       return `
         <div class="p-2 flex flex-col justify-start items-start">
           <div class="max-w-[260px]">
-            <img class="w-[244px] h-[90px]" width="144" height="90" src="${item.images.length ? item.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')}" alt="Logo Dedi Abu Abu" />
+            <img class="w-[244px] h-[90px] rounded-lg object-cover" width="144" height="90" src="${item.images.length ? item.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')}" alt="Logo Dedi Abu Abu" />
           </div> 
           <div class="mt-2 font-roboto text-blue-gray-800 font-bold text-base leading-[26px]">${item.name}</div>
           <div class="w-full flex justify-between items-center font-sans">

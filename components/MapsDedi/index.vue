@@ -170,7 +170,7 @@
                       </div>
                     </div>
                     <div class="maps__boxmaps-sidebar-content-list-village-item-image">
-                      <img :src="[village.images.length ? village.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')]" alt="gambar sebaran desa digital">
+                      <img class="rounded-lg object-cover h-full w-full" :src="[village.images.length ? village.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')]" alt="gambar sebaran desa digital">
                     </div>
                   </div>
                   <div class="maps__boxmaps-sidebar-content-list-village-item-separator" />
