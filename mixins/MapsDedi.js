@@ -330,6 +330,7 @@ export default {
         current_page: 1,
         level: value === 'semua' ? '' : value
       }
+      this.$refs.listvillage.scrollTop = 0
       this.$fetch()
     },
     /**
@@ -347,6 +348,7 @@ export default {
      */
     debounceSearch: debounce(function (value) {
       this.query = { ...this.query, name: value, current_page: 1 }
+      this.$refs.listvillage.scrollTop = 0
       this.$fetch()
       this.search = value
     }, 1000),
