@@ -167,11 +167,11 @@
                 }
 
                 &-list {
-                  @apply flex flex-row items-center gap-2;
+                  @apply flex flex-row flex-wrap items-center gap-2;
 
                   &-level {
-                    @apply py-[2px] px-2 py-[2px] rounded-[6px] 
-                    box-border text-xs leading-[19px] font-medium mb-3;
+                    @apply py-[2px] px-2 rounded-[6px] 
+                    box-border text-xs leading-[19px] font-medium sm:mb-3;
 
                     &--green {
                       @apply bg-green-100 text-green-800;
@@ -192,7 +192,7 @@
 
                   &-tema {
                     @apply bg-blue-50 py-[2px] px-2 py-[2px] rounded-[6px] 
-                    box-border text-blue-400 text-xs leading-[19px] font-medium mb-3;
+                    box-border text-blue-400 text-xs leading-[19px] font-medium sm:mb-3;
                   }
                 }
               }
