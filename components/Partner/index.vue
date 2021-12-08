@@ -85,7 +85,7 @@
               Total desa dampingan
             </div>
             <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
-              {{ partner.total_village }} Desa
+              {{ partner.total_village || 0 }} Desa
             </div>
           </div>
         </div>
