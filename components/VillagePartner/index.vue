@@ -42,6 +42,7 @@
         </div>
       </div>
       <MapsDedi v-show="isvillage" />
+      <Partner v-show="isMitra" />
     </div>
   </div>
 </template>

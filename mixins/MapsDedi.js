@@ -336,6 +336,7 @@ export default {
       } else {
         this.debounceSearch('')
       }
+      this.search = value
     },
     /**
      * make a delay request search village
@@ -344,7 +345,6 @@ export default {
       this.query = { ...this.query, name: value, current_page: 1 }
       this.$refs.listvillage.scrollTop = 0
       this.$fetch()
-      this.search = value
     }, 1000),
     /**
      * open sidebar when dekstop screen
