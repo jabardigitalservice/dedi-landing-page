@@ -64,7 +64,7 @@
               Mitra
             </div>
             <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
-              {{ partner.name }}
+              {{ partner.name || '-' }}
             </div>
           </div>
           <a :href="partner.website" target="_blank" class="pl-[2px]">
@@ -77,7 +77,7 @@
               Bergabung sejak
             </div>
             <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
-              {{ joinedSince(partner.created_at) }}
+              {{ partner.created_at ? joinedSince(partner.created_at) : '-' }}
             </div>
           </div>
           <div class="flex flex-col gap-[2px]">
