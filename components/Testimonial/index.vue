@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-        <CardTestimonials v-if="testimonialIsReady" :testimonials="mTestimonials" />
+        <CardTestimonials v-if="testimonialIsReady" :testimonials="testimonials" />
       </div>
     </div>
   </div>
@@ -71,18 +71,6 @@ export default {
       setTimeout(() => {
         this.testimonialIsReady = true
       }, 1000)
-    }
-  },
-  computed: {
-    /**
-     * manipulation data avatar from backend for temporary dummy avatar
-     * this code in the future cloud be remove
-     */
-    mTestimonials () {
-      return this.testimonials.map((item) => {
-        item.avatar = `https://avatars.dicebear.com/api/micah/${item.name}.svg`
-        return item
-      })
     }
   },
   mounted () {
