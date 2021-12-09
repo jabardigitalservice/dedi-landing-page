@@ -2,14 +2,16 @@
   <div id="hero-banner" class="hero-banner">
     <div class="hero-banner__main">
       <div class="relative px-4 sm:pl-[15.5%]">
-        <h3 class="hero-banner__title">
-          Judul Landing Page
-        </h3>
+        <div class="hero-banner__box-title">
+          <h3 class="hero-banner__title">
+            Saatnya semua menikmati
+          </h3>
+          <h3 class="hero-banner__title">
+            manfaat teknonlogi
+          </h3>
+        </div>
         <p class="hero-banner__desc">
-          Tulisan ini berisi deskripsi singkat dari judul yang terdapat pada judul utama.
-        </p>
-        <p class="hero-banner__desc">
-          Perlu didiskusikan apa yang akan muncul.
+          Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
         </p>
         <div class="hero-banner__cta">
           <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
@@ -49,15 +51,19 @@ export default {
     }
   }
 
+  &__box-title {
+    @apply mt-[22px] mb-2;
+  }
+
   &__title {
-    @apply mt-[22px] mb-2 text-[32px] leading-[40.96px]
+    @apply text-[24px] leading-[30.72px]
     text-center font-serif font-bold text-blue-gray-700
-    sm:(text-left text-[49px] leading-[79px]);
+    sm:(text-left text-[49px] leading-[62.72px]);
   }
 
   &__desc {
     @apply text-center font-sans text-blue-gray-400
-    font-normal text-sm sm:text-left;
+    font-normal text-sm sm:(text-left leading-[23px]);
   }
 
   &__cta {
