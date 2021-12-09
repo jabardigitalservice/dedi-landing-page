@@ -1,14 +1,14 @@
 <template>
-  <div class="w-full h-[567px] rounded-xl bg-[#FAFBFC] border border-blue-gray-50 p-4">
-    <div class="py-2 px-4 bg-green-700 w-full rounded-lg">
-      <div class="font-roboto text-base leading-[26px] text-white">
+  <div class="partner">
+    <div class="partner__joined">
+      <div class="partner__joined-sum">
         Total <strong>{{ totalPartner }}</strong> Mitra telah bergabung
       </div>
-      <div class="text-xs leading-[19px] italic text-white">
+      <div class="partner__joined-update">
         Update per {{ lastUpdate }}
       </div>
     </div>
-    <div class="mt-[10px]">
+    <div class="partner__search">
       <jds-search
         placeholder="Cari Mitra ..."
         icon
@@ -17,74 +17,76 @@
         @input="onSearchPartner"
       />
     </div>
-    <div v-if="partnerIsReady && !partners.length" class="h-[404px] flex flex-col justify-center items-center">
+    <div v-if="partnerIsReady && !partners.length" class="partner__empty-state">
       <img width="125" height="160" src="~/assets/images/EmptyStateSearch.svg" alt="Empty State Search">
-      <div class="text-base leading-[26px] font-medium text-blue-gray-700 text-center mt-8">
-        Mohon maaf, pencarian dengan kata kunci <strong v-if="search" class="text-green-800">'{{ search }}'</strong> tidak dapat ditemukan.
+      <div class="partner__empty-state-title">
+        Mohon maaf, pencarian dengan kata kunci
+        <strong v-if="search" class="partner__empty-state-new-tab">'{{ search }}'</strong>
+        tidak dapat ditemukan.
       </div>
-      <div class="mt-[14px] text-xs leading-[19px] text-center text-blue-gray-700">
+      <div class="partner__empty-state-subtitle">
         Silahkan mencoba dengan kata kunci yang berbeda.
       </div>
     </div>
-    <div v-show="!partnerIsReady" class="mt-[12px] h-[404px] flex flex-col gap-3 overflow-y-hidden overflow-x-hidden">
-      <div v-for="(i, index) in 3" :key="index" class="h-max w-full bg-white rounded-lg py-4 px-6">
-        <div class="flex gap-4 py-[2px]">
-          <div class="w-[40px] h-[40px] rounded-full bg-[#F0F4F5] animate-pulse" />
-          <div class="flex flex-col gap-[2px]">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+    <div v-show="!partnerIsReady" class="partner__skeleton">
+      <div v-for="(i, index) in 3" :key="index" class="partner__skeleton-item">
+        <div class="partner__skeleton-item-box">
+          <div class="partner__skeleton-item-box-avatar animate-pulse" />
+          <div class="partner__skeleton-item-box-partner">
+            <div class="partner__skeleton-item-box-partner-text">
               Mitra
             </div>
-            <div class="bg-[#F0F4F5] w-[106px] h-[20px] animate-pulse rounded-full" />
+            <div class="partner__skeleton-item-box-partner-name animate-pulse" />
           </div>
         </div>
-        <div class="mt-[12px] flex gap-4 w-full justify-between">
-          <div class="flex flex-col gap-[2px]">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+        <div class="partner__skeleton-item-boxjoin">
+          <div class="partner__skeleton-item-boxjoin-joined">
+            <div class="partner__skeleton-item-boxjoin-joined-text">
               Bergabung sejak
             </div>
-            <div class="bg-[#F0F4F5] w-[106px] h-[20px] animate-pulse rounded-full" />
+            <div class="partner__skeleton-item-boxjoin-joined-date animate-pulse" />
           </div>
-          <div class="flex flex-col gap-[2px]">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+          <div class="partner__skeleton-item-boxjoin-totaljoin">
+            <div class="partner__skeleton-item-boxjoin-totaljoin-text">
               Total desa dampingan
             </div>
-            <div class="bg-[#F0F4F5] w-[106px] h-[20px] animate-pulse rounded-full" />
+            <div class="partner__skeleton-item-boxjoin-totaljoin-total animate-pulse" />
           </div>
         </div>
       </div>
     </div>
-    <div v-show="partnerIsReady" ref="partners" class="mt-[12px] h-[388px] flex flex-col gap-3 overflow-y-auto overflow-x-hidden">
-      <div v-for="partner in partners" :key="partner.id" class="h-max w-full bg-white rounded-lg py-4 px-6">
-        <div class="flex gap-4 py-[2px]">
-          <div class="w-[40px] h-[40px]">
+    <div v-show="partnerIsReady" ref="partners" class="partner__partner">
+      <div v-for="partner in partners" :key="partner.id" class="partner__partner-item">
+        <div class="partner__partner-item-box">
+          <div class="partner__partner-item-box-avatar">
             <img width="40" height="40" :src="[partner.logo ? `https://avatars.dicebear.com/api/gridy/${partner.logo}.svg` : require('~/assets/logo/logo-dedi-abu-abu.svg')]" :alt="partner.name">
           </div>
-          <div class="flex flex-col gap-[2px] flex-1">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+          <div class="partner__partner-item-box-partner">
+            <div class="partner__partner-item-box-partner-text">
               Mitra
             </div>
-            <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
+            <div class="partner__partner-item-box-partner-name">
               {{ partner.name || '-' }}
             </div>
           </div>
-          <a :href="partner.website" target="_blank" class="pl-[2px]">
+          <a :href="partner.website" target="_blank" class="partner__partner-item-box-partner-new-tab">
             <jds-icon name="open-new-tab" size="20px" color="#069550" />
           </a>
         </div>
-        <div class="mt-[12px] flex gap-4 w-full justify-between">
-          <div class="flex flex-col gap-[2px]">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+        <div class="partner__partner-item-boxjoin">
+          <div class="partner__partner-item-boxjoin-joined">
+            <div class="partner__partner-item-boxjoin-joined-text">
               Bergabung sejak
             </div>
-            <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
+            <div class="partner__partner-item-boxjoin-joined-date">
               {{ partner.created_at ? joinedSince(partner.created_at) : '-' }}
             </div>
           </div>
-          <div class="flex flex-col gap-[2px]">
-            <div class="font-medium text-xs leading-[18px] text-blue-gray-200">
+          <div class="partner__partner-item-boxjoin-totaljoin">
+            <div class="partner__partner-item-boxjoin-totaljoin-text">
               Total desa dampingan
             </div>
-            <div class="font-medium text-sm leading-[23px] text-blue-gray-600">
+            <div class="partner__partner-item-boxjoin-totaljoin-total">
               {{ partner.total_village || 0 }} Desa
             </div>
           </div>
@@ -182,6 +184,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="postcss">
+@import './Partner.pcss';
 </style>
