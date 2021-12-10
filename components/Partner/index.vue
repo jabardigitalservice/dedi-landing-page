@@ -1,21 +1,33 @@
 <template>
   <div class="partner">
-    <div class="partner__joined">
-      <div class="partner__joined-sum">
-        Total <strong>{{ totalPartner }}</strong> Mitra telah bergabung
+    <div class="partner__boxjoin">
+      <div class="partner__joined">
+        <div class="partner__joined-sum">
+          Total <strong>{{ totalPartner }}</strong> Mitra telah bergabung
+        </div>
+        <div class="partner__joined-update">
+          Update per {{ lastUpdate }}
+        </div>
       </div>
-      <div class="partner__joined-update">
-        Update per {{ lastUpdate }}
+      <div class="partner__search-mobile">
+        <jds-search
+          placeholder="Cari Mitra ..."
+          icon
+          :button="false"
+          :value="search"
+          @input="onSearchPartner"
+        />
       </div>
-    </div>
-    <div class="partner__search">
-      <jds-search
-        placeholder="Cari Mitra ..."
-        icon
-        :button="false"
-        :value="search"
-        @input="onSearchPartner"
-      />
+      <div class="partner__search-desktop">
+        <jds-search
+          placeholder="Cari Mitra ..."
+          icon
+          :small="true"
+          :button="false"
+          :value="search"
+          @input="onSearchPartner"
+        />
+      </div>
     </div>
     <div v-if="partnerIsReady && !partners.length" class="partner__empty-state">
       <img width="125" height="160" src="~/assets/images/EmptyStateSearch.svg" alt="Empty State Search">
@@ -29,7 +41,7 @@
       </div>
     </div>
     <div v-show="!partnerIsReady" class="partner__skeleton">
-      <div v-for="(i, index) in 3" :key="index" class="partner__skeleton-item">
+      <div v-for="(i, index) in 16" :key="index" class="partner__skeleton-item">
         <div class="partner__skeleton-item-box">
           <div class="partner__skeleton-item-box-avatar animate-pulse" />
           <div class="partner__skeleton-item-box-partner">
@@ -47,12 +59,16 @@
             <div class="partner__skeleton-item-boxjoin-joined-date animate-pulse" />
           </div>
           <div class="partner__skeleton-item-boxjoin-totaljoin">
-            <div class="partner__skeleton-item-boxjoin-totaljoin-text">
+            <div class="partner__skeleton-item-boxjoin-totaljoin-text-mobile">
               Total desa dampingan
+            </div>
+            <div class="partner__skeleton-item-boxjoin-totaljoin-text-desktop">
+              Desa dampingan
             </div>
             <div class="partner__skeleton-item-boxjoin-totaljoin-total animate-pulse" />
           </div>
         </div>
+        <div class="partner__skeleton-item-link animate-pulse" />
       </div>
     </div>
     <div v-show="partnerIsReady" ref="partners" class="partner__partner">
@@ -69,7 +85,7 @@
               {{ partner.name || '-' }}
             </div>
           </div>
-          <a :href="partner.website" target="_blank" class="partner__partner-item-box-partner-new-tab">
+          <a :href="partner.website" rel="noreferrer noopener" target="_blank" class="partner__partner-item-box-partner-new-tab">
             <jds-icon name="open-new-tab" size="20px" color="#069550" />
           </a>
         </div>
@@ -83,16 +99,29 @@
             </div>
           </div>
           <div class="partner__partner-item-boxjoin-totaljoin">
-            <div class="partner__partner-item-boxjoin-totaljoin-text">
+            <div class="partner__partner-item-boxjoin-totaljoin-text-mobile">
               Total desa dampingan
+            </div>
+            <div class="partner__partner-item-boxjoin-totaljoin-text-desktop">
+              Desa dampingan
             </div>
             <div class="partner__partner-item-boxjoin-totaljoin-total">
               {{ partner.total_village || 0 }} Desa
             </div>
           </div>
         </div>
+        <div class="partner__partner-item-link">
+          <a :href="partner.website" rel="noreferrer noopener" target="_blank" class="partner__partner-item-link-text">
+            Lihat Mitra
+          </a>
+          <a :href="partner.website" rel="noreferrer noopener" target="_blank">
+            <jds-icon name="open-new-tab" size="20px" color="#069550" />
+          </a>
+        </div>
       </div>
-      <div ref="observerPartner" class="h-10 w-full" />
+      <div ref="observerPartner" class="h-1 w-full invisible">
+        this content for detection observer on mozilla
+      </div>
     </div>
   </div>
 </template>
@@ -111,7 +140,7 @@ export default {
       search: '',
       totalPartner: 0,
       query: {
-        per_page: 6,
+        per_page: 16,
         current_page: 1
       }
     }

@@ -12,6 +12,7 @@ export default {
       }
     },
     colors: {
+      transparent: 'transparent',
       white: '#FFF',
       black: '#000',
       blue: {
