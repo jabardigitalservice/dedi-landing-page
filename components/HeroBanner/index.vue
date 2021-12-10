@@ -7,7 +7,7 @@
             Saatnya semua menikmati
           </h3>
           <h3 class="hero-banner__title">
-            manfaat teknonlogi
+            manfaat teknologi
           </h3>
         </div>
         <p class="hero-banner__desc">
