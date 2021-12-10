@@ -2,10 +2,10 @@
   <div id="join-info" class="wrapper">
     <div class="join-info">
       <h4 class="join-info__heading">
-        Ingin Menjadi Bagian Dari Desa Digital?
+        Jadi Bagian Desa Digital, Jadi Bagian Perubahan
       </h4>
       <p class="join-info__subheading">
-        Gabung ke komunitas Desa Digital dengan bergabung sebagai Desa ataupun sebagai Mitra.
+        Bergabung sebagai desa ataupun mitra dengan ikuti tahapan berikut.
       </p>
       <div class="join-info__switch">
         <div
@@ -103,7 +103,7 @@ export default {
   @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
-    @apply font-serif font-bold text-blue-gray-800 text-[24px] leading-[31px] text-center sm:(text-[37px] leading-[60px] mt-8);
+    @apply font-serif font-bold text-blue-gray-800 text-[24px] leading-[36px] text-center sm:(text-[37px] leading-[60px] mt-8);
   }
 
   &__subheading {

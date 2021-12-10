@@ -5,7 +5,15 @@
         Data Perkembangan Desa Digital dan Mitra
       </h4>
       <p class="village-partner__subheading">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim aenean justo, adipiscing in lacinia mauris mauris vel.
+        Demi mewujudkan kemandirian desa di Jawa Barat, program Desa Digital
+        mengajak akademisi, pelaku usaha, komunitas, hingga masyarakat khususnya
+        di pedesaan untuk turut berkontribusi dalam proses pembangunan infrastruktur, pemanfaatan
+        <i>Internet of Things</i>
+        (IoT), dan berpartisipasi dalam pelatihan literasi digital.
+      </p>
+      <p class="village-partner__subheading">
+        Mengusung konsep pentahelix, kini 521 desa di Jawa Barat telah menjadi
+        penerima manfaat dan 31 mitra telah terhubung untuk berinovasi bersama.
       </p>
       <div class="village-partner__switch">
         <div
@@ -91,11 +99,11 @@ export default {
   @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
-    @apply font-serif font-bold text-blue-gray-800 text-[24px] leading-[31px] text-center sm:(text-[37px] leading-[60px] mt-8) lg:mt-[34px];
+    @apply mb-6 font-serif font-bold text-blue-gray-800 text-[24px] leading-[31px] text-center sm:(text-[37px] leading-[60px] mt-8 mb-5) lg:mt-[34px];
   }
 
   &__subheading {
-    @apply text-sm text-gray-700 text-center mt-6 sm:(leading-[23px] mt-5);
+    @apply text-sm text-gray-700 text-center sm:leading-[23px];
   }
 
   &__switch {
