@@ -38,7 +38,7 @@ export default {
   @apply h-[406px];
 
   &__main {
-    background-image: url('~/assets/images/FooterBanner.png');
+    background-image: url('~/assets/images/FooterBanner.svg');
     background-position-y: 100%;
     @apply bg-no-repeat bg-cover w-full h-full relative;
 

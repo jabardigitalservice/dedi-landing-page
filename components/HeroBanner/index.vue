@@ -37,7 +37,7 @@ export default {
   @apply relative h-[540px] sm:h-[590px];
 
   &__main {
-    background-image: url('~/assets/images/HeroBanner.png');
+    background-image: url('~/assets/images/HeroBanner.svg');
     background-position-x: 30%;
     background-position-y: 100%;
     @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
