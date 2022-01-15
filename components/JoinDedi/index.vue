@@ -236,27 +236,27 @@ export default {
 
   &__backdrop {
     @apply z-20 fixed h-screen w-screen backdrop-filter backdrop-blur-[6px]
-    bg-black bg-opacity-75 top-0 transition-all;
+    bg-black bg-opacity-75 top-0 transition-all duration-300;
 
     &--show {
       @apply visible opacity-100;
     }
 
     &--hide{
-      @apply invisible opacity-0 delay-300;
+      @apply invisible opacity-0;
     }
   }
 
   &__wrapper{
-    @apply absolute bottom-0 w-full transition-all
+    @apply fixed bottom-0 w-full transition-all duration-300
     sm:(relative top-1/2 mx-auto my-0 bottom-[unset] max-w-[680px]);
 
     &--show {
-      @apply transform translate-y-0 delay-300 sm:(-translate-y-1/2);
+      @apply transform translate-y-0 sm:(-translate-y-1/2);
     }
 
     &--hide{
-      @apply transform translate-y-[calc(100%+60px)];
+      @apply transform translate-y-[20%] sm:(-translate-y-[30%]);
     }
   }
 
