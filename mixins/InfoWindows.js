@@ -11,17 +11,17 @@ export default {
           <div class="w-full max-w-[260px]">
             <img class="w-full sm:w-[244px] h-[90px] rounded-lg object-cover" width="100%" height="90" src="${item.images.length ? item.images[0] : require('~/assets/logo/logo-dedi-abu-abu.svg')}" alt="Logo Dedi Abu Abu" />
           </div> 
-          <div class="mt-2 font-roboto text-blue-gray-800 font-bold text-base leading-[26px]">${item.name}</div>
+          <div class="mt-2 font-roboto text-blue-gray-800 font-bold text-base leading-[26px]">${item.name || ''}</div>
           <div class="w-full flex justify-between items-center font-sans flex-wrap gap-3">
             <div class="text-gray-500 text-sm leading-[23px]">
-              ${item.city.name}
+              ${item.city.name || ''}
             </div>
             <div 
               class="${this.classStyleBgLevel(item)}"
             >
               <div 
                 class="${this.classStyleTextLevel(item)}"
-              >Level ${item.level ? item.level : ''}</div>
+              >Level ${item.level || ''}</div>
             </div>
           </div>
         </div>
