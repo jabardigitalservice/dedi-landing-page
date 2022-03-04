@@ -1,5 +1,7 @@
 <template>
-  <div />
+  <div>
+    <ThreePillars />
+  </div>
 </template>
 
 <script>
