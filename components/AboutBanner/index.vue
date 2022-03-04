@@ -1,25 +1,23 @@
 <template>
   <div class="wrapper">
-    <div class="pt-[60px]">
-      <div class="flex flex-col-reverse sm:(flex-row justify-between items-center)">
-        <div class="block sm:(w-[443px]) md:(w-[unset])">
-          <h2 class="font-serif text-center text-[20px] leading-[40px] text-blue-gray-700 font-bold mt-6 sm:(mt-[unset] text-left text-[38px] leading-[45px])">
+    <div class="about-banner">
+      <div class="about-banner__wrapper">
+        <div class="about-banner__info">
+          <h2 class="about-banner__info-title">
             Meniadakan Batasan Untuk
           </h2>
-          <h2 class="font-serif text-center text-[20px] leading-[40px] text-blue-gray-700 font-bold sm:(mt-[unset] text-left text-[56px] leading-[65.63px])">
+          <h2 class="about-banner__info-subtitle">
             Membawa Perubahan
           </h2>
-          <p class="text-blue-gray-500 text-center w-full mt-6 sm:(text-left leading-[26px] w-[70%])">
+          <p class="about-banner__info-desc">
             Perluas jangkauan, kembangkan kapasitas masyarakat, dan
             maksimalkan potensi desa.
           </p>
-          <div class="mt-6 sm:(mt-8)">
-            <BaseButton class="w-full active:(w-[calc(100%-2px)]) sm:(w-[unset] active:w-[unset])" label="Gabung Desa Digital" @click="onClickCTA" />
+          <div class="about-banner__info-cta">
+            <BaseButton class="about-banner__info-cta-btn" label="Gabung Desa Digital" @click="onClickCTA" />
           </div>
         </div>
-        <div class="flex-1">
-          <img class="w-full sm:(flex-1)" src="@/assets/images/about/Banner.png" alt="About Banner">
-        </div>
+        <img class="about-banner__image" src="~/assets/images/about/Banner.png" alt="About Banner">
       </div>
     </div>
   </div>
@@ -35,3 +33,49 @@ export default {
   }
 }
 </script>
+<style lang="postcss" scoped>
+.about-banner {
+  @apply pt-[60px];
+
+  &__wrapper {
+    @apply flex flex-col-reverse lg:(flex-row justify-between items-center);
+  }
+
+  &__info {
+    @apply block lg:(w-[443px]) xl:(w-[unset]);
+
+    &-title {
+      @apply font-serif text-center text-[20px] leading-[40px]
+      text-blue-gray-700 font-bold mt-6
+      lg:(mt-[unset] text-left text-[24px] leading-[45px])
+      xl:(text-[38px]);
+    }
+
+    &-subtitle {
+      @apply font-serif text-center text-[20px] leading-[40px]
+      text-blue-gray-700 font-bold
+      lg:(mt-[unset] text-left text-[40px] leading-[46.88px])
+      xl:(text-[56px] leading-[65.63px]);
+    }
+
+    &-desc {
+      @apply text-blue-gray-500 text-center w-full mt-6
+      lg:(text-left leading-[26px])
+      xl:(w-[70%]);
+    }
+
+    &-cta {
+      @apply mt-6 lg:(mt-8);
+
+      &-btn {
+        @apply w-full active:(w-[calc(100%-2px)])
+        lg:(w-[unset] active:w-[unset]);
+      }
+    }
+  }
+
+  &__image {
+    @apply w-full lg:(w-[549px]) xl:(w-[696px]);
+  }
+}
+</style>
