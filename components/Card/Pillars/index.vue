@@ -13,12 +13,6 @@
 
 <script>
 export default {
-  props: {
-    testimonials: {
-      type: Array,
-      default: () => []
-    }
-  },
   data () {
     return {
       contents: [
