@@ -17,7 +17,7 @@
             <BaseButton class="about-banner__info-cta-btn" label="Gabung Desa Digital" @click="onClickCTA" />
           </div>
         </div>
-        <img class="about-banner__image" src="~/assets/images/about/Banner.png" alt="About Banner">
+        <img class="about-banner__image" src="~/assets/images/about/banner.png" alt="About Banner">
       </div>
     </div>
   </div>
