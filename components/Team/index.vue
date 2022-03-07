@@ -52,6 +52,11 @@ export default {
 
 <style lang="postcss">
   .team {
+    background-image: url(~/assets/images/about/Background_About_Team.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 100% 80%;
+
     @apply w-full h-full py-6
       md: (pt-15 pb-30)
       lg: (py-8);
