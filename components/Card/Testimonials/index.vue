@@ -42,7 +42,7 @@
             </div>
             <div class="card__user">
               <img
-                :src="datas.avatar"
+                :src="datas.avatar.path"
                 alt="ava-image"
                 class="card__user-img"
               >
@@ -172,7 +172,7 @@ export default {
     }
   }
   &__user {
-    @apply flex gap-[12px] mt-6
+    @apply flex gap-[12px] mt-6 overflow-hidden overflow-ellipsis whitespace-nowrap
     xl:(mt-12px);
 
     &-profile {
