@@ -29,10 +29,12 @@
             implementasi program Desa Digital. Unit dibawah Diskominfo Jawa Barat ini ciptakan inovasi untuk kembangkan
             potensi desa melalui semangat kolaborasi.
           </p>
-          <BaseButton class="team__lower-btn" variant="secondary" @click="onClickCTA">
-            Kunjungi Jabar Digital Service
-            <jds-icon name="open-new-tab" size="14px" class="pl-1" />
-          </BaseButton>
+          <div class="team__lower-cta">
+            <BaseButton class="team__lower-cta-btn" variant="secondary" @click="onClickCTA">
+              Kunjungi Jabar Digital Service
+              <jds-icon name="open-new-tab" size="14px" class="pl-2" />
+            </BaseButton>
+          </div>
         </div>
       </div>
     </div>
@@ -94,10 +96,13 @@ export default {
         lg: (w-[595px])
       }
 
-      &-btn {
-        @apply w-full my-6
-        active:(w-[calc(100%-2px)])
-        md:(w-auto active:(w-auto) mt-6 mb-0);
+      &-cta {
+        @apply w-full my-6;
+
+        &-btn {
+          @apply w-full active:(w-[calc(100%-2px)])
+          md:(w-[unset] active:w-[unset]);
+        }
       }
     }
   }
