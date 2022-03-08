@@ -2,6 +2,7 @@
   <div>
     <AboutBanner @onClickCTA="showModal" />
     <ThreePillars />
+    <Team />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
