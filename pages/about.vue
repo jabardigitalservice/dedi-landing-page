@@ -1,6 +1,7 @@
 <template>
   <div>
     <AboutBanner @onClickCTA="showModal" />
+    <Potency />
     <ThreePillars />
     <Team />
     <ContactUs />
