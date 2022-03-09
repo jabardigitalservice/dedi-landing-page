@@ -35,7 +35,7 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .about-banner {
-  @apply pt-[60px];
+  @apply pt-[60px] pb-6 lg:(pb-[unset]);
 
   &__wrapper {
     @apply flex flex-col-reverse lg:(flex-row justify-between items-center);
@@ -75,7 +75,7 @@ export default {
   }
 
   &__image {
-    @apply w-full lg:(w-[549px]) xl:(w-[696px]);
+    @apply w-full lg:(w-[549px] h-[435px]) xl:(w-[696px] h-[522px]);
   }
 }
 </style>
