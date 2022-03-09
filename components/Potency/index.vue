@@ -42,8 +42,7 @@ export default {
 
     &__content {
       @apply w-full h-full flex flex-col-reverse
-      md: (grid grid-cols-2 justify-between items-center)
-      lg: (grid grid-cols-2 justify-between items-center);
+      md: (grid grid-cols-2 justify-between items-center);
 
       &-img {
         @apply w-full h-full flex;
@@ -54,15 +53,15 @@ export default {
         md: (py-30);
 
         h1 {
-          @apply w-full h-full text-[28px] text-center leading-8 font-serif font-bold text-blue-gray-800
-          md: (px-2 text-left leading-10)
-          lg: (text-[42px] text-left leading-14);
+          @apply w-full h-full text-[28px] text-center leading-[42px] font-serif font-bold text-blue-gray-800
+          md: (px-2 text-left)
+          lg: (text-[42px] leading-15);
         }
 
         p {
           @apply w-full h-full pt-6 text-center text-blue-gray-500
           md: (w-full text-left px-2)
-          lg: (w-[586px] text-left);
+          lg: (w-[586px]);
         }
       }
     }
