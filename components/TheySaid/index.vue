@@ -123,7 +123,6 @@
 </template>
 
 <script>
-import 'swiper/css/swiper.css'
 export default {
   name: 'TheySaid',
   data () {
