@@ -145,7 +145,7 @@ export default {
         {
           name: 'Cynditia Fitriani Rahardjo',
           role: 'Project Officer Jabar Digital Service',
-          feedback: 'Desa Digital adalah desa yang bisa memanfaatkan teknologi untuk meningkatkan produktivitas dan kesejahtteraan masyarakatnya secara mandiri.',
+          feedback: 'Desa Digital adalah desa yang bisa memanfaatkan teknologi untuk meningkatkan produktivitas dan kesejahteraan masyarakatnya secara mandiri.',
           image: require('~/assets/images/about/cindy.png')
         },
         {
