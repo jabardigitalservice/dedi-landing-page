@@ -1,7 +1,9 @@
 <template>
   <div>
     <AboutBanner @onClickCTA="showModal" />
+    <Potency />
     <ThreePillars />
+    <Team />
     <TheySaid />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
