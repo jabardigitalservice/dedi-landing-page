@@ -36,9 +36,7 @@ export default {
 
 <style lang="postcss">
   .potency {
-    @apply w-full h-full py-6 bg-[#F8F8F6]
-      md: (pt-15 pb-30)
-      lg: (py-26);
+    @apply w-full h-full py-6 bg-[#F8F8F6];
 
     &__content {
       @apply w-full h-full flex flex-col-reverse
