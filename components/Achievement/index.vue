@@ -17,7 +17,7 @@ export default {
 
 <style lang="postcss">
   .achievement {
-    @apply w-full h-full py-4 max-w-screen-xl bg-[#FCFCFC]
+    @apply w-full h-full py-4 bg-[#FCFCFC]
     md: (py-15)
     lg: (pt-30 pb-15);
 
