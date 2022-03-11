@@ -60,8 +60,8 @@ export default {
 
         p {
           @apply w-full h-full pt-6 text-center text-blue-gray-500
-          md: (w-full text-left px-2)
-          lg: (w-[586px]);
+          md: (text-left px-2)
+          lg: (max-w-[586px]);
         }
       }
     }
