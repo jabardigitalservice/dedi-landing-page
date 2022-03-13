@@ -5,6 +5,7 @@
     <Achievement />
     <ThreePillars />
     <Team />
+    <TheySaid />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
