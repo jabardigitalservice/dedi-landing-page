@@ -162,7 +162,7 @@ export default {
       &__card {
         border-radius: 0.75rem 0.75rem 0 0;
         box-shadow: 0px 4px 24px rgba(0, 92, 54, 0.06) !important;
-        @apply bg-white rounded-2xl w-auto h-auto
+        @apply bg-white rounded-2xl w-auto h-auto select-none
         md: (w-[492px] h-[170px]);
 
         &-content {

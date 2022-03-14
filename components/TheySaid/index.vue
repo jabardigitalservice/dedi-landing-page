@@ -190,7 +190,7 @@ export default {
 }
 
 .they-said {
-  @apply bg-[#F8F8F6] py-6 lg:(py-[56px]) xl:(py-[80px]);
+  @apply bg-white py-6 lg:(py-[56px]) xl:(py-[80px]);
 
   &__wrapper {
     @apply rounded-4xl bg-[#222F3E] max-w-[1280px] p-6 lg:(p-[40px]) xl:(py-[56px] px-[60px]);

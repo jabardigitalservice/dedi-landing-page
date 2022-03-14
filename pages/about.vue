@@ -2,8 +2,8 @@
   <div>
     <AboutBanner @onClickCTA="showModal" />
     <Potency />
-    <DevelopmentStage />
     <Achievement />
+    <DevelopmentStage />
     <ThreePillars />
     <Team />
     <TheySaid />

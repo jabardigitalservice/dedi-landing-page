@@ -201,7 +201,7 @@ export default {
 }
 
 .develop-stage {
-  @apply py-[60px];
+  @apply bg-[#FCFCFC] py-[60px];
 
   &__card {
     box-shadow: 0px 4px 28px rgba(0, 71, 41, 0.08);
