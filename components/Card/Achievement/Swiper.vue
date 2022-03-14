@@ -11,7 +11,7 @@
         @click="prevNav"
       />
     </div>
-    <div v-if="isShowPagination" slot="pagination" class=" swiper-pagination" />
+    <div v-if="isShowPagination" slot="pagination" class="swiper-pagination" />
     <div slot="button-next" class="swiper-next">
       <jds-icon
         :class="{
@@ -75,7 +75,7 @@ export default {
       @apply relative flex flex-row items-center justify-center !important;
 
       &-bullet {
-        @apply w-3 h-3 bg-gray-300 border-0 !important;
+        @apply w-3 h-3 bg-gray-300 border-0 transition-all duration-300 !important;
 
         &-active {
           @apply w-8 h-3 bg-green-600 border-0 rounded-md !important;

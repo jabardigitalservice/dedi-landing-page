@@ -1,5 +1,5 @@
 <template>
-  <div id="card">
+  <div id="achievement">
     <div class="achievement__main-intro">
       <p>Kami telah mendapatkan berbagai penghargaan dari:</p>
       <div class="achievement__main-intro-nav">
@@ -128,6 +128,14 @@ export default {
 </script>
 
 <style lang="postcss">
+  .swiper-wrapper {
+    @apply !pb-6;
+  }
+
+  .swiper-slide {
+    @apply sm:(w-[495px]) xl:(w-[unset])
+  }
+
   .achievement__main {
     &-intro {
       @apply flex flex-col items-center justify-between
