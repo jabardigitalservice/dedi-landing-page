@@ -9,7 +9,7 @@
 
     <div class="achievement__main-cards">
       <swiper
-        ref="mySwiper"
+        ref="achievementSlider"
         :options="swiperOptions"
       >
         <swiper-slide
@@ -97,8 +97,8 @@ export default {
         spaceBetween: 32,
         passiveListeners: true,
         navigation: {
-          nextEl: '.swiper-next',
-          prevEl: '.swiper-prev'
+          nextEl: '.swiper-next-achievement',
+          prevEl: '.swiper-prev-achievement'
         },
         pagination: {
           el: '.swiper-pagination',
@@ -118,7 +118,7 @@ export default {
   },
   computed: {
     swiper () {
-      return this.$refs.mySwiper.$swiper
+      return this.$refs.achievementSlider.$swiper
     }
   },
   mounted () {
@@ -132,7 +132,7 @@ export default {
     @apply !pb-6;
   }
 
-  .swiper-slide {
+  #achievement .swiper-slide {
     @apply sm:(w-[495px]) xl:(w-[unset])
   }
 

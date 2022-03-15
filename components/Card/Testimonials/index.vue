@@ -210,7 +210,7 @@ export default {
   @apply !w-[42px] !h-[42px] !rounded-1/2 !bg-green-700 !text-white
 }
 
-#card.swiper-slide {
+#card .swiper-slide {
   @apply sm:(w-[495px]) xl:(w-[286px])
 }
 
