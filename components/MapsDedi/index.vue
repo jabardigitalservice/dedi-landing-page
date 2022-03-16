@@ -1,5 +1,10 @@
 <template>
   <div class="maps">
+    <transition name="fade-dedi" mode="in-out">
+      <div v-show="showAboutDedi" class="maps__about-dedi" @click.self="showAboutDedi = false">
+        <AboutDedi />
+      </div>
+    </transition>
     <div class="maps__motif">
       <img src="~/assets/images/MotifDot.svg" alt="Motif Dot">
     </div>
@@ -61,7 +66,7 @@
             <div class="maps__boxmaps-sidebar-content-text-level">
               Level Desa
             </div>
-            <div class="maps__boxmaps-sidebar-content-text-about-dedi">
+            <div class="maps__boxmaps-sidebar-content-text-about-dedi" @click="showAboutDedi = true">
               Apa ini ?
             </div>
           </div>
@@ -183,6 +188,7 @@ export default {
   ],
   data () {
     return {
+      showAboutDedi: false,
       listVillageIsReady: true,
       totalVillage: 0,
       isFullscreen: false,
