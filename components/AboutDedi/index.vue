@@ -229,7 +229,7 @@ export default {
       @apply mr-[unset];
     }
 
-    &-btn-left {
+    &-btn-left, &-btn-right {
       @apply w-[42px] h-[42px] bg-green-700 rounded-full flex items-center justify-center cursor-pointer;
 
       &--disabled {
@@ -237,23 +237,7 @@ export default {
       }
     }
 
-    &-btn-right {
-      @apply w-[42px] h-[42px] bg-green-700 rounded-full flex items-center justify-center cursor-pointer;
-
-      &--disabled {
-        @apply bg-gray-50;
-      }
-    }
-
-    &-arrow-left {
-      @apply text-white;
-
-      &--disabled {
-        @apply text-gray-500;
-      }
-    }
-
-    &-arrow-right {
+    &-arrow-left, &-arrow-right {
       @apply text-white;
 
       &--disabled {
@@ -277,7 +261,7 @@ export default {
       }
     }
 
-    &-icon-left {
+    &-icon-left, &-icon-right {
       @apply text-white cursor-pointer;
 
       &--disabled {
@@ -285,23 +269,7 @@ export default {
       }
     }
 
-    &-icon-right {
-      @apply text-white cursor-pointer;
-
-      &--disabled {
-        @apply text-gray-500
-      }
-    }
-
-    &-btn-left {
-      @apply w-6 h-6 rounded-full bg-green-700 flex justify-center items-center;
-
-      &--disabled {
-        @apply bg-gray-100;
-      }
-    }
-
-    &-btn-right {
+    &-btn-left, &-btn-right {
       @apply w-6 h-6 rounded-full bg-green-700 flex justify-center items-center;
 
       &--disabled {
