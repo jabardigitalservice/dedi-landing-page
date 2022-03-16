@@ -9,7 +9,11 @@
 
     <div class="achievement__main-cards">
       <swiper
-        ref="achievementSlider"
+        ref="achievement"
+        :auto-update="true"
+        :auto-destroy="true"
+        :delete-instance-on-destroy="true"
+        :cleanup-styles-on-destroy="true"
         :options="swiperOptions"
       >
         <swiper-slide
@@ -48,16 +52,13 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
 export default {
   components: {
     Swiper,
     SwiperSlide
-  },
-  directives: {
-    swiper: directive
   },
   data () {
     return {
@@ -93,7 +94,6 @@ export default {
       ],
       swiperOptions: {
         slidesPerView: 'auto',
-        paginationClickable: true,
         spaceBetween: 32,
         passiveListeners: true,
         navigation: {
@@ -102,8 +102,7 @@ export default {
         },
         pagination: {
           el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: false
+          type: 'bullets'
         },
         breakpoints: {
           640: {
@@ -118,11 +117,8 @@ export default {
   },
   computed: {
     swiper () {
-      return this.$refs.achievementSlider.$swiper
+      return this.$refs.achievement.$swiper
     }
-  },
-  mounted () {
-    this.swiper.slideTo(0, 1000, false)
   }
 }
 </script>

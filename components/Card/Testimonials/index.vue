@@ -4,7 +4,11 @@
     class="relative"
   >
     <swiper
-      ref="mySwiper"
+      ref="testimonials"
+      :auto-update="true"
+      :auto-destroy="true"
+      :delete-instance-on-destroy="true"
+      :cleanup-styles-on-destroy="true"
       :options="swiperOptions"
     >
       <swiper-slide
@@ -69,26 +73,23 @@
         </div>
       </swiper-slide>
       <div slot="pagination" class=" swiper-pagination navigation__wrapper" />
-      <div slot="button-next" class="navigation navigation__wrapper swiper-button-next">
+      <button slot="button-next" class="navigation navigation__wrapper swiper-button-next">
         <jds-icon class="navigation__button-right" size="16px" name="chevron-right" />
-      </div>
-      <div slot="button-prev" class="navigation navigation__wrapper swiper-button-prev">
+      </button>
+      <button slot="button-prev" class="navigation navigation__wrapper swiper-button-prev">
         <jds-icon class="navigation__button-left" size="16px" name="chevron-left" />
-      </div>
+      </button>
     </swiper>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
   components: {
     Swiper,
     SwiperSlide
-  },
-  directives: {
-    swiper: directive
   },
   props: {
     testimonials: {
@@ -128,11 +129,8 @@ export default {
   },
   computed: {
     swiper () {
-      return this.$refs.mySwiper.$swiper
+      return this.$refs.testimonials.$swiper
     }
-  },
-  mounted () {
-    this.swiper.slideTo(0, 1000, false)
   },
   methods: {
     onHover (value) {

@@ -1,6 +1,6 @@
 <template>
   <div class="achievement-nav">
-    <div slot="button-prev" class="swiper-prev-achievement">
+    <button slot="button-prev" class="swiper-prev-achievement">
       <jds-icon
         :class="{
           'button-left' : true,
@@ -10,9 +10,9 @@
         name="chevron-left"
         @click="prevNav"
       />
-    </div>
+    </button>
     <div v-if="isShowPagination" slot="pagination" class="swiper-pagination" />
-    <div slot="button-next" class="swiper-next-achievement">
+    <button slot="button-next" class="swiper-next-achievement">
       <jds-icon
         :class="{
           'button-right' : true,
@@ -22,7 +22,7 @@
         name="chevron-right"
         @click="nextNav"
       />
-    </div>
+    </button>
   </div>
 </template>
 
