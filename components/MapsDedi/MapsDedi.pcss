@@ -1,5 +1,19 @@
+.fade-dedi-enter-active {
+  transition: all .3s ease;
+}
+.fade-dedi-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-dedi-enter, .fade-dedi-leave-to {
+  opacity: 0;
+}
+
 .maps {
-  @apply w-full relative;
+  @apply w-full relative rounded-full;
+
+  &__about-dedi {
+    @apply p-8 lg:(p-[60px]) w-full h-full z-2 flex items-center justify-center rounded-xl bg-black bg-opacity-50 absolute;
+  }
 
   &__motif {
     @apply absolute hidden sm:(block -bottom-5 -left-5) -z-10;
