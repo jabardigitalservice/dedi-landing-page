@@ -3,7 +3,31 @@
     <div class="achievement__main-intro">
       <p>Kami telah mendapatkan berbagai penghargaan dari:</p>
       <div class="achievement__main-intro-nav">
-        <CardAchievementSwiper :data="contents" />
+        <div class="achievement-nav">
+          <button slot="button-prev" class="swiper-prev-achievement">
+            <jds-icon
+              :class="{
+                'button-left' : true,
+                'button-left--disabled': currIndex === 0
+              }"
+              size="16px"
+              name="chevron-left"
+              @click="prevNav"
+            />
+          </button>
+          <div v-if="isShowPagination" slot="pagination" class="swiper-pagination" />
+          <button slot="button-next" class="swiper-next-achievement">
+            <jds-icon
+              :class="{
+                'button-right' : true,
+                'button-right--disabled': currIndex === (contents.length - 1)
+              }"
+              size="16px"
+              name="chevron-right"
+              @click="nextNav"
+            />
+          </button>
+        </div>
       </div>
     </div>
 
@@ -46,7 +70,31 @@
     </div>
 
     <div class="achievement__main-outro-nav">
-      <CardAchievementSwiper :data="contents" :is-show-pagination="true" />
+      <div class="achievement-nav">
+        <button slot="button-prev" class="swiper-prev-achievement">
+          <jds-icon
+            :class="{
+              'button-left' : true,
+              'button-left--disabled': currIndex === 0
+            }"
+            size="16px"
+            name="chevron-left"
+            @click="prevNav"
+          />
+        </button>
+        <div v-if="!isShowPagination" slot="pagination" class="swiper-pagination" />
+        <button slot="button-next" class="swiper-next-achievement">
+          <jds-icon
+            :class="{
+              'button-right' : true,
+              'button-right--disabled': currIndex === (contents.length - 1)
+            }"
+            size="16px"
+            name="chevron-right"
+            @click="nextNav"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +110,8 @@ export default {
   },
   data () {
     return {
+      currIndex: 0,
+      isShowPagination: false,
       contents: [
         {
           id: 1,
@@ -118,6 +168,18 @@ export default {
   computed: {
     swiper () {
       return this.$refs.achievement.$swiper
+    }
+  },
+  methods: {
+    prevNav () {
+      if (this.currIndex > 0) {
+        this.currIndex--
+      }
+    },
+    nextNav () {
+      if (this.currIndex < this.contents.length - 1) {
+        this.currIndex++
+      }
     }
   }
 }
@@ -185,6 +247,31 @@ export default {
               @apply w-full h-full pt-2 text-sm text-left text-blue-gray-700;
             }
           }
+        }
+      }
+    }
+  }
+
+  .achievement-nav {
+    @apply w-full h-full flex flex-row pt-6 gap-8 justify-center;
+
+    .button-left, .button-right {
+      @apply w-[42px] h-[42px] bg-green-700 text-white font-light rounded-full
+      flex items-center justify-center cursor-pointer;
+
+      &--disabled {
+        @apply bg-gray-100 text-gray-400;
+      }
+    }
+
+    .swiper-pagination {
+      @apply relative flex flex-row items-center justify-center !important;
+
+      &-bullet {
+        @apply w-3 h-3 bg-gray-300 border-0 transition-all duration-300 !important;
+
+        &-active {
+          @apply w-8 h-3 bg-green-600 border-0 rounded-md !important;
         }
       }
     }
