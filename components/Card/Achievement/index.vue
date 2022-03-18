@@ -15,7 +15,7 @@
               @click="prevNav"
             />
           </button>
-          <div v-if="isShowPagination" slot="pagination" class="swiper-pagination" />
+          <div v-if="!isShowPagination" slot="pagination" class="swiper-pagination" />
           <button slot="button-next" class="swiper-next-achievement">
             <jds-icon
               :class="{
@@ -82,7 +82,7 @@
             @click="prevNav"
           />
         </button>
-        <div v-if="!isShowPagination" slot="pagination" class="swiper-pagination" />
+        <div v-if="isShowPagination" slot="pagination" class="swiper-pagination" />
         <button slot="button-next" class="swiper-next-achievement">
           <jds-icon
             :class="{
@@ -111,7 +111,7 @@ export default {
   data () {
     return {
       currIndex: 0,
-      isShowPagination: false,
+      isShowPagination: true,
       contents: [
         {
           id: 1,
