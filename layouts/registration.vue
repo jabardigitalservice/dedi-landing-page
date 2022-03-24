@@ -2,6 +2,6 @@
   <div>
     <Header />
     <Nuxt />
-    <FooterRegistration />
+    <FooterRegistration class="hidden md:(block)" />
   </div>
 </template>

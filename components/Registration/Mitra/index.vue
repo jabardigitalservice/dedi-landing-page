@@ -1,119 +1,189 @@
 <template>
   <div id="registration-mitra" class="registration-mitra">
-    <div class="bg-white my-17.25 sm:(p-8 mx-4 w-[680px] rounded-md)">
-      <div class="">
-        <form class="registration-mitra__form">
-          <div class="registration-mitra__form-title">
-            Daftar Mitra
-          </div>
-          <div v-if="isError" class="registration-mitra__form-error-message">
-            <jds-section-message
-              :show="isError"
-              variant="error"
-              :message="errorMessage"
-            />
-          </div>
-          <div class="sm:(grid grid-cols-[1fr,32px,1fr] pb-5)">
-            <div class="registration-mitra__form-info">
-              <h4>Info Umum</h4>
-              <div class="registration-mitra__form-info-name">
-                <BaseInput
-                  label="Nama Lengkap"
-                  type="text"
-                  :autofocus="true"
-                  placeholder="Agus Permadani"
-                >
-                  <template #icon-left>
-                    <jds-icon name="user-outline" size="xs" class="text-gray-700" />
-                  </template>
-                </BaseInput>
+    <div class="flex flex items-end relative sm:(bg-[#32E6F9])">
+      <img class="hidden sm:(absolute block)" src="~/assets/images/FooterBanner.svg" alt="footer banner">
+      <div class="bg-white my-17.25 absolute top-0 p-8 sm:(my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md)">
+        <div
+          :class="{
+            'registration-mitra__signup--hidden' : isSuccessSubmit
+          }
+          "
+        >
+          <form class="registration-mitra__form" method="post" @submit.prevent="submitForm">
+            <div class="registration-mitra__form-title">
+              Daftar Mitra
+            </div>
+            <div v-if="isError" class="registration-mitra__form-error-message">
+              <jds-section-message
+                :show="isError"
+                variant="error"
+                :message="errorMessage"
+              />
+            </div>
+            <div class="sm:(grid grid-cols-[1fr,32px,1fr] pb-5)">
+              <div class="registration-mitra__form-info">
+                <h4>Info Umum</h4>
+                <div class="registration-mitra__form-info-name">
+                  <BaseInput
+                    v-model="form.name"
+                    label="Nama Lengkap"
+                    type="text"
+                    autofocus
+                    autocomplete="name"
+                    :error="isFullnameError"
+                    placeholder="Agus Permadani"
+                  >
+                    <template #icon-left>
+                      <jds-icon name="user-outline" size="xs" class="text-gray-700" />
+                    </template>
+                  </BaseInput>
+                </div>
+                <div class="registration-mitra__form-info-company">
+                  <BaseInput
+                    v-model="form.company"
+                    label="Nama Perusahaan"
+                    type="text"
+                    :autofocus="true"
+                    :error="isCompanyError"
+                    placeholder="e-Fishery"
+                  >
+                    <template #icon-left>
+                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                    </template>
+                  </BaseInput>
+                </div>
+                <div class="registration-mitra__form-info-email">
+                  <BaseInput
+                    v-model="form.email"
+                    label="Email"
+                    type="email"
+                    :autofocus="true"
+                    :error="isEmailError"
+                    placeholder="Contoh: e-Fishery@gmail.com"
+                  >
+                    <template #icon-left>
+                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                    </template>
+                  </BaseInput>
+                </div>
               </div>
-              <div class="registration-mitra__form-info-company">
-                <BaseInput
-                  label="Nama Perusahaan"
-                  type="text"
-                  :autofocus="true"
-                  placeholder="e-Fishery"
-                >
-                  <template #icon-left>
-                    <jds-icon name="home-outline" size="xs" class="text-gray-700" />
-                  </template>
-                </BaseInput>
-              </div>
-              <div class="registration-mitra__form-info-email">
-                <BaseInput
-                  label="Email"
-                  type="email"
-                  :autofocus="true"
-                  placeholder="e-Fishery@gmail.com"
-                >
-                  <template #icon-left>
-                    <jds-icon name="home-outline" size="xs" class="text-gray-700" />
-                  </template>
-                </BaseInput>
+              <hr class="border-b-1 border-gray-200 mb-4 sm:(w-4 border-l-2 border-y-0 mb-0 h-[250px] mx-4)">
+              <div class="registration-mitra__form-password">
+                <h4>Kata Sandi</h4>
+                <div class="registration-mitra__form-password--text">
+                  <jds-popover
+                    :value="isDropdownOpen"
+                    :options="popoverOptions"
+                  >
+                    <template #activator>
+                      <BaseInput
+                        v-model="form.password"
+                        label="Kata Sandi"
+                        type="password"
+                        :error="isPasswordError"
+                        :autofocus="true"
+                        @input="toggleDropdown"
+                      >
+                        <template #icon-left>
+                          <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                        </template>
+                      </BaseInput>
+                    </template>
+                    <BaseTooltip
+                      :level="levelPassword"
+                      :is-dropdown="isDropdownOpen"
+                    />
+                  </jds-popover>
+                </div>
+                <div class="registration-mitra__form-password--text">
+                  <BaseInput
+                    v-model="form.password_confirm"
+                    label="Ulang Kata Sandi"
+                    type="password"
+                    :error="isPasswordConfirmError"
+                    :autofocus="true"
+                  >
+                    <template #icon-left>
+                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                    </template>
+                  </BaseInput>
+                </div>
+                <div class="registration-mitra__form-password-message">
+                  <jds-section-message
+                    show
+                    variant="info"
+                    :message="infoPassword"
+                  />
+                </div>
               </div>
             </div>
-            <hr class="border-b-1 border-gray-200 mb-4 sm:(w-4 border-l-2 border-y-0 mb-0 h-[250px] mx-4)">
-            <div class="registration-mitra__form-password">
-              <h4>Kata Sandi</h4>
-              <div class="registration-mitra__form-password--text">
-                <BaseInput
-                  label="Kata Sandi"
-                  type="password"
-                  :error="true"
-                  :autofocus="true"
-                >
-                  <template #icon-left>
-                    <jds-icon name="home-outline" size="xs" class="text-gray-700" />
-                  </template>
-                </BaseInput>
-              </div>
-              <div class="registration-mitra__form-password--text">
-                <BaseInput
-                  label="Ulang Kata Sandi"
-                  type="password"
-                  :autofocus="true"
-                >
-                  <template #icon-left>
-                    <jds-icon name="home-outline" size="xs" class="text-gray-700" />
-                  </template>
-                </BaseInput>
-              </div>
-              <div class="registration-mitra__form-password-message">
-                <jds-section-message
-                  show
-                  variant="info"
-                  :message="infoPassword"
-                />
-              </div>
+            <div class="registration-mitra__form-button">
+              <BaseButton
+                class="w-full"
+                :disabled="isFormValidation"
+                :label="buttonLabel"
+                :variant="buttonVariant"
+                type="submit"
+                :loading="isLoading"
+                text-loading="Mendaftarkan Akun"
+              />
             </div>
-          </div>
-          <div class="registration-mitra__form-button">
+            <h4 class="registration-mitra__form-text--line">
+              <span class="registration-mitra__form-text--color">atau</span>
+            </h4>
+          </form>
+          <div class="registration-mitra__google-account">
             <BaseButton
               class="w-full"
-              label="Daftar Sekarang"
-              disabled="true"
-              type="submit"
-            />
+            >
+              <img src="~/assets/icons/IconGoogle.svg" alt="Google">
+              <span class="font-sans text-bold text-gray-700">Masuk dengan Google</span>
+            </BaseButton>
           </div>
-          <h4 class="registration-mitra__form-text--line">
-            <span class="registration-mitra__form-text--color">atau</span>
-          </h4>
-        </form>
-      </div>
-      <div class="registration-mitra__google-account">
-        <BaseButton
-          class="w-full"
+          <div class="registration-mitra__login">
+            Sudah punya akun?
+            <nuxt-link to="/login" class="text-blue-600">
+              Masuk disini
+            </nuxt-link>
+          </div>
+        </div>
+        <div
+          :class="{
+            'registration-mitra__notification' : true,
+            'registration-mitra__notification--hidden' : !isSuccessSubmit
+          }
+          "
         >
-          <img src="~/assets/icons/IconGoogle.svg" alt="Google">
-          <span class="font-sans text-bold text-gray-700">Masuk dengan Google</span>
-        </BaseButton>
-      </div>
-      <div class="registration-mitra__create-account">
-        Belum punya akun?
-        <nuxt-link to="/register" class="text-blue-600">
-          Daftar disini
-        </nuxt-link>
+          <div class="registration-mitra__notification-title">
+            Daftar Mitra
+          </div>
+          <div class="registration-mitra__notification-content">
+            <div class="registration-mitra__notification-content-image">
+              <img width="100px" height="82px" src="@/assets/images/Mailbox.svg" alt="mailbox">
+            </div>
+            <p class="registration-mitra__notification-content-name">
+              Sampurasun, {{ form.name }}!
+            </p>
+            <p class="registration-mitra__notification-content-info">
+              Pengajuan akun Mitra Desa Digital Anda sedang dalam proses verifikasi.
+              Kami akan mengirimkan email konfirmasi segera jika anda lolos verifikasi.
+            </p>
+            <div class="registration-mitra__notification-content-button">
+              <BaseButton
+                class="w-full md:(max-w-[280px])"
+                label="Alihkan ke Email"
+                variant="secondary"
+                type="button"
+              />
+            </div>
+            <div class="registration-mitra__login">
+              Sudah punya akun?
+              <nuxt-link to="/login" class="text-blue-600">
+                Masuk disini
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -123,26 +193,130 @@
 export default {
   data () {
     return {
-      isError: true,
+      isError: false,
       errorMessage: '',
-      infoPassword: 'Kata Sandi terdiri dari min. 6 karakter dengan kombinasi huruf besar atau kecil, angka, dan simbol.'
+      infoPassword: 'Kata Sandi terdiri dari min. 6 karakter dengan kombinasi huruf besar atau kecil, angka, dan simbol.',
+      isFullnameError: false,
+      isCompanyError: false,
+      isEmailError: false,
+      isPasswordError: false,
+      isPasswordConfirmError: false,
+      isLoading: false,
+      isDropdownOpen: false,
+      levelPassword: '',
+      isSuccessSubmit: false,
+      form: {
+        name: '',
+        email: '',
+        company: '',
+        password: '',
+        password_confirm: ''
+      },
+      popoverOptions: {
+        strategy: 'fixed',
+        placement: 'bottom',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [
+                -85,
+                38
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  computed: {
+    isFormValidation () {
+      const isFullnameValidated = this.form.name === '' || this.form.name === null
+      const isCompanyValidated = this.form.company === '' || this.form.company === null
+      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      const isEmailValidated = this.form.email === '' || this.form.email === null || !mailFormat.test(this.form.email)
+      const isPasswordValidated = this.form.password.length < 6 && this.form.password !== this.form.password_confirm
+      const isRepeatPasswordValidated = this.form.password.length < 6 || this.form.password_confirm !== this.form.password
+      return isFullnameValidated || isCompanyValidated || isEmailValidated || isPasswordValidated || isRepeatPasswordValidated || this.isLoading
+    },
+    buttonVariant () {
+      if (!this.isFormValidation && !this.isLoading) {
+        return 'primary'
+      } else {
+        return 'disabled'
+      }
+    },
+    buttonLabel () {
+      if (!this.isLoading) {
+        return 'Daftar Sekarang'
+      } else {
+        return ''
+      }
+    }
+  },
+  watch: {
+    'form.email' () {
+      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      if (!mailFormat.test(this.form.email)) {
+        this.isEmailError = true
+      } else {
+        this.isEmailError = false
+      }
+    },
+    'form.password' () {
+      // eslint-disable-next-line prefer-regex-literals
+      const strongPassword = new RegExp('(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])')
+      // eslint-disable-next-line prefer-regex-literals
+      const mediumPassword = new RegExp('(?=.{6,})(?=.*[a-z|A-Z])(?=.*[0-9])')
+      // eslint-disable-next-line prefer-regex-literals
+      const lowPassword = new RegExp('(?=.{6,})(?=.*[a-z|A-Z|^A-Za-z0-9])')
+      if (strongPassword.test(this.form.password)) {
+        this.levelPassword = 'strong'
+        this.isDropdownOpen = true
+      } else if (mediumPassword.test(this.form.password)) {
+        this.levelPassword = 'medium'
+        this.isDropdownOpen = true
+      } else if (lowPassword.test(this.form.password)) {
+        this.levelPassword = 'low'
+        this.isDropdownOpen = true
+      } else {
+        this.levelPassword = ''
+        this.isDropdownOpen = false
+      }
+    },
+    'form.password_confirm' () {
+      if (this.form.password_confirm !== this.form.password) {
+        this.isPasswordConfirmError = true
+      } else {
+        this.isPasswordConfirmError = false
+      }
+    }
+  },
+  methods: {
+    submitForm () {
+      this.isLoading = true
+      /**
+       * This code is not used in the future
+       */
+      setTimeout(() => {
+        this.isSuccessSubmit = true
+      }, 1000)
+    },
+    toggleDropdown () {
+      this.isDropdownOpen = !this.isDropdownOpen
     }
   }
 }
-
 </script>
 
 <style lang="postcss">
 .registration-mitra {
-  @apply pt-4 px-4;
 
-  @screen sm {
-    background-image: url('~/assets/images/FooterBanner.svg');
-    background-position-x: 0%;
-    background-position-y: 100%;
+  &__signup {
 
-    @apply bg-no-repeat bg-cover w-full h-[calc(100vh-60px)] relative bg-[#32E6F9]
-    sm:(inline-grid justify-center);
+    &--hidden {
+      @apply hidden;
+    }
   }
 
   &__form {
@@ -184,11 +358,8 @@ export default {
     }
 
     &-button {
-      @apply mb-4 sm:mb-5;
-    }
-
-    &-button .jds-button {
-      @apply font-sans font-bold bg-gray-200 text-gray-500 text-sm;
+      @apply mb-4
+      sm:mb-5;
     }
 
     &-info, &-password {
@@ -216,12 +387,49 @@ export default {
     sm:(mt-3 mb-5);
   }
 
-  &__create-account {
+  &__login {
     @apply font-sans font-normal text-gray-700 text-center text-sm pb-6;
+  }
+
+  &__notification {
+    @apply grid grid-cols-1 justify-center;
+
+    &-title {
+      @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
+      sm:(pb-5);
+    }
+
+    &-content {
+      @apply flex flex-col justify-center items-center;
+
+      &-image {
+        @apply mb-4;
+      }
+
+      &-mailbox {
+        @apply pb-4;
+      }
+
+      &-name {
+        @apply font-sans font-bold text-base text-center text-gray-800;
+      }
+
+      &-info {
+        @apply font-sans font-normal text-sm text-center text-gray-600 pb-4;
+      }
+
+      &-button {
+        @apply w-full pb-8 text-center;
+      }
+    }
+
+    &--hidden {
+      @apply hidden;
+    }
   }
 }
 
-/* Override Base Component style */
+/* Override Base Component style & design system */
 
 .input-text__icon-left {
   @apply !bg-gray-100;
@@ -231,14 +439,24 @@ export default {
   @apply !bg-white !border-1 !border-gray-400;
 }
 
-.registration-mitra__google-account .jds-button--primary{
+.registration-mitra__google-account .jds-button--primary {
   @apply !border-1 !border-solid !border-gray-400;
 }
 
 .registration-mitra__form-password-message .jds-section-message {
   @apply !px-2 !py-1.5;
 }
+
 .registration-mitra__form-password-message .jds-section-message__content__text {
   @apply !text-[11px] !leading-[18px];
+}
+
+.registration-mitra__form-password--text .jds-popover,
+.registration-mitra__form-password--text .jds-popover .jds-popover__activator {
+  @apply !w-full;
+}
+
+.registration-mitra__form-password--text .jds-popover .input-text__wrapper-input {
+  @apply !w-full md:!w-[292px];
 }
 </style>

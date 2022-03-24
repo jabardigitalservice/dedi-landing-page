@@ -11,6 +11,12 @@
       <slot name="icon" />
       <slot />
     </div>
+    <div v-if="loading" class="flex justify-between">
+      <span>
+        {{ textLoading }}
+      </span>
+      <jds-spinner size="14" />
+    </div>
   </jds-button>
 </template>
 
@@ -29,6 +35,14 @@ export default {
     type: {
       type: String,
       default: 'button'
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    textLoading: {
+      type: String,
+      default: ''
     }
   }
 }
