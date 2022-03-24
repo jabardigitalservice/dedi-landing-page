@@ -48,7 +48,7 @@
                     placeholder="e-Fishery"
                   >
                     <template #icon-left>
-                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                      <img class="text-gray-700" src="@/assets/icons/IconCompany.svg" alt="company">
                     </template>
                   </BaseInput>
                 </div>
@@ -62,7 +62,7 @@
                     placeholder="Contoh: e-Fishery@gmail.com"
                   >
                     <template #icon-left>
-                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                      <img class="text-gray-700" src="@/assets/icons/IconMail.svg" alt="email">
                     </template>
                   </BaseInput>
                 </div>
@@ -85,7 +85,7 @@
                         @input="toggleDropdown"
                       >
                         <template #icon-left>
-                          <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                          <img class="text-gray-700" src="@/assets/icons/IconKey.svg" alt="key  ">
                         </template>
                       </BaseInput>
                     </template>
@@ -104,7 +104,7 @@
                     :autofocus="true"
                   >
                     <template #icon-left>
-                      <jds-icon name="home-outline" size="xs" class="text-gray-700" />
+                      <img class="text-gray-700" src="@/assets/icons/IconKey.svg" alt="key">
                     </template>
                   </BaseInput>
                 </div>
