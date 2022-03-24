@@ -1,8 +1,8 @@
 <template>
   <div id="registration-mitra" class="registration-mitra">
-    <div class="flex flex items-end relative sm:(bg-[#32E6F9])">
-      <img class="hidden sm:(absolute block)" src="~/assets/images/FooterBanner.svg" alt="footer banner">
-      <div class="bg-white my-17.25 absolute top-0 p-8 sm:(my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md)">
+    <div class="registration-mitra--position">
+      <img class="registration-mitra__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
+      <div class="registration-mitra__signup">
         <div
           :class="{
             'registration-mitra__signup--hidden' : isSuccessSubmit
@@ -20,8 +20,8 @@
                 :message="errorMessage"
               />
             </div>
-            <div class="sm:(grid grid-cols-[1fr,32px,1fr] pb-5)">
-              <div class="registration-mitra__form-info">
+            <div class="registration-mitra__form-info">
+              <div class="registration-mitra__form-info--wrapper">
                 <h4>Info Umum</h4>
                 <div class="registration-mitra__form-info-name">
                   <BaseInput
@@ -67,7 +67,7 @@
                   </BaseInput>
                 </div>
               </div>
-              <hr class="border-b-1 border-gray-200 mb-4 sm:(w-4 border-l-2 border-y-0 mb-0 h-[250px] mx-4)">
+              <hr class="registration-mitra__form-info--line">
               <div class="registration-mitra__form-password">
                 <h4>Kata Sandi</h4>
                 <div class="registration-mitra__form-password--text">
@@ -312,7 +312,16 @@ export default {
 <style lang="postcss">
 .registration-mitra {
 
+  &--position {
+    @apply flex flex items-end relative sm:(bg-[#32E6F9]);
+  }
+
+  &__image {
+    @apply hidden sm:(absolute block);
+  }
+
   &__signup {
+    @apply bg-white my-17.25 absolute top-0 p-8 sm:(my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md);
 
     &--hidden {
       @apply hidden;
@@ -338,13 +347,21 @@ export default {
         sm:(pb-5);
       }
 
-       &-email {
+      &-email {
         @apply font-roboto text-[14px] leading-[16.41px] pb-4
         sm:(pb-0)
-       }
+      }
+
+      &--line {
+        @apply border-b-1 border-gray-200 mb-4 sm:(w-4 border-l-2 border-y-0 mb-0 h-[250px] mx-4);
+      }
     }
 
     &-password {
+
+      h4 {
+        @apply font-roboto font-bold text-[16px] leading-[22px] text-green-700 pb-4;
+      }
 
       &--text {
         @apply font-roboto text-[14px] leading-[16.41px] pb-4
@@ -362,7 +379,8 @@ export default {
       sm:mb-5;
     }
 
-    &-info, &-password {
+    &-info {
+      @apply sm:(grid grid-cols-[1fr,32px,1fr] pb-5);
 
       h4 {
         @apply font-roboto font-bold text-[16px] leading-[22px] text-green-700 pb-4;
