@@ -215,14 +215,14 @@ export default {
         password_confirm: ''
       },
       popoverOptions: {
-        strategy: 'fixed',
-        placement: 'bottom',
+        strategy: 'absolute',
+        placement: 'bottom-start',
         modifiers: [
           {
             name: 'offset',
             options: {
               offset: [
-                -85,
+                60,
                 38
               ]
             }
