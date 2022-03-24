@@ -82,6 +82,7 @@
                         type="password"
                         :error="isPasswordError"
                         :autofocus="true"
+                        placeholder="Masukkan kata sandi"
                         @input="toggleDropdown"
                       >
                         <template #icon-left>
@@ -102,6 +103,7 @@
                     type="password"
                     :error="isPasswordConfirmError"
                     :autofocus="true"
+                    placeholder="Masukkan kata sandi"
                   >
                     <template #icon-left>
                       <img class="text-gray-700" src="@/assets/icons/IconKey.svg" alt="key">
