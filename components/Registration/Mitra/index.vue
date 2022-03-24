@@ -321,7 +321,7 @@ export default {
   }
 
   &__signup {
-    @apply bg-white my-17.25 absolute top-0 p-8 sm:(my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md);
+    @apply bg-white my-17.25 absolute top-0 p-4 sm:(p-8 my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md);
 
     &--hidden {
       @apply hidden;
