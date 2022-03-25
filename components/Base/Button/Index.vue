@@ -11,7 +11,7 @@
       <slot name="icon" />
       <slot />
     </div>
-    <div v-if="loading" class="flex justify-between">
+    <div v-show="loading" class="flex justify-between">
       <span>
         {{ textLoading }}
       </span>
