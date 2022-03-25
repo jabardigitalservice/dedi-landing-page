@@ -87,11 +87,7 @@ export default {
   },
   computed: {
     isLevel () {
-      if (this.level !== null) {
-        return true
-      } else {
-        return false
-      }
+      return this.level !== null
     }
   },
   watch: {
