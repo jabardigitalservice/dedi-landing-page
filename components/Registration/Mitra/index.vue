@@ -207,7 +207,7 @@ export default {
       isPasswordConfirmError: false,
       isLoading: false,
       isDropdownOpen: false,
-      levelPassword: '',
+      levelPassword: 'default',
       isSuccessSubmit: false,
       form: {
         name: '',
@@ -284,7 +284,7 @@ export default {
         this.levelPassword = 'low'
         this.isDropdownOpen = true
       } else {
-        this.levelPassword = ''
+        this.levelPassword = 'default'
         this.isDropdownOpen = false
       }
     },

@@ -52,7 +52,10 @@ export default {
   props: {
     level: {
       type: String,
-      default: 'default'
+      default: 'default',
+      validator: (value) => {
+        return ['low', 'medium', 'strong', 'default'].includes(value)
+      }
     },
     isDropdown: {
       type: Boolean,
@@ -63,6 +66,10 @@ export default {
     return {
       textName: '',
       options: [
+        {
+          keys: 'default',
+          text: ''
+        },
         {
           keys: 'low',
           text: 'tidak cukup kuat.'
