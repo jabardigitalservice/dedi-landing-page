@@ -39,8 +39,8 @@
         :value="value"
         :autofocus="autofocus"
         autocomplete="on"
-        @focus="isFocused = true"
-        @blur="isFocused = false"
+        @focus="onFocus"
+        @blur="onblur"
         @input="onInput"
       >
       <div
@@ -187,6 +187,20 @@ export default {
         this.iconEye = 'eye'
         this.isShowPassword = false
       }
+    },
+    onblur (e) {
+      this.isFocused = false
+      /**
+       * Emitting value of input text
+       */
+      this.$emit('blur', e.target.value)
+    },
+    onFocus (e) {
+      this.isFocused = true
+      /**
+       * Emitting value of input text
+       */
+      this.$emit('focus', e.target.value)
     }
   }
 }

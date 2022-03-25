@@ -84,6 +84,8 @@
                         :autofocus="true"
                         placeholder="Masukkan kata sandi"
                         @input="toggleDropdown"
+                        @blur="closeDropdown"
+                        @focus="onFocusDropdown"
                       >
                         <template #icon-left>
                           <img class="text-gray-700" src="@/assets/icons/IconKey.svg" alt="key  ">
@@ -271,7 +273,7 @@ export default {
       // eslint-disable-next-line prefer-regex-literals
       const mediumPassword = new RegExp('(?=.{6,})(?=.*[a-z|A-Z])(?=.*[0-9])')
       // eslint-disable-next-line prefer-regex-literals
-      const lowPassword = new RegExp('(?=.{6,})(?=.*[a-z|A-Z|^A-Za-z0-9])')
+      const lowPassword = new RegExp('(?=.{6,})(?=.*[a-z|A-Z|^A-Za-z0-9])|(?=.{1,})(?=.*[a-z|A-Z|^A-Za-z0-9])')
       if (strongPassword.test(this.form.password)) {
         this.levelPassword = 'strong'
         this.isDropdownOpen = true
@@ -306,6 +308,16 @@ export default {
     },
     toggleDropdown () {
       this.isDropdownOpen = !this.isDropdownOpen
+    },
+    closeDropdown () {
+      this.isDropdownOpen = false
+    },
+    onFocusDropdown (value) {
+      if (value.length >= 1) {
+        this.isDropdownOpen = true
+      } else {
+        this.isDropdownOpen = false
+      }
     }
   }
 }
