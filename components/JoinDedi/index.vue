@@ -165,7 +165,7 @@
           </div>
           <div class="modal__container-button">
             <BaseButton class="modal__container-button-close" variant="secondary" label="Batal" @click="onClose" />
-            <BaseButton class="modal__container-button-next" :variant="btnVariant" label="Lanjutkan" :disabled="btnDisabled" @click="onClose" />
+            <BaseButton class="modal__container-button-next" :variant="btnVariant" label="Lanjutkan" :disabled="btnDisabled" @click="onRegistration" />
           </div>
         </div>
       </div>
@@ -224,6 +224,13 @@ export default {
     onClose (closeOn) {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
         this.selected = null
+        this.$emit('closeModal', false)
+      }
+    },
+    onRegistration () {
+      if (this.selected === 'mitra') {
+        this.$router.push('/registration')
+      } else {
         this.$emit('closeModal', false)
       }
     }

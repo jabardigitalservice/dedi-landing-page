@@ -128,7 +128,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .footer {
   @apply bg-[#3CBF80];
 
