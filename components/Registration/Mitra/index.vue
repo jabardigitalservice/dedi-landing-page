@@ -239,7 +239,23 @@ export default {
       const isCompanyValidated = this.form.company === '' || this.form.company === null
       const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
       const isEmailValidated = this.form.email === '' || this.form.email === null || !mailFormat.test(this.form.email)
-      const isPasswordValidated = this.form.password.length < 6 && this.form.password !== this.form.password_confirm
+      const level = this.levelPassword
+      let isPasswordValidated = false
+      /**
+       * This conditional is used to pass validation password when the minimum password level is medium
+       */
+      switch (level) {
+        case 'default':
+        case 'low':
+          isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || true
+          break
+        case 'medium':
+        case 'strong':
+          isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || false
+          break
+        default:
+          isPasswordValidated = false
+      }
       const isRepeatPasswordValidated = this.form.password.length < 6 || this.form.password_confirm !== this.form.password
       return isFullnameValidated || isCompanyValidated || isEmailValidated || isPasswordValidated || isRepeatPasswordValidated || this.isLoading
     },
@@ -297,14 +313,32 @@ export default {
     }
   },
   methods: {
-    submitForm () {
+    async submitForm () {
       this.isLoading = true
-      /**
-       * This code is not used in the future
-       */
-      setTimeout(() => {
+      const dataForm = { ...this.form }
+      try {
+        await this.$axios.post('auth/users/sign-up', dataForm, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         this.isSuccessSubmit = true
-      }, 1000)
+      } catch (error) {
+        if (error.response?.status === 401) {
+          this.isError = true
+          this.errorMessage = error.response.data?.error
+        }
+        if (error.response?.status === 422) {
+          const errors = error.response.data?.errors
+          this.errorMessage = errors[Object.keys(errors)[0]]
+          this.isError = !!this.errorMessage
+        }
+        if (!error.response) {
+          this.isError = true
+          this.errorMessage = 'Mohon maaf server sedang dalam gangguan'
+        }
+      }
+      this.isLoading = false
     },
     toggleDropdown () {
       this.isDropdownOpen = !this.isDropdownOpen
