@@ -246,14 +246,10 @@ export default {
        */
       switch (level) {
         case 'default':
-          isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || true
-          break
         case 'low':
           isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || true
           break
         case 'medium':
-          isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || false
-          break
         case 'strong':
           isPasswordValidated = (this.form.password.length < 6 && this.form.password !== this.form.password_confirm) || false
           break
