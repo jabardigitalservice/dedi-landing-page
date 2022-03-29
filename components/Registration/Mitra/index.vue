@@ -101,7 +101,7 @@
                 <div class="registration-mitra__form-password--text">
                   <BaseInput
                     v-model="form.password_confirm"
-                    label="Ulang Kata Sandi"
+                    label="Ulangi Kata Sandi"
                     type="password"
                     :error="isPasswordConfirmError"
                     :autofocus="true"
