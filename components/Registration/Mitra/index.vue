@@ -13,7 +13,7 @@
             <div class="registration-mitra__form-title">
               Daftar Mitra
             </div>
-            <div v-if="isError || isFullnameError || isCompanyError || isEmailError || isPasswordError || isPasswordConfirmError" class="registration-mitra__form-error-message">
+            <div v-if="showErrorMessage" class="registration-mitra__form-error-message">
               <jds-section-message
                 show
                 variant="error"
@@ -272,6 +272,9 @@ export default {
       } else {
         return ''
       }
+    },
+    showErrorMessage () {
+      return this.isError || this.isFullnameError || this.isCompanyError || this.isEmailError || this.isPasswordError || this.isPasswordConfirmError
     }
   },
   watch: {
