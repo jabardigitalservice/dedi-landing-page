@@ -61,6 +61,9 @@
         <slot name="icon-right" />
       </div>
     </div>
+    <p v-if="showErrorMsg" class="input-text__error-message">
+      {{ errorMessage }}
+    </p>
   </div>
 </template>
 
@@ -137,6 +140,13 @@ export default {
     error: {
       type: Boolean,
       default: false
+    },
+    /**
+     * Error Message
+     */
+    errorMessage: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -159,6 +169,9 @@ export default {
         return 'text'
       }
       return this.type
+    },
+    showErrorMsg () {
+      return typeof (this.errorMessage === 'string' && !!this.errorMessage.length)
     }
   },
   methods: {
