@@ -13,9 +13,9 @@
             <div class="registration-mitra__form-title">
               Daftar Mitra
             </div>
-            <div v-if="isError" class="registration-mitra__form-error-message">
+            <div v-if="showErrorMessage" class="registration-mitra__form-error-message">
               <jds-section-message
-                :show="isError"
+                show
                 variant="error"
                 :message="errorMessage"
               />
@@ -101,7 +101,7 @@
                 <div class="registration-mitra__form-password--text">
                   <BaseInput
                     v-model="form.password_confirm"
-                    label="Ulang Kata Sandi"
+                    label="Ulangi Kata Sandi"
                     type="password"
                     :error="isPasswordConfirmError"
                     :autofocus="true"
@@ -256,7 +256,7 @@ export default {
         default:
           isPasswordValidated = false
       }
-      const isRepeatPasswordValidated = this.form.password.length < 6 || this.form.password_confirm !== this.form.password
+      const isRepeatPasswordValidated = this.form.password_confirm.length < 6 || this.form.password !== this.form.password_confirm
       return isFullnameValidated || isCompanyValidated || isEmailValidated || isPasswordValidated || isRepeatPasswordValidated || this.isLoading
     },
     buttonVariant () {
@@ -272,18 +272,23 @@ export default {
       } else {
         return ''
       }
+    },
+    showErrorMessage () {
+      return this.isError || this.isFullnameError || this.isCompanyError || this.isEmailError || this.isPasswordError || this.isPasswordConfirmError
     }
   },
   watch: {
+    'form.name' () {
+      this.isFullnameError = false
+    },
+    'form.company' () {
+      this.isCompanyError = false
+    },
     'form.email' () {
-      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      if (!mailFormat.test(this.form.email)) {
-        this.isEmailError = true
-      } else {
-        this.isEmailError = false
-      }
+      this.isEmailError = false
     },
     'form.password' () {
+      this.isPasswordError = false
       // eslint-disable-next-line prefer-regex-literals
       const strongPassword = new RegExp('(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])')
       // eslint-disable-next-line prefer-regex-literals
@@ -305,9 +310,12 @@ export default {
       }
     },
     'form.password_confirm' () {
+      this.isPasswordConfirmError = false
       if (this.form.password_confirm !== this.form.password) {
+        this.errorMessage = 'Kata sandi yang diinputkan tidak sesuai'
         this.isPasswordConfirmError = true
       } else {
+        this.errorMessage = ''
         this.isPasswordConfirmError = false
       }
     }
@@ -330,8 +338,28 @@ export default {
         }
         if (error.response?.status === 422) {
           const errors = error.response.data?.errors
-          this.errorMessage = errors[Object.keys(errors)[0]]
-          this.isError = !!this.errorMessage
+          switch (Object.keys(errors)[0]) {
+            case ('name'):
+              this.errorMessage = errors[Object.keys(errors)[0]]
+              this.isFullnameError = !!this.errorMessage
+              break
+            case ('company'):
+              this.errorMessage = errors[Object.keys(errors)[0]]
+              this.isCompanyError = !!this.errorMessage
+              break
+            case ('email'):
+              this.errorMessage = errors[Object.keys(errors)[0]]
+              this.isEmailError = !!this.errorMessage
+              break
+            case ('password'):
+              this.errorMessage = errors[Object.keys(errors)[0]]
+              this.isPasswordError = !!this.errorMessage
+              break
+            case ('password_confirm'):
+              this.errorMessage = errors[Object.keys(errors)[0]]
+              this.isPasswordConfirmError = !!this.errorMessage
+              break
+          }
         }
         if (!error.response) {
           this.isError = true
