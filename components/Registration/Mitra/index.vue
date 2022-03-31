@@ -58,7 +58,8 @@
                     label="Email"
                     type="email"
                     :autofocus="true"
-                    :error="isEmailError"
+                    :error="isEmailError || isErrorEmailMessage"
+                    :error-message="emailErrorMessage"
                     placeholder="Contoh: e-Fishery@gmail.com"
                   >
                     <template #icon-left>
@@ -209,6 +210,8 @@ export default {
       isDropdownOpen: false,
       levelPassword: 'default',
       isSuccessSubmit: false,
+      isErrorEmailMessage: false,
+      emailErrorMessage: '',
       form: {
         name: '',
         email: '',
@@ -286,6 +289,14 @@ export default {
     },
     'form.email' () {
       this.isEmailError = false
+      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      if (!mailFormat.test(this.form.email)) {
+        this.isErrorEmailMessage = true
+        this.emailErrorMessage = 'Email tidak valid'
+      } else {
+        this.isErrorEmailMessage = false
+        this.emailErrorMessage = ''
+      }
     },
     'form.password' () {
       this.isPasswordError = false
