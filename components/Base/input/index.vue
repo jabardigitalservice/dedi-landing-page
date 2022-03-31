@@ -171,7 +171,7 @@ export default {
       return this.type
     },
     showErrorMsg () {
-      return this.errorMessage === 'string' && !!this.errorMessage.length
+      return typeof this.errorMessage === 'string' && !!this.errorMessage.length
     }
   },
   methods: {
