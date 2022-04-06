@@ -141,6 +141,7 @@
             <div class="registration-mitra__google-account">
               <BaseButton
                 class="w-full"
+                @click="googleLogin"
               >
                 <img src="~/assets/icons/IconGoogle.svg" alt="Google">
                 <span class="font-sans text-bold text-gray-700">Masuk dengan Google</span>
@@ -181,6 +182,7 @@
                 label="Alihkan ke Email"
                 variant="secondary"
                 type="button"
+                @click="redirectEmail"
               />
             </div>
             <div class="registration-mitra__login">
@@ -197,6 +199,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
@@ -239,6 +243,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      isAuthenticated: 'isAuthenticated',
+      loggedInUser: 'loggedInUser'
+    }),
     isFormValidation () {
       const isFullnameValidated = this.form.name === '' || this.form.name === null
       const isCompanyValidated = this.form.company === '' || this.form.company === null
@@ -333,6 +341,21 @@ export default {
       }
     }
   },
+  mounted () {
+    const urlParams = window.location.hash
+    if (urlParams) {
+      const queryparams = urlParams.split('#')[1]
+      const params = queryparams.split('&')
+      let pair = null
+      const data = []
+      params.forEach(function (d) {
+        pair = d.split('=')
+        data.push({ key: pair[0], value: pair[1] })
+      })
+      const token = params[1].split('=')[1]
+      this.fetchUser(token)
+    }
+  },
   methods: {
     async submitForm () {
       this.isLoading = true
@@ -393,6 +416,47 @@ export default {
       } else {
         this.isDropdownOpen = false
       }
+    },
+    fetchUser (token) {
+      try {
+        this.$axios.get('https://www.googleapis.com/oauth2/v2/userinfo', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        })
+          .then(({ data }) => {
+            this.form.name = data.name
+            this.form.email = data.email
+          })
+      } catch (err) {
+        if (err.responsense?.status === 401) {
+          this.error = true
+          this.errorMessage = err.response.data?.error
+        }
+        if (!err.response) {
+          this.error = true
+          this.errorMessage = 'Mohon maaf server sedang dalam gangguan'
+        }
+      }
+    },
+    async googleLogin () {
+      try {
+        await this.$auth.loginWith('google')
+      } catch (err) {
+        if (err.response?.status === 401) {
+          this.error = true
+          this.errorMessage = err.response.data?.error
+        }
+        if (!err.response) {
+          this.error = true
+          this.errorMessage = 'Mohon maaf server sedang dalam gangguan'
+        }
+      }
+    },
+    redirectEmail () {
+      window.location.href = 'https://mail.google.com/ '
     }
   }
 }
