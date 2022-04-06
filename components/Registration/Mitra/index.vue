@@ -568,7 +568,7 @@ export default {
   }
 
   &__notification {
-    @apply grid grid-cols-1 justify-center;
+    @apply bg-white my-17.25 p-4 sm:(p-8 my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md) grid grid-cols-1 justify-center;
 
     &-title {
       @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
