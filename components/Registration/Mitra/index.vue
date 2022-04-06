@@ -431,7 +431,7 @@ export default {
             this.form.email = data.email
           })
       } catch (err) {
-        if (err.responsense?.status === 401) {
+        if (err.response?.status === 401) {
           this.error = true
           this.errorMessage = err.response.data?.error
         }
