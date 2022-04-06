@@ -199,8 +199,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   data () {
     return {
@@ -243,10 +241,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      isAuthenticated: 'isAuthenticated',
-      loggedInUser: 'loggedInUser'
-    }),
     isFormValidation () {
       const isFullnameValidated = this.form.name === '' || this.form.name === null
       const isCompanyValidated = this.form.company === '' || this.form.company === null
