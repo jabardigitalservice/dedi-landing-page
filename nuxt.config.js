@@ -81,8 +81,27 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios', // nuxt axios
     'portal-vue/nuxt', // nuxt portal
-    'vue-scrollto/nuxt' // nuxt vue scrollto
+    'vue-scrollto/nuxt', // nuxt vue scrollto
+    '@nuxtjs/auth-next' // nuxt auth
   ],
+
+  auth: {
+    strategies: {
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        redirectUri: process.env.REDIRECT_URI,
+        logoutRedirectUri: undefined,
+        scope: ['openid', 'profile', 'email'],
+        codeChallengeMethod: '',
+        responseType: 'token id_token',
+        endpoints: {
+          authorization: 'https://accounts.google.com/o/oauth2/auth',
+          token: undefined,
+          userInfo: 'https://www.googleapis.com/oauth2/v2/userinfo'
+        }
+      }
+    }
+  },
 
   googleFonts: {
     families: {
