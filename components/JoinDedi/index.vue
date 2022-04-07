@@ -229,6 +229,10 @@ export default {
     },
     onRegistration () {
       if (this.selected === 'mitra') {
+        this.$store.commit('setRegistration', 'mitra')
+        this.$router.push('/registration')
+      } else if (this.selected === 'desa') {
+        this.$store.commit('setRegistration', 'desa')
         this.$router.push('/registration')
       } else {
         this.$emit('closeModal', false)
