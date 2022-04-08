@@ -21,7 +21,7 @@
       <div class="questionnaire__content-image">
         <img
           width="379px"
-          height="332px"
+          height="323px"
           :src="villageImage"
           class="questionnaire__content-image"
           alt="Desa Digital"
@@ -88,11 +88,12 @@ export default {
 
 <style lang="postcss" scoped>
 .questionnaire {
-  @apply grid grid-rows-1;
+  @apply grid grid-rows-1 p-4
+  sm:(p-8 bg-white w-[680px] h-[486px] rounded-2xl);
 
   &__title > h1 {
     @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
-    sm:(leading-[26px]);
+    sm:(leading-[26px] pb-5);
   }
 
   &__content {
