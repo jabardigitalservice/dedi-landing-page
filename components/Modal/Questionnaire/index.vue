@@ -73,12 +73,10 @@ export default {
   },
   methods: {
     showVillage () {
-      if (Array.isArray(this.villageTypes)) {
-        for (const village of this.villageTypes) {
-          if (village.level === this.chosenLevel) {
-            this.village = village.village
-            this.villageImage = village.image
-          }
+      for (const village of this.villageTypes) {
+        if (village.level === this.chosenLevel) {
+          this.village = village.village
+          this.villageImage = village.image
         }
       }
     }
