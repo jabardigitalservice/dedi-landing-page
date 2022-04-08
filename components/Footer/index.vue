@@ -56,7 +56,7 @@
           <a v-scroll-to="{ el: '#village-partner' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Data Perkembangan Desa Digital</span>
           </a>
-          <a href="#" class="footer__sitemap-text-item">
+          <a v-scroll-to="{ el: '#testimonial' }" class="footer__sitemap-text-item">
             <span class="footer__sitemap-text-title">Testimoni User</span>
           </a>
           <a v-scroll-to="{ el: '#join-info' }" class="footer__sitemap-text-item">
