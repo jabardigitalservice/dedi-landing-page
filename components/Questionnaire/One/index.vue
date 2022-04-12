@@ -49,7 +49,7 @@
                         width="88"
                         height="88"
                         :src="files.kendaraan.source"
-                        alt="Avatar User Admin"
+                        alt="Foto Kendaraan"
                       >
                       <img
                         v-else
@@ -120,7 +120,7 @@
                         width="88"
                         height="88"
                         :src="files.listrik.source"
-                        alt="Avatar User Admin"
+                        alt="Foto Suplai Listrik"
                       >
                       <img
                         v-else
@@ -191,7 +191,7 @@
                         width="88"
                         height="88"
                         :src="files.seluler.source"
-                        alt="Avatar User Admin"
+                        alt="Foto Seluler"
                       >
                       <img
                         v-else
@@ -272,7 +272,7 @@
                         width="88"
                         height="88"
                         :src="files.internet.source"
-                        alt="Avatar User Admin"
+                        alt="Foto Jaringan Internet"
                       >
                       <img
                         v-else
