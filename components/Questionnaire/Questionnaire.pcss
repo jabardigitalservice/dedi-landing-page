@@ -65,7 +65,11 @@
     }
 
     &__filename {
-      @apply text-gray-800 text-sm leading-[23px] font-medium mt-2;
+      @apply text-gray-800 text-sm leading-[23px] font-medium;
+
+      &-error {
+        @apply text-red-700 text-sm leading-[23px] font-medium;
+      }
     }
 
     &__placeholder {
