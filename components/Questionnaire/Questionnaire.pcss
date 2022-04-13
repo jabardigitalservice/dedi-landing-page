@@ -13,7 +13,12 @@
     @apply relative h-screen w-screen flex justify-center md:(items-center pt-8);
 
     &-body {
-      @apply bg-white mt-17.25 p-4 sm:(p-8 my-[70px] mx-auto w-[680px] h-auto relative rounded-md);
+      @apply bg-white mt-20 p-4 sm:(p-8 my-[70px] mx-auto w-[680px] h-auto relative rounded-md);
+    }
+    
+    &-modal {
+      @apply z-50 h-screen backdrop-filter backdrop-blur-[6px] bg-gray-900 bg-opacity-75 top-[22px]
+      sm:(h-auto);
     }
   }
 
