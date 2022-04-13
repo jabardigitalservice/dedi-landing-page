@@ -617,7 +617,7 @@ export default {
         } catch (error) {
           this.$store.dispatch('toast/showToast', {
             type: 'error',
-            message: 'Data gagal disimpan, periksa kembali data yang dinputkan'
+            message: 'Data gagal disimpan, periksa kembali data yang diinputkan'
           })
         }
       } else {
