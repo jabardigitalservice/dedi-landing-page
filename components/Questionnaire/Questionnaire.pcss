@@ -1,0 +1,116 @@
+.registration {
+  @apply h-screen w-screen;
+
+  &--position {
+    @apply h-screen w-screen flex flex items-end relative sm:(bg-[#32E6F9]);
+  }
+
+  &__image {
+    @apply hidden sm:(absolute block);
+  }
+
+  &__questionnaire {
+    @apply relative h-screen w-screen flex justify-center md:(items-center pt-8);
+
+    &-body {
+      @apply bg-white mt-17.25 p-4 sm:(p-8 my-[70px] mx-auto w-[680px] h-auto relative rounded-md);
+    }
+  }
+
+  &__form {
+    @apply h-full w-full;
+
+    &-info {
+      @apply cursor-pointer text-blue-800 font-bold text-sm;
+    }
+
+    &-col-image {
+      @apply col-span-5 sm:(col-span-1);
+    }
+
+    &-col-desc {
+      @apply col-span-5 sm:(col-span-4);
+    }
+
+    &-title {
+      @apply font-roboto font-bold text-[16px] text-gray-800 pb-4 sm: (pb-5);
+    }
+
+    &-content {
+      @apply overflow-scroll h-auto sm:(h-[448px]);
+
+      &--container {
+        @apply mt-5 px-4 py-5 border border-gray-200 rounded-lg;
+
+        p {
+          @apply text-sm;
+        }
+      }
+    }
+
+    &__image {
+      @apply w-[88px] h-[88px] bg-gray-50 text-gray-400 flex justify-center items-center border border-gray-400 rounded-xl border-dashed;
+
+      &--attached {
+        @apply border-none overflow-hidden;
+
+        &--uploaded {
+          @apply bg-cover;
+        }
+      }
+    }
+
+    &__subtitle {
+      @apply text-gray-800 text-sm leading-[23px] font-medium mt-4 sm: (mt-0);
+    }
+
+    &__filename {
+      @apply text-gray-800 text-sm leading-[23px] font-medium;
+
+      &-error {
+        @apply text-red-700 text-sm leading-[23px] font-medium;
+      }
+    }
+
+    &__placeholder {
+      @apply text-gray-600 text-sm leading-[23px];
+    }
+
+    &__button {
+      @apply my-4 flex flex-row;
+
+      &-btn {
+        @apply bg-green-700 text-white w-[135px] h-[38px] text-sm py-[9px] mr-4 font-sans font-bold rounded-lg;
+
+        &:hover {
+          @apply bg-green-800;
+        }
+      }
+
+      input[type=file] {
+        @apply absolute left-0 top-0 opacity-0;
+      }
+    }
+  }
+
+  &__submit {
+    @apply mt-5 flex justify-end;
+  }
+}
+
+.jds-button,
+.jds-checkbox__option-label {
+  @apply text-sm !important;
+}
+
+.jds-section-message__icon {
+  @apply mt-1;
+}
+
+.form-text-area {
+  @apply w-full border border-bg-gray-500 rounded-lg p-2;
+}
+
+p {
+  @apply text-gray-800;
+}
