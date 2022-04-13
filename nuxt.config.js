@@ -44,7 +44,8 @@ export default {
       config: {
         environment: process.env.SENTRY_ENVIRONMENT
       }
-    }
+    },
+    apiSecretUpload: process.env.UPLOAD_FILE_SECRET
   },
 
   // Environment dynamic secure
