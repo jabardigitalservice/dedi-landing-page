@@ -20,11 +20,6 @@
                 </div>
               </jds-section-message>
 
-              <!-- @todo: remove this section container in next feature (id desa search) -->
-              <div class="registration__form-content--container">
-                <jds-input-text v-model="params.id" placeholder="ID Desa" />
-              </div>
-
               <div class="registration__form-content--container">
                 <p class="mb-3">
                   Apakah desa tempat Bapak/Ibu tinggal dapat diakses oleh kendaraan?
@@ -383,7 +378,7 @@ export default {
         }
       },
       params: {
-        id: null,
+        id: '32.09.21.2001', // @todo: remove this in next feature (id desa search)
         level: 1,
         properties: {
           fasilitas_desa: {
