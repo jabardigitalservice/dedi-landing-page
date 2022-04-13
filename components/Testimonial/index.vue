@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div id="testimonial">
     <div class="testimonial wrapper">
       <img
         class="testimonial__image"
