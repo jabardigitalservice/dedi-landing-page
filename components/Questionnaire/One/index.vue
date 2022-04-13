@@ -419,7 +419,6 @@ export default {
           }
         }
       },
-      isLevelOne: false,
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalLevelDesa: false,
       villages
@@ -428,10 +427,8 @@ export default {
   watch: {
     'params.properties.fasilitas_desa.jaringan_internet.data' () {
       if (this.params.properties.fasilitas_desa.jaringan_internet.data === 'Belum ada jaringan internet') {
-        this.isLevelOne = true
         this.params.level = 1
       } else {
-        this.isLevelOne = false
         this.params.level = 2
       }
     }
@@ -613,16 +610,19 @@ export default {
       }
     },
     async onSubmit () {
-      try {
-        await this.$axios.post('/villages/questionnaire', this.params)
-        if (this.isLevelOne) {
+      if (this.params.level === 1) {
+        try {
+          await this.$axios.post('/villages/questionnaire', this.params)
           this.showModalLevelDesa = true
-        } else {
-          // @todo: continue to quissionaire two on next pull request
-          this.showModalLevelDesa = false
+        } catch (error) {
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: 'Data gagal disimpan, periksa kembali data yang dinputkan'
+          })
         }
-      } catch (error) {
-        // @todo: validasi error on next pull request
+      } else {
+        // @todo: continue to quissionaire two on next pull request
+        this.showModalLevelDesa = false
       }
     }
   }
