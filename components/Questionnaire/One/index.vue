@@ -452,9 +452,10 @@ export default {
     },
     submitFile (image) {
       return new Promise((resolve, reject) => {
-        this.$axios.post(`/files/upload?secret=${this.uploadFileSecret}`, image, {
+        this.$axios.post('/files/upload', image, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            'x-api-key': this.uploadFileSecret
           }
         }).then((response) => {
           const { data } = response.data
