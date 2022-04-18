@@ -71,3 +71,33 @@ export const villages = [
     image: require('@/assets/images/Tahap4Dedi.svg')
   }
 ]
+
+export const optionsSocialMedia = [
+  {
+    value: 'Facebook'
+  },
+  {
+    value: 'Instagram'
+  },
+  {
+    value: 'Twitter'
+  },
+  {
+    value: 'Youtube'
+  },
+  {
+    value: 'Tidak ada'
+  }
+]
+
+export const optionsBumdes = [
+  {
+    value: 'Tidak memiliki BUMDes'
+  },
+  {
+    value: 'Ada BUMDes, tapi tidak aktif'
+  },
+  {
+    value: 'Ada BUMDes dan masih aktif'
+  }
+]
