@@ -101,3 +101,33 @@ export const training = [
     value: 'Pernah, lebih dari 2 kali'
   }
 ]
+
+export const optionsSocialMedia = [
+  {
+    value: 'Facebook'
+  },
+  {
+    value: 'Instagram'
+  },
+  {
+    value: 'Twitter'
+  },
+  {
+    value: 'Youtube'
+  },
+  {
+    value: 'Tidak ada'
+  }
+]
+
+export const optionsBumdes = [
+  {
+    value: 'Tidak memiliki BUMDes'
+  },
+  {
+    value: 'Ada BUMDes, tapi tidak aktif'
+  },
+  {
+    value: 'Ada BUMDes dan masih aktif'
+  }
+]
