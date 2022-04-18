@@ -72,6 +72,36 @@ export const villages = [
   }
 ]
 
+export const communities = [
+  {
+    value: 'Pendamping Lokal Desa'
+  },
+  {
+    value: 'Patriot Desa'
+  },
+  {
+    value: 'Relawan TIK'
+  },
+  {
+    value: 'Komunitas Teknologi Digital'
+  },
+  {
+    value: 'Tidak ada komunitas'
+  }
+]
+
+export const training = [
+  {
+    value: 'Belum pernah'
+  },
+  {
+    value: 'Pernah, 1-2 kali'
+  },
+  {
+    value: 'Pernah, lebih dari 2 kali'
+  }
+]
+
 export const optionsSocialMedia = [
   {
     value: 'Facebook'
