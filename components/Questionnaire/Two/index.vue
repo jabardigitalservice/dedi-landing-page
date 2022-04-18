@@ -185,7 +185,6 @@ import {
 export default {
   data () {
     return {
-      infoProgram: 'Program Desa Digital memiliki beberapa tingkatan/level, yuk cari tahu level desamu.',
       communities,
       training,
       files: {
