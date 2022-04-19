@@ -314,8 +314,140 @@ export default {
     }
   },
   methods: {
+    setFile (value) {
+      const formData = new FormData()
+      formData.append('file', value)
+      return formData
+    },
+    submitFile (image) {
+      return new Promise((resolve, reject) => {
+        this.$axios.post('/files/upload', image, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-api-key': this.uploadFileSecret
+          }
+        }).then((response) => {
+          const { data } = response.data
+          resolve(data)
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
     onFileChange (category) {
-      // @todo: handle input image
+      switch (category) {
+        case ('socialMedia'): {
+          const elSocialMedia = this.$refs.socialMedia.files[0]
+          if (elSocialMedia) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elSocialMedia.type)
+            const { socialMedia } = this.files || {}
+            if (isValidFormat) {
+              if (elSocialMedia.size > 1000000) {
+                socialMedia.isAttached = false
+                socialMedia.fileImage = null
+                socialMedia.source = null
+                socialMedia.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                socialMedia.isAttached = true
+                socialMedia.fileImage = this.setFile(elSocialMedia)
+                socialMedia.source = URL.createObjectURL(elSocialMedia)
+                socialMedia.uploadErrorMessage = ''
+              }
+            } else {
+              socialMedia.isAttached = false
+              socialMedia.fileImage = null
+              socialMedia.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.socialMedia.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.tentang_bumdes.sosial_media.photo.path = path
+                this.params.properties.tentang_bumdes.sosial_media.photo.source = source
+                this.params.properties.tentang_bumdes.sosial_media.photo.original_name = originalName
+              })
+              .catch(() => {
+                socialMedia.isAttached = false
+                socialMedia.fileImage = null
+                socialMedia.uploadErrorMessage = 'Gambar foto social media gagal diupload'
+              })
+          }
+          break
+        }
+        case ('bumdes'): {
+          const elBumdes = this.$refs.bumdes.files[0]
+          if (elBumdes) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elBumdes.type)
+            const { bumdes } = this.files || {}
+            if (isValidFormat) {
+              if (elBumdes.size > 1000000) {
+                bumdes.isAttached = false
+                bumdes.fileImage = null
+                bumdes.source = null
+                bumdes.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                bumdes.isAttached = true
+                bumdes.fileImage = this.setFile(elBumdes)
+                bumdes.source = URL.createObjectURL(elBumdes)
+                bumdes.uploadErrorMessage = ''
+              }
+            } else {
+              bumdes.isAttached = false
+              bumdes.fileImage = null
+              bumdes.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.bumdes.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.tentang_bumdes.bumdes.photo.path = path
+                this.params.properties.tentang_bumdes.bumdes.photo.source = source
+                this.params.properties.tentang_bumdes.bumdes.photo.original_name = originalName
+              })
+              .catch(() => {
+                bumdes.isAttached = false
+                bumdes.fileImage = null
+                bumdes.uploadErrorMessage = 'Gambar BUMDes gagal diupload'
+              })
+          }
+          break
+        }
+        case ('komoditas'): {
+          const elKomoditas = this.$refs.komoditas.files[0]
+          if (elKomoditas) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elKomoditas.type)
+            const { komoditas } = this.files || {}
+            if (isValidFormat) {
+              if (elKomoditas.size > 1000000) {
+                komoditas.isAttached = false
+                komoditas.fileImage = null
+                komoditas.source = null
+                komoditas.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                komoditas.isAttached = true
+                komoditas.fileImage = this.setFile(elKomoditas)
+                komoditas.source = URL.createObjectURL(elKomoditas)
+                komoditas.uploadErrorMessage = ''
+              }
+            } else {
+              komoditas.isAttached = false
+              komoditas.fileImage = null
+              komoditas.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.komoditas.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.tentang_bumdes.komoditas.photo.path = path
+                this.params.properties.tentang_bumdes.komoditas.photo.source = source
+                this.params.properties.tentang_bumdes.komoditas.photo.original_name = originalName
+              })
+              .catch(() => {
+                komoditas.isAttached = false
+                komoditas.fileImage = null
+                komoditas.uploadErrorMessage = 'Gambar komoditas gagal diupload'
+              })
+          }
+          break
+        }
+      }
     },
     onSubmit () {
       // @todo: handle submit form
