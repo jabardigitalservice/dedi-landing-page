@@ -81,7 +81,7 @@
 
                 <div class="registration__form-content--container">
                   <p class="mb-3">
-                    Apakah komunitas tersebut pernah mengadakan program atau pelatihan tentang teknologi digita?
+                    Apakah komunitas tersebut pernah mengadakan program atau pelatihan tentang teknologi digital?
                   </p>
                   <jds-radio-button-group
                     id="pelatihan"
