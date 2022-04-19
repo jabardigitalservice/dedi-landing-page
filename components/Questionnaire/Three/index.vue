@@ -119,7 +119,7 @@
                     </div>
                     <div class="registration__form-col-desc">
                       <div class="registration__form__subtitle">
-                        Unggah foto BUMDes yang ada di desa Bapak dan Ibu
+                        Unggah foto BUMDes yang ada di desa Bapak/Ibu
                       </div>
                       <div class="registration__form__placeholder">
                         File yang didukung adalah .jpg, .jpeg dan .png
@@ -149,7 +149,7 @@
                     </div>
                   </div>
                   <p class="mb-3">
-                    Tuliskan nama BUMDes yang ada di desa Bapak dan Ibu
+                    Tuliskan nama BUMDes yang ada di desa Bapak/Ibu
                   </p>
                   <textarea
                     v-model="params.properties.tentang_bumdes.bumdes.bumdes"
@@ -199,7 +199,7 @@
                     </div>
                     <div class="registration__form-col-desc">
                       <div class="registration__form__subtitle">
-                        Unggah foto Komoditas atau kegiatan yang dilakukan oleh BUMDes di desa Bapak dan Ibu
+                        Unggah foto Komoditas atau kegiatan yang dilakukan oleh BUMDes di desa Bapak/Ibu
                       </div>
                       <div class="registration__form__placeholder">
                         File yang didukung adalah .jpg, .jpeg dan .png
@@ -229,6 +229,88 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="registration__form-content--container">
+                  <p class="mb-3">
+                    Apakah desa tempat Bapak/Ibu tinggal memiliki potensi yang dapat dikembangkan?
+                  </p>
+                  <jds-checkbox-group
+                    v-model="params.properties.potensi_desa.data"
+                    :options="optionsPotency"
+                    value-key="value"
+                    label-key="value"
+                  />
+                </div>
+
+                <div class="registration__form-content--container">
+                  <p class="mb-3">
+                    Jika ada, ceritakan potensi yang dapat dikembangkan dari desa tempat Bapak/Ibu tinggal?
+                  </p>
+                  <textarea
+                    v-model="params.properties.potensi_desa.potensi_dapat_dikembangkan"
+                    class="form-text-area"
+                    name="Daftar potensi"
+                    placeholder="Masukkan disini"
+                    rows="4"
+                  />
+                  <div class="grid grid-cols-5 mt-4">
+                    <div class="registration__form-col-image">
+                      <div
+                        :class="{
+                          'registration__form__image': true,
+                          'registration__form__image--attached': files.potency.isAttached
+                        }"
+                      >
+                        <img
+                          v-if="files.potency.source"
+                          class="registration__form__image--attached-uploaded"
+                          width="88"
+                          height="88"
+                          :src="files.potency.source"
+                          alt="Foto potensi"
+                        >
+                        <img
+                          v-else
+                          class="text-gray-500"
+                          height="22"
+                          width="22"
+                          src="@/assets/icons/IconNoImage.svg"
+                          alt="No Image"
+                        >
+                      </div>
+                    </div>
+                    <div class="registration__form-col-desc">
+                      <div class="registration__form__subtitle">
+                        Unggah foto potensi yang dapat dikembangkan di desa Bapak/Ibu
+                      </div>
+                      <div class="registration__form__placeholder">
+                        File yang didukung adalah .jpg, .jpeg dan .png
+                      </div>
+                      <div class="registration__form__button">
+                        <button class="registration__form__button-btn" type="button" @click="$refs.potency.click()">
+                          Unggah Foto
+                          <jds-icon class="ml-2" size="12px" name="plus-bold" />
+                        </button>
+                        <input
+                          ref="potency"
+                          type="file"
+                          hidden="true"
+                          accept="image/png, image/jpeg, image/svg+xml"
+                          @change="onFileChange('potency')"
+                        >
+                        <div v-if="files.potency.fileImage" class="registration__form__filename">
+                          Filename: {{ files.potency.fileImage.get('file').name }}
+                        </div>
+                        <div v-else-if="files.potency.uploadErrorMessage" class="registration__form__filename-error">
+                          {{ files.potency.uploadErrorMessage }}
+                        </div>
+                        <div v-else class="registration__form__filename">
+                          Belum ada file terpilih.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="registration__submit">
@@ -248,6 +330,7 @@
 import {
   optionsSocialMedia,
   optionsBumdes,
+  optionsPotency,
   villages
 } from '@/constants/questionnaire.js'
 export default {
@@ -255,6 +338,8 @@ export default {
     return {
       optionsSocialMedia,
       optionsBumdes,
+      optionsPotency,
+      page: 1,
       files: {
         socialMedia: {
           isAttached: false,
@@ -269,6 +354,12 @@ export default {
           uploadErrorMessage: null
         },
         komoditas: {
+          isAttached: false,
+          fileImage: null,
+          source: null,
+          uploadErrorMessage: null
+        },
+        potency: {
           isAttached: false,
           fileImage: null,
           source: null,
@@ -304,6 +395,15 @@ export default {
                 original_name: null,
                 source: null
               }
+            }
+          },
+          potensi_desa: {
+            data: [],
+            potensi_dapat_dikembangkan: '',
+            photo: {
+              path: null,
+              original_name: null,
+              source: null
             }
           }
         }
@@ -368,6 +468,7 @@ export default {
               .catch(() => {
                 socialMedia.isAttached = false
                 socialMedia.fileImage = null
+                socialMedia.source = null
                 socialMedia.uploadErrorMessage = 'Gambar foto social media gagal diupload'
               })
           }
@@ -405,6 +506,7 @@ export default {
               .catch(() => {
                 bumdes.isAttached = false
                 bumdes.fileImage = null
+                bumdes.source = null
                 bumdes.uploadErrorMessage = 'Gambar BUMDes gagal diupload'
               })
           }
@@ -435,14 +537,53 @@ export default {
             this.submitFile(this.files.komoditas.fileImage)
               .then((response) => {
                 const { source, original_name: originalName, path } = response || null
-                this.params.properties.tentang_bumdes.komoditas.photo.path = path
-                this.params.properties.tentang_bumdes.komoditas.photo.source = source
-                this.params.properties.tentang_bumdes.komoditas.photo.original_name = originalName
+                this.params.properties.potensi_desa.photo.path = path
+                this.params.properties.potensi_desa.photo.source = source
+                this.params.properties.potensi_desa.photo.original_name = originalName
               })
               .catch(() => {
                 komoditas.isAttached = false
                 komoditas.fileImage = null
+                komoditas.source = null
                 komoditas.uploadErrorMessage = 'Gambar komoditas gagal diupload'
+              })
+          }
+          break
+        }
+        case ('potency'): {
+          const elPotency = this.$refs.potency.files[0]
+          if (elPotency) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elPotency.type)
+            const { potency } = this.files || {}
+            if (isValidFormat) {
+              if (elPotency.size > 1000000) {
+                potency.isAttached = false
+                potency.fileImage = null
+                potency.source = null
+                potency.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                potency.isAttached = true
+                potency.fileImage = this.setFile(elPotency)
+                potency.source = URL.createObjectURL(elPotency)
+                potency.uploadErrorMessage = ''
+              }
+            } else {
+              potency.isAttached = false
+              potency.fileImage = null
+              potency.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.potency.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.tentang_bumdes.potency.photo.path = path
+                this.params.properties.tentang_bumdes.potency.photo.source = source
+                this.params.properties.tentang_bumdes.potency.photo.original_name = originalName
+              })
+              .catch(() => {
+                potency.isAttached = false
+                potency.fileImage = null
+                potency.source = null
+                potency.uploadErrorMessage = 'Gambar potensi desa gagal diupload'
               })
           }
           break
@@ -451,6 +592,7 @@ export default {
     },
     onSubmit () {
       // @todo: handle submit form
+      console.log(this.params)
     }
   }
 }

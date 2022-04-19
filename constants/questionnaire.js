@@ -131,3 +131,24 @@ export const optionsBumdes = [
     value: 'Ada BUMDes dan masih aktif'
   }
 ]
+
+export const optionsPotency = [
+  {
+    value: 'Pertanian'
+  },
+  {
+    value: 'Pendidikan'
+  },
+  {
+    value: 'Pariwisata'
+  },
+  {
+    value: 'Pengelolaan Sampah'
+  },
+  {
+    value: 'Belum ada potensi'
+  },
+  {
+    value: 'Lainnya'
+  }
+]
