@@ -233,12 +233,122 @@ export default {
       villages
     }
   },
+  watch: {
+    'params.properties.literasi_digital.pelatihan.data' () {
+      if (this.params.properties.literasi_digital.pelatihan.data === 'Belum pernah') {
+        this.params.level = 2
+      } else {
+        this.params.level = 3
+      }
+    }
+  },
   methods: {
-    onFileChange () {
-      // @todo: handle input image
+    setFile (value) {
+      const formData = new FormData()
+      formData.append('file', value)
+      return formData
     },
-    async onSubmit () {
-      // @todo: handle submit form
+    submitFile (image) {
+      return new Promise((resolve, reject) => {
+        this.$axios.post('/files/upload', image, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-api-key': this.uploadFileSecret
+          }
+        }).then((response) => {
+          const { data } = response.data
+          resolve(data)
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    onFileChange (category) {
+      switch (category) {
+        case ('komunitas'): {
+          const elkomunitas = this.$refs.komunitas.files[0]
+          if (elkomunitas) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elkomunitas.type)
+            const { komunitas } = this.files || {}
+            if (isValidFormat) {
+              if (elkomunitas.size > 1000000) {
+                komunitas.isAttached = false
+                komunitas.fileImage = null
+                komunitas.source = null
+                komunitas.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                komunitas.isAttached = true
+                komunitas.fileImage = this.setFile(elkomunitas)
+                komunitas.source = URL.createObjectURL(elkomunitas)
+                komunitas.uploadErrorMessage = ''
+              }
+            } else {
+              komunitas.isAttached = false
+              komunitas.fileImage = null
+              komunitas.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.komunitas.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.literasi_digital.komunitas.photo.path = path
+                this.params.properties.literasi_digital.komunitas.photo.source = source
+                this.params.properties.literasi_digital.komunitas.photo.original_name = originalName
+              })
+              .catch(() => {
+                komunitas.isAttached = false
+                komunitas.fileImage = null
+                komunitas.uploadErrorMessage = 'Gambar foto komunitas gagal diupload'
+              })
+          }
+          break
+        }
+        case ('pelatihan'): {
+          const elpelatihan = this.$refs.pelatihan.files[0]
+          if (elpelatihan) {
+            const isValidFormat = ['image/png', 'image/jpeg'].includes(elpelatihan.type)
+            const { pelatihan } = this.files || {}
+            if (isValidFormat) {
+              if (elpelatihan.size > 1000000) {
+                pelatihan.isAttached = false
+                pelatihan.fileImage = null
+                pelatihan.source = null
+                pelatihan.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+              } else {
+                pelatihan.isAttached = true
+                pelatihan.fileImage = this.setFile(elpelatihan)
+                pelatihan.source = URL.createObjectURL(elpelatihan)
+                pelatihan.uploadErrorMessage = ''
+              }
+            } else {
+              pelatihan.isAttached = false
+              pelatihan.fileImage = null
+              pelatihan.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
+            }
+            this.submitFile(this.files.pelatihan.fileImage)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.properties.literasi_digital.pelatihan.photo.path = path
+                this.params.properties.literasi_digital.pelatihan.photo.source = source
+                this.params.properties.literasi_digital.pelatihan.photo.original_name = originalName
+              })
+              .catch(() => {
+                pelatihan.isAttached = false
+                pelatihan.fileImage = null
+                pelatihan.uploadErrorMessage = 'Gambar pelatihan gagal diupload'
+              })
+          }
+          break
+        }
+      }
+    },
+    onSubmit () {
+      if (this.params.level === 2) {
+        // @todo: continue to create validation for questionnaire three
+        this.showModalLevelDesa = true
+      } else {
+        // @todo: continue to questionnaire three on next pull request
+        this.showModalLevelDesa = false
+      }
     },
     onPreviousPage () {
       // @todo: create method to show previous
