@@ -9,7 +9,7 @@
               <div class="registration__form-title">
                 Kuisioner Desa Digital
               </div>
-              <div class="registration__form-content">
+              <div v-show="!isShowPotency" class="registration__form-content">
                 <div class="registration__form-content--container">
                   <p class="mb-3">
                     Dari pilihan berikut, sosial media apa yang dikelola secara resmi oleh perangkat desa Bapak/Ibu?
@@ -229,16 +229,20 @@
                     </div>
                   </div>
                 </div>
+              </div>
 
+              <div v-show="isShowPotency" class="registration__form-content">
                 <div class="registration__form-content--container">
                   <p class="mb-3">
                     Apakah desa tempat Bapak/Ibu tinggal memiliki potensi yang dapat dikembangkan?
                   </p>
-                  <jds-checkbox-group
+                  <jds-radio-button-group
+                    id="potency"
                     v-model="params.properties.potensi_desa.data"
-                    :options="optionsPotency"
+                    :items="optionsPotency"
                     value-key="value"
-                    label-key="value"
+                    placeholder-key="value"
+                    name="radio-button-group-bumdes"
                   />
                 </div>
 
@@ -314,6 +318,7 @@
               </div>
 
               <div class="registration__submit">
+                <BaseButton class="registration__submit-btn" variant="secondary" label="Kembali" @click="onPreviousPage" />
                 <BaseButton class="registration__submit-btn" label="Selanjutnya" @click="onSubmit" />
               </div>
             </div>
@@ -398,7 +403,7 @@ export default {
             }
           },
           potensi_desa: {
-            data: [],
+            data: '',
             potensi_dapat_dikembangkan: '',
             photo: {
               path: null,
@@ -410,7 +415,18 @@ export default {
       },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalLevelDesa: false,
+      isShowPotency: false,
       villages
+    }
+  },
+  watch: {
+    'params.properties.potensi_desa.data' () {
+      const { properties: { potensi_desa: { data } } } = this.params
+      if (data && data === 'Belum ada potensi') {
+        this.params.level = 3
+      } else {
+        this.params.level = 4
+      }
     }
   },
   methods: {
@@ -537,9 +553,9 @@ export default {
             this.submitFile(this.files.komoditas.fileImage)
               .then((response) => {
                 const { source, original_name: originalName, path } = response || null
-                this.params.properties.potensi_desa.photo.path = path
-                this.params.properties.potensi_desa.photo.source = source
-                this.params.properties.potensi_desa.photo.original_name = originalName
+                this.params.properties.tentang_bumdes.komoditas.photo.path = path
+                this.params.properties.tentang_bumdes.komoditas.photo.source = source
+                this.params.properties.tentang_bumdes.komoditas.photo.original_name = originalName
               })
               .catch(() => {
                 komoditas.isAttached = false
@@ -575,9 +591,9 @@ export default {
             this.submitFile(this.files.potency.fileImage)
               .then((response) => {
                 const { source, original_name: originalName, path } = response || null
-                this.params.properties.tentang_bumdes.potency.photo.path = path
-                this.params.properties.tentang_bumdes.potency.photo.source = source
-                this.params.properties.tentang_bumdes.potency.photo.original_name = originalName
+                this.params.properties.potensi_desa.photo.path = path
+                this.params.properties.potensi_desa.photo.source = source
+                this.params.properties.potensi_desa.photo.original_name = originalName
               })
               .catch(() => {
                 potency.isAttached = false
@@ -590,9 +606,26 @@ export default {
         }
       }
     },
-    onSubmit () {
-      // @todo: handle submit form
-      console.log(this.params)
+    async onSubmit () {
+      if (!this.isShowPotency) {
+        this.isShowPotency = true
+      } else {
+        try {
+          await this.$axios.post('/villages/questionnaire', this.params)
+          this.showModalLevelDesa = true
+        } catch (error) {
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: 'Data gagal disimpan, periksa kembali data yang diinputkan'
+          })
+        }
+      }
+    },
+    onPreviousPage () {
+      // @todo : change into vuex store
+      if (this.isShowPotency) {
+        this.isShowPotency = false
+      }
     }
   }
 }
