@@ -142,7 +142,6 @@ export default {
         this.showLevelOne = false
         this.params.level = 2
       } else {
-        this.showModalLevelDesa = true
         this.params.level = 1
         this.onSubmit()
       }
@@ -154,7 +153,6 @@ export default {
         this.showLevelTwo = false
         this.params.level = 3
       } else {
-        this.showModalLevelDesa = true
         this.params.level = 2
         this.onSubmit()
       }
@@ -168,6 +166,7 @@ export default {
     async onSubmit () {
       try {
         await this.$axios.post('/villages/questionnaire', this.params)
+        this.showModalLevelDesa = true
       } catch (error) {
         this.$store.dispatch('toast/showToast', {
           type: 'error',
