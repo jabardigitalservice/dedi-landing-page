@@ -1,7 +1,7 @@
 <template>
   <div>
     <RegistrationMitra v-if="opsiRegistrasi === 'mitra'" />
-    <QuestionnaireOne v-if="opsiRegistrasi === 'desa'" />
+    <Questionnaire v-if="opsiRegistrasi === 'desa'" />
     <BaseToast />
   </div>
 </template>
