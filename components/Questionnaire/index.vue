@@ -6,7 +6,7 @@
         <div v-if="!showModalLevelDesa">
           <QuestionnaireOne v-show="showLevelOne" @onClickLevel="validationQuestionnaireOne" @onSubmit="onNextLevelOne" />
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
-          <QuestionnaireThree v-show="showLevelThree" />
+          <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
         <ModalQuestionnaire v-else :chosen-level="params.level" :village-types="villages" />
       </div>
@@ -121,9 +121,11 @@ export default {
       isLevelOne: true,
       isLevelTwo: false,
       isLevelThree: false,
+      isLevelFour: false,
       showLevelOne: true,
       showLevelTwo: false,
       showLevelThree: false,
+      showLevelFour: false,
       showModalLevelDesa: false,
       villages
     }
@@ -134,6 +136,9 @@ export default {
     },
     validationQuestionnaireTwo (value) {
       this.isLevelThree = value
+    },
+    validationQuestionnaireThree (value) {
+      this.isLevelFour = value
     },
     onNextLevelOne (value) {
       this.params.properties.fasilitas_desa = value
@@ -157,10 +162,28 @@ export default {
         this.onSubmit()
       }
     },
+    onNextLevelThree (properties) {
+      this.params.properties.tentang_bumdes = properties.tentang_bumdes
+      this.params.properties.potensi_desa = properties.tentang_bumdes
+      if (this.isLevelFour) {
+        this.showLevelThree = false
+        this.params.level = 4
+        this.onSubmit()
+      } else {
+        this.params.level = 3
+        this.onSubmit()
+      }
+    },
     onPrev () {
       if (this.isLevelTwo) {
         this.showLevelTwo = false
         this.showLevelOne = true
+      }
+    },
+    onPrevQuestionnaireThree () {
+      if (this.isLevelThree) {
+        this.showLevelThree = false
+        this.showLevelTwo = true
       }
     },
     async onSubmit () {
