@@ -11,12 +11,14 @@ export default {
   layout: 'registration',
   data () {
     return {
-      opsiRegistrasi: 'desa'
+      opsiRegistrasi: null
     }
   },
   mounted () {
-    if (this.$store.state.registration) {
-      this.opsiRegistrasi = this.$store.state.registration
+    if (this.$route.query?.option) {
+      this.opsiRegistrasi = this.$route.query.option
+    } else {
+      this.$router.push('/')
     }
   }
 }
