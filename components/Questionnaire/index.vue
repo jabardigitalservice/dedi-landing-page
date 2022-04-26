@@ -163,7 +163,7 @@ export default {
     },
     onNextLevelThree (properties) {
       this.params.properties.tentang_bumdes = properties.tentang_bumdes
-      this.params.properties.potensi_desa = properties.tentang_bumdes
+      this.params.properties.potensi_desa = properties.potensi_desa
       if (this.isLevelFour) {
         this.showLevelThree = false
         this.params.level = 4
