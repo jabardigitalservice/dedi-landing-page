@@ -125,7 +125,6 @@ export default {
       showLevelOne: true,
       showLevelTwo: false,
       showLevelThree: false,
-      showLevelFour: false,
       showModalLevelDesa: false,
       villages
     }
