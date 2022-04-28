@@ -114,9 +114,6 @@ export const optionsSocialMedia = [
   },
   {
     value: 'Youtube'
-  },
-  {
-    value: 'Tidak ada'
   }
 ]
 
@@ -137,16 +134,19 @@ export const optionsPotency = [
     value: 'Pertanian'
   },
   {
+    value: 'Perikanan'
+  },
+  {
+    value: 'Kesehatan'
+  },
+  {
     value: 'Pendidikan'
   },
   {
-    value: 'Pariwisata'
+    value: 'Pengelolaan Sampah (Waste Management)'
   },
   {
-    value: 'Pengelolaan Sampah'
-  },
-  {
-    value: 'Belum ada potensi'
+    value: 'Multimedia'
   },
   {
     value: 'Lainnya'

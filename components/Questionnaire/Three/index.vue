@@ -4,18 +4,33 @@
       <div class="registration__form-title">
         Kuisioner Desa Digital
       </div>
-      <div v-show="!isShowPotency" class="registration__form-content">
+      <div v-show="!isShowNextQuestionnaire" class="registration__form-content">
         <div class="registration__form-content--container">
           <p class="mb-3">
             Dari pilihan berikut, sosial media apa yang dikelola secara resmi oleh perangkat desa Bapak/Ibu?
           </p>
-          <jds-checkbox-group
-            v-model="properties.tentang_bumdes.sosial_media.data"
-            :options="optionsSocialMedia"
-            value-key="value"
-            label-key="value"
-          />
-          <div class="grid grid-cols-5 mt-4">
+          <label v-for="(item, index) in optionsSocialMedia" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="properties.tentang_bumdes.sosial_media.data"
+              type="checkbox"
+              name="social-media-list"
+              :value="item.value"
+              @change="onSocialMediaListSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <label class="custom-checkbox">
+            Tidak ada
+            <input
+              type="checkbox"
+              name="social-media-list-none"
+              value="Tidak ada"
+              @change="onSocialMediaNoneSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <div v-show="isShowUploadSocialMedia" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -86,7 +101,7 @@
             placeholder-key="value"
             name="radio-button-group-bumdes"
           />
-          <div class="grid grid-cols-5 mt-4">
+          <div v-show="isShowBumdes" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -143,10 +158,11 @@
               </div>
             </div>
           </div>
-          <p class="mb-3">
+          <p v-show="isShowBumdes" class="mb-3">
             Tuliskan nama BUMDes yang ada di desa Bapak/Ibu
           </p>
           <textarea
+            v-show="isShowBumdes"
             v-model="properties.tentang_bumdes.bumdes.bumdes"
             class="form-text-area"
             name="Nama BUMDes"
@@ -155,7 +171,7 @@
           />
         </div>
 
-        <div class="registration__form-content--container">
+        <div v-show="isShowBumdes" class="registration__form-content--container">
           <p class="mb-3">
             Jika ada, komoditas apa yang dikelola/diproduksi oleh BUMDes di desa Bapak/Ibu?
           </p>
@@ -226,22 +242,35 @@
         </div>
       </div>
 
-      <div v-show="isShowPotency" class="registration__form-content">
+      <div v-show="isShowNextQuestionnaire" class="registration__form-content">
         <div class="registration__form-content--container">
           <p class="mb-3">
             Apakah desa tempat Bapak/Ibu tinggal memiliki potensi yang dapat dikembangkan?
           </p>
-          <jds-radio-button-group
-            id="potency"
-            v-model="properties.potensi_desa.data"
-            :items="optionsPotency"
-            value-key="value"
-            placeholder-key="value"
-            name="radio-button-group-bumdes"
-          />
+          <label class="custom-checkbox">
+            Belum ada potensi
+            <input
+              type="checkbox"
+              name="potency-list-none"
+              value="Belum ada potensi"
+              @change="onPotencyNoneSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <label v-for="(item, index) in optionsPotency" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="properties.potensi_desa.data"
+              type="checkbox"
+              name="potency-list"
+              :value="item.value"
+              @change="onPotencyListSelected"
+            >
+            <span class="checkmark" />
+          </label>
         </div>
 
-        <div class="registration__form-content--container">
+        <div v-show="isShowPotency" class="registration__form-content--container">
           <p class="mb-3">
             Jika ada, ceritakan potensi yang dapat dikembangkan dari desa tempat Bapak/Ibu tinggal?
           </p>
@@ -389,7 +418,7 @@ export default {
           }
         },
         potensi_desa: {
-          data: '',
+          data: [],
           potensi_dapat_dikembangkan: '',
           photo: {
             path: null,
@@ -400,20 +429,115 @@ export default {
       },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalLevelDesa: false,
+      isShowNextQuestionnaire: false,
       isShowPotency: false,
+      isShowUploadSocialMedia: false,
+      isShowBumdes: false,
+      socialMediaNoneOption: [],
       villages
     }
   },
   watch: {
-    'properties.potensi_desa.data' () {
-      if (this.properties.potensi_desa.data && this.properties.potensi_desa.data === 'Belum ada potensi') {
+    'properties.potensi_desa.data' (data) {
+      if (data.length === 0 || data.includes('Belum ada potensi')) {
         this.$emit('onClickLevel', false)
+        this.isShowPotency = false
+        const { potensi_desa: potensi } = this.properties
+        const { potency } = this.files
+
+        potensi.potensi_dapat_dikembangkan = ''
+        potensi.photo.path = null
+        potensi.photo.original_name = null
+        potensi.photo.source = null
+
+        potency.isAttached = false
+        potency.fileImage = null
+        potency.source = null
       } else {
         this.$emit('onClickLevel', true)
+        this.isShowPotency = true
+      }
+    },
+    'properties.tentang_bumdes.sosial_media.data' (data) {
+      if (data.length > 0 && !data.includes('Tidak ada')) {
+        this.isShowUploadSocialMedia = true
+      } else {
+        this.isShowUploadSocialMedia = false
+        const { sosial_media: socialMediaData } = this.properties.tentang_bumdes
+        const { socialMedia } = this.files
+
+        socialMediaData.photo.path = null
+        socialMediaData.photo.original_name = null
+        socialMediaData.photo.source = null
+
+        socialMedia.isAttached = false
+        socialMedia.fileImage = null
+        socialMedia.source = null
+      }
+    },
+    'properties.tentang_bumdes.bumdes.data' (value) {
+      if (value === 'Tidak memiliki BUMDes') {
+        this.isShowBumdes = false
+        const { bumdes, komoditas } = this.properties.tentang_bumdes
+        const { bumdes: fileBumdes, komoditas: fileKomoditas } = this.files
+
+        bumdes.photo.path = null
+        bumdes.photo.original_name = null
+        bumdes.photo.source = null
+        bumdes.bumdes = ''
+
+        komoditas.photo.path = null
+        komoditas.photo.original_name = null
+        komoditas.photo.source = null
+        komoditas.data = ''
+
+        fileBumdes.isAttached = false
+        fileBumdes.fileImage = null
+        fileBumdes.source = null
+
+        fileKomoditas.isAttached = false
+        fileKomoditas.fileImage = null
+        fileKomoditas.source = null
+      } else {
+        this.isShowBumdes = true
       }
     }
   },
   methods: {
+    onSocialMediaListSelected () {
+      const elSocialMediaNone = document.getElementsByName('social-media-list-none')
+      if (elSocialMediaNone[0].checked) {
+        elSocialMediaNone[0].checked = false
+        this.properties.tentang_bumdes.sosial_media.data.shift()
+      }
+    },
+    onSocialMediaNoneSelected () {
+      const elSocialMediaSelected = document.querySelectorAll("input[name='social-media-list']")
+      const elSocialMediaNone = document.getElementsByName('social-media-list-none')
+      if (elSocialMediaNone[0].checked) {
+        elSocialMediaSelected.forEach((element) => {
+          element.checked = false
+        })
+        this.properties.tentang_bumdes.sosial_media.data = ['Tidak ada']
+      }
+    },
+    onPotencyListSelected () {
+      const elSocialMediaNone = document.getElementsByName('potency-list-none')
+      if (elSocialMediaNone[0].checked) {
+        elSocialMediaNone[0].checked = false
+        this.properties.potensi_desa.data.shift()
+      }
+    },
+    onPotencyNoneSelected () {
+      const elSocialMediaSelected = document.querySelectorAll("input[name='potency-list']")
+      const elSocialMediaNone = document.getElementsByName('potency-list-none')
+      if (elSocialMediaNone[0].checked) {
+        elSocialMediaSelected.forEach((element) => {
+          element.checked = false
+        })
+        this.properties.potensi_desa.data = ['Belum ada potensi']
+      }
+    },
     setFile (value) {
       const formData = new FormData()
       formData.append('file', value)
@@ -591,16 +715,15 @@ export default {
       }
     },
     onSubmit () {
-      if (!this.isShowPotency) {
-        this.isShowPotency = true
+      if (!this.isShowNextQuestionnaire) {
+        this.isShowNextQuestionnaire = true
       } else {
         this.$emit('onSubmit', this.properties)
       }
     },
     onPreviousPage () {
-      // @todo : change into vuex store
-      if (this.isShowPotency) {
-        this.isShowPotency = false
+      if (this.isShowNextQuestionnaire) {
+        this.isShowNextQuestionnaire = false
       } else {
         this.$emit('onPrev')
       }
@@ -612,4 +735,5 @@ export default {
 
 <style lang="postcss">
 @import './../Questionnaire.pcss';
+@import '~/assets/css/Custom-checkbox.pcss';
 </style>

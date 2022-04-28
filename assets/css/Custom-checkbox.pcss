@@ -1,0 +1,42 @@
+/* The custom-checkbox */
+.custom-checkbox {
+  @apply text-sm text-gray-800 cursor-pointer block relative pl-8 mb-3 select-none;
+}
+
+/* Hide the browser's default checkbox */
+.custom-checkbox input {
+  @apply absolute cursor-pointer opacity-0 h-0 w-0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  @apply absolute top-0 left-0 h-5 w-5 bg-gray-50 border border-gray-500 rounded-[4px];
+}
+
+/* On mouse-over */
+.custom-checkbox:hover input ~ .checkmark {
+  @apply border-green-700;
+}
+
+/* When the checkbox is checked */
+.custom-checkbox input:checked ~ .checkmark {
+  @apply bg-green-700 border-green-700;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  @apply absolute hidden content-close-quote;
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox input:checked ~ .checkmark:after {
+  @apply block;
+}
+
+/* Style the checkmark/indicator */
+.custom-checkbox .checkmark:after {
+  @apply left-1.5 top-0.5 w-1.5 h-2.75 border border-white border-t-0 border-r-[3px] border-b-[3px] border-l-0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
