@@ -34,13 +34,28 @@
           <p class="mb-3">
             Apakah desa tempat Bapak/Ibu tinggal dapat diakses oleh kendaraan?
           </p>
-          <jds-checkbox-group
-            v-model="fasilitas_desa.akses_kendaraan.data"
-            :options="optionsKendaraan"
-            value-key="value"
-            label-key="value"
-          />
-          <div class="grid grid-cols-5 mt-4">
+          <label v-for="(item, index) in optionsKendaraan" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="fasilitas_desa.akses_kendaraan.data"
+              type="checkbox"
+              name="vehicle-list"
+              :value="item.value"
+              @change="onVechicleListSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <label class="custom-checkbox">
+            Belum ada akses kendaraan
+            <input
+              type="checkbox"
+              name="vehicle-list-none"
+              value="Belum ada akses kendaraan"
+              @change="onVechicleListNoneSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <div v-show="isShowVehicleImage" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -111,7 +126,7 @@
             placeholder-key="value"
             name="radio-button-group-listrik"
           />
-          <div class="grid grid-cols-5 mt-4">
+          <div v-show="isShowElectrictImage" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -182,73 +197,75 @@
             placeholder-key="value"
             name="radio-button-group-seluler"
           />
-          <div class="grid grid-cols-5 mt-4">
-            <div class="registration__form-col-image">
-              <div
-                :class="{
-                  'registration__form__image': true,
-                  'registration__form__image--attached': files.seluler.isAttached
-                }"
-              >
-                <img
-                  v-if="files.seluler.source"
-                  class="registration__form__image--attached-uploaded"
-                  width="88"
-                  height="88"
-                  :src="files.seluler.source"
-                  alt="Foto Seluler"
+          <div v-show="isShowProviderImage">
+            <div class="grid grid-cols-5 mt-4">
+              <div class="registration__form-col-image">
+                <div
+                  :class="{
+                    'registration__form__image': true,
+                    'registration__form__image--attached': files.seluler.isAttached
+                  }"
                 >
-                <img
-                  v-else
-                  class="text-gray-500"
-                  height="22"
-                  width="22"
-                  src="@/assets/icons/IconNoImage.svg"
-                  alt="No Image"
-                >
+                  <img
+                    v-if="files.seluler.source"
+                    class="registration__form__image--attached-uploaded"
+                    width="88"
+                    height="88"
+                    :src="files.seluler.source"
+                    alt="Foto Seluler"
+                  >
+                  <img
+                    v-else
+                    class="text-gray-500"
+                    height="22"
+                    width="22"
+                    src="@/assets/icons/IconNoImage.svg"
+                    alt="No Image"
+                  >
+                </div>
+              </div>
+              <div class="registration__form-col-desc">
+                <div class="registration__form__subtitle">
+                  Unggah foto tiang telepon/ screenshoot handphone untuk mengetahui kualitas sinyal
+                </div>
+                <div class="registration__form__placeholder">
+                  File yang didukung adalah .jpg, .jpeg dan .png
+                </div>
+                <div class="registration__form__button">
+                  <button class="registration__form__button-btn" type="button" @click="$refs.seluler.click()">
+                    Unggah Foto
+                    <jds-icon class="ml-2" size="12px" name="plus-bold" />
+                  </button>
+                  <input
+                    ref="seluler"
+                    type="file"
+                    hidden="true"
+                    accept="image/png, image/jpeg, image/svg+xml"
+                    @change="onFileChange('seluler')"
+                  >
+                  <div v-if="files.seluler.fileImage" class="registration__form__filename">
+                    Filename: {{ files.seluler.fileImage.get('file').name }}
+                  </div>
+                  <div v-else-if="files.seluler.uploadErrorMessage" class="registration__form__filename-error">
+                    {{ files.seluler.uploadErrorMessage }}
+                  </div>
+                  <div v-else class="registration__form__filename">
+                    Belum ada file terpilih.
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="registration__form-col-desc">
-              <div class="registration__form__subtitle">
-                Unggah foto tiang telepon/ screenshoot handphone untuk mengetahui kualitas sinyal
-              </div>
-              <div class="registration__form__placeholder">
-                File yang didukung adalah .jpg, .jpeg dan .png
-              </div>
-              <div class="registration__form__button">
-                <button class="registration__form__button-btn" type="button" @click="$refs.seluler.click()">
-                  Unggah Foto
-                  <jds-icon class="ml-2" size="12px" name="plus-bold" />
-                </button>
-                <input
-                  ref="seluler"
-                  type="file"
-                  hidden="true"
-                  accept="image/png, image/jpeg, image/svg+xml"
-                  @change="onFileChange('seluler')"
-                >
-                <div v-if="files.seluler.fileImage" class="registration__form__filename">
-                  Filename: {{ files.seluler.fileImage.get('file').name }}
-                </div>
-                <div v-else-if="files.seluler.uploadErrorMessage" class="registration__form__filename-error">
-                  {{ files.seluler.uploadErrorMessage }}
-                </div>
-                <div v-else class="registration__form__filename">
-                  Belum ada file terpilih.
-                </div>
-              </div>
-            </div>
+            <p class="mb-3">
+              Tuliskan daftar penyedia layanan telekomunikasi yang ada di sekitar anda (Telkomsel/XL/Tri/dan lain-lain)
+            </p>
+            <textarea
+              v-model="fasilitas_desa.jaringan_telepon.operator"
+              class="form-text-area"
+              name="Daftar layanan telekomunikasi"
+              placeholder="Masukkan daftar disini"
+              rows="5"
+            />
           </div>
-          <p class="mb-3">
-            Tuliskan daftar penyedia layanan telekomunikasi yang ada di sekitar anda (Telkomsel/XL/Tri/dan lain-lain)
-          </p>
-          <textarea
-            v-model="fasilitas_desa.jaringan_telepon.operator"
-            class="form-text-area"
-            name="Daftar layanan telekomunikasi"
-            placeholder="Masukkan daftar disini"
-            rows="5"
-          />
         </div>
 
         <div class="registration__form-content--container">
@@ -263,73 +280,75 @@
             placeholder-key="value"
             name="radio-button-group-internet"
           />
-          <div class="grid grid-cols-5 mt-4">
-            <div class="registration__form-col-image">
-              <div
-                :class="{
-                  'registration__form__image': true,
-                  'registration__form__image--attached': files.internet.isAttached
-                }"
-              >
-                <img
-                  v-if="files.internet.source"
-                  class="registration__form__image--attached-uploaded"
-                  width="88"
-                  height="88"
-                  :src="files.internet.source"
-                  alt="Foto Jaringan Internet"
+          <div v-show="isShowInternetImage">
+            <div class="grid grid-cols-5 mt-4">
+              <div class="registration__form-col-image">
+                <div
+                  :class="{
+                    'registration__form__image': true,
+                    'registration__form__image--attached': files.internet.isAttached
+                  }"
                 >
-                <img
-                  v-else
-                  class="text-gray-500"
-                  height="22"
-                  width="22"
-                  src="@/assets/icons/IconNoImage.svg"
-                  alt="No Image"
-                >
+                  <img
+                    v-if="files.internet.source"
+                    class="registration__form__image--attached-uploaded"
+                    width="88"
+                    height="88"
+                    :src="files.internet.source"
+                    alt="Foto Jaringan Internet"
+                  >
+                  <img
+                    v-else
+                    class="text-gray-500"
+                    height="22"
+                    width="22"
+                    src="@/assets/icons/IconNoImage.svg"
+                    alt="No Image"
+                  >
+                </div>
+              </div>
+              <div class="registration__form-col-desc">
+                <div class="registration__form__subtitle">
+                  Unggah foto modem/wifi/screenshoot handphone untuk mengetahui kualitas data (LTE/3G)
+                </div>
+                <div class="registration__form__placeholder">
+                  File yang didukung adalah .jpg, .jpeg dan .png
+                </div>
+                <div class="registration__form__button">
+                  <button class="registration__form__button-btn" type="button" @click="$refs.internet.click()">
+                    Unggah Foto
+                    <jds-icon class="ml-2" size="12px" name="plus-bold" />
+                  </button>
+                  <input
+                    ref="internet"
+                    type="file"
+                    hidden="true"
+                    accept="image/png, image/jpeg, image/svg+xml"
+                    @change="onFileChange('internet')"
+                  >
+                  <div v-if="files.internet.fileImage" class="registration__form__filename">
+                    Filename: {{ files.internet.fileImage.get('file').name }}
+                  </div>
+                  <div v-else-if="files.internet.uploadErrorMessage" class="registration__form__filename-error">
+                    {{ files.internet.uploadErrorMessage }}
+                  </div>
+                  <div v-else class="registration__form__filename">
+                    Belum ada file terpilih.
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="registration__form-col-desc">
-              <div class="registration__form__subtitle">
-                Unggah foto modem/wifi/screenshoot handphone untuk mengetahui kualitas data (LTE/3G)
-              </div>
-              <div class="registration__form__placeholder">
-                File yang didukung adalah .jpg, .jpeg dan .png
-              </div>
-              <div class="registration__form__button">
-                <button class="registration__form__button-btn" type="button" @click="$refs.internet.click()">
-                  Unggah Foto
-                  <jds-icon class="ml-2" size="12px" name="plus-bold" />
-                </button>
-                <input
-                  ref="internet"
-                  type="file"
-                  hidden="true"
-                  accept="image/png, image/jpeg, image/svg+xml"
-                  @change="onFileChange('internet')"
-                >
-                <div v-if="files.internet.fileImage" class="registration__form__filename">
-                  Filename: {{ files.internet.fileImage.get('file').name }}
-                </div>
-                <div v-else-if="files.internet.uploadErrorMessage" class="registration__form__filename-error">
-                  {{ files.internet.uploadErrorMessage }}
-                </div>
-                <div v-else class="registration__form__filename">
-                  Belum ada file terpilih.
-                </div>
-              </div>
-            </div>
+            <p class="mb-3">
+              Tuliskan daftar website atau aplikasi yang sering diakses
+            </p>
+            <textarea
+              v-model="fasilitas_desa.jaringan_internet.website"
+              class="form-text-area"
+              name="Daftar website / aplikasi"
+              placeholder="Masukkan daftar disini"
+              rows="5"
+            />
           </div>
-          <p class="mb-3">
-            Tuliskan daftar website atau aplikasi yang sering diakses
-          </p>
-          <textarea
-            v-model="fasilitas_desa.jaringan_internet.website"
-            class="form-text-area"
-            name="Daftar website / aplikasi"
-            placeholder="Masukkan daftar disini"
-            rows="5"
-          />
         </div>
       </div>
 
@@ -420,19 +439,83 @@ export default {
       },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalInfoVillage: false,
-      villages
+      villages,
+      isShowVehicleImage: false,
+      isShowElectrictImage: false,
+      isShowProviderImage: false,
+      isShowInternetImage: false
     }
   },
   watch: {
+    'fasilitas_desa.akses_kendaraan.data' () {
+      if (this.fasilitas_desa.akses_kendaraan.data.length === 0) {
+        this.files.kendaraan.isAttached = false
+        this.files.kendaraan.fileImage = null
+        this.files.kendaraan.source = null
+        this.files.kendaraan.uploadErrorMessage = null
+        this.isShowVehicleImage = false
+      } else {
+        this.isShowVehicleImage = true
+      }
+    },
+    'fasilitas_desa.suplai_listrik.data' () {
+      if (this.fasilitas_desa.suplai_listrik.data === 'Belum ada listrik') {
+        this.files.listrik.isAttached = false
+        this.files.listrik.fileImage = null
+        this.files.listrik.source = null
+        this.files.listrik.uploadErrorMessage = null
+        this.isShowElectrictImage = false
+      } else {
+        this.isShowElectrictImage = true
+      }
+    },
+    'fasilitas_desa.jaringan_telepon.data' () {
+      if (this.fasilitas_desa.jaringan_telepon.data === 'Belum ada jaringan telepon seluler') {
+        this.files.seluler.isAttached = false
+        this.files.seluler.fileImage = null
+        this.files.seluler.source = null
+        this.files.seluler.uploadErrorMessage = null
+        this.fasilitas_desa.jaringan_telepon.operator = ''
+        this.isShowProviderImage = false
+      } else {
+        this.isShowProviderImage = true
+      }
+    },
     'fasilitas_desa.jaringan_internet.data' () {
       if (this.fasilitas_desa.jaringan_internet.data === 'Belum ada jaringan internet') {
+        this.files.internet.isAttached = false
+        this.files.internet.fileImage = null
+        this.files.internet.source = null
+        this.files.internet.uploadErrorMessage = null
+        this.fasilitas_desa.jaringan_internet.website = ''
+        this.isShowInternetImage = false
         this.$emit('onClickLevel', false)
       } else {
+        this.isShowInternetImage = true
         this.$emit('onClickLevel', true)
       }
     }
   },
   methods: {
+    onVechicleListSelected () {
+      const elVehicleNone = document.getElementsByName('vehicle-list-none')
+      if (elVehicleNone[0].checked) {
+        elVehicleNone[0].checked = false
+        this.fasilitas_desa.akses_kendaraan.data.shift()
+      }
+    },
+    onVechicleListNoneSelected () {
+      const elVehicleSelected = document.querySelectorAll("input[name='vehicle-list']")
+      const elVehicleNone = document.getElementsByName('vehicle-list-none')
+      if (elVehicleNone[0].checked) {
+        elVehicleSelected.forEach((element) => {
+          element.checked = false
+        })
+        this.fasilitas_desa.akses_kendaraan.data = ['Belum ada akses kendaraan']
+      } else {
+        this.fasilitas_desa.akses_kendaraan.data = []
+      }
+    },
     onClickInfo () {
       this.showModalInfoVillage = true
     },
@@ -621,4 +704,5 @@ export default {
 
 <style lang="postcss">
 @import './../Questionnaire.pcss';
+@import '~/assets/css/Custom-checkbox.pcss';
 </style>
