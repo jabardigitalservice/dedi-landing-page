@@ -240,6 +240,54 @@
             </div>
           </div>
         </div>
+
+        <div v-show="isShowBumdes" class="registration__form-content--container">
+          <p class="mb-3">
+            Apakah komoditas yang dikelola/produksi masih aktif pada BUMDes Bapak/Ibu?
+          </p>
+          <jds-radio-button-group
+            :items="optionsKomoditas"
+            value-key="value"
+            placeholder-key="value"
+            name="radio-button-group-komoditas"
+          />
+        </div>
+
+        <div v-show="isShowBumdes" class="registration__form-content--container">
+          <p class="mb-3">
+            Jika aktif apakah pendistribusian produk BUMDes sudah tergabung pada e-commerce (penjualan sistem elektronik)?
+          </p>
+          <jds-radio-button-group
+            :items="optionsDistribusi"
+            value-key="value"
+            placeholder-key="value"
+            name="radio-button-group-distribusi"
+          />
+        </div>
+
+        <div v-show="isShowBumdes" class="registration__form-content--container">
+          <p class="mb-3">
+            Jika sudah, platform e-commerce apa yang telah bergabung?
+          </p>
+          <jds-checkbox-group
+            :options="optionsECommerce"
+            value-key="value"
+            label-key="value"
+            name="radio-button-group-e-commerce"
+          />
+        </div>
+
+        <div v-show="isShowBumdes" class="registration__form-content--container">
+          <p class="mb-3">
+            Apakah desa Bapak/Ibu sudah terjangkau kurir logistik?
+          </p>
+          <jds-radio-button-group
+            :items="optionsLogistik"
+            value-key="value"
+            placeholder-key="value"
+            name="radio-button-group-logistik"
+          />
+        </div>
       </div>
 
       <div v-show="isShowNextQuestionnaire" class="registration__form-content">
@@ -353,6 +401,10 @@
 import {
   optionsSocialMedia,
   optionsBumdes,
+  optionsKomoditas,
+  optionsDistribusi,
+  optionsECommerce,
+  optionsLogistik,
   optionsPotency,
   villages
 } from '@/constants/questionnaire.js'
@@ -361,6 +413,10 @@ export default {
     return {
       optionsSocialMedia,
       optionsBumdes,
+      optionsKomoditas,
+      optionsDistribusi,
+      optionsECommerce,
+      optionsLogistik,
       optionsPotency,
       page: 1,
       files: {
