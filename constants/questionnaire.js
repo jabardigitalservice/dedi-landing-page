@@ -7,9 +7,6 @@ export const optionsKendaraan = [
   },
   {
     value: 'Kendaraan Umum (Bus/Elf)'
-  },
-  {
-    value: 'Belum ada akses kendaraan'
   }
 ]
 
