@@ -9,13 +9,34 @@
           <p class="mb-3">
             Komunitas apa saja yang saat ini ada di Desa Bapak/Ibu? (Boleh pilih dari satu)
           </p>
-          <jds-checkbox-group
+          <label v-for="(item, index) in communities" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="literasi_digital.komunitas.data"
+              type="checkbox"
+              name="community-list"
+              :value="item.value"
+              @change="onCommunityListSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <label class="custom-checkbox">
+            Tidak ada komunitas
+            <input
+              type="checkbox"
+              name="community-list-none"
+              value="Tidak ada komunitas"
+              @change="onCommunityListNoneSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <!-- <jds-checkbox-group
             v-model="literasi_digital.komunitas.data"
             :options="communities"
             value-key="value"
             label-key="value"
-          />
-          <div class="grid grid-cols-5 mt-4">
+          /> -->
+          <div v-show="isShowTrainingImage" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -88,7 +109,7 @@
           />
         </div>
 
-        <div class="registration__form-content--container">
+        <div v-show="isShowCommunityImage" class="registration__form-content--container">
           <p class="mb-3">
             Pelatihan apa saja yang pernah diberikan?
           </p>
@@ -213,19 +234,49 @@ export default {
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalLevelDesa: false,
       showModalInfoVillage: false,
-      villages
+      villages,
+      isShowTrainingImage: false,
+      isShowCommunityImage: false
     }
   },
   watch: {
+    'literasi_digital.komunitas.data' () {
+      if (this.literasi_digital.komunitas.data.length === 0 || this.literasi_digital.komunitas.data.includes('Tidak ada komunitas')) {
+        this.isShowTrainingImage = false
+      } else {
+        this.isShowTrainingImage = true
+      }
+    },
     'literasi_digital.pelatihan.data' () {
       if (this.literasi_digital.pelatihan.data === 'Belum pernah') {
+        this.isShowCommunityImage = false
         this.$emit('onClickLevel', false)
       } else {
+        this.isShowCommunityImage = true
         this.$emit('onClickLevel', true)
       }
     }
   },
   methods: {
+    onCommunityListSelected () {
+      const elCommunityNone = document.getElementsByName('community-list-none')
+      if (elCommunityNone[0].checked) {
+        elCommunityNone[0].checked = false
+        this.literasi_digital.komunitas.data.shift()
+      }
+    },
+    onCommunityListNoneSelected () {
+      const elComunnitySelected = document.querySelectorAll("input[name='comunnity-list']")
+      const elComunnityNone = document.getElementsByName('community-list-none')
+      if (elComunnityNone[0].checked) {
+        elComunnitySelected.forEach((element) => {
+          element.checked = false
+        })
+        this.literasi_digital.komunitas.data = ['Tidak ada komunitas']
+      } else {
+        this.literasi_digital.komunitas.data = []
+      }
+    },
     setFile (value) {
       const formData = new FormData()
       formData.append('file', value)
@@ -337,4 +388,5 @@ export default {
 
 <style lang="postcss">
 @import './../Questionnaire.pcss';
+@import '~/assets/css/Custom-checkbox.pcss';
 </style>

@@ -81,9 +81,6 @@ export const communities = [
   },
   {
     value: 'Komunitas Teknologi Digital'
-  },
-  {
-    value: 'Tidak ada komunitas'
   }
 ]
 
