@@ -30,12 +30,6 @@
             >
             <span class="checkmark" />
           </label>
-          <!-- <jds-checkbox-group
-            v-model="literasi_digital.komunitas.data"
-            :options="communities"
-            value-key="value"
-            label-key="value"
-          /> -->
           <div v-show="isShowTrainingImage" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
