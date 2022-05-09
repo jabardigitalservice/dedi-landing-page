@@ -449,47 +449,79 @@ export default {
   watch: {
     'fasilitas_desa.akses_kendaraan.data' () {
       if (this.fasilitas_desa.akses_kendaraan.data.length === 0) {
-        this.files.kendaraan.isAttached = false
-        this.files.kendaraan.fileImage = null
-        this.files.kendaraan.source = null
-        this.files.kendaraan.uploadErrorMessage = null
         this.isShowVehicleImage = false
+
+        const { kendaraan } = this.files
+        const { akses_kendaraan: accessVehicle } = this.fasilitas_desa
+
+        kendaraan.isAttached = false
+        kendaraan.fileImage = null
+        kendaraan.source = null
+        kendaraan.uploadErrorMessage = null
+
+        accessVehicle.photo.path = null
+        accessVehicle.photo.original_name = null
+        accessVehicle.photo.source = null
       } else {
         this.isShowVehicleImage = true
       }
     },
     'fasilitas_desa.suplai_listrik.data' () {
       if (this.fasilitas_desa.suplai_listrik.data === 'Belum ada listrik') {
-        this.files.listrik.isAttached = false
-        this.files.listrik.fileImage = null
-        this.files.listrik.source = null
-        this.files.listrik.uploadErrorMessage = null
         this.isShowElectrictImage = false
+
+        const { listrik } = this.files
+        const { suplai_listrik: electricity } = this.fasilitas_desa
+
+        listrik.isAttached = false
+        listrik.fileImage = null
+        listrik.source = null
+        listrik.uploadErrorMessage = null
+
+        electricity.photo.path = null
+        electricity.photo.original_name = null
+        electricity.photo.source = null
       } else {
         this.isShowElectrictImage = true
       }
     },
     'fasilitas_desa.jaringan_telepon.data' () {
       if (this.fasilitas_desa.jaringan_telepon.data === 'Belum ada jaringan telepon seluler') {
-        this.files.seluler.isAttached = false
-        this.files.seluler.fileImage = null
-        this.files.seluler.source = null
-        this.files.seluler.uploadErrorMessage = null
-        this.fasilitas_desa.jaringan_telepon.operator = ''
         this.isShowProviderImage = false
+
+        const { seluler } = this.files
+        const { jaringan_telepon: phoneNetwork } = this.fasilitas_desa
+
+        seluler.isAttached = false
+        seluler.fileImage = null
+        seluler.source = null
+        seluler.uploadErrorMessage = null
+
+        phoneNetwork.operator = ''
+        phoneNetwork.photo.path = null
+        phoneNetwork.photo.original_name = null
+        phoneNetwork.photo.source = null
       } else {
         this.isShowProviderImage = true
       }
     },
     'fasilitas_desa.jaringan_internet.data' () {
       if (this.fasilitas_desa.jaringan_internet.data === 'Belum ada jaringan internet') {
-        this.files.internet.isAttached = false
-        this.files.internet.fileImage = null
-        this.files.internet.source = null
-        this.files.internet.uploadErrorMessage = null
-        this.fasilitas_desa.jaringan_internet.website = ''
         this.isShowInternetImage = false
         this.$emit('onClickLevel', false)
+
+        const { internet } = this.files
+        const { jaringan_internet: interNetwork } = this.fasilitas_desa
+
+        internet.isAttached = false
+        internet.fileImage = null
+        internet.source = null
+        internet.uploadErrorMessage = null
+
+        interNetwork.website = ''
+        interNetwork.photo.path = null
+        interNetwork.photo.original_name = null
+        interNetwork.photo.source = null
       } else {
         this.isShowInternetImage = true
         this.$emit('onClickLevel', true)
