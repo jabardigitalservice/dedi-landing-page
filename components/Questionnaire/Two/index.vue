@@ -216,13 +216,13 @@ export default {
           }
         },
         pelatihan: {
-          data: '',
+          data: null,
           photo: {
             path: null,
             original_name: null,
             source: null
           },
-          pelatihan: ''
+          pelatihan: null
         }
       },
       uploadFileSecret: this.$config.apiSecretUpload,
@@ -266,7 +266,7 @@ export default {
         training.source = null
         training.uploadErrorMessage = null
 
-        pelatihan.pelatihan = ''
+        pelatihan.pelatihan = null
         pelatihan.photo.path = null
         pelatihan.photo.original_name = null
         pelatihan.photo.source = null

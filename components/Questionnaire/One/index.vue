@@ -411,7 +411,7 @@ export default {
           }
         },
         suplai_listrik: {
-          data: '',
+          data: null,
           photo: {
             path: null,
             original_name: null,
@@ -419,22 +419,22 @@ export default {
           }
         },
         jaringan_telepon: {
-          data: '',
+          data: null,
           photo: {
             path: null,
             original_name: null,
             source: null
           },
-          operator: ''
+          operator: null
         },
         jaringan_internet: {
-          data: '',
+          data: null,
           photo: {
             path: null,
             original_name: null,
             source: null
           },
-          website: ''
+          website: null
         }
       },
       uploadFileSecret: this.$config.apiSecretUpload,
@@ -497,7 +497,7 @@ export default {
         seluler.source = null
         seluler.uploadErrorMessage = null
 
-        phoneNetwork.operator = ''
+        phoneNetwork.operator = null
         phoneNetwork.photo.path = null
         phoneNetwork.photo.original_name = null
         phoneNetwork.photo.source = null
@@ -518,7 +518,7 @@ export default {
         internet.source = null
         internet.uploadErrorMessage = null
 
-        interNetwork.website = ''
+        interNetwork.website = null
         interNetwork.photo.path = null
         interNetwork.photo.original_name = null
         interNetwork.photo.source = null
