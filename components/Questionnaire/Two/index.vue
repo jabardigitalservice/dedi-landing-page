@@ -237,6 +237,18 @@ export default {
     'literasi_digital.komunitas.data' () {
       if (this.literasi_digital.komunitas.data.length === 0 || this.literasi_digital.komunitas.data.includes('Tidak ada komunitas')) {
         this.isShowTrainingImage = false
+
+        const { komunitas: community } = this.files
+        const { komunitas } = this.literasi_digital
+
+        community.isAttached = false
+        community.fileImage = null
+        community.source = null
+        community.uploadErrorMessage = null
+
+        komunitas.photo.path = null
+        komunitas.photo.original_name = null
+        komunitas.photo.source = null
       } else {
         this.isShowTrainingImage = true
       }
@@ -245,6 +257,19 @@ export default {
       if (this.literasi_digital.pelatihan.data === 'Belum pernah') {
         this.isShowCommunityImage = false
         this.$emit('onClickLevel', false)
+
+        const { pelatihan: training } = this.files
+        const { pelatihan } = this.literasi_digital
+
+        training.isAttached = false
+        training.fileImage = null
+        training.source = null
+        training.uploadErrorMessage = null
+
+        pelatihan.pelatihan = ''
+        pelatihan.photo.path = null
+        pelatihan.photo.original_name = null
+        pelatihan.photo.source = null
       } else {
         this.isShowCommunityImage = true
         this.$emit('onClickLevel', true)
