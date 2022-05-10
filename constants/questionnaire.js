@@ -7,9 +7,6 @@ export const optionsKendaraan = [
   },
   {
     value: 'Kendaraan Umum (Bus/Elf)'
-  },
-  {
-    value: 'Belum ada akses kendaraan'
   }
 ]
 
@@ -84,9 +81,6 @@ export const communities = [
   },
   {
     value: 'Komunitas Teknologi Digital'
-  },
-  {
-    value: 'Tidak ada komunitas'
   }
 ]
 

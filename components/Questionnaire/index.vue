@@ -35,7 +35,7 @@ export default {
               }
             },
             suplai_listrik: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
@@ -43,22 +43,22 @@ export default {
               }
             },
             jaringan_telepon: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
                 source: null
               },
-              operator: ''
+              operator: null
             },
             jaringan_internet: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
                 source: null
               },
-              website: ''
+              website: null
             }
           },
           literasi_digital: {
@@ -71,13 +71,13 @@ export default {
               }
             },
             pelatihan: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
                 source: null
               },
-              pelatihan: ''
+              pelatihan: null
             }
           },
           tentang_bumdes: {
@@ -90,16 +90,16 @@ export default {
               }
             },
             bumdes: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
                 source: null
               },
-              bumdes: ''
+              bumdes: null
             },
             komoditas: {
-              data: '',
+              data: null,
               photo: {
                 path: null,
                 original_name: null,
@@ -108,8 +108,8 @@ export default {
             }
           },
           potensi_desa: {
-            data: '',
-            potensi_dapat_dikembangkan: '',
+            data: null,
+            potensi_dapat_dikembangkan: null,
             photo: {
               path: null,
               original_name: null,
