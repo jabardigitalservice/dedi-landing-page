@@ -271,12 +271,24 @@
           <p class="mb-3">
             Jika sudah, platform e-commerce apa yang telah bergabung?
           </p>
-          <jds-checkbox-group
-            v-model="properties.tentang_bumdes.ecommerce.data"
-            :options="optionsECommerce"
-            value-key="value"
-            label-key="value"
-            name="radio-button-group-e-commerce"
+          <label v-for="(item, index) in optionsECommerce" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="properties.tentang_bumdes.ecommerce.data"
+              type="checkbox"
+              name="e-commerce-list"
+              :value="item.value"
+              @change="onECommerceListSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <textarea
+            v-show="isShowOtherECommerce"
+            v-model="properties.tentang_bumdes.ecommerce.ecommerce_lainnya"
+            class="form-text-area"
+            name="E-Commerce Lainnya"
+            placeholder="Masukkan E-Commerce lainnya disini"
+            rows="2"
           />
         </div>
 
@@ -493,7 +505,7 @@ export default {
           },
           ecommerce: {
             data: [],
-            ecommerce: null,
+            ecommerce_lainnya: null,
             distribusi: null
           },
           logistik: null
@@ -515,6 +527,7 @@ export default {
       isShowPotency: false,
       isShowUploadSocialMedia: false,
       isShowBumdes: false,
+      isShowOtherECommerce: false,
       isShowOtherPotency: false,
       socialMediaNoneOption: [],
       villages
@@ -603,6 +616,18 @@ export default {
         })
         this.properties.tentang_bumdes.sosial_media.data = ['Tidak ada']
       }
+    },
+    onECommerceListSelected () {
+      const elECommerceList = document.querySelectorAll("input[name='e-commerce-list']")
+
+      elECommerceList.forEach((element) => {
+        if (element.value === 'Lainnya' && element.checked) {
+          this.isShowOtherECommerce = true
+        } else {
+          this.isShowOtherECommerce = false
+          this.properties.tentang_bumdes.ecommerce.ecommerce_lainnya = null
+        }
+      })
     },
     onPotencyListSelected () {
       const elSocialMediaList = document.querySelectorAll("input[name='potency-list']")

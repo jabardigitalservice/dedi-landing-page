@@ -109,7 +109,7 @@ export default {
             },
             ecommerce: {
               data: [],
-              ecommerce: null,
+              ecommerce_lainnya: null,
               distribusi: null
             },
             logistik: null
