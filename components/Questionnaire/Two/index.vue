@@ -9,13 +9,28 @@
           <p class="mb-3">
             Komunitas apa saja yang saat ini ada di Desa Bapak/Ibu? (Boleh pilih dari satu)
           </p>
-          <jds-checkbox-group
-            v-model="literasi_digital.komunitas.data"
-            :options="communities"
-            value-key="value"
-            label-key="value"
-          />
-          <div class="grid grid-cols-5 mt-4">
+          <label v-for="(item, index) in communities" :key="index" class="custom-checkbox">
+            {{ item.value }}
+            <input
+              v-model="literasi_digital.komunitas.data"
+              type="checkbox"
+              name="community-list"
+              :value="item.value"
+              @change="onCommunityListSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <label class="custom-checkbox">
+            Tidak ada komunitas
+            <input
+              type="checkbox"
+              name="community-list-none"
+              value="Tidak ada komunitas"
+              @change="onCommunityListNoneSelected"
+            >
+            <span class="checkmark" />
+          </label>
+          <div v-show="isShowTrainingImage" class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
                 :class="{
@@ -88,7 +103,7 @@
           />
         </div>
 
-        <div class="registration__form-content--container">
+        <div v-show="isShowCommunityImage" class="registration__form-content--container">
           <p class="mb-3">
             Pelatihan apa saja yang pernah diberikan?
           </p>
@@ -201,31 +216,86 @@ export default {
           }
         },
         pelatihan: {
-          data: '',
+          data: null,
           photo: {
             path: null,
             original_name: null,
             source: null
           },
-          pelatihan: ''
+          pelatihan: null
         }
       },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalLevelDesa: false,
       showModalInfoVillage: false,
-      villages
+      villages,
+      isShowTrainingImage: false,
+      isShowCommunityImage: false
     }
   },
   watch: {
+    'literasi_digital.komunitas.data' () {
+      if (this.literasi_digital.komunitas.data.length === 0 || this.literasi_digital.komunitas.data.includes('Tidak ada komunitas')) {
+        this.isShowTrainingImage = false
+
+        const { komunitas: community } = this.files
+        const { komunitas } = this.literasi_digital
+
+        community.isAttached = false
+        community.fileImage = null
+        community.source = null
+        community.uploadErrorMessage = null
+
+        komunitas.photo.path = null
+        komunitas.photo.original_name = null
+        komunitas.photo.source = null
+      } else {
+        this.isShowTrainingImage = true
+      }
+    },
     'literasi_digital.pelatihan.data' () {
       if (this.literasi_digital.pelatihan.data === 'Belum pernah') {
+        this.isShowCommunityImage = false
         this.$emit('onClickLevel', false)
+
+        const { pelatihan: training } = this.files
+        const { pelatihan } = this.literasi_digital
+
+        training.isAttached = false
+        training.fileImage = null
+        training.source = null
+        training.uploadErrorMessage = null
+
+        pelatihan.pelatihan = null
+        pelatihan.photo.path = null
+        pelatihan.photo.original_name = null
+        pelatihan.photo.source = null
       } else {
+        this.isShowCommunityImage = true
         this.$emit('onClickLevel', true)
       }
     }
   },
   methods: {
+    onCommunityListSelected () {
+      const elCommunityNone = document.getElementsByName('community-list-none')
+      if (elCommunityNone[0].checked) {
+        elCommunityNone[0].checked = false
+        this.literasi_digital.komunitas.data.shift()
+      }
+    },
+    onCommunityListNoneSelected () {
+      const elComunnitySelected = document.querySelectorAll("input[name='comunnity-list']")
+      const elComunnityNone = document.getElementsByName('community-list-none')
+      if (elComunnityNone[0].checked) {
+        elComunnitySelected.forEach((element) => {
+          element.checked = false
+        })
+        this.literasi_digital.komunitas.data = ['Tidak ada komunitas']
+      } else {
+        this.literasi_digital.komunitas.data = []
+      }
+    },
     setFile (value) {
       const formData = new FormData()
       formData.append('file', value)
@@ -337,4 +407,5 @@ export default {
 
 <style lang="postcss">
 @import './../Questionnaire.pcss';
+@import '~/assets/css/Custom-checkbox.pcss';
 </style>
