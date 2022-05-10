@@ -146,3 +146,45 @@ export const optionsPotency = [
     value: 'Lainnya'
   }
 ]
+
+export const optionsKomoditas = [
+  {
+    value: 'Ya, masih aktif'
+  },
+  {
+    value: 'Tidak, saat ini sudah tidak aktif'
+  }
+]
+
+export const optionsDistribusi = [
+  {
+    value: 'Ya, sudah tergabung dengan e-commerce'
+  },
+  {
+    value: 'Tidak, saat ini belum tergabung dengan e-commerce'
+  }
+]
+
+export const optionsECommerce = [
+  {
+    value: 'Shopee'
+  },
+  {
+    value: 'Tokopedia'
+  },
+  {
+    value: 'Lazada'
+  },
+  {
+    value: 'Lainnya'
+  }
+]
+
+export const optionsLogistik = [
+  {
+    value: 'Ya, sudah dapat dijangkau kurir logistik'
+  },
+  {
+    value: 'Tidak, saat ini belum dapat dijangkau kurir logistik'
+  }
+]
