@@ -104,8 +104,15 @@ export default {
                 path: null,
                 original_name: null,
                 source: null
-              }
-            }
+              },
+              produktivitas: null
+            },
+            ecommerce: {
+              data: [],
+              ecommerce: null,
+              distribusi: null
+            },
+            logistik: null
           },
           potensi_desa: {
             data: '',

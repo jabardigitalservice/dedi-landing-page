@@ -246,6 +246,7 @@
             Apakah komoditas yang dikelola/produksi masih aktif pada BUMDes Bapak/Ibu?
           </p>
           <jds-radio-button-group
+            v-model="properties.tentang_bumdes.komoditas.produktivitas"
             :items="optionsKomoditas"
             value-key="value"
             placeholder-key="value"
@@ -258,6 +259,7 @@
             Jika aktif apakah pendistribusian produk BUMDes sudah tergabung pada e-commerce (penjualan sistem elektronik)?
           </p>
           <jds-radio-button-group
+            v-model="properties.tentang_bumdes.ecommerce.distribusi"
             :items="optionsDistribusi"
             value-key="value"
             placeholder-key="value"
@@ -270,6 +272,7 @@
             Jika sudah, platform e-commerce apa yang telah bergabung?
           </p>
           <jds-checkbox-group
+            v-model="properties.tentang_bumdes.ecommerce.data"
             :options="optionsECommerce"
             value-key="value"
             label-key="value"
@@ -282,6 +285,7 @@
             Apakah desa Bapak/Ibu sudah terjangkau kurir logistik?
           </p>
           <jds-radio-button-group
+            v-model="properties.tentang_bumdes.logistik"
             :items="optionsLogistik"
             value-key="value"
             placeholder-key="value"
@@ -470,22 +474,29 @@ export default {
             }
           },
           bumdes: {
-            data: '',
+            data: null,
             photo: {
               path: null,
               original_name: null,
               source: null
             },
-            bumdes: ''
+            bumdes: null
           },
           komoditas: {
-            data: '',
+            data: null,
             photo: {
               path: null,
               original_name: null,
               source: null
-            }
-          }
+            },
+            produktivitas: null
+          },
+          ecommerce: {
+            data: [],
+            ecommerce: null,
+            distribusi: null
+          },
+          logistik: null
         },
         potensi_desa: {
           data: [],
