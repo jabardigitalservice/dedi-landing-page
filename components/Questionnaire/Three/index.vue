@@ -295,6 +295,12 @@
           <p class="mb-3">
             Apakah desa tempat Bapak/Ibu tinggal memiliki potensi yang dapat dikembangkan?
           </p>
+          <div class="custom-info-warning">
+            <jds-icon class="custom-info-warning__icon" name="warning" size="sm" />
+            <div class="custom-info-warning__text">
+              Pilih maksimal <strong>3 potensi</strong> yang menurut anda paling unggul di desa anda.
+            </div>
+          </div>
           <label class="custom-checkbox">
             Belum ada potensi
             <input
@@ -316,6 +322,14 @@
             >
             <span class="checkmark" />
           </label>
+          <textarea
+            v-show="isShowOtherPotency"
+            v-model="properties.potensi_desa.potensi_lainnya"
+            class="form-text-area"
+            name="Potensi Lainnya"
+            placeholder="Masukkan potensi lainnya disini"
+            rows="4"
+          />
         </div>
 
         <div v-show="isShowPotency" class="registration__form-content--container">
@@ -475,7 +489,8 @@ export default {
         },
         potensi_desa: {
           data: [],
-          potensi_dapat_dikembangkan: '',
+          potensi_lainnya: null,
+          potensi_dapat_dikembangkan: null,
           photo: {
             path: null,
             original_name: null,
@@ -489,6 +504,7 @@ export default {
       isShowPotency: false,
       isShowUploadSocialMedia: false,
       isShowBumdes: false,
+      isShowOtherPotency: false,
       socialMediaNoneOption: [],
       villages
     }
@@ -578,11 +594,29 @@ export default {
       }
     },
     onPotencyListSelected () {
+      const elSocialMediaList = document.querySelectorAll("input[name='potency-list']")
+      const elSocialMediaChecked = document.querySelectorAll("input[name='potency-list']:checked")
       const elSocialMediaNone = document.getElementsByName('potency-list-none')
       if (elSocialMediaNone[0].checked) {
         elSocialMediaNone[0].checked = false
         this.properties.potensi_desa.data.shift()
       }
+
+      if (elSocialMediaChecked.length > 3) {
+        this.$store.dispatch('toast/showToast', {
+          type: 'error',
+          message: 'Harap pilih maksimal 3 potensi'
+        })
+      }
+
+      elSocialMediaList.forEach((element) => {
+        if (element.value === 'Lainnya' && element.checked) {
+          this.isShowOtherPotency = true
+        } else {
+          this.isShowOtherPotency = false
+          this.properties.potensi_desa.potensi_lainnya = null
+        }
+      })
     },
     onPotencyNoneSelected () {
       const elSocialMediaSelected = document.querySelectorAll("input[name='potency-list']")
@@ -792,4 +826,16 @@ export default {
 <style lang="postcss">
 @import './../Questionnaire.pcss';
 @import '~/assets/css/Custom-checkbox.pcss';
+
+.custom-info-warning {
+  @apply flex mb-4 px-4 py-2 bg-yellow-50 border border-yellow-800 rounded-lg w-max;
+
+  &__icon {
+    @apply text-yellow-800;
+  }
+
+  &__text {
+    @apply text-sm italic ml-4;
+  }
+}
 </style>
