@@ -202,7 +202,7 @@ export const optionsNotification = [
   },
   {
     level: 3,
-    message: 'Desa masih membutuhkan pelatihan terkait pelatihan digital marketing, sehingga belum bisa melanjutkan ke tahap berikutnya. Informasi lebih lanjut, desa Anda akan masuk ke dalam daftar kami untuk bisa ditindaklanjuti. sehatan',
+    message: 'Desa masih membutuhkan pelatihan terkait pelatihan digital marketing, sehingga belum bisa melanjutkan ke tahap berikutnya. Informasi lebih lanjut, desa Anda akan masuk ke dalam daftar kami untuk bisa ditindaklanjuti.',
     info: 'Akun Desa Digital Anda akan ditinjau kembali oleh administrator untuk verfifikasi lebih lanjut.'
   },
   {
