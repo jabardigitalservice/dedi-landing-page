@@ -55,15 +55,15 @@
               <div
                 :class="{
                   'registration__form__image': true,
-                  'registration__form__image--attached': files.isAttached
+                  'registration__form__image--attached': file.isAttached
                 }"
               >
                 <img
-                  v-if="files.source"
+                  v-if="file.source"
                   class="registration__form__image--attached-uploaded"
                   width="88"
                   height="88"
-                  :src="files.source"
+                  :src="file.source"
                   alt="Foto SK"
                 >
                 <img
@@ -95,11 +95,11 @@
                   accept="image/png, image/jpeg, image/svg+xml"
                   @change="onFileChange()"
                 >
-                <div v-if="files.fileImage" class="registration__form__filename">
-                  Filename: {{ files.fileImage.get('file').name }}
+                <div v-if="file.fileImage" class="registration__form__filename">
+                  Filename: {{ file.fileImage.get('file').name }}
                 </div>
-                <div v-else-if="files.uploadErrorMessage" class="registration__form__filename-error">
-                  {{ files.uploadErrorMessage }}
+                <div v-else-if="file.uploadErrorMessage" class="registration__form__filename-error">
+                  {{ file.uploadErrorMessage }}
                 </div>
                 <div v-else class="registration__form__filename">
                   Belum ada file terpilih.
@@ -178,7 +178,7 @@ export default {
   data () {
     return {
       infoProgram: 'Program Desa Digital memiliki beberapa tingkatan/level, yuk cari tahu level desamu.',
-      files: {
+      file: {
         isAttached: false,
         fileImage: null,
         source: null,
