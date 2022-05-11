@@ -47,6 +47,14 @@
       &--container {
         @apply mt-5 px-4 py-5 border border-gray-200 rounded-lg;
 
+        &-title {
+          @apply text-green-700 font-bold font-roboto mb-1;
+        }
+
+        &__form-group {
+          @apply w-full;
+        }
+
         p {
           @apply text-sm;
         }
@@ -100,6 +108,11 @@
 
   &__submit {
     @apply mt-5 flex justify-end gap-4;
+  }
+}
+.jds-button {
+  &--primary, &--secondary {
+    @apply py-[10px] !important;
   }
 }
 
