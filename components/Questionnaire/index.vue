@@ -8,7 +8,7 @@
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
-        <ModalQuestionnaire v-else :chosen-level="params.level" :village-types="villages" />
+        <QuestionnaireCategory v-else :chosen-level="params.level" :village-types="villages" />
       </div>
     </div>
   </div>
