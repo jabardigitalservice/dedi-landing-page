@@ -188,3 +188,26 @@ export const optionsLogistik = [
     value: 'Tidak, saat ini belum dapat dijangkau kurir logistik'
   }
 ]
+
+export const optionsNotification = [
+  {
+    level: 1,
+    message: 'Desa tidak memiliki akses internet, sehingga belum bisa melanjutkan ke tahap berikutnya. Informasi lebih lanjut, desa Anda akan masuk ke dalam daftar pengajuan penuntasan desa blank-spot untuk bisa ditindaklanjuti.',
+    info: 'Akun Desa Digital Anda akan ditinjau kembali oleh administrator untuk verfifikasi lebih lanjut.'
+  },
+  {
+    level: 2,
+    message: 'Desa masih membutuhkan pelatihan literasi digital, sehingga belum bisa melanjutkan ke tahap berikutnya. Informasi lebih lanjut, desa Anda akan masuk ke dalam daftar kami untuk bisa ditindaklanjuti.',
+    info: 'Akun Desa Digital Anda akan ditinjau kembali oleh administrator untuk verfifikasi lebih lanjut.'
+  },
+  {
+    level: 3,
+    message: 'Desa masih membutuhkan pelatihan terkait pelatihan digital marketing, sehingga belum bisa melanjutkan ke tahap berikutnya. Informasi lebih lanjut, desa Anda akan masuk ke dalam daftar kami untuk bisa ditindaklanjuti. sehatan',
+    info: 'Akun Desa Digital Anda akan ditinjau kembali oleh administrator untuk verfifikasi lebih lanjut.'
+  },
+  {
+    level: 4,
+    message: 'Silahkan klik tombol pengisian form di bawah ini untuk memetakan potensi desa Anda. Form dapat diisi oleh lebih dari satu petani/kelompok tani di desa Anda.',
+    info: 'link form dibawah ini akan hilang ketika Anda menutup halaman ini.'
+  }
+]
