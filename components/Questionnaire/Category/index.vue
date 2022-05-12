@@ -1,41 +1,42 @@
 <template>
-  <div id="questionnaire" class="questionnaire">
-    <div class="questionnaire__title">
+  <div id="category" class="category">
+    <div class="category__title">
       <h1>Kuisioner Desa Digital</h1>
     </div>
     <div
       v-if="showContent"
-      class="questionnaire__content"
+      class="category__content"
     >
-      <div class="questionnaire__content-text">
-        <p class="questionnaire__content-subtitle">
+      <div class="category__content-text">
+        <p class="category__content-subtitle">
           Desa Anda Masuk Kategori
         </p>
-        <p class="questionnaire__content-village-level">
+        <p class="category__content-village-level">
           {{ village }}
         </p>
-        <p class="questionnaire__content-info">
+        <p class="category__content-info">
           Agar desa Anda mendapatkan manfaat lebih besar. Yuk daftarkan desa Anda ke Desa Digital!
         </p>
       </div>
-      <div class="questionnaire__content-image">
+      <div class="category__content-image">
         <img
           width="379px"
           height="323px"
           :src="villageImage"
-          class="questionnaire__content-image"
+          class="category__content-image"
           alt="Desa Digital"
         >
       </div>
     </div>
-    <div class="questionnaire__action">
+    <div class="category__action">
       <BaseButton
-        class="questionnaire__action-signup"
+        class="category__action-signup"
         label="Daftar Sekarang"
+        @click="onSubmitCategory"
       />
       <nuxt-link
         to="/"
-        class="questionnaire__action-cancel"
+        class="category__action-cancel"
       >
         Nanti Saja
       </nuxt-link>
@@ -79,13 +80,16 @@ export default {
           this.villageImage = village.image
         }
       }
+    },
+    onSubmitCategory () {
+      this.$emit('onSubmit')
     }
   }
 }
 </script>
 
 <style lang="postcss" scoped>
-.questionnaire {
+.category {
   @apply grid grid-rows-1 p-4
   sm:(p-8 bg-white w-[680px] h-[486px] rounded-2xl);
 
