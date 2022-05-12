@@ -118,7 +118,7 @@ export default {
             logistik: null
           },
           potensi_desa: {
-            data: null,
+            data: [],
             potensi_dapat_dikembangkan: null,
             photo: {
               path: null,
