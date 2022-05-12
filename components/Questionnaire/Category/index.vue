@@ -29,17 +29,20 @@
       </div>
     </div>
     <div class="category__action">
-      <BaseButton
-        class="category__action-signup"
-        label="Daftar Sekarang"
-        @click="onSubmitCategory"
-      />
-      <nuxt-link
-        to="/"
-        class="category__action-cancel"
-      >
-        Nanti Saja
-      </nuxt-link>
+      <div class="category__action-signup">
+        <BaseButton
+          class="w-[290px]"
+          label="Daftar Sekarang"
+          @click="onSubmitCategory"
+        />
+      </div>
+      <div class="category__action-cancel">
+        <nuxt-link
+          to="/"
+        >
+          Nanti Saja
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
@@ -127,7 +130,7 @@ export default {
     @apply text-center;
 
     &-signup {
-      @apply w-full mb-4;
+      @apply mb-4;
     }
 
     &-cancel {
