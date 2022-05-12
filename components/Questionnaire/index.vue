@@ -8,7 +8,10 @@
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
-        <QuestionnaireCategory v-else :chosen-level="params.level" :village-types="villages" />
+        <div v-else>
+          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
+          <QuestionnaireNotification v-show="showNotification" :level="params.level" />
+        </div>
       </div>
     </div>
   </div>
@@ -133,6 +136,8 @@ export default {
       showLevelTwo: false,
       showLevelThree: false,
       showModalLevelDesa: false,
+      showNotification: false,
+      showCategory: true,
       villages
     }
   },
@@ -152,9 +157,10 @@ export default {
         this.showLevelTwo = true
         this.showLevelOne = false
         this.params.level = 2
+        this.showModalLevelDesa = false
       } else {
         this.params.level = 1
-        this.onSubmit()
+        this.showModalLevelDesa = true
       }
     },
     onNextLevelTwo (value) {
@@ -163,9 +169,10 @@ export default {
         this.showLevelThree = true
         this.showLevelTwo = false
         this.params.level = 3
+        // todo: add showModal variable
       } else {
         this.params.level = 2
-        this.onSubmit()
+        // todo: add showModal variable
       }
     },
     onNextLevelThree (properties) {
@@ -174,10 +181,10 @@ export default {
       if (this.isLevelFour) {
         this.showLevelThree = false
         this.params.level = 4
-        this.onSubmit()
+        // todo: add showModal variable
       } else {
         this.params.level = 3
-        this.onSubmit()
+        // todo: add showModal variable
       }
     },
     onPrev () {
@@ -195,7 +202,8 @@ export default {
     async onSubmit () {
       try {
         await this.$axios.post('/villages/questionnaire', this.params)
-        this.showModalLevelDesa = true
+        this.showCategory = false
+        this.showNotification = true
       } catch (error) {
         this.$store.dispatch('toast/showToast', {
           type: 'error',

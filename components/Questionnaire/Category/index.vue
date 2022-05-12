@@ -32,6 +32,7 @@
       <BaseButton
         class="category__action-signup"
         label="Daftar Sekarang"
+        @click="onSubmitCategory"
       />
       <nuxt-link
         to="/"
@@ -79,6 +80,9 @@ export default {
           this.villageImage = village.image
         }
       }
+    },
+    onSubmitCategory () {
+      this.$emit('onSubmit')
     }
   }
 }
