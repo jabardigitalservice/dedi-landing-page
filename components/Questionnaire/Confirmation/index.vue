@@ -117,25 +117,26 @@
             <jds-select
               class="w-full mt-2"
               name="kabupaten/kota"
-              :options="[]"
+              filterable
+              :options="optionsCity"
               label="Kabupaten/Kota"
               placeholder="Masukkan nama Kabupaten/Kota"
             />
           </div>
-          <div class="registration__form-content--container__form-group">
+          <!-- <div class="registration__form-content--container__form-group">
             <jds-select
               class="w-full mt-2"
               name="Kecamatan"
-              :options="[]"
+              :options="dummyList"
               label="Kecamatan"
               placeholder="Masukkan nama Kecamatan"
             />
-          </div>
+          </div> -->
           <div class="registration__form-content--container__form-group">
             <jds-select
               class="w-full mt-2"
               name="Kelurahan/Desa"
-              :options="[]"
+              :options="dummyList"
               label="Kelurahan/Desa"
               placeholder="Masukkan nama Kelurahan/Desa"
             />
@@ -186,10 +187,41 @@ export default {
       },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalInfoVillage: false,
-      isConfirmEnable: false
+      isConfirmEnable: false,
+      dummyList: [
+        { value: 1, label: 'Satu' },
+        { value: 2, label: 'Dua' },
+        { value: 3, label: 'Tiga' }
+      ],
+      listCity: []
     }
   },
+  computed: {
+    optionsCity () {
+      let city = []
+      if (Array.isArray(this.listCity) && this.listCity.length) {
+        city = this.listCity.map((item) => {
+          return {
+            value: item.id,
+            label: item.name
+          }
+        })
+      }
+      return city
+    }
+  },
+  mounted () {
+    this.fetchCity()
+  },
   methods: {
+    async fetchCity () {
+      try {
+        const response = await this.$axios.get('/cities/suggestion')
+        this.listCity = response.data.data || []
+      } catch {
+        this.listCity = []
+      }
+    },
     onClickInfo () {
       this.showModalInfoVillage = true
     },
@@ -201,6 +233,7 @@ export default {
     },
     onSubmit () {
       // @todo: create submit function
+      this.$emit('onSubmit', true)
     }
   }
 }
@@ -214,11 +247,12 @@ export default {
   @apply w-full !important;
 }
 
-.jds-select, .jds-input-text__input-wrapper {
+/* .jds-select, .jds-input-text__input-wrapper {
   position: unset !important;
-}
+} */
 
 .jds-form-control-label {
-  @apply mb-1;
+  @apply mb-1 !important;
 }
+
 </style>

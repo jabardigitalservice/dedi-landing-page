@@ -3,7 +3,10 @@
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">
-        <div v-if="!showModalLevelDesa">
+        <div v-if="!isConfirmed">
+          <QuestionnaireConfirmation @onSubmit="confirmVillage" />
+        </div>
+        <div v-if="!showModalLevelDesa && isConfirmed">
           <QuestionnaireOne v-show="showLevelOne" @onClickLevel="validationQuestionnaireOne" @onSubmit="onNextLevelOne" />
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
@@ -128,6 +131,7 @@ export default {
           }
         }
       },
+      isConfirmed: false,
       isLevelOne: true,
       isLevelTwo: false,
       isLevelThree: false,
@@ -142,6 +146,9 @@ export default {
     }
   },
   methods: {
+    confirmVillage (value) {
+      this.isConfirmed = value
+    },
     validationQuestionnaireOne (value) {
       this.isLevelTwo = value
     },
