@@ -264,24 +264,29 @@ export default {
     }
   },
   watch: {
-    cityId (id) {
-      if (id) {
+    cityId (newId, oldId) {
+      if (newId && newId !== oldId) {
         this.isDisabledOptionDistricts = false
-        this.fetchDistricts(id)
+        this.districtId = null
+        this.villageId = null
+        this.fetchDistricts(newId)
       } else {
         this.isDisabledOptionDistricts = true
       }
     },
-    districtId (id) {
-      if (id) {
+    districtId (newId, oldId) {
+      if (newId && newId !== oldId) {
         this.isDisabledOptionVillages = false
-        this.fetchVillages(id)
+        this.villageId = null
+        this.fetchVillages(newId)
       } else {
         this.isDisabledOptionVillages = true
       }
     },
-    villageId (id) {
-      // @todo: add village validation on next pr
+    villageId (newId, oldId) {
+      if (newId && newId !== oldId) {
+        // @todo: add village validation on next pr
+      }
     }
   },
   mounted () {
