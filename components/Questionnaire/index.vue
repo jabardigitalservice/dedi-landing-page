@@ -181,10 +181,10 @@ export default {
       if (this.isLevelFour) {
         this.showLevelThree = false
         this.params.level = 4
-        // todo: add showModal variable
+        this.showModalLevelDesa = true
       } else {
         this.params.level = 3
-        // todo: add showModal variable
+        this.showModalLevelDesa = true
       }
     },
     onPrev () {
