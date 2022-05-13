@@ -541,7 +541,7 @@ export default {
         const { potensi_desa: potensi } = this.properties
         const { potency } = this.files
 
-        potensi.potensi_dapat_dikembangkan = ''
+        potensi.potensi_dapat_dikembangkan = null
         potensi.photo.path = null
         potensi.photo.original_name = null
         potensi.photo.source = null
@@ -580,12 +580,12 @@ export default {
         bumdes.photo.path = null
         bumdes.photo.original_name = null
         bumdes.photo.source = null
-        bumdes.bumdes = ''
+        bumdes.bumdes = null
 
         komoditas.photo.path = null
         komoditas.photo.original_name = null
         komoditas.photo.source = null
-        komoditas.data = ''
+        komoditas.data = null
 
         fileBumdes.isAttached = false
         fileBumdes.fileImage = null
