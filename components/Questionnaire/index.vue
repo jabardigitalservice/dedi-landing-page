@@ -3,12 +3,15 @@
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">
-        <div v-if="!showModalLevelDesa">
+        <div v-if="!isConfirmed">
+          <QuestionnaireConfirmation @onSubmit="confirmVillage" />
+        </div>
+        <div v-if="!showModalLevelDesa && isConfirmed">
           <QuestionnaireOne v-show="showLevelOne" @onClickLevel="validationQuestionnaireOne" @onSubmit="onNextLevelOne" />
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
-        <div v-else>
+        <div v-if="showModalLevelDesa && isConfirmed">
           <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" />
         </div>
@@ -28,6 +31,17 @@ export default {
         id: '32.09.21.2001', // @todo: remove this in next feature (id desa search)
         level: 1,
         properties: {
+          pemohon: {
+            nama: null,
+            posisi: null,
+            file: {
+              path: null,
+              original_name: null,
+              source: null
+            },
+            nomor_telepon: null,
+            email: null
+          },
           fasilitas_desa: {
             akses_kendaraan: {
               data: [],
@@ -128,6 +142,7 @@ export default {
           }
         }
       },
+      isConfirmed: false,
       isLevelOne: true,
       isLevelTwo: false,
       isLevelThree: false,
@@ -142,6 +157,10 @@ export default {
     }
   },
   methods: {
+    confirmVillage (value) {
+      this.isConfirmed = true
+      this.params.properties.pemohon = value
+    },
     validationQuestionnaireOne (value) {
       this.isLevelTwo = value
     },

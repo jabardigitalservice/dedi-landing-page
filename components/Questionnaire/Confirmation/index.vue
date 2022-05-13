@@ -30,11 +30,12 @@
           </div>
         </jds-section-message>
 
-        <div v-show="false" class="registration__form-content--container">
+        <div class="registration__form-content--container">
           <div class="registration__form-content--container-title">
             Informasi Umum
           </div>
           <BaseInput
+            v-model="params.nama"
             class="mt-2"
             label="Nama Lengkap"
             type="text"
@@ -43,6 +44,7 @@
             placeholder="Cth: Agus Permadi"
           />
           <BaseInput
+            v-model="params.posisi"
             class="mt-2"
             label="Jabatan"
             type="text"
@@ -58,21 +60,19 @@
                   'registration__form__image--attached': file.isAttached
                 }"
               >
-                <img
+                <object
                   v-if="file.source"
+                  :data="file.source"
                   class="registration__form__image--attached-uploaded"
                   width="88"
                   height="88"
-                  :src="file.source"
-                  alt="Foto SK"
-                >
+                />
                 <img
                   v-else
-                  class="text-gray-500"
                   height="22"
                   width="22"
                   src="@/assets/icons/IconPdf.svg"
-                  alt="No Image"
+                  alt="Surat Keterangan"
                 >
               </div>
             </div>
@@ -83,26 +83,30 @@
               <div class="registration__form__placeholder">
                 File yang didukung adalah .pdf maksimal 10 Mb.
               </div>
-              <div class="registration__form__button">
-                <button class="registration__form__button-btn" type="button" @click="$refs.letter.click()">
-                  Unggah Foto
-                  <jds-icon class="ml-2" size="12px" name="plus-bold" />
-                </button>
-                <input
-                  ref="letter"
-                  type="file"
-                  hidden="true"
-                  accept="image/png, image/jpeg, image/svg+xml"
-                  @change="onFileChange()"
-                >
-                <div v-if="file.fileImage" class="registration__form__filename">
-                  Filename: {{ file.fileImage.get('file').name }}
+              <div class="registration__form__button grid grid-cols-5">
+                <div class="col-span-1">
+                  <button class="registration__form__button-btn text-sm" type="button" @click="$refs.letter.click()">
+                    Unggah Surat
+                    <jds-icon class="ml-1" size="10px" name="plus-bold" />
+                  </button>
+                  <input
+                    ref="letter"
+                    type="file"
+                    hidden="true"
+                    accept="application/pdf"
+                    @change="onFileChange()"
+                  >
                 </div>
-                <div v-else-if="file.uploadErrorMessage" class="registration__form__filename-error">
-                  {{ file.uploadErrorMessage }}
-                </div>
-                <div v-else class="registration__form__filename">
-                  Belum ada file terpilih.
+                <div class="col-span-4">
+                  <div v-if="file.filePdf" class="registration__form__filename">
+                    Filename: {{ file.filePdf.get('file').name }}
+                  </div>
+                  <div v-else-if="file.uploadErrorMessage" class="registration__form__filename-error">
+                    {{ file.uploadErrorMessage }}
+                  </div>
+                  <div v-else class="registration__form__filename">
+                    Belum ada file terpilih.
+                  </div>
                 </div>
               </div>
             </div>
@@ -115,27 +119,38 @@
           </div>
           <div class="registration__form-content--container__form-group">
             <jds-select
+              v-model="cityId"
               class="w-full mt-2"
               name="kabupaten/kota"
-              :options="[]"
+              filterable
+              options-header="Kabupaten/Kota"
+              :options="optionsCity"
               label="Kabupaten/Kota"
               placeholder="Masukkan nama Kabupaten/Kota"
             />
           </div>
           <div class="registration__form-content--container__form-group">
             <jds-select
+              v-model="districtId"
+              :disabled="isDisabledOptionDistricts"
               class="w-full mt-2"
               name="Kecamatan"
-              :options="[]"
+              filterable
+              options-header="Kecamatan"
+              :options="optionsDistrict"
               label="Kecamatan"
               placeholder="Masukkan nama Kecamatan"
             />
           </div>
           <div class="registration__form-content--container__form-group">
             <jds-select
+              v-model="villageId"
+              :disabled="isDisabledOptionVillages"
               class="w-full mt-2"
               name="Kelurahan/Desa"
-              :options="[]"
+              filterable
+              options-header="Kelurahan/Desa"
+              :options="optionsVillage"
               label="Kelurahan/Desa"
               placeholder="Masukkan nama Kelurahan/Desa"
             />
@@ -147,6 +162,7 @@
             Lainnya
           </div>
           <BaseInput
+            v-model="params.nomor_telepon"
             class="mt-2"
             label="Nomor Handphone"
             type="text"
@@ -155,6 +171,7 @@
             placeholder="Cth: 0822 2068 9xxx"
           />
           <BaseInput
+            v-model="params.email"
             class="mt-2"
             label="Alamat Email"
             type="text"
@@ -167,7 +184,7 @@
 
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
-        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="onSubmit" />
+        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="confirmData" />
       </div>
     </div>
   </div>
@@ -180,27 +197,203 @@ export default {
       infoProgram: 'Program Desa Digital memiliki beberapa tingkatan/level, yuk cari tahu level desamu.',
       file: {
         isAttached: false,
-        fileImage: null,
+        filePdf: null,
         source: null,
         uploadErrorMessage: null
       },
+      params: {
+        nama: null,
+        posisi: null,
+        file: {
+          path: null,
+          original_name: null,
+          source: null
+        },
+        nomor_telepon: null,
+        email: null
+      },
       uploadFileSecret: this.$config.apiSecretUpload,
       showModalInfoVillage: false,
-      isConfirmEnable: false
+      isConfirmEnable: false,
+      cityId: null,
+      districtId: null,
+      villageId: null,
+      listCity: [],
+      listDistrict: [],
+      listVillage: [],
+      isDisabledOptionDistricts: true,
+      isDisabledOptionVillages: true
     }
   },
+  computed: {
+    optionsCity () {
+      let city = []
+      if (Array.isArray(this.listCity) && this.listCity.length) {
+        city = this.listCity.map((item) => {
+          return {
+            value: item.id,
+            label: item.name
+          }
+        })
+      }
+      return city
+    },
+    optionsDistrict () {
+      let districts = []
+      if (Array.isArray(this.listDistrict) && this.listDistrict.length) {
+        districts = this.listDistrict.map((item) => {
+          return {
+            value: item.id,
+            label: item.name
+          }
+        })
+      }
+      return districts
+    },
+    optionsVillage () {
+      let villages = []
+      if (Array.isArray(this.listVillage) && this.listVillage.length) {
+        villages = this.listVillage.map((item) => {
+          return {
+            value: item.id,
+            label: item.name
+          }
+        })
+      }
+      return villages
+    }
+  },
+  watch: {
+    cityId (newId, oldId) {
+      if (newId && newId !== oldId) {
+        this.isDisabledOptionDistricts = false
+        this.districtId = null
+        this.villageId = null
+        this.fetchDistricts(newId)
+      } else {
+        this.isDisabledOptionDistricts = true
+      }
+    },
+    districtId (newId, oldId) {
+      if (newId && newId !== oldId) {
+        this.isDisabledOptionVillages = false
+        this.villageId = null
+        this.fetchVillages(newId)
+      } else {
+        this.isDisabledOptionVillages = true
+      }
+    },
+    villageId (newId, oldId) {
+      if (newId && newId !== oldId) {
+        // @todo: add village validation on next pr
+      }
+    }
+  },
+  mounted () {
+    this.fetchCity()
+  },
   methods: {
+    async fetchCity () {
+      try {
+        const response = await this.$axios.get('/cities/suggestion')
+        this.listCity = response.data.data || []
+      } catch {
+        this.listCity = []
+      }
+    },
+    async fetchDistricts (cityId) {
+      try {
+        const response = await this.$axios.get(`/districts/suggestion?city_id=${cityId}`)
+        this.listDistrict = response.data.data || []
+      } catch {
+        this.listDistrict = []
+      }
+    },
+    async fetchVillages (districtId) {
+      try {
+        const response = await this.$axios.get(`/villages/suggestion?district_id=${districtId}`)
+        this.listVillage = response.data.data || []
+      } catch {
+        this.listVillage = []
+      }
+    },
     onClickInfo () {
       this.showModalInfoVillage = true
     },
     onCloseModal () {
       this.showModalInfoVillage = false
     },
-    onFileChange () {
-      // @todo: create upload file
+    setFile (value) {
+      const formData = new FormData()
+      formData.append('file', value)
+      return formData
     },
-    onSubmit () {
-      // @todo: create submit function
+    submitFile (image) {
+      return new Promise((resolve, reject) => {
+        this.$axios.post('/files/upload', image, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-api-key': this.uploadFileSecret
+          }
+        }).then((response) => {
+          const { data } = response.data
+          resolve(data)
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    onFileChange () {
+      const elLetter = this.$refs.letter.files[0]
+      if (elLetter) {
+        const isValidFormat = ['application/pdf'].includes(elLetter.type)
+        const maxAllowedSize = 10 * 1024 * 1024
+        if (isValidFormat) {
+          if (elLetter.size > maxAllowedSize) {
+            this.file.isAttached = false
+            this.file.filePdf = null
+            this.file.source = null
+            this.file.uploadErrorMessage = 'Gambar anda melebihi ukuran maksimal'
+          } else {
+            this.file.isAttached = true
+            this.file.filePdf = this.setFile(elLetter)
+            this.file.source = URL.createObjectURL(elLetter)
+            this.file.uploadErrorMessage = ''
+          }
+        } else {
+          this.file.isAttached = false
+          this.file.filePdf = null
+          this.file.uploadErrorMessage = 'Maaf file yang anda masukkan tidak didukung'
+        }
+        this.submitFile(this.file.filePdf)
+          .then((response) => {
+            const { source, original_name: originalName, path } = response || null
+            this.params.file.path = path
+            this.params.file.source = source
+            this.params.file.original_name = originalName
+          })
+          .catch(() => {
+            this.file.isAttached = false
+            this.file.filePdf = null
+            this.file.source = null
+            this.file.uploadErrorMessage = 'File SK gagal diupload'
+          })
+      }
+    },
+    confirmData () {
+      this.$store.dispatch('dialog/showDialog', {
+        header: 'Konfirmasi Data',
+        title: 'Apakah semua data sudah dipastikan telah sesuai?',
+        btnRightVariant: 'primary',
+        btnLeftVariant: 'secondary',
+        btnLeftLabel: 'Cek Kembali',
+        btnRightLabel: 'Ya, sudah sesuai',
+        actionBtnRight: () => this.onConfirmData()
+      })
+    },
+    onConfirmData () {
+      this.$emit('onSubmit', this.params)
+      this.$store.dispatch('dialog/closeDialog')
     }
   }
 }
@@ -210,7 +403,7 @@ export default {
 <style lang="postcss">
 @import './../Questionnaire.pcss';
 
-.jds-select, .jds-input-text, .jds-input-text__input-wrapper, .jds-popover__activator {
+.jds-select, .jds-popover__activator, .jds-input-text, .jds-input-text__input-wrapper {
   @apply w-full !important;
 }
 
@@ -218,7 +411,15 @@ export default {
   position: unset !important;
 }
 
+.jds-input-text__suffix-icon {
+  @apply hidden !important;
+}
+
 .jds-form-control-label {
-  @apply mb-1;
+  @apply mb-1 !important;
+}
+
+.jds-options__option-list {
+  @apply relative p-0 mt-14 overflow-y-scroll h-60 !important;
 }
 </style>
