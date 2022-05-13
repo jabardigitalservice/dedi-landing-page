@@ -58,7 +58,7 @@
             </div>
             <div class="registration__form-col-desc">
               <div class="registration__form__subtitle">
-                Unggah foto pendamping lokal desa/patriot desa/ komunitas yang ada di desa Bapak/Ibu
+                Unggah foto pendamping lokal desa/patriot desa/komunitas yang ada di desa Bapak/Ibu
               </div>
               <div class="registration__form__placeholder">
                 File yang didukung adalah .jpg, .jpeg dan .png
