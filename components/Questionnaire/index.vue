@@ -31,6 +31,17 @@ export default {
         id: '32.09.21.2001', // @todo: remove this in next feature (id desa search)
         level: 1,
         properties: {
+          pemohon: {
+            nama: null,
+            posisi: null,
+            file: {
+              path: null,
+              original_name: null,
+              source: null
+            },
+            nomor_telepon: null,
+            email: null
+          },
           fasilitas_desa: {
             akses_kendaraan: {
               data: [],
@@ -147,7 +158,8 @@ export default {
   },
   methods: {
     confirmVillage (value) {
-      this.isConfirmed = value
+      this.isConfirmed = true
+      this.params.properties.pemohon = value
     },
     validationQuestionnaireOne (value) {
       this.isLevelTwo = value

@@ -184,7 +184,7 @@
 
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
-        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="onSubmit" />
+        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="confirmData" />
       </div>
     </div>
   </div>
@@ -375,9 +375,20 @@ export default {
           })
       }
     },
-    onSubmit () {
-      // @todo: create submit function on next pr
-      this.$emit('onSubmit', true)
+    confirmData () {
+      this.$store.dispatch('dialog/showDialog', {
+        header: 'Konfirmasi Data',
+        title: 'Apakah semua data sudah dipastikan telah sesuai?',
+        btnRightVariant: 'primary',
+        btnLeftVariant: 'secondary',
+        btnLeftLabel: 'Cek Kembali',
+        btnRightLabel: 'Ya, sudah sesuai',
+        actionBtnRight: () => this.onConfirmData()
+      })
+    },
+    onConfirmData () {
+      this.$emit('onSubmit', this.params)
+      this.$store.dispatch('dialog/closeDialog')
     }
   }
 }
