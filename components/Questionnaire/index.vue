@@ -176,10 +176,10 @@ export default {
         this.showLevelThree = true
         this.showLevelTwo = false
         this.params.level = 3
-        // todo: add showModal variable
+        this.showModalLevelDesa = false
       } else {
         this.params.level = 2
-        // todo: add showModal variable
+        this.showModalLevelDesa = true
       }
     },
     onNextLevelThree (properties) {
