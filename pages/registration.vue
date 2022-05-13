@@ -3,6 +3,7 @@
     <RegistrationMitra v-if="opsiRegistrasi === 'mitra'" />
     <Questionnaire v-if="opsiRegistrasi === 'desa'" />
     <BaseToast />
+    <BaseDialog />
   </div>
 </template>
 
