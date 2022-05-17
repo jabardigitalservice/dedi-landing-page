@@ -108,6 +108,10 @@ export default {
     level: {
       type: Number,
       default: null
+    },
+    potencyVillages: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
