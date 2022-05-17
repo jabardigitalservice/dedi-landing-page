@@ -185,7 +185,7 @@
 
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
-        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="confirmData" />
+        <BaseButton class="registration__submit-btn" label="Konfirmasi" :variant="buttonConfirmationVariant" @click="confirmData" />
       </div>
     </div>
   </div>
@@ -265,6 +265,26 @@ export default {
         })
       }
       return villages
+    },
+    isFormCompleted () {
+      return !!((
+        this.params.nama &&
+        this.params.posisi &&
+        this.params.file.source &&
+        this.params.nomor_telepon &&
+        this.params.email &&
+        this.cityId &&
+        this.districtId &&
+        this.villageId &&
+        !this.errors.village
+      ))
+    },
+    buttonConfirmationVariant () {
+      if (this.isFormCompleted) {
+        return 'primary'
+      } else {
+        return 'disabled'
+      }
     }
   },
   watch: {
