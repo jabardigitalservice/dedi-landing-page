@@ -169,10 +169,12 @@ export default {
       }
     },
     showAgricultureForm () {
-      // @todo: create function for redirect link to form in new tab
+      // @todo: replace link google with actual link form
+      window.open('https://www.google.com')
     },
     showFisheryForm () {
-      // @todo: create function for redirect link to form in new tab
+      // @todo: replace link google with actual link form
+      window.open('https://www.google.com')
     }
   }
 }
