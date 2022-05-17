@@ -56,37 +56,41 @@
             </div>
           </div>
           <div class="notification__content-action">
-            <div class="notification__content-action-potency">
-              <BaseButton
-                variant="primary"
-                type="button"
-                class="notification__content-action-potency--btn"
-                @click="showAgricultureForm"
-              >
-                Isi Form Potensi Pertanian
-                <jds-icon
-                  name="open-new-tab"
-                  size="14px"
-                  class="pl-2"
-                />
-              </BaseButton>
-              <BaseButton
-                variant="primary"
-                type="button"
-                class="notification__content-action-potency--btn"
-                @click="showFisheryForm"
-              >
-                Isi Form Potensi Perikanan
-                <jds-icon
-                  name="open-new-tab"
-                  size="14px"
-                  class="pl-2"
-                />
-              </BaseButton>
+            <div v-show="showPotencyAction">
+              <div class="notification__content-action-potency">
+                <BaseButton
+                  v-show="showAgriculture"
+                  variant="primary"
+                  type="button"
+                  class="notification__content-action-potency--btn"
+                  @click="showAgricultureForm"
+                >
+                  Isi Form Potensi Pertanian
+                  <jds-icon
+                    name="open-new-tab"
+                    size="14px"
+                    class="pl-2"
+                  />
+                </BaseButton>
+                <BaseButton
+                  v-show="showEfishery"
+                  variant="primary"
+                  type="button"
+                  class="notification__content-action-potency--btn"
+                  @click="showFisheryForm"
+                >
+                  Isi Form Potensi Perikanan
+                  <jds-icon
+                    name="open-new-tab"
+                    size="14px"
+                    class="pl-2"
+                  />
+                </BaseButton>
+              </div>
+              <h4 class="registration-mitra__form-text--line">
+                <span class="registration-mitra__form-text--color">atau</span>
+              </h4>
             </div>
-            <h4 class="registration-mitra__form-text--line">
-              <span class="registration-mitra__form-text--color">atau</span>
-            </h4>
             <BaseButton
               class="md:(max-w-[280px])"
               label="Kembali ke Beranda"
@@ -125,6 +129,27 @@ export default {
     showContent () {
       if (!isNaN(this.level)) {
         this.showNotif()
+        return true
+      } else {
+        return false
+      }
+    },
+    showPotencyAction () {
+      if (this.potencyVillages.includes('Perikanan') || this.potencyVillages.includes('Pertanian')) {
+        return true
+      } else {
+        return false
+      }
+    },
+    showEfishery () {
+      if (this.potencyVillages.includes('Perikanan')) {
+        return true
+      } else {
+        return false
+      }
+    },
+    showAgriculture () {
+      if (this.potencyVillages.includes('Pertanian')) {
         return true
       } else {
         return false
