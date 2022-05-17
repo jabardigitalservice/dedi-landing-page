@@ -56,37 +56,41 @@
             </div>
           </div>
           <div class="notification__content-action">
-            <div class="notification__content-action-potency">
-              <BaseButton
-                variant="primary"
-                type="button"
-                class="notification__content-action-potency--btn"
-                @click="showAgricultureForm"
-              >
-                Isi Form Potensi Pertanian
-                <jds-icon
-                  name="open-new-tab"
-                  size="14px"
-                  class="pl-2"
-                />
-              </BaseButton>
-              <BaseButton
-                variant="primary"
-                type="button"
-                class="notification__content-action-potency--btn"
-                @click="showFisheryForm"
-              >
-                Isi Form Potensi Perikanan
-                <jds-icon
-                  name="open-new-tab"
-                  size="14px"
-                  class="pl-2"
-                />
-              </BaseButton>
+            <div v-show="showPotencyAction">
+              <div class="notification__content-action-potency">
+                <BaseButton
+                  v-show="showAgriculture"
+                  variant="primary"
+                  type="button"
+                  class="notification__content-action-potency--btn"
+                  @click="showAgricultureForm"
+                >
+                  Isi Form Potensi Pertanian
+                  <jds-icon
+                    name="open-new-tab"
+                    size="14px"
+                    class="pl-2"
+                  />
+                </BaseButton>
+                <BaseButton
+                  v-show="showEfishery"
+                  variant="primary"
+                  type="button"
+                  class="notification__content-action-potency--btn"
+                  @click="showFisheryForm"
+                >
+                  Isi Form Potensi Perikanan
+                  <jds-icon
+                    name="open-new-tab"
+                    size="14px"
+                    class="pl-2"
+                  />
+                </BaseButton>
+              </div>
+              <h4 class="registration-mitra__form-text--line">
+                <span class="registration-mitra__form-text--color">atau</span>
+              </h4>
             </div>
-            <h4 class="registration-mitra__form-text--line">
-              <span class="registration-mitra__form-text--color">atau</span>
-            </h4>
             <BaseButton
               class="md:(max-w-[280px])"
               label="Kembali ke Beranda"
@@ -108,13 +112,19 @@ export default {
     level: {
       type: Number,
       default: null
+    },
+    potencyVillages: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
     return {
       optionsNotification,
       message: '',
-      info: ''
+      info: '',
+      urlPotencyEfisheryForm: this.$config.urlPotencyEfisheryForm,
+      urlPotencyArgicultureForm: this.$config.urlPotencyArgicultureForm
     }
   },
   computed: {
@@ -125,6 +135,15 @@ export default {
       } else {
         return false
       }
+    },
+    showPotencyAction () {
+      return this.potencyVillages.includes('Perikanan') || this.potencyVillages.includes('Pertanian')
+    },
+    showEfishery () {
+      return this.potencyVillages.includes('Perikanan')
+    },
+    showAgriculture () {
+      return this.potencyVillages.includes('Pertanian')
     }
   },
   methods: {
@@ -140,10 +159,12 @@ export default {
       }
     },
     showAgricultureForm () {
-      // @todo: create function for redirect link to form in new tab
+      // @todo: replace link google with actual link form
+      window.open(this.urlPotencyArgicultureForm)
     },
     showFisheryForm () {
-      // @todo: create function for redirect link to form in new tab
+      // @todo: replace link google with actual link form
+      window.open(this.urlPotencyEfisheryForm)
     }
   }
 }
