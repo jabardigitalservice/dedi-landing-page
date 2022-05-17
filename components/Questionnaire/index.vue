@@ -13,7 +13,7 @@
         </div>
         <div v-if="showModalLevelDesa && isConfirmed">
           <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
-          <QuestionnaireNotification v-show="showNotification" :level="params.level" />
+          <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
         </div>
       </div>
     </div>
