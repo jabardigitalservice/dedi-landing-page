@@ -137,25 +137,13 @@ export default {
       }
     },
     showPotencyAction () {
-      if (this.potencyVillages.includes('Perikanan') || this.potencyVillages.includes('Pertanian')) {
-        return true
-      } else {
-        return false
-      }
+      return this.potencyVillages.includes('Perikanan') || this.potencyVillages.includes('Pertanian')
     },
     showEfishery () {
-      if (this.potencyVillages.includes('Perikanan')) {
-        return true
-      } else {
-        return false
-      }
+      return this.potencyVillages.includes('Perikanan')
     },
     showAgriculture () {
-      if (this.potencyVillages.includes('Pertanian')) {
-        return true
-      } else {
-        return false
-      }
+      return this.potencyVillages.includes('Pertanian')
     }
   },
   methods: {
