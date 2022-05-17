@@ -122,7 +122,9 @@ export default {
     return {
       optionsNotification,
       message: '',
-      info: ''
+      info: '',
+      urlPotencyEfisheryForm: this.$config.urlPotencyEfisheryForm,
+      urlPotencyArgicultureForm: this.$config.urlPotencyArgicultureForm
     }
   },
   computed: {
@@ -170,11 +172,11 @@ export default {
     },
     showAgricultureForm () {
       // @todo: replace link google with actual link form
-      window.open('https://www.google.com')
+      window.open(this.urlPotencyArgicultureForm)
     },
     showFisheryForm () {
       // @todo: replace link google with actual link form
-      window.open('https://www.google.com')
+      window.open(this.urlPotencyEfisheryForm)
     }
   }
 }
