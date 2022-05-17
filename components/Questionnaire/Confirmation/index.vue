@@ -153,6 +153,7 @@
               :options="optionsVillage"
               label="Kelurahan/Desa"
               placeholder="Masukkan nama Kelurahan/Desa"
+              :error-message="errors.village"
             />
           </div>
         </div>
@@ -184,7 +185,7 @@
 
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
-        <BaseButton class="registration__submit-btn" label="Konfirmasi" @click="confirmData" />
+        <BaseButton class="registration__submit-btn" label="Konfirmasi" :variant="buttonConfirmationVariant" @click="confirmData" />
       </div>
     </div>
   </div>
@@ -222,7 +223,10 @@ export default {
       listDistrict: [],
       listVillage: [],
       isDisabledOptionDistricts: true,
-      isDisabledOptionVillages: true
+      isDisabledOptionVillages: true,
+      errors: {
+        village: null
+      }
     }
   },
   computed: {
@@ -261,6 +265,26 @@ export default {
         })
       }
       return villages
+    },
+    isFormCompleted () {
+      return !!((
+        this.params.nama &&
+        this.params.posisi &&
+        this.params.file.source &&
+        this.params.nomor_telepon &&
+        this.params.email &&
+        this.cityId &&
+        this.districtId &&
+        this.villageId &&
+        !this.errors.village
+      ))
+    },
+    buttonConfirmationVariant () {
+      if (this.isFormCompleted) {
+        return 'primary'
+      } else {
+        return 'disabled'
+      }
     }
   },
   watch: {
@@ -285,7 +309,7 @@ export default {
     },
     villageId (newId, oldId) {
       if (newId && newId !== oldId) {
-        // @todo: add village validation on next pr
+        this.checkVillage(newId)
       }
     }
   },
@@ -394,6 +418,20 @@ export default {
     onConfirmData () {
       this.$emit('onSubmit', this.params)
       this.$store.dispatch('dialog/closeDialog')
+    },
+    async checkVillage (villageId) {
+      try {
+        await this.$axios.get(`/villages/${villageId}/check-registered`)
+      } catch (error) {
+        const { data } = error.response
+        if (data?.error) {
+          this.errors.village = data.error
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: data.error
+          })
+        }
+      }
     }
   }
 }
@@ -407,7 +445,7 @@ export default {
   @apply w-full !important;
 }
 
-.jds-select, .jds-input-text__input-wrapper {
+.jds-select, .jds-input-text__input-wrapper, .jds-select__error-message {
   position: unset !important;
 }
 
