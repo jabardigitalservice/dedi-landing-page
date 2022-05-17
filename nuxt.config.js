@@ -45,7 +45,9 @@ export default {
         environment: process.env.SENTRY_ENVIRONMENT
       }
     },
-    apiSecretUpload: process.env.UPLOAD_FILE_SECRET
+    apiSecretUpload: process.env.UPLOAD_FILE_SECRET,
+    urlPotencyEfisheryForm: process.env.URL_POTENCY_EFISHERY_FORM,
+    urlPotencyArgicultureForm: process.env.URL_POTENCY_ARGICULTURE_FORM
   },
 
   // Environment dynamic secure
