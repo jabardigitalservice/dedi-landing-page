@@ -353,7 +353,7 @@
       </div>
 
       <div class="registration__submit">
-        <BaseButton class="registration__submit-btn" label="Selanjutnya" @click="onSubmit" />
+        <BaseButton class="registration__submit-btn" :variant="buttonQuestionnaireOneVariant" label="Selanjutnya" :disabled="!isValidatedQuestionnaire" @click="onSubmit" />
       </div>
     </div>
   </div>
@@ -444,6 +444,23 @@ export default {
       isShowElectrictImage: false,
       isShowProviderImage: false,
       isShowInternetImage: false
+    }
+  },
+  computed: {
+    isValidatedQuestionnaire () {
+      const isVehicleAccess = this.fasilitas_desa.akses_kendaraan.data.length !== 0
+      const isPowerSupply = this.fasilitas_desa.suplai_listrik.data !== null
+      const isTelephone = this.fasilitas_desa.jaringan_telepon.data !== null
+      const isInternet = this.fasilitas_desa.jaringan_internet.data !== null
+
+      return (isVehicleAccess && isPowerSupply && isTelephone && isInternet)
+    },
+    buttonQuestionnaireOneVariant () {
+      if (this.isValidatedQuestionnaire) {
+        return 'primary'
+      } else {
+        return 'disabled'
+      }
     }
   },
   watch: {
