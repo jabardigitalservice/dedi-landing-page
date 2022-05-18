@@ -42,6 +42,8 @@
             autofocus
             autocomplete="name"
             placeholder="Cth: Agus Permadi"
+            :error="!!(errors.name)"
+            :error-message="errors.name"
           />
           <BaseInput
             v-model="params.posisi"
@@ -51,6 +53,8 @@
             autofocus
             autocomplete="jabatan"
             placeholder="Cth: Kepala Desa Manyeti"
+            :error="!!(errors.position)"
+            :error-message="errors.position"
           />
           <div class="grid grid-cols-5 mt-6">
             <div class="registration__form-col-image">
@@ -166,10 +170,13 @@
             v-model="params.nomor_telepon"
             class="mt-2"
             label="Nomor Handphone"
-            type="text"
+            type="number"
+            min="0"
             autofocus
             autocomplete="handphone"
             placeholder="Cth: 0822 2068 9xxx"
+            :error="!!(errors.phone)"
+            :error-message="errors.phone"
           />
           <BaseInput
             v-model="params.email"
@@ -179,6 +186,8 @@
             autofocus
             autocomplete="email"
             placeholder="Cth: agus.permadi@gmail.com"
+            :error="!!(errors.email)"
+            :error-message="errors.email"
           />
         </div>
       </div>
@@ -225,7 +234,11 @@ export default {
       isDisabledOptionDistricts: true,
       isDisabledOptionVillages: true,
       errors: {
-        village: null
+        name: null,
+        position: null,
+        village: null,
+        phone: null,
+        email: null
       }
     }
   },
@@ -276,7 +289,11 @@ export default {
         this.cityId &&
         this.districtId &&
         this.villageId &&
-        !this.errors.village
+        !this.errors.name &&
+        !this.errors.position &&
+        !this.errors.village &&
+        !this.errors.phone &&
+        !this.errors.email
       ))
     },
     buttonConfirmationVariant () {
@@ -310,6 +327,38 @@ export default {
     villageId (newId, oldId) {
       if (newId && newId !== oldId) {
         this.checkVillage(newId)
+      }
+    },
+    'params.nama' () {
+      if (this.params.nama.length < 3) {
+        this.errors.name = 'Isian nama minimal 3 karakter.'
+      } else {
+        this.errors.name = ''
+      }
+    },
+    'params.posisi' () {
+      if (this.params.posisi.length < 1) {
+        this.errors.position = 'Isian jabatan wajib diisi.'
+      } else {
+        this.errors.position = ''
+      }
+    },
+    'params.nomor_telepon' () {
+      if (this.params.nomor_telepon.length < 1) {
+        this.errors.phone = 'Isian nomor telepon wajib diisi.'
+      } else {
+        this.errors.phone = ''
+      }
+    },
+    'params.email' () {
+      // test format input text email using pattern
+      const pattern = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
+      if (this.params.email.length < 1) {
+        this.errors.email = 'Isian email wajib diisi.'
+      } else if (this.params.email.length > 0 && !pattern.test(this.params.email)) {
+        this.errors.email = 'Isian email tidak valid.'
+      } else {
+        this.errors.email = ''
       }
     }
   },
@@ -405,23 +454,27 @@ export default {
       }
     },
     confirmData () {
-      this.$store.dispatch('dialog/showDialog', {
-        header: 'Konfirmasi Data',
-        title: 'Apakah semua data sudah dipastikan telah sesuai?',
-        btnRightVariant: 'primary',
-        btnLeftVariant: 'secondary',
-        btnLeftLabel: 'Cek Kembali',
-        btnRightLabel: 'Ya, sudah sesuai',
-        actionBtnRight: () => this.onConfirmData()
-      })
+      if (this.buttonConfirmationVariant === 'primary') {
+        this.$store.dispatch('dialog/showDialog', {
+          header: 'Konfirmasi Data',
+          title: 'Apakah semua data sudah dipastikan telah sesuai?',
+          btnRightVariant: 'primary',
+          btnLeftVariant: 'secondary',
+          btnLeftLabel: 'Cek Kembali',
+          btnRightLabel: 'Ya, sudah sesuai',
+          actionBtnRight: () => this.onConfirmData()
+        })
+      }
     },
     onConfirmData () {
-      this.$emit('onSubmit', this.params)
+      this.$emit('onSubmit', this.params, this.villageId)
       this.$store.dispatch('dialog/closeDialog')
     },
     async checkVillage (villageId) {
       try {
         await this.$axios.get(`/villages/${villageId}/check-registered`)
+        this.errors.village = null
+        this.$store.dispatch('toast/closeToast')
       } catch (error) {
         const { data } = error.response
         if (data?.error) {
