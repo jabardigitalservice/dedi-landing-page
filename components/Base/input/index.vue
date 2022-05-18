@@ -37,6 +37,7 @@
         :placeholder="placeholder"
         :type="mType"
         :value="value"
+        :min="min"
         :autofocus="autofocus"
         autocomplete="on"
         @focus="onFocus"
@@ -103,6 +104,13 @@ export default {
      * the label above input text
      */
     label: {
+      type: String,
+      default: ''
+    },
+    /**
+     * the minimum value to accept for this input
+     */
+    min: {
       type: String,
       default: ''
     },

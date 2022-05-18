@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       params: {
-        id: '32.09.21.2001', // @todo: remove this in next feature (id desa search)
+        id: null,
         level: 1,
         properties: {
           pemohon: {
@@ -157,9 +157,10 @@ export default {
     }
   },
   methods: {
-    confirmVillage (value) {
+    confirmVillage (params, villageId) {
       this.isConfirmed = true
-      this.params.properties.pemohon = value
+      this.params.properties.pemohon = params
+      this.params.id = villageId
     },
     validationQuestionnaireOne (value) {
       this.isLevelTwo = value
