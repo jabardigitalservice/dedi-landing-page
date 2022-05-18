@@ -75,7 +75,7 @@
       <div v-for="partner in partners" :key="partner.id" class="partner__partner-item">
         <div class="partner__partner-item-box">
           <div class="partner__partner-item-box-avatar">
-            <img width="40" height="40" :src="[partner.logo ? partner.logo : require('~/assets/logo/logo-dedi-abu-abu.svg')]" :alt="partner.name">
+            <img width="40" height="40" :src="[partner.logo.path ? partner.logo.path : require('~/assets/logo/logo-dedi-abu-abu.svg')]" :alt="partner.name">
           </div>
           <div class="partner__partner-item-box-partner">
             <div class="partner__partner-item-box-partner-text">
