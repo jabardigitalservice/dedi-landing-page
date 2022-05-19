@@ -175,7 +175,7 @@
       </div>
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Kembali" @click="onPrev" />
-        <BaseButton class="registration__submit-btn" label="Selanjutnya" @click="onSubmit" />
+        <BaseButton class="registration__submit-btn" :variant="buttonQuestionnaireTwoVariant" :disabled="!isValidatedQuestionnaireTwo" label="Selanjutnya" @click="onSubmit" />
       </div>
     </div>
   </div>
@@ -231,6 +231,21 @@ export default {
       villages,
       isShowTrainingImage: false,
       isShowCommunityImage: false
+    }
+  },
+  computed: {
+    isValidatedQuestionnaireTwo () {
+      const isCommunityValidated = this.literasi_digital.komunitas.data.length !== 0
+      const isTraningValidated = this.literasi_digital.pelatihan.data !== null
+
+      return (isCommunityValidated && isTraningValidated)
+    },
+    buttonQuestionnaireTwoVariant () {
+      if (this.isValidatedQuestionnaireTwo) {
+        return 'primary'
+      } else {
+        return 'disabled'
+      }
     }
   },
   watch: {
