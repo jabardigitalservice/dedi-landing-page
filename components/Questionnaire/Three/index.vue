@@ -896,8 +896,6 @@ export default {
     onNextQuestionnaire () {
       if (this.isQuestionnaireThreeCompleted && !this.isShowNextQuestionnaire) {
         this.isShowNextQuestionnaire = true
-        // eslint-disable-next-line no-unused-expressions
-        this.buttonQuestionnaireVariant
       } else {
         this.onSubmit()
       }
