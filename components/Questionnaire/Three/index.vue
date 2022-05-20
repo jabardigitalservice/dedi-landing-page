@@ -421,7 +421,22 @@
 
       <div class="registration__submit">
         <BaseButton class="registration__submit-btn" variant="secondary" label="Kembali" @click="onPreviousPage" />
-        <BaseButton class="registration__submit-btn" label="Selanjutnya" @click="onSubmit" />
+        <BaseButton
+          v-if="!isShowNextQuestionnaire"
+          class="registration__submit-btn"
+          label="Selanjutnya"
+          :variant="buttonQuestionnaireVariant"
+          :disabled="!isQuestionnaireThreeCompleted"
+          @click="onNextQuestionnaire"
+        />
+        <BaseButton
+          v-else
+          class="registration__submit-btn"
+          label="Selanjutnya"
+          :variant="buttonQuestionnairePotencyVariant"
+          :disabled="!isPotencyCompleted"
+          @click="onSubmit"
+        />
       </div>
     </div>
   </div>
@@ -531,6 +546,44 @@ export default {
       isShowOtherPotency: false,
       socialMediaNoneOption: [],
       villages
+    }
+  },
+  computed: {
+    isBumdesCompleted () {
+      const { komoditas, ecommerce, logistik } = this.properties.tentang_bumdes
+      return !!((
+        komoditas.produktivitas &&
+        ecommerce.data.length &&
+        ecommerce.distribusi &&
+        logistik
+      ))
+    },
+    isQuestionnaireThreeCompleted () {
+      const { sosial_media: socialMedia, bumdes } = this.properties.tentang_bumdes
+      if (this.isShowBumdes) {
+        return !!((
+          socialMedia.data.length &&
+          bumdes.data &&
+          this.isBumdesCompleted
+        ))
+      } else {
+        return !!((
+          socialMedia.data.length &&
+          bumdes.data
+        ))
+      }
+    },
+    isPotencyCompleted () {
+      const { data } = this.properties.potensi_desa
+      return !!((
+        data.length
+      ))
+    },
+    buttonQuestionnaireVariant () {
+      return this.isQuestionnaireThreeCompleted ? 'primary' : 'disabled'
+    },
+    buttonQuestionnairePotencyVariant () {
+      return this.isPotencyCompleted ? 'primary' : 'disabled'
     }
   },
   watch: {
@@ -840,12 +893,17 @@ export default {
         }
       }
     },
-    onSubmit () {
-      if (!this.isShowNextQuestionnaire) {
+    onNextQuestionnaire () {
+      if (this.isQuestionnaireThreeCompleted && !this.isShowNextQuestionnaire) {
         this.isShowNextQuestionnaire = true
+        // eslint-disable-next-line no-unused-expressions
+        this.buttonQuestionnaireVariant
       } else {
-        this.$emit('onSubmit', this.properties)
+        this.onSubmit()
       }
+    },
+    onSubmit () {
+      this.$emit('onSubmit', this.properties)
     },
     onPreviousPage () {
       if (this.isShowNextQuestionnaire) {
