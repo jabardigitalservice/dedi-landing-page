@@ -896,8 +896,6 @@ export default {
     onNextQuestionnaire () {
       if (this.isQuestionnaireThreeCompleted && !this.isShowNextQuestionnaire) {
         this.isShowNextQuestionnaire = true
-      } else {
-        this.onSubmit()
       }
     },
     onSubmit () {
