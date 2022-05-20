@@ -899,7 +899,9 @@ export default {
       }
     },
     onSubmit () {
-      this.$emit('onSubmit', this.properties)
+      if (this.isPotencyCompleted) {
+        this.$emit('onSubmit', this.properties)
+      }
     },
     onPreviousPage () {
       if (this.isShowNextQuestionnaire) {
