@@ -10,21 +10,21 @@
           "
         >
           <div class="registration-mitra__signup--body">
-            <form class="registration-mitra__form" method="post" @submit.prevent="submitForm">
-              <div class="registration-mitra__form-title">
+            <form class="registration-mitra__signup-form" method="post" @submit.prevent="submitForm">
+              <div class="registration-mitra__signup-form-title">
                 Daftar Mitra
               </div>
-              <div v-if="showErrorMessage" class="registration-mitra__form-error-message">
+              <div v-if="showErrorMessage" class="registration-mitra__signup-form-error-message">
                 <jds-section-message
                   show
                   variant="error"
                   :message="errorMessage"
                 />
               </div>
-              <div class="registration-mitra__form-info">
-                <div class="registration-mitra__form-info--wrapper">
+              <div class="registration-mitra__signup-form-info">
+                <div class="registration-mitra__signup-form-info--wrapper">
                   <h4>Info Umum</h4>
-                  <div class="registration-mitra__form-info-name">
+                  <div class="registration-mitra__signup-form-info-name">
                     <BaseInput
                       v-model="form.name"
                       label="Nama Lengkap"
@@ -39,7 +39,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-info-company">
+                  <div class="registration-mitra__signup-form-info-company">
                     <BaseInput
                       v-model="form.company"
                       label="Nama Perusahaan"
@@ -53,7 +53,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-info-email">
+                  <div class="registration-mitra__signup-form-info-email">
                     <BaseInput
                       v-model="form.email"
                       label="Email"
@@ -69,10 +69,10 @@
                     </BaseInput>
                   </div>
                 </div>
-                <hr class="registration-mitra__form-info--line">
-                <div class="registration-mitra__form-password">
+                <hr class="registration-mitra__signup-form-info--line">
+                <div class="registration-mitra__signup-form-password">
                   <h4>Kata Sandi</h4>
-                  <div class="registration-mitra__form-password--text">
+                  <div class="registration-mitra__signup-form-password--text">
                     <jds-popover
                       :value="isDropdownOpen"
                       :options="popoverOptions"
@@ -100,7 +100,7 @@
                       />
                     </jds-popover>
                   </div>
-                  <div class="registration-mitra__form-password--text">
+                  <div class="registration-mitra__signup-form-password--text">
                     <BaseInput
                       v-model="form.password_confirm"
                       label="Ulangi Kata Sandi"
@@ -114,7 +114,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-password-message">
+                  <div class="registration-mitra__signup-form-password-message">
                     <jds-section-message
                       show
                       variant="info"
@@ -123,7 +123,7 @@
                   </div>
                 </div>
               </div>
-              <div class="registration-mitra__form-button">
+              <div class="registration-mitra__signup-form-button">
                 <BaseButton
                   class="w-full"
                   :disabled="isFormValidation"
@@ -134,11 +134,11 @@
                   text-loading="Mendaftarkan Akun"
                 />
               </div>
-              <h4 class="registration-mitra__form-text--line">
-                <span class="registration-mitra__form-text--color">atau</span>
+              <h4 class="registration-mitra__signup-form-text--line">
+                <span class="registration-mitra__signup-form-text--color">atau</span>
               </h4>
             </form>
-            <div class="registration-mitra__google-account">
+            <div class="registration-mitra__signup-google-account">
               <BaseButton
                 class="w-full"
                 @click="googleLogin"
