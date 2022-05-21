@@ -3,7 +3,8 @@
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">
-        <div v-if="!isConfirmed">
+        <QuestionnaireNotification :level="4" :potency-villages="params.properties.potensi_desa.data" />
+        <!-- <div v-if="!isConfirmed">
           <QuestionnaireConfirmation @onSubmit="confirmVillage" />
         </div>
         <div v-if="!showModalLevelDesa && isConfirmed">
@@ -14,7 +15,7 @@
         <div v-if="showModalLevelDesa && isConfirmed">
           <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -132,7 +133,7 @@ export default {
             logistik: null
           },
           potensi_desa: {
-            data: [],
+            data: ['Pertanian', 'Perikanan'],
             potensi_dapat_dikembangkan: null,
             photo: {
               path: null,
