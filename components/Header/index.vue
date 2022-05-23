@@ -4,8 +4,11 @@
       <img class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__action">
+        <BaseButton variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/competition')" />
+        <span class="text-gray-300">|</span>
         <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
-        <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" />
+        <!-- @Temporary hide login button -->
+        <!-- <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" /> -->
       </div>
     </div>
   </div>
