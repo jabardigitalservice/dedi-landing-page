@@ -172,8 +172,10 @@ export default {
 
 <style lang='postcss' scoped>
 .notification {
-  @apply my-17.25 grid grid-rows-1 p-4
-  sm:(my-[30px] bg-white p-8 mx-auto bg-white w-[680px] max-h-[640px] rounded-2xl);
+  @apply grid grid-rows-[1/2fr,1fr] p-4
+  sm:(bg-white px-8 mx-auto bg-white w-[680px] rounded-2xl)
+  md:(p-8 max-h-[calc(100vh-100px)])
+  lg:(max-h-[calc(100vh-170px)]);
 
    &__title > h1 {
     @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 mb-4
@@ -188,7 +190,8 @@ export default {
     }
 
     &--position {
-      @apply my-auto;
+      @apply my-auto
+      md:(max-h-[calc(100vh-300px)] overflow-y-auto);
     }
 
     &-image {
@@ -202,7 +205,7 @@ export default {
 
     &-message {
       @apply text-center font-sans font-normal text-[14px] leading-[20px] text-gray-800 pb-4
-      sm:(leading-[23px] max-w-[439px]);
+      md:(leading-[23px] max-w-[439px]);
 
       &--bold {
         @apply text-green-700 font-bold;
