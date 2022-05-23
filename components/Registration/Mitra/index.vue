@@ -10,21 +10,21 @@
           "
         >
           <div class="registration-mitra__signup--body">
-            <form class="registration-mitra__form" method="post" @submit.prevent="submitForm">
-              <div class="registration-mitra__form-title">
+            <form class="registration-mitra__signup-form" method="post" @submit.prevent="submitForm">
+              <div class="registration-mitra__signup-form-title">
                 Daftar Mitra
               </div>
-              <div v-if="showErrorMessage" class="registration-mitra__form-error-message">
+              <div v-if="showErrorMessage" class="registration-mitra__signup-form-error-message">
                 <jds-section-message
                   show
                   variant="error"
                   :message="errorMessage"
                 />
               </div>
-              <div class="registration-mitra__form-info">
-                <div class="registration-mitra__form-info--wrapper">
+              <div class="registration-mitra__signup-form-info">
+                <div class="registration-mitra__signup-form-info--wrapper">
                   <h4>Info Umum</h4>
-                  <div class="registration-mitra__form-info-name">
+                  <div class="registration-mitra__signup-form-info-name">
                     <BaseInput
                       v-model="form.name"
                       label="Nama Lengkap"
@@ -39,7 +39,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-info-company">
+                  <div class="registration-mitra__signup-form-info-company">
                     <BaseInput
                       v-model="form.company"
                       label="Nama Perusahaan"
@@ -53,7 +53,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-info-email">
+                  <div class="registration-mitra__signup-form-info-email">
                     <BaseInput
                       v-model="form.email"
                       label="Email"
@@ -69,10 +69,10 @@
                     </BaseInput>
                   </div>
                 </div>
-                <hr class="registration-mitra__form-info--line">
-                <div class="registration-mitra__form-password">
+                <hr class="registration-mitra__signup-form-info--line">
+                <div class="registration-mitra__signup-form-password">
                   <h4>Kata Sandi</h4>
-                  <div class="registration-mitra__form-password--text">
+                  <div class="registration-mitra__signup-form-password--text">
                     <jds-popover
                       :value="isDropdownOpen"
                       :options="popoverOptions"
@@ -100,7 +100,7 @@
                       />
                     </jds-popover>
                   </div>
-                  <div class="registration-mitra__form-password--text">
+                  <div class="registration-mitra__signup-form-password--text">
                     <BaseInput
                       v-model="form.password_confirm"
                       label="Ulangi Kata Sandi"
@@ -114,7 +114,7 @@
                       </template>
                     </BaseInput>
                   </div>
-                  <div class="registration-mitra__form-password-message">
+                  <div class="registration-mitra__signup-form-password-message">
                     <jds-section-message
                       show
                       variant="info"
@@ -123,7 +123,7 @@
                   </div>
                 </div>
               </div>
-              <div class="registration-mitra__form-button">
+              <div class="registration-mitra__signup-form-button">
                 <BaseButton
                   class="w-full"
                   :disabled="isFormValidation"
@@ -134,11 +134,11 @@
                   text-loading="Mendaftarkan Akun"
                 />
               </div>
-              <h4 class="registration-mitra__form-text--line">
-                <span class="registration-mitra__form-text--color">atau</span>
+              <h4 class="registration-mitra__signup-form-text--line">
+                <span class="registration-mitra__signup-form-text--color">atau</span>
               </h4>
             </form>
-            <div class="registration-mitra__google-account">
+            <div class="registration-mitra__signup-google-account">
               <BaseButton
                 class="w-full"
                 @click="googleLogin"
@@ -457,176 +457,5 @@ export default {
 </script>
 
 <style lang="postcss">
-.registration-mitra {
-  @apply h-screen w-screen;
-
-  &--position {
-    @apply h-screen w-screen flex flex items-end relative sm:(bg-[#32E6F9]);
-  }
-
-  &__image {
-    @apply hidden sm:(absolute block);
-  }
-
-  &__signup {
-    @apply relative h-screen w-screen flex justify-center md:(items-center pt-8);
-
-    &--hidden {
-      @apply hidden;
-    }
-
-    &--body {
-      @apply bg-white my-17.25 p-4 sm:(p-8 my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md);
-    }
-  }
-
-  &__form {
-
-    &-title {
-      @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
-      sm:(pb-5);
-    }
-
-    &-error-message {
-      @apply pb-4
-      sm:(pb-5);
-    }
-
-    &-info {
-
-      &-name, &-company, {
-        @apply font-roboto text-[14px] leading-[16.41px] pb-4
-        sm:(pb-5);
-      }
-
-      &-email {
-        @apply font-roboto text-[14px] leading-[16.41px] pb-4
-        sm:(pb-0)
-      }
-
-      &--line {
-        @apply border-b-1 border-gray-200 mb-4 sm:(w-4 border-l-2 border-y-0 mb-0 h-[250px] mx-4);
-      }
-    }
-
-    &-password {
-
-      h4 {
-        @apply font-roboto font-bold text-[16px] leading-[22px] text-green-700 pb-4;
-      }
-
-      &--text {
-        @apply font-roboto text-[14px] leading-[16.41px] pb-4
-        sm:(pb-5);
-      }
-
-      &-message {
-        @apply pb-4
-        sm:(pb-0);
-      }
-    }
-
-    &-button {
-      @apply mb-4
-      sm:mb-5;
-    }
-
-    &-info {
-      @apply sm:(grid grid-cols-[1fr,32px,1fr] pb-5);
-
-      h4 {
-        @apply font-roboto font-bold text-[16px] leading-[22px] text-green-700 pb-4;
-      }
-    }
-
-    &-text {
-      @apply py-4;
-
-      &--line {
-        @apply w-full border-b-1 border-solid border-gray-200 text-center leading-[1.5px] mt-3 mb-6 mx-0;
-      }
-      &--color {
-        @apply font-sans font-normal text-[14px] leading-[0px] bg-white text-gray-500 px-2.5
-        sm:(mb-3);
-      }
-    }
-  }
-
-  &__google-account {
-    @apply mb-4
-    sm:(mt-3 mb-5);
-  }
-
-  &__login {
-    @apply font-sans font-normal text-gray-700 text-center text-sm pb-6;
-  }
-
-  &__notification {
-    @apply bg-white my-17.25 p-4 sm:(p-8 my-[70px] mx-auto w-[640px] h-[620px] relative rounded-md) grid grid-cols-1 justify-center;
-
-    &-title {
-      @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
-      sm:(pb-5);
-    }
-
-    &-content {
-      @apply flex flex-col justify-center items-center;
-
-      &-image {
-        @apply mb-4;
-      }
-
-      &-mailbox {
-        @apply pb-4;
-      }
-
-      &-name {
-        @apply font-sans font-bold text-base text-center text-gray-800;
-      }
-
-      &-info {
-        @apply font-sans font-normal text-sm text-center text-gray-600 pb-4;
-      }
-
-      &-button {
-        @apply w-full pb-8 text-center;
-      }
-    }
-
-    &--hidden {
-      @apply hidden;
-    }
-  }
-}
-
-/* Override Base Component style & design system */
-
-.input-text__icon-left {
-  @apply !bg-gray-100;
-}
-
-.registration-mitra__google-account .jds-button {
-  @apply !bg-white !border-1 !border-gray-400;
-}
-
-.registration-mitra__google-account .jds-button--primary {
-  @apply !border-1 !border-solid !border-gray-400;
-}
-
-.registration-mitra__form-password-message .jds-section-message {
-  @apply !px-2 !py-1.5;
-}
-
-.registration-mitra__form-password-message .jds-section-message__content__text {
-  @apply !text-[11px] !leading-[18px];
-}
-
-.registration-mitra__form-password--text .jds-popover,
-.registration-mitra__form-password--text .jds-popover .jds-popover__activator {
-  @apply !w-full;
-}
-
-.registration-mitra__form-password--text .jds-popover .input-text__wrapper-input {
-  @apply !w-full md:!w-[292px];
-}
+@import './RegistrationMitra.pcss';
 </style>
