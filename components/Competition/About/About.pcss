@@ -1,0 +1,94 @@
+.competition-about {
+  @apply bg-gray-150 pt-12;
+
+  &__wrapper {
+    @apply py-6
+    md:(py-10)
+    xl:(py-20);
+  }
+
+  &__title {
+    @apply pb-6
+    md:(pb-8);
+
+    &--text {
+      @apply font-serif text-center text-blue-gray-800 text-[40px] leading-[46.88px] font-bold;
+    }
+  }
+
+  &__info {
+    @apply pb-6 text-left
+    md:(pb-15);
+
+    &-message {
+      @apply min-w-[250px] max-w-[725px] flex justify-items-start items-start gap-4 p-4 bg-blue-50 border border-blue-800 rounded-lg
+      md:(mx-auto);
+
+      &-icon {
+        @apply text-blue-800;
+      }
+
+      &-content {
+        @apply flex-grow;
+      
+        &-text {
+          @apply items-start text-[14px] leading-[23px];
+
+          &--bold {
+            @apply text-gray-900 font-bold;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    @apply pb-6
+    md:(pb-[unset]);
+
+    &-development, &-inovation {
+      @apply pb-6
+      md:(flex flex-col-2 gap-15 justify-between);
+
+      &--padding-bottom {
+        @apply 
+        md:(pb-15)
+        xl:(pb-30);
+      }
+
+      &--row-reverse {
+        @apply md:(flex-row-reverse);
+      }
+
+      &-text {
+        @apply pb-6 text-center
+        md:(text-left);
+
+        &-title {
+          @apply pb-6 font-serif font-bold text-[32px] leading-[46px] text-blue-gray-800
+          md:(pb-8);
+        
+          &--green {
+            @apply text-green-700;      
+          }
+        }
+
+        &-info {
+          @apply font-sans text-[16px] leading-[26px] font-normal text-blue-gray-700;
+        }
+      }
+     
+      &-image {
+      @apply md:(w-[400px] h-full)
+      lg:(w-[454px])
+      xl:(w-[655px]);
+        
+        &--padding {
+          @apply pb-12;
+        }
+      }
+    }
+
+  }
+
+}

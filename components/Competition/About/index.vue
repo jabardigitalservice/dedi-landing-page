@@ -67,3 +67,7 @@
     </div>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+@import './About.pcss';
+</style>
