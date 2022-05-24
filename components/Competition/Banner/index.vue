@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'ComponentBanner',
+  name: 'CompetitionBanner',
   methods: {
     onClickCTA () {
       this.$emit('onClickCTA', true)
