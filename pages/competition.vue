@@ -1,5 +1,6 @@
 <template>
   <div>
+    <CompetitionBanner @onClickCTA="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
