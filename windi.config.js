@@ -78,6 +78,7 @@ export default {
       gray: {
         50: '#FAFAFA',
         100: '#F5F5F5',
+        150: '#FBFBFB',
         200: '#EEEEEE',
         300: '#E0E0E0',
         400: '#BDBDBD',
