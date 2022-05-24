@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
 export default {
-  target: 'static',
+  target: 'server',
   loading: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
