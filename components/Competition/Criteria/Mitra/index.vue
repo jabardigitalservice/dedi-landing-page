@@ -80,3 +80,7 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+@import './CriteriaMitra.pcss';
+</style>
