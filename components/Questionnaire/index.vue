@@ -1,5 +1,5 @@
 <template>
-  <div id="registration" class="registration-questionnaire">
+  <div id="registration" class="registration">
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">

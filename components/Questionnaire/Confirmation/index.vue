@@ -14,187 +14,188 @@
     <div
       v-else
     >
-      <div class="registration__form" />
-      <div class="registration__form-title">
-        Kuisioner Desa Digital
-      </div>
-      <div class="registration__form-content">
-        <jds-section-message
-          show
-          name="info"
-          variant="info"
-          :message="infoProgram"
-        >
-          <div class="registration__form-info" @click="onClickInfo">
-            Lihat Level Desa Digital
-          </div>
-        </jds-section-message>
-
-        <div class="registration__form-content--container">
-          <div class="registration__form-content--container-title">
-            Informasi Umum
-          </div>
-          <BaseInput
-            v-model="params.nama"
-            class="mt-2"
-            label="Nama Lengkap"
-            type="text"
-            autofocus
-            autocomplete="name"
-            placeholder="Cth: Agus Permadi"
-            :error="!!(errors.name)"
-            :error-message="errors.name"
-          />
-          <BaseInput
-            v-model="params.posisi"
-            class="mt-2"
-            label="Jabatan"
-            type="text"
-            autofocus
-            autocomplete="jabatan"
-            placeholder="Cth: Kepala Desa Manyeti"
-            :error="!!(errors.position)"
-            :error-message="errors.position"
-          />
-          <div class="grid grid-cols-5 mt-6">
-            <div class="registration__form-col-image">
-              <div
-                :class="{
-                  'registration__form__image': true,
-                  'registration__form__image--attached': file.isAttached
-                }"
-              >
-                <object
-                  v-if="file.source"
-                  :data="file.source"
-                  class="registration__form__image--attached-uploaded"
-                  width="88"
-                  height="88"
-                />
-                <img
-                  v-else
-                  height="22"
-                  width="22"
-                  src="@/assets/icons/IconPdf.svg"
-                  alt="Surat Keterangan"
-                >
-              </div>
+      <div class="registration__form">
+        <div class="registration__form-title">
+          Kuisioner Desa Digital
+        </div>
+        <div class="registration__form-content">
+          <jds-section-message
+            show
+            name="info"
+            variant="info"
+            :message="infoProgram"
+          >
+            <div class="registration__form-info" @click="onClickInfo">
+              Lihat Level Desa Digital
             </div>
-            <div class="registration__form-col-desc">
-              <div class="registration__form__subtitle">
-                Unggah SK Pengangkatan Kepala Desa
-              </div>
-              <div class="registration__form__placeholder">
-                File yang didukung adalah .pdf maksimal 10 Mb.
-              </div>
-              <div class="registration__form__button grid grid-cols-5">
-                <div class="col-span-1">
-                  <button class="registration__form__button-btn text-sm" type="button" @click="$refs.letter.click()">
-                    Unggah Surat
-                    <jds-icon class="ml-1" size="10px" name="plus-bold" />
-                  </button>
-                  <input
-                    ref="letter"
-                    type="file"
-                    hidden="true"
-                    accept="application/pdf"
-                    @change="onFileChange()"
+          </jds-section-message>
+
+          <div class="registration__form-content--container">
+            <div class="registration__form-content--container-title">
+              Informasi Umum
+            </div>
+            <BaseInput
+              v-model="params.nama"
+              class="mt-2"
+              label="Nama Lengkap"
+              type="text"
+              autofocus
+              autocomplete="name"
+              placeholder="Cth: Agus Permadi"
+              :error="!!(errors.name)"
+              :error-message="errors.name"
+            />
+            <BaseInput
+              v-model="params.posisi"
+              class="mt-2"
+              label="Jabatan"
+              type="text"
+              autofocus
+              autocomplete="jabatan"
+              placeholder="Cth: Kepala Desa Manyeti"
+              :error="!!(errors.position)"
+              :error-message="errors.position"
+            />
+            <div class="grid grid-cols-5 mt-6">
+              <div class="registration__form-col-image">
+                <div
+                  :class="{
+                    'registration__form__image': true,
+                    'registration__form__image--attached': file.isAttached
+                  }"
+                >
+                  <object
+                    v-if="file.source"
+                    :data="file.source"
+                    class="registration__form__image--attached-uploaded"
+                    width="88"
+                    height="88"
+                  />
+                  <img
+                    v-else
+                    height="22"
+                    width="22"
+                    src="@/assets/icons/IconPdf.svg"
+                    alt="Surat Keterangan"
                   >
                 </div>
-                <div class="col-span-4">
-                  <div v-if="file.filePdf" class="registration__form__filename">
-                    Filename: {{ file.filePdf.get('file').name }}
+              </div>
+              <div class="registration__form-col-desc">
+                <div class="registration__form__subtitle">
+                  Unggah SK Pengangkatan Kepala Desa
+                </div>
+                <div class="registration__form__placeholder">
+                  File yang didukung adalah .pdf maksimal 10 Mb.
+                </div>
+                <div class="registration__form__button grid grid-cols-5">
+                  <div class="col-span-1">
+                    <button class="registration__form__button-btn text-sm" type="button" @click="$refs.letter.click()">
+                      Unggah Surat
+                      <jds-icon class="ml-1" size="10px" name="plus-bold" />
+                    </button>
+                    <input
+                      ref="letter"
+                      type="file"
+                      hidden="true"
+                      accept="application/pdf"
+                      @change="onFileChange()"
+                    >
                   </div>
-                  <div v-else-if="file.uploadErrorMessage" class="registration__form__filename-error">
-                    {{ file.uploadErrorMessage }}
-                  </div>
-                  <div v-else class="registration__form__filename">
-                    Belum ada file terpilih.
+                  <div class="col-span-4">
+                    <div v-if="file.filePdf" class="registration__form__filename">
+                      Filename: {{ file.filePdf.get('file').name }}
+                    </div>
+                    <div v-else-if="file.uploadErrorMessage" class="registration__form__filename-error">
+                      {{ file.uploadErrorMessage }}
+                    </div>
+                    <div v-else class="registration__form__filename">
+                      Belum ada file terpilih.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="registration__form-content--container">
-          <div class="registration__form-content--container-title">
-            Alamat Desa
+          <div class="registration__form-content--container">
+            <div class="registration__form-content--container-title">
+              Alamat Desa
+            </div>
+            <div class="registration__form-content--container__form-group">
+              <jds-select
+                v-model="cityId"
+                class="w-full mt-2"
+                name="kabupaten/kota"
+                filterable
+                options-header="Kabupaten/Kota"
+                :options="optionsCity"
+                label="Kabupaten/Kota"
+                placeholder="Masukkan nama Kabupaten/Kota"
+              />
+            </div>
+            <div class="registration__form-content--container__form-group">
+              <jds-select
+                v-model="districtId"
+                :disabled="isDisabledOptionDistricts"
+                class="w-full mt-2"
+                name="Kecamatan"
+                filterable
+                options-header="Kecamatan"
+                :options="optionsDistrict"
+                label="Kecamatan"
+                placeholder="Masukkan nama Kecamatan"
+              />
+            </div>
+            <div class="registration__form-content--container__form-group">
+              <jds-select
+                v-model="villageId"
+                :disabled="isDisabledOptionVillages"
+                class="w-full mt-2"
+                name="Kelurahan/Desa"
+                filterable
+                options-header="Kelurahan/Desa"
+                :options="optionsVillage"
+                label="Kelurahan/Desa"
+                placeholder="Masukkan nama Kelurahan/Desa"
+                :error-message="errors.village"
+              />
+            </div>
           </div>
-          <div class="registration__form-content--container__form-group">
-            <jds-select
-              v-model="cityId"
-              class="w-full mt-2"
-              name="kabupaten/kota"
-              filterable
-              options-header="Kabupaten/Kota"
-              :options="optionsCity"
-              label="Kabupaten/Kota"
-              placeholder="Masukkan nama Kabupaten/Kota"
+
+          <div class="registration__form-content--container">
+            <div class="registration__form-content--container-title">
+              Lainnya
+            </div>
+            <BaseInput
+              v-model="params.nomor_telepon"
+              class="mt-2"
+              label="Nomor Handphone"
+              type="number"
+              min="0"
+              autofocus
+              autocomplete="handphone"
+              placeholder="Cth: 0822 2068 9xxx"
+              :error="!!(errors.phone)"
+              :error-message="errors.phone"
+            />
+            <BaseInput
+              v-model="params.email"
+              class="mt-2"
+              label="Alamat Email"
+              type="text"
+              autofocus
+              autocomplete="email"
+              placeholder="Cth: agus.permadi@gmail.com"
+              :error="!!(errors.email)"
+              :error-message="errors.email"
             />
           </div>
-          <div class="registration__form-content--container__form-group">
-            <jds-select
-              v-model="districtId"
-              :disabled="isDisabledOptionDistricts"
-              class="w-full mt-2"
-              name="Kecamatan"
-              filterable
-              options-header="Kecamatan"
-              :options="optionsDistrict"
-              label="Kecamatan"
-              placeholder="Masukkan nama Kecamatan"
-            />
-          </div>
-          <div class="registration__form-content--container__form-group">
-            <jds-select
-              v-model="villageId"
-              :disabled="isDisabledOptionVillages"
-              class="w-full mt-2"
-              name="Kelurahan/Desa"
-              filterable
-              options-header="Kelurahan/Desa"
-              :options="optionsVillage"
-              label="Kelurahan/Desa"
-              placeholder="Masukkan nama Kelurahan/Desa"
-              :error-message="errors.village"
-            />
-          </div>
         </div>
 
-        <div class="registration__form-content--container">
-          <div class="registration__form-content--container-title">
-            Lainnya
-          </div>
-          <BaseInput
-            v-model="params.nomor_telepon"
-            class="mt-2"
-            label="Nomor Handphone"
-            type="number"
-            min="0"
-            autofocus
-            autocomplete="handphone"
-            placeholder="Cth: 0822 2068 9xxx"
-            :error="!!(errors.phone)"
-            :error-message="errors.phone"
-          />
-          <BaseInput
-            v-model="params.email"
-            class="mt-2"
-            label="Alamat Email"
-            type="text"
-            autofocus
-            autocomplete="email"
-            placeholder="Cth: agus.permadi@gmail.com"
-            :error="!!(errors.email)"
-            :error-message="errors.email"
-          />
+        <div class="registration__submit">
+          <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
+          <BaseButton class="registration__submit-btn" label="Konfirmasi" :variant="buttonConfirmationVariant" @click="confirmData" />
         </div>
-      </div>
-
-      <div class="registration__submit">
-        <BaseButton class="registration__submit-btn" variant="secondary" label="Batalkan" @click="$router.push('/')" />
-        <BaseButton class="registration__submit-btn" label="Konfirmasi" :variant="buttonConfirmationVariant" @click="confirmData" />
       </div>
     </div>
   </div>

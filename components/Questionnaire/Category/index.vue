@@ -93,17 +93,17 @@ export default {
 
 <style lang="postcss" scoped>
 .category {
-  @apply grid grid-rows-1 p-4 mt-20
-  sm:(my-[70px] p-8 bg-white w-[680px] h-[486px] rounded-2xl);
+  @apply grid grid-rows-1 p-4
+  md:(p-8 mt-6 bg-white w-[680px] h-[476px] rounded-2xl);
 
   &__title > h1 {
     @apply font-roboto font-bold text-[16px] leading-[22px] text-gray-800 pb-4
-    sm:(leading-[26px] pb-5);
+    md:(leading-[26px] pb-5);
   }
 
   &__content {
     @apply border border-green-700 rounded-xl text-center mb-4
-    sm:(text-left mb-5 grid grid-cols-2);
+    md:(text-left mb-5 grid grid-cols-2);
 
     &-text {
       @apply mx-[43.5px] sm:(ml-6 mr-0);

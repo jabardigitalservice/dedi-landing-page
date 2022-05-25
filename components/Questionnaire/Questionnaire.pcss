@@ -1,24 +1,23 @@
 .registration {
-  @apply h-screen w-screen;
-
+  
   &--position {
-    @apply h-screen w-screen flex flex items-end relative sm:(bg-[#32E6F9]);
+    @apply h-full flex items-end relative md:(bg-[#32E6F9] h-[calc(100vh-61px)]);
   }
 
   &__image {
-    @apply hidden sm:(absolute block);
+    @apply hidden md:(absolute block);
   }
 
   &__questionnaire {
-    @apply relative h-screen w-screen flex justify-center md:(items-center pt-8);
+    @apply relative w-full mt-16 sm:(flex justify-center) md:(items-center my-auto pt-8);
 
     &-body {
-      @apply bg-white mt-20 p-4 sm:(p-8 my-[70px] mx-auto w-[680px] h-auto relative rounded-md);
+      @apply h-full bg-white p-4 md:(p-8 mx-auto w-[680px] h-auto relative rounded-md);
     }
     
     &-modal {
-      @apply z-50 h-screen backdrop-filter backdrop-blur-[6px] bg-gray-900 bg-opacity-75 top-[22px]
-      sm:(h-auto);
+      @apply z-50 backdrop-filter backdrop-blur-[6px] bg-gray-900 bg-opacity-75 top-[10px]
+      md:(h-auto);
     }
   }
 
@@ -42,11 +41,11 @@
     }
 
     &-title {
-      @apply font-roboto font-bold text-[16px] text-gray-800 pb-4 sm: (pb-5);
+      @apply font-roboto font-bold text-[16px] text-gray-800 pb-4 sm:(pb-5);
     }
 
     &-content {
-      @apply overflow-scroll h-auto sm:(h-[448px]);
+      @apply overflow-scroll h-auto md:(h-[330px]) xl:(h-[370px]);
 
       &--container {
         @apply mt-5 px-4 py-5 border border-gray-200 rounded-lg;
@@ -78,7 +77,7 @@
     }
 
     &__subtitle {
-      @apply text-gray-800 text-sm leading-[23px] font-medium mt-4 sm: (mt-0);
+      @apply text-gray-800 text-sm leading-[23px] font-medium mt-4 sm:(mt-0);
     }
 
     &__filename {
@@ -116,11 +115,6 @@
     &-btn {
       @apply py-2 !important;
     }
-  }
-}
-.jds-button {
-  &--primary, &--secondary {
-    @apply py-[10px] !important;
   }
 }
 
