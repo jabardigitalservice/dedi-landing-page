@@ -1,34 +1,32 @@
 <template>
-  <div class="criteria-mitra">
-    <div class="wrapper">
-      <div class="criteria-mitra__wrapper">
-        <div class="criteria-mitra__content">
-          <div class="criteria-mitra__content-text">
-            <h1 class="criteria-mitra__content-text-title">
-              Kriteria Mitra Yang Dapat Mengikuti
-            </h1>
-            <p class="criteria-mitra__content-text-subtitle">
-              Calon mitra yang ingin berkontribusi dalam pengembangan pontensi desa harus memenuhi
-              <span class="criteria-mitra__content-text-subtitle--bold">5 ketentuan berikut:</span>
-            </p>
-          </div>
-          <div
-            v-for="item in CriteriaMitraContents"
-            :key="item.id"
-            class="criteria-mitra__content-provision"
-          >
-            <img class="criteria-mitra__content-provision-image" :src="item.image" :alt="item.textImg">
-            <p v-if="item.id < 5" class="criteria-mitra__content-provision-text">
-              {{ item.text }}
-            </p>
-            <p v-if="item.id === 5" class="criteria-mitra__content-provision-text">
-              {{ item.text }} <span class="criteria-mitra__content-provision-text--italic">Local Champion</span>
-            </p>
-          </div>
+  <div class="wrapper criteria-mitra">
+    <div class="criteria-mitra__wrapper">
+      <div class="criteria-mitra__content">
+        <div class="criteria-mitra__content-text">
+          <h1 class="criteria-mitra__content-text-title">
+            Kriteria Mitra Yang Dapat Mengikuti
+          </h1>
+          <p class="criteria-mitra__content-text-subtitle">
+            Calon mitra yang ingin berkontribusi dalam pengembangan pontensi desa harus memenuhi
+            <span class="criteria-mitra__content-text-subtitle--bold">5 ketentuan berikut:</span>
+          </p>
         </div>
-        <div class="criteria-mitra__action">
-          <BaseButton class="criteria-mitra__action-detail-btn" variant="secondary" label="Lihat Detail Kriteria Mitra Syembara Desa Digital" @click="onShowDetailContent" />
+        <div
+          v-for="item in CriteriaMitraContents"
+          :key="item.id"
+          class="criteria-mitra__content-provision"
+        >
+          <img class="criteria-mitra__content-provision-image" :src="item.image" :alt="item.textImg">
+          <p v-if="item.id < 5" class="criteria-mitra__content-provision-text">
+            {{ item.text }}
+          </p>
+          <p v-if="item.id === 5" class="criteria-mitra__content-provision-text">
+            {{ item.text }} <span class="criteria-mitra__content-provision-text--italic">Local Champion</span>
+          </p>
         </div>
+      </div>
+      <div class="criteria-mitra__action">
+        <BaseButton class="criteria-mitra__action-detail-btn" variant="secondary" label="Lihat Detail Kriteria Mitra Syembara Desa Digital" @click="onShowDetailContent" />
       </div>
     </div>
   </div>
