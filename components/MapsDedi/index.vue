@@ -207,7 +207,8 @@ export default {
       search: '',
       query: {
         current_page: 1,
-        per_page: 7
+        per_page: 7,
+        is_active: true
       },
       listLevel: [
         {
