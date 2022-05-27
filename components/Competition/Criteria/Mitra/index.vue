@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper criteria-mitra">
+  <div id="criteria-mitra" class="wrapper criteria-mitra">
     <div class="criteria-mitra__wrapper">
       <div class="criteria-mitra__content">
         <div class="criteria-mitra__content-text">
