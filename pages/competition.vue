@@ -2,6 +2,7 @@
   <div>
     <CompetitionBanner @onClickCTA="showModal" />
     <CompetitionAbout />
+    <CompetitionCriteriaMitra />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
