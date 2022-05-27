@@ -13,7 +13,7 @@
         <div class="village-criteria__main--wrapper-content">
           <div v-for="index in 2" :key="data[index-1].id" class="col-span-1">
             <div class="card">
-              <img class="card--img" height="136" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
+              <img class="card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
               <div class="card--desc">
                 {{ data[index-1].desc }}
               </div>
@@ -21,7 +21,7 @@
           </div>
           <div class="col-span-2">
             <div class="card">
-              <img class="card--img" height="126" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
+              <img class="card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
               <div class="card--desc">
                 {{ data[2].desc }}
               </div>
@@ -31,7 +31,7 @@
         <div class="village-criteria__main--wrapper-content">
           <div v-for="index in 4" :key="data[index+2].id" class="col-span-1">
             <div class="card">
-              <img class="card--img" height="136" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
+              <img class="card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
               <div class="card--desc">
                 {{ data[index+2].desc }}
               </div>
