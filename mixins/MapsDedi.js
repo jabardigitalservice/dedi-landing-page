@@ -80,7 +80,8 @@ export default {
 
       const params = {
         'bounds[ne]': `${bounds.ne.lng()},${bounds.ne.lat()}`,
-        'bounds[sw]': `${bounds.sw.lng()},${bounds.sw.lat()}`
+        'bounds[sw]': `${bounds.sw.lng()},${bounds.sw.lat()}`,
+        is_active: true
       }
       if (this.isDraged || this.isZoomChanged || this.isMoveCurrenLocation) {
         this.setMarker(google, map, params)
