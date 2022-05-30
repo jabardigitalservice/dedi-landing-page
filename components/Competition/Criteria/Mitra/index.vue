@@ -8,7 +8,7 @@
           </h1>
           <p class="criteria-mitra__content-text-subtitle">
             Calon mitra yang ingin berkontribusi dalam pengembangan pontensi desa harus memenuhi
-            <span class="criteria-mitra__content-text-subtitle--bold">5 ketentuan berikut:</span>
+            <strong>5 ketentuan</strong> berikut:
           </p>
         </div>
         <div
