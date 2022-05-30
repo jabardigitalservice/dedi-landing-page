@@ -26,7 +26,7 @@
           Kriteria Mitra Yang Dapat Mengikuti
         </div>
         <div class="modal__container-join-as">
-          <p>test</p>
+          <!-- @todo: add content in the next pr -->
         </div>
         <div class="modal__container-button">
           <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />

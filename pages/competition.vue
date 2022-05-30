@@ -1,7 +1,9 @@
 <template>
   <div>
     <CompetitionBanner @onClickCTA="showModal" />
-    <CompetitionAbout />
+    <CompetitionAbout />   
+    <CompetitionVillageCriteria />
+    <CompetitionCriteriaMitra />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
