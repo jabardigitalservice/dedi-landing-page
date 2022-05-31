@@ -4,10 +4,9 @@
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra />
-    <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
+    <CompetitionFlow />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
-    <CompetitionFlowDetail :show="showModalCompetitionFlowDetail" @closeModalCompetitionFlowDetail="onClickFlowDetail" />
   </div>
 </template>
 
@@ -16,8 +15,7 @@ export default {
   name: 'PageCompetition',
   data () {
     return {
-      modalOpen: false,
-      showModalCompetitionFlowDetail: false
+      modalOpen: false
     }
   },
   methods: {
@@ -26,9 +24,6 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
-    },
-    onClickFlowDetail (value) {
-      this.showModalCompetitionFlowDetail = value
     }
   }
 }
