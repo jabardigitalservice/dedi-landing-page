@@ -2,48 +2,48 @@
   <Portal to="criteriamitra">
     <div
       :class="{
-        'modal__backdrop': true,
-        'modal__backdrop--show': show,
-        'modal__backdrop--hide': !show,
+        'modal-criteria-mitra__backdrop': true,
+        'modal-criteria-mitra__backdrop--show': show,
+        'modal-criteria-mitra__backdrop--hide': !show,
       }"
       @click.self="onClose('overlay')"
     >
       <div
         :class="{
-          'modal__wrapper': true,
-          'modal__wrapper--show': show,
-          'modal__wrapper--hide': !show,
+          'modal-criteria-mitra__wrapper': true,
+          'modal-criteria-mitra__wrapper--show': show,
+          'modal-criteria-mitra__wrapper--hide': !show,
         }"
       >
-        <div class="modal__close">
+        <div class="modal-criteria-mitra__close">
           <BaseButton variant="circle" @click="onClose">
             <template #icon>
               <jds-icon class="text-white" size="20px" name="times" />
             </template>
           </BaseButton>
         </div>
-        <div class="modal__container">
-          <div class="modal__container-heading">
+        <div class="modal-criteria-mitra__container">
+          <div class="modal-criteria-mitra__container-heading">
             Kriteria Mitra Yang Dapat Mengikuti
           </div>
-          <div class="modal__container-content">
+          <div class="modal-criteria-mitra__container-content">
             <div
               v-for="item in criteriaMitraDetails"
               :key="item.id"
-              class="modal__container-content-main"
+              class="modal-criteria-mitra__container-content-main"
             >
-              <div class="modal__container-content-main-img">
+              <div class="modal-criteria-mitra__container-content-main-img">
                 <img class="mx-auto" width="40px" height="40px" :src="item.image" :alt="item.textImg">
               </div>
-              <div class="modal__container-content-main-text">
-                <h2 class="modal__container-content-main-text-title">
+              <div class="modal-criteria-mitra__container-content-main-text">
+                <h2 class="modal-criteria-mitra__container-content-main-text-title">
                   {{ item.title }}
                 </h2>
-                <ul v-if="item.textDetails.length > 1" class="modal__container-content-main-text-info">
+                <ul v-if="item.textDetails.length > 1" class="modal-criteria-mitra__container-content-main-text-info">
                   <li
                     v-for="(textDetail, index) in item.textDetails"
                     :key="index"
-                    class="modal__container-content-main-text-info-message"
+                    class="modal-criteria-mitra__container-content-main-text-info-message"
                   >
                     {{ textDetail }}
                   </li>
@@ -52,7 +52,7 @@
                   <p
                     v-for="(textDetail, index) in item.textDetails"
                     :key="index"
-                    class="modal__container-content-main-text-info-message"
+                    class="modal-criteria-mitra__container-content-main-text-info-message"
                   >
                     {{ textDetail }}
                   </p>
@@ -60,7 +60,7 @@
               </div>
             </div>
           </div>
-          <div class="modal__container-action">
+          <div class="modal-criteria-mitra__container-action">
             <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />
           </div>
         </div>
@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.modal {
+.modal-criteria-mitra {
 
   &__backdrop {
     @apply z-20 fixed h-screen w-screen backdrop-filter backdrop-blur-[6px]
