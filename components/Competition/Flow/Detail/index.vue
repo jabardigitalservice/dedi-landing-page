@@ -66,10 +66,10 @@
                       alt="Surat Keterangan"
                     >
                   </div>
-                  <div class="col-span-9 text-green-800 font-bold px-4">
+                  <div class="modal-flow__container-body-guide-text">
                     Panduan Lengkap Sayembara Desa Digital
                   </div>
-                  <div class="col-span-2 flex flex-row justify-center items-center">
+                  <div class="modal-flow__container-body-guide-button" @click="onClickDownload">
                     <span class="text-green-700 text-sm font-bold mr-1">Unduh</span>
                     <jds-icon class="text-green-700" size="18px" name="cloud-download" />
                   </div>
@@ -141,12 +141,15 @@ export default {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
         this.$emit('closeModalCompetitionFlowDetail', false)
       }
+    },
+    onClickDownload () {
+      // @TODO: hit download file on next PR
     }
   }
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .modal-flow {
   &__backdrop {
     @apply z-20 fixed h-screen w-screen backdrop-filter backdrop-blur-[6px]
@@ -228,19 +231,19 @@ export default {
         @apply mx-6 mr-0 mb-6 bg-green-50 border border-green-100 rounded-lg;
 
         &-wrapper {
-          @apply py-2 px-5 flex flex-row justify-center items-center md:(grid grid-cols-12);
+          @apply py-2 px-2 flex flex-row justify-center items-center text-sm md:(grid grid-cols-12 px-5 text-base);
         }
 
         &-icon {
-          @apply w-[27px] h-[30.5px];
+          @apply col-span-1 w-[27px] h-[30.5px] flex justify-center items-center;
         }
 
         &-text {
-          @apply col-span-9;
+          @apply col-span-9 text-green-800 font-bold px-4 md:(px-0);
         }
 
         &-button {
-          @apply col-span-2;
+          @apply col-span-2 flex flex-row justify-center items-center cursor-pointer;
         }
       }
     }
@@ -256,7 +259,7 @@ export default {
   }
 
   &__close {
-    @apply absolute right-4 -top-15 sm:hidden;
+    @apply absolute right-4 -top-15 lg:(hidden);
   }
 }
 
