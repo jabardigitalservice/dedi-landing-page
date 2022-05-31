@@ -1,39 +1,41 @@
 <template>
-  <div
-    :class="{
-      'modal__backdrop': true,
-      'modal__backdrop--show': show,
-      'modal__backdrop--hide': !show,
-    }"
-    @click.self="onClose('overlay')"
-  >
+  <Portal to="criteriamitra">
     <div
       :class="{
-        'modal__wrapper': true,
-        'modal__wrapper--show': show,
-        'modal__wrapper--hide': !show,
+        'modal__backdrop': true,
+        'modal__backdrop--show': show,
+        'modal__backdrop--hide': !show,
       }"
+      @click.self="onClose('overlay')"
     >
-      <div class="modal__close">
-        <BaseButton variant="circle" @click="onClose">
-          <template #icon>
-            <jds-icon class="text-white" size="20px" name="times" />
-          </template>
-        </BaseButton>
-      </div>
-      <div class="modal__container">
-        <div class="modal__container-heading">
-          Kriteria Mitra Yang Dapat Mengikuti
+      <div
+        :class="{
+          'modal__wrapper': true,
+          'modal__wrapper--show': show,
+          'modal__wrapper--hide': !show,
+        }"
+      >
+        <div class="modal__close">
+          <BaseButton variant="circle" @click="onClose">
+            <template #icon>
+              <jds-icon class="text-white" size="20px" name="times" />
+            </template>
+          </BaseButton>
         </div>
-        <div class="modal__container-join-as">
+        <div class="modal__container">
+          <div class="modal__container-heading">
+            Kriteria Mitra Yang Dapat Mengikuti
+          </div>
+          <div class="modal__container-join-as">
           <!-- @todo: add content in the next pr -->
-        </div>
-        <div class="modal__container-button">
-          <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />
+          </div>
+          <div class="modal__container-button">
+            <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Portal>
 </template>
 
 <script>
