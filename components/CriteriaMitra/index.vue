@@ -48,13 +48,58 @@ export default {
   },
   data () {
     return {
-      selected: null
+      criteriaMitraDetails: [
+        {
+          id: 1,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraBusiness.svg'),
+          title: 'Memiliki proses bisnis yang berkelanjutan',
+          textImg: 'Proses Bisnis',
+          textDetails: [
+            'Inovasi melalui pemanfaatan teknologi digital.', 'Memberi manfaat untuk masyarakat Jawa Barat.', 'Dapat dilanjutkan secara mandiri oleh masyarakat.'
+          ]
+        },
+        {
+          id: 2,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraAccess.svg'),
+          title: 'Menyepakati pemberian akses dashboard dan data',
+          textImg: 'Akses Dashboard',
+          textDetails: [
+            'Hal ini diperlukan untuk keperluan penyediaan data alternatif untuk pengambilan kebijakan dan untuk keperluan monitoring dan evaluasi kebermanfaatan program'
+          ]
+        },
+        {
+          id: 3,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraAdministrative.svg'),
+          title: 'Memenuhi prasyarat administrasi',
+          textImg: 'Prasyarat Administrasi',
+          textDetails: [
+            'Mitra diminta untuk menyetujui prasyarat administrasi untuk keperluan Pengadaan Langsung, maupun Perjanjian Kerja Sama.'
+          ]
+        },
+        {
+          id: 4,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraLocation.svg'),
+          title: 'Memiliki ajuan lokasi kerja dengan syarat sebagai berikut:',
+          textImg: 'Lokasi Kerja',
+          textDetails: [
+            'Sesuai dengan rencana kerja JDS di tahun kerja sama;', 'Lokasi memiliki potensi ekonomi;', 'Inovasi digital yang ditawarkan mampu membantu permasalahan di lokasi tersebut;', 'Lebih disukai apabila lokasi memperhatikan aspek ketersebaran/pemerataan.'
+          ]
+        },
+        {
+          id: 5,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraContact.svg'),
+          title: 'Memiliki kontak local champion',
+          textImg: 'Kontak',
+          textDetails: [
+            'Hal ini untuk memastikan pemberdayaan lokal dan membantu proses monitoring, evaluasi, dan assesment dampak secara berkala.'
+          ]
+        }
+      ]
     }
   },
   methods: {
     onClose (closeOn) {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
-        this.selected = null
         this.$emit('onCloseModal', false)
       }
     }
