@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     onShowDetailContent () {
-      // @todo: to show info detail content
+      this.$emit('onClick', true)
     }
   }
 }
