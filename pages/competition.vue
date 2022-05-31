@@ -1,11 +1,12 @@
 <template>
   <div>
     <CompetitionBanner @onClickCTA="showModal" />
-    <CompetitionAbout />   
+    <CompetitionAbout />
     <CompetitionVillageCriteria />
-    <CompetitionCriteriaMitra />
+    <CompetitionCriteriaMitra @onClick="showModalDetail" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
+    <CriteriaMitra :show="modalDetail" @onCloseModal="onCloseModal" />
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
   name: 'PageCompetition',
   data () {
     return {
-      modalOpen: false
+      modalOpen: false,
+      modalDetail: false
     }
   },
   methods: {
@@ -23,6 +25,12 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
+    },
+    onCloseModal (value) {
+      this.modalDetail = value
+    },
+    showModalDetail (value) {
+      this.modalDetail = value
     }
   }
 }
