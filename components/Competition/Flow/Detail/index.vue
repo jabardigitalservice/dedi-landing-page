@@ -259,7 +259,7 @@ export default {
   }
 
   &__close {
-    @apply absolute right-4 -top-15 lg:(hidden);
+    @apply absolute right-4 -top-15 sm:(hidden);
   }
 }
 
