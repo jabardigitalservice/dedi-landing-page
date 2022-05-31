@@ -28,7 +28,7 @@ export default {
   name: 'CompetitionFlow',
   methods: {
     onClickDetail () {
-      /* @todo: Trigger open modal detail on next pr */
+      this.$emit('onClickFlowDetail', true)
     }
   }
 }
