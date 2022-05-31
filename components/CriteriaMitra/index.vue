@@ -26,10 +26,41 @@
           <div class="modal__container-heading">
             Kriteria Mitra Yang Dapat Mengikuti
           </div>
-          <div class="modal__container-join-as">
-          <!-- @todo: add content in the next pr -->
+          <div class="modal__container-content">
+            <div
+              v-for="item in criteriaMitraDetails"
+              :key="item.id"
+              class="modal__container-content-main"
+            >
+              <div class="modal__container-content-main-img">
+                <img class="mx-auto" width="40px" height="40px" :src="item.image" :alt="item.textImg">
+              </div>
+              <div class="modal__container-content-main-text">
+                <h2 class="modal__container-content-main-text-title">
+                  {{ item.title }}
+                </h2>
+                <ul v-if="item.textDetails.length > 1" class="modal__container-content-main-text-info">
+                  <li
+                    v-for="(textDetail, index) in item.textDetails"
+                    :key="index"
+                    class="modal__container-content-main-text-info-message"
+                  >
+                    {{ textDetail }}
+                  </li>
+                </ul>
+                <div v-else>
+                  <p
+                    v-for="(textDetail, index) in item.textDetails"
+                    :key="index"
+                    class="modal__container-content-main-text-info-message"
+                  >
+                    {{ textDetail }}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal__container-button">
+          <div class="modal__container-action">
             <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />
           </div>
         </div>
@@ -141,30 +172,38 @@ export default {
     sm:px-12 sm:(rounded-2xl);
 
     &-heading {
-      @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-center;
+      @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left;
     }
 
-    &-subheading {
-      @apply text-sm leading-[20px] font-sans text-gray-800 font-normal text-center;
-    }
+    &-content {
+      @apply h-[350px] overflow-y-scroll;
 
-    &-join-as {
-      @apply grid gap-3 grid-cols-2 justify-between
-      sm:(gap-6 h-[329px] flex items-center justify-center);
-    }
+      &-main {
+        @apply grid grid-cols-[max-content,1fr] gap-6 mb-4;
 
-    &-button {
-      @apply w-full sm:(py-2 flex justify-center gap-4);
+        &-img {
+          @apply flex items-center w-[67px] h-[67px] rounded-full bg-green-50;
+        }
 
-      &-close {
-        @apply !hidden
-        sm:(!inline-block w-[165px] h-[38px] !py-1 active:(!my-0 w-[calc(165px-2px)]));
+        &-text {
+
+          &-title {
+            @apply font-sans font-bold text-[16px] leading-[26px] text-green-700;
+          }
+
+          &-info {
+            @apply list-disc pl-5;
+
+            &-message {
+              @apply font-sans font-400 text-[14px] leading-[23px] text-gray-800 text-justify;
+            }
+          }
+        }
       }
+    }
 
-      &-next {
-        @apply w-full active:(w-[calc(100%-2px)])
-        sm:(w-[165px] h-[38px] !py-0 active:(!my-0 w-[calc(165px-2px)]));
-      }
+    &-action {
+      @apply w-full flex justify-center sm:(py-2 gap-4);
     }
   }
 
@@ -172,5 +211,6 @@ export default {
     @apply absolute right-4 -top-15 sm:hidden;
   }
 }
+</style>
 
 </style>
