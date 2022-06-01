@@ -23,7 +23,7 @@
           </BaseButton>
         </div>
         <div class="modal-flow__container">
-          <div class="bg-white">
+          <div class="modal-flow__container-wrapper">
             <div class="modal-flow__container-title">
               Alur Sayembara Desa Digital
             </div>
@@ -204,6 +204,11 @@ export default {
   &__container {
     @apply bg-white rounded-md flex flex-col;
 
+    &-wrapper {
+      @apply bg-white;
+      border-radius: 8px 8px 0 0;
+    }
+
     &-title {
       @apply py-4 px-6 font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left;
     }
@@ -274,6 +279,7 @@ export default {
 
     &-button {
       @apply w-full bg-gray-50 py-4 px-6 sm:(flex justify-center);
+      border-radius: 0 0 8px 8px;
 
       &-close {
         @apply w-full active:(w-[calc(100%-2px)])
