@@ -8,6 +8,7 @@
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <CompetitionFlowDetail :show="showModalCompetitionFlowDetail" @closeModalCompetitionFlowDetail="onClickFlowDetail" />
+    <BaseToast />
   </div>
 </template>
 

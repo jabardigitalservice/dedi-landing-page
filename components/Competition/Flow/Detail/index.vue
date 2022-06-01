@@ -133,7 +133,8 @@ export default {
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
         }
-      ]
+      ],
+      fileSecret: this.$config.apiSecretUpload
     }
   },
   methods: {
@@ -143,7 +144,30 @@ export default {
       }
     },
     onClickDownload () {
-      // @TODO: hit download file on next PR
+      this.$axios.get('/files/download/probis_sayembara.pdf', {
+        headers: {
+          'x-api-key': this.fileSecret
+        }
+      }).then((response) => {
+        const { data } = response.data
+        const fileURL = data.path
+        const fileLink = document.createElement('a')
+
+        fileLink.href = fileURL
+        fileLink.setAttribute('target', '_blank')
+        fileLink.setAttribute('download', 'file.pdf')
+        document.body.appendChild(fileLink)
+
+        fileLink.click()
+      }).catch((error) => {
+        const { data } = error.response || {}
+        if (data?.error) {
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: data.error
+          })
+        }
+      })
     }
   }
 }
