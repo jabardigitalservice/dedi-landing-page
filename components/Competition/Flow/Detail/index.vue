@@ -18,7 +18,7 @@
         <div class="modal-flow__close">
           <BaseButton variant="circle" @click="onClose">
             <template #icon>
-              <jds-icon class="text-white" size="20px" name="times" />
+              <img height="20" width="20" src="~/assets/icons/IconTimes.svg" alt="Icon Times">
             </template>
           </BaseButton>
         </div>
