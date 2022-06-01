@@ -5,6 +5,7 @@
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra />
     <CompetitionFlow />
+    <CompetitionJoin @on-click-join="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
