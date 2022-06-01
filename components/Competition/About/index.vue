@@ -9,7 +9,7 @@
         </div>
         <div class="competition-about__info">
           <div class="competition-about__info-message">
-            <jds-icon class="competition-about__info-message-icon" name="info-circle" size="16px" />
+            <img width="16" height="16" src="~/assets/icons/IconInfo.svg" alt="Icon Info">
             <div class="competition-about__info-message-content">
               <p class="competition-about__info-message-content-text">
                 Implementasi diutamakan pada daerah yang <span class="competition-about__info-message-content-text--bold">belum memiliki</span> program Desa Digital sebelumnya.
