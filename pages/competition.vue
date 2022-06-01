@@ -4,6 +4,8 @@
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra />
+    <CompetitionFlow />
+    <CompetitionJoin @on-click-join="showModal" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />

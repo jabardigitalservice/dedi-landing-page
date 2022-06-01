@@ -20,6 +20,7 @@ export default {
         100: '#BBDEFB',
         150: '#F1FBFF',
         160: '#E8F7FD',
+        170: '#DFF3F5',
         200: '#90CAF9',
         300: '#64B5F6',
         400: '#42A5F5',
