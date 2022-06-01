@@ -11,12 +11,22 @@
           </h3>
         </div>
         <div class="competition-join__action">
-          <BaseButton label="Bergabung Sekarang" />
+          <BaseButton label="Bergabung Sekarang" @click="onClickJoin" />
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    onClickJoin () {
+      this.$emit('on-click-join', true)
+    }
+  }
+}
+</script>
 
 <style lang="postcss" scoped>
 .competition-join {
