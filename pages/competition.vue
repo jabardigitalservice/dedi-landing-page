@@ -8,7 +8,7 @@
     <CompetitionJoin @on-click-join="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
-    <CriteriaMitra :show="modalDetail" @on-close-modal="onCloseModal" />
+    <CompetitionCriteriaMitraDetail :show="modalDetail" @on-close-modal="onCloseModal" />
     <CompetitionFlowDetail :show="showModalCompetitionFlowDetail" @closeModalCompetitionFlowDetail="onClickFlowDetail" />
     <BaseToast />
   </div>
