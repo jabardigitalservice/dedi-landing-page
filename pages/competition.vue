@@ -3,12 +3,12 @@
     <CompetitionBanner @onClickCTA="showModal" />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
-    <CompetitionCriteriaMitra />
-    <CompetitionFlow />
-    <CompetitionJoin @on-click-join="showModal" />
+    <CompetitionCriteriaMitra @on-click="showModalDetail" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
+    <CompetitionJoin @on-click-join="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
+    <CriteriaMitra :show="modalDetail" @on-close-modal="onCloseModal" />
     <CompetitionFlowDetail :show="showModalCompetitionFlowDetail" @closeModalCompetitionFlowDetail="onClickFlowDetail" />
     <BaseToast />
   </div>
@@ -20,6 +20,7 @@ export default {
   data () {
     return {
       modalOpen: false,
+      modalDetail: false,
       showModalCompetitionFlowDetail: false
     }
   },
@@ -29,6 +30,12 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
+    },
+    onCloseModal (value) {
+      this.modalDetail = value
+    },
+    showModalDetail (value) {
+      this.modalDetail = value
     },
     onClickFlowDetail (value) {
       this.showModalCompetitionFlowDetail = value
