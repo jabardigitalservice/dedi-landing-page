@@ -63,7 +63,7 @@
             </div>
           </div>
           <div class="modal-criteria-mitra__container-action">
-            <BaseButton class="modal-criteria-mitra__container-action-btn" variant="primary" label="Oke, saya mengerti" @click="onClose" />
+            <BaseButton class="modal-criteria-mitra__container-action-btn" variant="primary" label="OK, saya mengerti" @click="onClose" />
           </div>
         </div>
       </div>
