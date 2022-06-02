@@ -178,11 +178,11 @@ export default {
     }
 
     &-heading {
-      @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left;
+      @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left pb-4;
     }
 
     &-content {
-      @apply h-[350px] overflow-y-scroll;
+      @apply h-[350px] overflow-y-scroll pt-6;
 
       &-main {
         @apply grid grid-cols-[max-content,1fr] gap-6 mb-4;
