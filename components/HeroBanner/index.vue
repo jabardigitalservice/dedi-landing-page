@@ -1,39 +1,106 @@
 <template>
-  <div id="hero-banner" class="hero-banner">
-    <div class="hero-banner__main" :style="inlineStyleBackground">
-      <div class="relative px-4 sm:pl-[15.5%]">
-        <div class="hero-banner__box-title">
-          <h3 class="hero-banner__title">
-            Saatnya semua menikmati manfaat teknologi
-          </h3>
+  <div>
+    <swiper
+      v-if="!!(data.length)"
+      ref="testimonials"
+      :auto-update="true"
+      :auto-destroy="true"
+      :delete-instance-on-destroy="true"
+      :cleanup-styles-on-destroy="true"
+      :options="swiperOptions"
+    >
+      <swiper-slide
+        v-for="item in data"
+        :key="item.id"
+      >
+        <div id="hero-banner" class="hero-banner">
+          <div class="hero-banner__main" :style="inlineStyleBackground(item.image.path)">
+            <div class="relative px-4 sm:pl-[15.5%]">
+              <div class="hero-banner__box-title">
+                <h3 class="hero-banner__title">
+                  Saatnya semua menikmati manfaat teknologi
+                </h3>
+              </div>
+              <p class="hero-banner__desc">
+                Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
+              </p>
+              <div class="hero-banner__cta">
+                <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="hero-banner__desc">
-          Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
-        </p>
-        <div class="hero-banner__cta">
-          <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
+      </swiper-slide>
+      <div slot="pagination" class="swiper-pagination navigation__wrapper" />
+    </swiper>
+    <div v-else id="hero-banner" class="hero-banner">
+      <div class="hero-banner__main" :style="inlineStyleBackground">
+        <div class="relative px-4 sm:pl-[15.5%]">
+          <div class="hero-banner__box-title">
+            <h3 class="hero-banner__title">
+              Saatnya semua menikmati manfaat teknologi
+            </h3>
+          </div>
+          <p class="hero-banner__desc">
+            Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
+          </p>
+          <div class="hero-banner__cta">
+            <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 export default {
   name: 'HeroBanner',
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data () {
     return {
-      backgroundImage: 'HeroBanner.svg'
+      backgroundImage: 'HeroBanner.svg',
+      data: [],
+      swiperOptions: {
+        slidesPerView: 'auto',
+        paginationClickable: true,
+        spaceBetween: 16,
+        passiveListeners: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          640: {
+            spaceBetween: 22
+          },
+          1280: {
+            spaceBetween: 16
+          }
+        }
+      }
     }
   },
   computed: {
+    swiper () {
+      return this.$refs.testimonials.$swiper
+    },
     bgImage () {
       return require(`~/assets/images/${this.backgroundImage}`)
-    },
-    inlineStyleBackground () {
-      return {
-        backgroundImage: `url(${this.bgImage})`
-      }
     }
+  },
+  created () {
+    this.getDataHeroBanner()
   },
   methods: {
     onClickCTA () {
@@ -41,11 +108,26 @@ export default {
        * Trigger open popup join desa digital
        */
       this.$emit('clickCTA', true)
+    },
+    async getDataHeroBanner () {
+      const response = await this.$axios.get('/pages')
+      const { data } = response.data
+      if (Array.isArray(data) && data.length > 0) {
+        this.data = data.filter(item => item.is_active)
+      }
+    },
+    inlineStyleBackground (img) {
+      console.log(img)
+      if (img) {
+        return { backgroundImage: `url(${img}` }
+      } else {
+        return { backgroundImage: `url(${this.bgImage})` }
+      }
     }
   }
 }
 </script>
-<style lang="postcss">
+<style lang="postcss" scoped>
 .hero-banner {
   @apply relative h-[540px] sm:h-[590px];
 
@@ -86,6 +168,10 @@ export default {
       sm:(w-auto active:(w-auto));
     }
   }
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  @apply bottom-0 !important;
 }
 
 </style>
