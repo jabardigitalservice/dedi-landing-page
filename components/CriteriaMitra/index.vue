@@ -33,7 +33,7 @@
               class="modal-criteria-mitra__container-content-main"
             >
               <div class="modal-criteria-mitra__container-content-main-img">
-                <img class="mx-auto" width="40px" height="40px" :src="item.image" :alt="item.textImg">
+                <img class="mx-auto" width="40" height="40" :src="item.image" :alt="item.textImg">
               </div>
               <div class="modal-criteria-mitra__container-content-main-text">
                 <h2 class="modal-criteria-mitra__container-content-main-text-title">
