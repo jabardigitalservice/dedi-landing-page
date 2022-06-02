@@ -4,9 +4,8 @@
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra @on-click="showModalDetail" />
-    <CompetitionFlow />
-    <CompetitionJoin @on-click-join="showModal" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
+    <CompetitionJoin @on-click-join="showModal" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <CriteriaMitra :show="modalDetail" @on-close-modal="onCloseModal" />
@@ -21,7 +20,7 @@ export default {
   data () {
     return {
       modalOpen: false,
-      modalDetail: false
+      modalDetail: false,
       showModalCompetitionFlowDetail: false
     }
   },
@@ -37,6 +36,7 @@ export default {
     },
     showModalDetail (value) {
       this.modalDetail = value
+    },
     onClickFlowDetail (value) {
       this.showModalCompetitionFlowDetail = value
     }
