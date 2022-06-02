@@ -18,12 +18,12 @@
         <div class="modal-flow__close">
           <BaseButton variant="circle" @click="onClose">
             <template #icon>
-              <jds-icon class="text-white" size="20px" name="times" />
+              <img height="20" width="20" src="~/assets/icons/IconTimes.svg" alt="Icon Times">
             </template>
           </BaseButton>
         </div>
         <div class="modal-flow__container">
-          <div class="bg-white">
+          <div class="modal-flow__container-wrapper">
             <div class="modal-flow__container-title">
               Alur Sayembara Desa Digital
             </div>
@@ -133,7 +133,8 @@ export default {
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
         }
-      ]
+      ],
+      fileSecret: this.$config.apiSecretUpload
     }
   },
   methods: {
@@ -143,7 +144,30 @@ export default {
       }
     },
     onClickDownload () {
-      // @TODO: hit download file on next PR
+      this.$axios.get('/files/download/probis_sayembara.pdf', {
+        headers: {
+          'x-api-key': this.fileSecret
+        }
+      }).then((response) => {
+        const { data } = response.data
+        const fileURL = data.path
+        const fileLink = document.createElement('a')
+
+        fileLink.href = fileURL
+        fileLink.setAttribute('target', '_blank')
+        fileLink.setAttribute('download', 'file.pdf')
+        document.body.appendChild(fileLink)
+
+        fileLink.click()
+      }).catch((error) => {
+        const { data } = error.response || {}
+        if (data?.error) {
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: data.error
+          })
+        }
+      })
     }
   }
 }
@@ -179,6 +203,11 @@ export default {
 
   &__container {
     @apply bg-white rounded-md flex flex-col;
+
+    &-wrapper {
+      @apply bg-white;
+      border-radius: 8px 8px 0 0;
+    }
 
     &-title {
       @apply py-4 px-6 font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left;
@@ -250,6 +279,7 @@ export default {
 
     &-button {
       @apply w-full bg-gray-50 py-4 px-6 sm:(flex justify-center);
+      border-radius: 0 0 8px 8px;
 
       &-close {
         @apply w-full active:(w-[calc(100%-2px)])
