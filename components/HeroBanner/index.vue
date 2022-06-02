@@ -1,13 +1,10 @@
 <template>
   <div id="hero-banner" class="hero-banner">
-    <div class="hero-banner__main">
+    <div class="hero-banner__main" :style="inlineStyleBackground">
       <div class="relative px-4 sm:pl-[15.5%]">
         <div class="hero-banner__box-title">
           <h3 class="hero-banner__title">
-            Saatnya semua menikmati
-          </h3>
-          <h3 class="hero-banner__title">
-            manfaat teknologi
+            Saatnya semua menikmati manfaat teknologi
           </h3>
         </div>
         <p class="hero-banner__desc">
@@ -22,6 +19,22 @@
 </template>
 <script>
 export default {
+  name: 'HeroBanner',
+  data () {
+    return {
+      backgroundImage: 'HeroBanner.svg'
+    }
+  },
+  computed: {
+    bgImage () {
+      return require(`~/assets/images/${this.backgroundImage}`)
+    },
+    inlineStyleBackground () {
+      return {
+        backgroundImage: `url(${this.bgImage})`
+      }
+    }
+  },
   methods: {
     onClickCTA () {
       /**
@@ -37,7 +50,6 @@ export default {
   @apply relative h-[540px] sm:h-[590px];
 
   &__main {
-    background-image: url('~/assets/images/HeroBanner.svg');
     background-position-x: 30%;
     background-position-y: 100%;
     @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
@@ -57,7 +69,7 @@ export default {
 
   &__title {
     @apply text-[24px] leading-[30.72px]
-    text-center font-serif font-bold text-blue-gray-700
+    text-center font-serif font-bold text-blue-gray-700 max-w-3xl
     sm:(text-left text-[49px] leading-[62.72px]);
   }
 
