@@ -23,39 +23,41 @@
           </BaseButton>
         </div>
         <div class="modal-criteria-mitra__container">
-          <div class="modal-criteria-mitra__container-heading">
-            Kriteria Mitra Yang Dapat Mengikuti
-          </div>
-          <div class="modal-criteria-mitra__container-content">
-            <div
-              v-for="item in criteriaMitraDetails"
-              :key="item.id"
-              class="modal-criteria-mitra__container-content-main"
-            >
-              <div class="modal-criteria-mitra__container-content-main-img">
-                <img class="mx-auto" width="40" height="40" :src="item.image" :alt="item.textImg">
-              </div>
-              <div class="modal-criteria-mitra__container-content-main-text">
-                <h2 class="modal-criteria-mitra__container-content-main-text-title">
-                  {{ item.title }}
-                </h2>
-                <ul v-if="item.textDetails.length > 1" class="modal-criteria-mitra__container-content-main-text-info">
-                  <li
-                    v-for="(textDetail, index) in item.textDetails"
-                    :key="index"
-                    class="modal-criteria-mitra__container-content-main-text-info-message"
-                  >
-                    {{ textDetail }}
-                  </li>
-                </ul>
-                <div v-else>
-                  <p
-                    v-for="(textDetail, index) in item.textDetails"
-                    :key="index"
-                    class="modal-criteria-mitra__container-content-main-text-info-message"
-                  >
-                    {{ textDetail }}
-                  </p>
+          <div class="modal-criteria-mitra__container--padding">
+            <div class="modal-criteria-mitra__container-heading">
+              Kriteria Mitra Yang Dapat Mengikuti
+            </div>
+            <div class="modal-criteria-mitra__container-content">
+              <div
+                v-for="item in criteriaMitraDetails"
+                :key="item.id"
+                class="modal-criteria-mitra__container-content-main"
+              >
+                <div class="modal-criteria-mitra__container-content-main-img">
+                  <img class="mx-auto" width="40" height="40" :src="item.image" :alt="item.textImg">
+                </div>
+                <div class="modal-criteria-mitra__container-content-main-text">
+                  <h2 class="modal-criteria-mitra__container-content-main-text-title">
+                    {{ item.title }}
+                  </h2>
+                  <ul v-if="item.textDetails.length > 1" class="modal-criteria-mitra__container-content-main-text-info">
+                    <li
+                      v-for="(textDetail, index) in item.textDetails"
+                      :key="index"
+                      class="modal-criteria-mitra__container-content-main-text-info-message"
+                    >
+                      {{ textDetail }}
+                    </li>
+                  </ul>
+                  <div v-else>
+                    <p
+                      v-for="(textDetail, index) in item.textDetails"
+                      :key="index"
+                      class="modal-criteria-mitra__container-content-main-text-info-message"
+                    >
+                      {{ textDetail }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -168,8 +170,13 @@ export default {
   }
 
   &__container {
-    @apply bg-white rounded-t-2xl py-6 flex flex-col gap-6 px-4
-    sm:px-12 sm:(rounded-2xl);
+    @apply bg-white rounded-t-2xl flex flex-col
+    sm:(rounded-2xl);
+
+    &--padding {
+      @apply px-4 pt-6
+      sm:(px-6);
+    }
 
     &-heading {
       @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-left;
