@@ -63,7 +63,7 @@
             </div>
           </div>
           <div class="modal-criteria-mitra__container-action">
-            <BaseButton variant="primary" label="Oke, saya mengerti" @click="onClose" />
+            <BaseButton class="modal-criteria-mitra__container-action-btn" variant="primary" label="Oke, saya mengerti" @click="onClose" />
           </div>
         </div>
       </div>
@@ -170,8 +170,7 @@ export default {
   }
 
   &__container {
-    @apply bg-white rounded-t-2xl flex flex-col
-    sm:(rounded-2xl);
+    @apply bg-white rounded-lg flex flex-col;
 
     &--padding {
       @apply px-4 pt-6
@@ -210,7 +209,12 @@ export default {
     }
 
     &-action {
-      @apply w-full flex justify-center sm:(py-2 gap-4);
+      @apply w-full flex justify-center py-4 px-6 bg-gray-50 rounded-b-lg;
+
+      &-btn {
+        @apply w-full active:(w-[calc(100%-2px)])
+        sm:(w-[165px] h-[38px] !py-0 active:(!my-0 w-[calc(165px-2px)]));
+      }
     }
   }
 
