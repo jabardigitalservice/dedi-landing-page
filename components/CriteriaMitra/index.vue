@@ -131,7 +131,7 @@ export default {
   methods: {
     onClose (closeOn) {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
-        this.$emit('onCloseModal', false)
+        this.$emit('on-close-modal', false)
       }
     }
   }

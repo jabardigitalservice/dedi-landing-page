@@ -3,10 +3,10 @@
     <CompetitionBanner @onClickCTA="showModal" />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
-    <CompetitionCriteriaMitra @onClick="showModalDetail" />
+    <CompetitionCriteriaMitra @on-click="showModalDetail" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
-    <CriteriaMitra :show="modalDetail" @onCloseModal="onCloseModal" />
+    <CriteriaMitra :show="modalDetail" @on-close-modal="onCloseModal" />
   </div>
 </template>
 

@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     onShowDetailContent () {
-      this.$emit('onClick', true)
+      this.$emit('on-click', true)
     }
   }
 }
