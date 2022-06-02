@@ -2,6 +2,7 @@
   <div>
     <ModalJoinDedi />
     <ModalCriteriaMitra />
+    <ModalCompetitionFlowDetail />
     <Header />
     <Nuxt />
     <Footer />
