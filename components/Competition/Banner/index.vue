@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="competition-banner" class="wrapper">
     <div class="competition-banner">
       <div class="competition-banner__wrapper">
         <div class="competition-banner__info">
