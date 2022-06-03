@@ -61,6 +61,23 @@
           </a>
         </div>
         <div
+          v-show="$route.name === 'about'"
+          :class="{
+            'footer__sitemap-text': true,
+            'footer__sitemap-text--open': isOpenSitemap,
+            'footer__sitemap-text--close': !isOpenSitemap
+          }"
+        >
+          <a
+            v-for="footer in aboutFooters"
+            :key="footer.id"
+            v-scroll-to="{ el: '#' + footer.element }"
+            class="footer__sitemap-text-item"
+          >
+            <span class="footer__sitemap-text-title">{{ footer.text }}</span>
+          </a>
+        </div>
+        <div
           v-show="$route.name === 'competition'"
           :class="{
             'footer__sitemap-text': true,
@@ -129,14 +146,15 @@
 </template>
 
 <script>
-import { mainFooters, competitionFooters } from '@/constants/footer'
+import { mainFooters, aboutFooters, competitionFooters } from '@/constants/footer'
 export default {
   data () {
     return {
       isOpenSM: false,
       isOpenSitemap: false,
       mainFooters,
-      competitionFooters
+      competitionFooters,
+      aboutFooters
     }
   }
 }
