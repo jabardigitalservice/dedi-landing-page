@@ -33,8 +33,32 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.SERVICE_IMAGENAME }}:${{ steps.vars.outputs.RELEASE_TAG }}
+          tags: ${{ secrets.SERVICE_TAGNAME }}:${{ steps.vars.outputs.RELEASE_TAG }}
           build-args: |
             APP_ENVIRONMENT=production
             NUXT_ENV_GOOGLE_MAPS_API=${{ secrets.GOOGLE_MAPS_API }}
             GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID}}
+            
+      # GitOps
+      - name: GitOps ArgoCD Setup
+        run: |
+          echo "${{ secrets.GITLAB_ARGOCD_KEY }}" > /tmp/gitlab-deploy-ssh-key
+          chmod 600 /tmp/gitlab-deploy-ssh-key
+          export GIT_SSH_COMMAND="ssh -i /tmp/gitlab-deploy-ssh-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+          git clone ${{ secrets.GITLAB_ARGOCD_REPOSITORY }}
+        
+      - name: GitOps ArgoCD Update Image Tag
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq -i '.spec.template.spec.containers[0].image = "${{ secrets.SERVICE_TAGNAME }}:${{ steps.vars.outputs.RELEASE_TAG }}"' 'jds-terraform-gke/k8s/desa-digital-web/production/deployment.yaml'
+
+      - name: GitOps ArgoCD Create Branch, Commit, Push
+        run: |
+          export GIT_SSH_COMMAND="ssh -i /tmp/gitlab-deploy-ssh-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+          cd jds-terraform-gke/k8s/desa-digital-web/production
+          git config user.email "github-action@github.com"
+          git config user.name "Github Action"
+          git checkout -b desa-digital-web-release-${{ steps.vars.outputs.RELEASE_TAG }}-production
+          git add deployment.yaml
+          git commit -m "Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production"
+          git push origin desa-digital-web-release-${{ steps.vars.outputs.RELEASE_TAG }}-production -o merge_request.description="# Overview \n\n - Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n\n cc: @jdsteam/devops \n\n ## Evidence \n\n - title: Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n - project: Desa Digital \n - participants:  " -o merge_request.create
