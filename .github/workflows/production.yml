@@ -61,4 +61,4 @@ jobs:
           git checkout -b desa-digital-web-release-${{ steps.vars.outputs.RELEASE_TAG }}-production
           git add deployment.yaml
           git commit -m "Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production"
-          git push origin desa-digital-web-release-${{ steps.vars.outputs.RELEASE_TAG }}-production -o merge_request.description="# Overview \n\n - Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n\n ## Evidence \n\n - title: Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n - project: Desa Digital \n - participants:  " -o merge_request.create
+          git push origin desa-digital-web-release-${{ steps.vars.outputs.RELEASE_TAG }}-production -o merge_request.description="# Overview \n\n - Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n\n cc: @jdsteam/devops \n\n ## Evidence \n\n - title: Desa Digital Web Release ${{ steps.vars.outputs.RELEASE_TAG }} to production \n - project: Desa Digital \n - participants:  " -o merge_request.create
