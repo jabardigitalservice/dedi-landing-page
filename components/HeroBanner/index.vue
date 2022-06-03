@@ -1,7 +1,6 @@
 <template>
   <div>
     <swiper
-      v-if="!!(data.length)"
       ref="testimonials"
       :auto-update="true"
       :auto-destroy="true"
@@ -14,15 +13,19 @@
         :key="item.id"
       >
         <div id="hero-banner" class="hero-banner">
-          <div class="hero-banner__main" :style="inlineStyleBackground(item.image.path)">
+          <div
+            class="hero-banner__main"
+            :style="inlineStyleBackground(item.image.path)"
+            @click="onClickBackground(item.link)"
+          >
             <div class="relative px-4 sm:pl-[15.5%]">
               <div class="hero-banner__box-title">
                 <h3 class="hero-banner__title">
-                  Saatnya semua menikmati manfaat teknologi
+                  {{ item.title || '' }}
                 </h3>
               </div>
               <p class="hero-banner__desc">
-                Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
+                {{ item.description || '' }}
               </p>
               <div class="hero-banner__cta">
                 <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
@@ -33,23 +36,6 @@
       </swiper-slide>
       <div slot="pagination" class="swiper-pagination navigation__wrapper" />
     </swiper>
-    <div v-else id="hero-banner" class="hero-banner">
-      <div class="hero-banner__main" :style="inlineStyleBackground">
-        <div class="relative px-4 sm:pl-[15.5%]">
-          <div class="hero-banner__box-title">
-            <h3 class="hero-banner__title">
-              Saatnya semua menikmati manfaat teknologi
-            </h3>
-          </div>
-          <p class="hero-banner__desc">
-            Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.
-          </p>
-          <div class="hero-banner__cta">
-            <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -64,17 +50,25 @@ export default {
   },
   data () {
     return {
-      backgroundImage: 'HeroBanner.svg',
-      data: [],
+      data: [
+        {
+          id: 0,
+          title: 'Saatnya semua menikmati manfaat teknologi',
+          description: 'Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.',
+          link: 'defaultLink',
+          is_active: false,
+          order: 1,
+          image: {
+            path: 'defaultImg',
+            original_name: 'HeroBanner.svg'
+          }
+        }
+      ],
       swiperOptions: {
         slidesPerView: 'auto',
         paginationClickable: true,
         spaceBetween: 16,
         passiveListeners: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
         pagination: {
           el: '.swiper-pagination',
           type: 'bullets',
@@ -95,8 +89,8 @@ export default {
     swiper () {
       return this.$refs.testimonials.$swiper
     },
-    bgImage () {
-      return require(`~/assets/images/${this.backgroundImage}`)
+    defaultBgImage () {
+      return require('~/assets/images/HeroBanner.svg')
     }
   },
   created () {
@@ -113,20 +107,30 @@ export default {
       const response = await this.$axios.get('/pages')
       const { data } = response.data
       if (Array.isArray(data) && data.length > 0) {
-        this.data = data.filter(item => item.is_active)
+        const newData = data.filter(item => item.is_active).sort((a, b) => a.order - b.order)
+        this.data.push(...newData)
       }
     },
     inlineStyleBackground (img) {
-      console.log(img)
-      if (img) {
+      if (img && img.startsWith('http')) {
         return { backgroundImage: `url(${img}` }
+      } else if (img && img === 'defaultImg') {
+        return { backgroundImage: `url(${this.defaultBgImage})` }
       } else {
-        return { backgroundImage: `url(${this.bgImage})` }
+        return ''
+      }
+    },
+    onClickBackground (link) {
+      if (link && link.startsWith('http')) {
+        window.open(link, '_blank')
+      } else if (link && link === 'defaultLink') {
+        this.onClickCTA()
       }
     }
   }
 }
 </script>
+
 <style lang="postcss" scoped>
 .hero-banner {
   @apply relative h-[540px] sm:h-[590px];
@@ -134,7 +138,7 @@ export default {
   &__main {
     background-position-x: 30%;
     background-position-y: 100%;
-    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
+    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative cursor-pointer;
 
     &::before {
       content: "";
