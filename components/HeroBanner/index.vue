@@ -91,7 +91,7 @@ export default {
       return this.$refs.testimonials.$swiper
     },
     defaultBgImage () {
-      return require('~/assets/images/HeroBanner.svg')
+      return require('~/assets/images/HeroBanner_withContext.svg')
     }
   },
   created () {
@@ -139,7 +139,7 @@ export default {
   &__main {
     background-position-x: 30%;
     background-position-y: 100%;
-    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative cursor-pointer;
+    @apply bg-no-repeat bg-cover w-full h-full mt-[60px] relative cursor-pointer;
 
     &::before {
       content: "";
