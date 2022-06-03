@@ -16,9 +16,10 @@
           <div
             class="hero-banner__main"
             :style="inlineStyleBackground(item.image.path)"
-            @click="onClickBackground(item.link)"
+            @click="onClickBanner(item.link)"
           >
-            <div class="relative px-4 sm:pl-[15.5%]">
+            <!-- Temporary hide this section for next feature -->
+            <div v-show="false" class="relative px-4 sm:pl-[15.5%]">
               <div class="hero-banner__box-title">
                 <h3 class="hero-banner__title">
                   {{ item.title || '' }}
@@ -28,7 +29,7 @@
                 {{ item.description || '' }}
               </p>
               <div class="hero-banner__cta">
-                <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickCTA" />
+                <BaseButton class="hero-banner__cta-btn" label="Gabung Sekarang" @click="onClickBanner(item.link)" />
               </div>
             </div>
           </div>
@@ -120,7 +121,7 @@ export default {
         return ''
       }
     },
-    onClickBackground (link) {
+    onClickBanner (link) {
       if (link && link.startsWith('http')) {
         window.open(link, '_blank')
       } else if (link && link === 'defaultLink') {
