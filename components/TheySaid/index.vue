@@ -1,5 +1,5 @@
 <template>
-  <div class="they-said">
+  <div id="they-said" class="they-said">
     <div class="wrapper">
       <div class="they-said__wrapper">
         <div class="they-said__box">
