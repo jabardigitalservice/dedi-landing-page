@@ -35,7 +35,7 @@
           </div>
         </div>
       </swiper-slide>
-      <div slot="pagination" class="swiper-pagination navigation__wrapper" />
+      <div v-show="data.length > 1" slot="pagination" class="swiper-pagination navigation__wrapper" />
     </swiper>
   </div>
 </template>
