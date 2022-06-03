@@ -33,7 +33,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.SERVICE_IMAGENAME }}:${{ steps.vars.outputs.RELEASE_TAG }}
+          tags: ${{ secrets.SERVICE_TAGNAME }}:${{ steps.vars.outputs.RELEASE_TAG }}
           build-args: |
             APP_ENVIRONMENT=production
             NUXT_ENV_GOOGLE_MAPS_API=${{ secrets.GOOGLE_MAPS_API }}
@@ -50,7 +50,7 @@ jobs:
       - name: GitOps ArgoCD Update Image Tag
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.spec.template.spec.containers[0].image = "${{ secrets.SERVICE_IMAGENAME }}:${{ steps.vars.outputs.RELEASE_TAG }}"' 'jds-terraform-gke/k8s/desa-digital-web/production/deployment.yaml'
+          cmd: yq -i '.spec.template.spec.containers[0].image = "${{ secrets.SERVICE_TAGNAME }}:${{ steps.vars.outputs.RELEASE_TAG }}"' 'jds-terraform-gke/k8s/desa-digital-web/production/deployment.yaml'
 
       - name: GitOps ArgoCD Create Branch, Commit, Push
         run: |
