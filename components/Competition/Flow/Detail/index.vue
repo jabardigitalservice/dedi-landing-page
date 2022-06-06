@@ -111,7 +111,7 @@ export default {
           id: 2,
           title: '2. PROSES MATCH-MAKING',
           subtitle: 'Proses ini dilakukan untuk memasangkan desa dan mitra dengan fokus pengembangan yang sama.',
-          info: 'Penilaian dilakukan berdasarkan SOP yang berlaku',
+          info: 'Penilaian dilakukan berdasarkan SOP yang berlaku.',
           img: require('~/assets/images/competition/IconAlurSayembara_2.svg')
         },
         {
