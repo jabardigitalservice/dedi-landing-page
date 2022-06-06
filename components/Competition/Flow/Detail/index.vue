@@ -47,12 +47,14 @@
                     {{ item.subtitle }}
                   </div>
                   <div class="modal-flow__container-body-right-section">
-                    <jds-section-message
-                      :show="!!(item.info)"
-                      name="info"
-                      variant="info"
-                      :message="item.info"
-                    />
+                    <div v-show="!!(item.info)" class="modal-flow__section-info">
+                      <div class="modal-flow__section-info-img">
+                        <img width="16" height="16" src="~/assets/icons/IconInfo.svg" alt="Icon Info">
+                      </div>
+                      <div class="modal-flow__section-info-content">
+                        {{ item.info }}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -290,6 +292,18 @@ export default {
 
   &__close {
     @apply absolute right-4 -top-15 sm:(hidden);
+  }
+
+  &__section-info {
+    @apply p-2 bg-blue-50 border border-blue-800 rounded-lg flex flex-row;
+
+    &-img {
+      @apply min-w-4 min-h-4 mr-4 pt-[2px] md:(mr-6);
+    }
+
+    &-content {
+      @apply text-sm text-gray-900;
+    }
   }
 }
 
