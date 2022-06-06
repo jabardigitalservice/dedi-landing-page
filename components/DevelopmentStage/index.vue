@@ -1,5 +1,5 @@
 <template>
-  <div class="develop-stage">
+  <div id="develop-stage" class="develop-stage">
     <div class="wrapper">
       <div class="develop-stage__card">
         <div class="develop-stage__info">

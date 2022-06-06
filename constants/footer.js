@@ -87,7 +87,7 @@ export const aboutFooters = [
   },
   {
     id: 5,
-    element: 'three-pilars',
+    element: 'three-pillars',
     text: 'Tiga Pilar Desa Digital'
   },
   {
