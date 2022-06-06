@@ -44,26 +44,54 @@
           />
         </div>
         <div
+          v-show="$route.name === 'index'"
           :class="{
             'footer__sitemap-text': true,
             'footer__sitemap-text--open': isOpenSitemap,
             'footer__sitemap-text--close': !isOpenSitemap
           }"
         >
-          <a v-scroll-to="{ el: '#header' }" class="footer__sitemap-text-item">
-            <span class="footer__sitemap-text-title">Tentang Desa Digital</span>
+          <a
+            v-for="footer in mainFooters"
+            :key="footer.id"
+            v-scroll-to="{ el: '#' + footer.element }"
+            class="footer__sitemap-text-item"
+          >
+            <span class="footer__sitemap-text-title">{{ footer.text }}</span>
           </a>
-          <a v-scroll-to="{ el: '#village-partner' }" class="footer__sitemap-text-item">
-            <span class="footer__sitemap-text-title">Data Perkembangan Desa Digital</span>
+        </div>
+        <div
+          v-show="$route.name === 'about'"
+          :class="{
+            'footer__sitemap-text': true,
+            'footer__sitemap-text--open': isOpenSitemap,
+            'footer__sitemap-text--close': !isOpenSitemap
+          }"
+        >
+          <a
+            v-for="footer in aboutFooters"
+            :key="footer.id"
+            v-scroll-to="{ el: '#' + footer.element }"
+            class="footer__sitemap-text-item"
+          >
+            <span class="footer__sitemap-text-title">{{ footer.text }}</span>
           </a>
-          <a v-scroll-to="{ el: '#testimonial' }" class="footer__sitemap-text-item">
-            <span class="footer__sitemap-text-title">Testimoni User</span>
-          </a>
-          <a v-scroll-to="{ el: '#join-info' }" class="footer__sitemap-text-item">
-            <span class="footer__sitemap-text-title">Cara Bergabung</span>
-          </a>
-          <a v-scroll-to="{ el: '#contact-us' }" class="footer__sitemap-text-item">
-            <span class="footer__sitemap-text-title">Kontak Kami</span>
+        </div>
+        <div
+          v-show="$route.name === 'competition'"
+          :class="{
+            'footer__sitemap-text': true,
+            'footer__sitemap-text--open': isOpenSitemap,
+            'footer__sitemap-text--close': !isOpenSitemap
+          }"
+        >
+          <a
+            v-for="footer in competitionFooters"
+            :key="footer.id"
+            v-scroll-to="{ el: '#' + footer.element }"
+            class="footer__sitemap-text-item"
+          >
+            <span class="footer__sitemap-text-title">{{ footer.text }}</span>
           </a>
         </div>
       </div>
@@ -118,11 +146,15 @@
 </template>
 
 <script>
+import { mainFooters, aboutFooters, competitionFooters } from '@/constants/footer'
 export default {
   data () {
     return {
       isOpenSM: false,
-      isOpenSitemap: false
+      isOpenSitemap: false,
+      mainFooters,
+      competitionFooters,
+      aboutFooters
     }
   }
 }

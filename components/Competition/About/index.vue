@@ -1,5 +1,5 @@
 <template>
-  <div class="competition-about">
+  <div id="competition-about" class="competition-about">
     <div class="wrapper">
       <div id="competition-about" class="competition-about__wrapper">
         <div class="competition-about__title">

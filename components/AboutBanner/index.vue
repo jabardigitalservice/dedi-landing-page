@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="about-banner" class="wrapper">
     <div class="about-banner">
       <div class="about-banner__wrapper">
         <div class="about-banner__info">
