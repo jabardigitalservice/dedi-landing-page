@@ -12,17 +12,17 @@
       <div class="village-criteria__main--wrapper">
         <div class="village-criteria__main--wrapper-content">
           <div v-for="index in 2" :key="data[index-1].id" class="col-span-1">
-            <div class="card">
-              <img class="card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
-              <div class="card--desc">
+            <div class="village-criteria__card">
+              <img class="village-criteria__card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
+              <div class="village-criteria__card--desc">
                 {{ data[index-1].desc }}
               </div>
             </div>
           </div>
           <div class="col-span-2">
-            <div class="card">
-              <img class="card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
-              <div class="card--desc">
+            <div class="village-criteria__card">
+              <img class="village-criteria__card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
+              <div class="village-criteria__card--desc">
                 {{ data[2].desc }}
               </div>
             </div>
@@ -30,9 +30,9 @@
         </div>
         <div class="village-criteria__main--wrapper-content">
           <div v-for="index in 4" :key="data[index+2].id" class="col-span-1">
-            <div class="card">
-              <img class="card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
-              <div class="card--desc">
+            <div class="village-criteria__card">
+              <img class="village-criteria__card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
+              <div class="village-criteria__card--desc">
                 {{ data[index+2].desc }}
               </div>
             </div>
@@ -116,18 +116,19 @@ export default {
       }
     }
   }
+
+  &__card {
+    @apply bg-white rounded-[20px] w-full h-auto border-none;
+
+    &--img {
+      border-radius: 20px 20px 0 0;
+    }
+
+    &--desc {
+      @apply w-full h-full px-4 py-5
+      text-sm text-left text-gray-800;
+    }
+  }
 }
 
-.card {
-  @apply bg-white rounded-[20px] w-full h-auto border-none !important;
-
-  &--img {
-    border-radius: 20px 20px 0 0;
-  }
-
-  &--desc {
-    @apply w-full h-full px-4 py-5
-    text-sm text-left text-gray-800;
-  }
-}
 </style>
