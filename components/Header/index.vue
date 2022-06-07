@@ -1,5 +1,5 @@
 <template>
-  <div id="header" class="header">
+  <header id="header" class="header">
     <div class="header__container wrapper">
       <img class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
@@ -11,7 +11,7 @@
         <!-- <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" /> -->
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
