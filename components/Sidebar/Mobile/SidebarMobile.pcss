@@ -1,0 +1,50 @@
+.fade-sidebar-enter-active,
+.fade-sidebar-leave-active {
+  transition: opacity .3s cubic-bezier(0.4, 0.0, 0.2, 1.0);
+}
+
+.fade-sidebar-enter-from,
+.fade-sidebar-leave-to {
+  opacity: 0;
+}
+
+.header-mobile {
+  @apply z-20 fixed h-screen w-screen top-0 transition-all duration-300
+  backdrop-filter backdrop-blur-[6px] bg-black bg-opacity-65;
+
+  &--show {
+    @apply visible opacity-100;
+  }
+
+  &--hide{
+    @apply invisible opacity-0;
+  }
+
+  &__wrapper {
+    @apply flex flex-col py-6 px-4 max-w-[286px] h-screen bg-white;
+  }
+
+  &__title {
+    @apply flex flex-row justify-between mb-5.5;
+  }
+
+  &__menu {
+    @apply flex flex-col w-full text-left items-start gap-y-5.5;
+  }
+
+  &__submenu {
+    @apply w-full text-left text-gray-600;
+  }
+
+  &__submenu:hover {
+    @apply text-green-700;
+  }
+
+  &__login {
+    @apply mt-5.5;
+  }
+
+  &__login:last-of-type {
+    @apply mt-auto;
+  }
+}
