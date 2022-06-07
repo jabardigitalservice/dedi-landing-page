@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="postcss">
-.header{
+.header {
   box-shadow: 0px 4px 16px rgba(36, 45, 39, 0.06);
   @apply fixed backdrop-filter backdrop-blur-[20px] bg-white bg-opacity-85 w-full z-10;
 
@@ -40,7 +40,7 @@ export default {
     @apply h-[60px] flex items-center justify-between;
   }
 
-  &__action{
+  &__action {
     @apply flex items-center gap-[16px] hidden sm:(gap-6 block);
   }
 
@@ -48,15 +48,15 @@ export default {
     @apply h-8 w-6 sm:w-40 bg-white rounded-md;
   }
 
-  &__icon{
+  &__icon {
     @apply cursor-pointer w-6 h-8 sm:hidden;
   }
 
-  &__icon-typo{
+  &__icon-typo {
     @apply cursor-pointer h-8 hidden sm:block;
   }
 
-  &__menu-icon--hidden   {
+  &__menu-icon--hidden {
     @apply sm:(hidden);
   }
 }
