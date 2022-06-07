@@ -41,7 +41,7 @@ export default {
   }
 
   &__action{
-    @apply flex items-center gap-[16px] sm:gap-6;
+    @apply flex items-center gap-[16px] hidden sm:(gap-6 block);
   }
 
   &__icon-skeleton {
@@ -52,8 +52,12 @@ export default {
     @apply cursor-pointer w-6 h-8 sm:hidden;
   }
 
-   &__icon-typo{
+  &__icon-typo{
     @apply cursor-pointer h-8 hidden sm:block;
+  }
+
+  &__menu-icon--hidden   {
+    @apply sm:(hidden);
   }
 }
 </style>
