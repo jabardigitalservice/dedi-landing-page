@@ -495,21 +495,21 @@ export default {
 <style lang="postcss">
 @import './../Questionnaire.pcss';
 
-.jds-popover__content {
-  @apply !z-10 w-full md:(w-[unset]);
+.jds-popover {
+  @apply !block;
+
+  &__content {
+    @apply !z-10 w-full md:(w-[unset]);
+  }
 }
 
 .jds-options__option-list {
-  @apply max-h-[200px] min-h-min
+  @apply max-h-[200px] min-h-min;
 }
 
 .jds-select,
 .jds-popover__activator,
 .jds-input-text {
   width: 100% !important;
-}
-
-.jds-popover {
-  @apply !block;
 }
 </style>
