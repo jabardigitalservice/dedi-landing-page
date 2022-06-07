@@ -6,13 +6,14 @@
         'header-mobile--show': show,
         'header-mobile--hide': !show,
       }"
+      @click.self="onCloseSidebar('overlay')"
     >
       <div
         class="header-mobile__wrapper"
       >
         <div class="header-mobile__title">
           <img width="160" height="32" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography">
-          <BaseButton variant="tertiary-paddingless">
+          <BaseButton variant="tertiary-paddingless" @click="onCloseSidebar">
             <template #icon>
               <img height="20" width="20" src="~/assets/icons/IconTimesBlack.svg" alt="Icon Times">
             </template>
@@ -50,6 +51,13 @@ export default {
   data () {
     return {
       isLogin: false
+    }
+  },
+  methods: {
+    onCloseSidebar (closeOn) {
+      if (closeOn !== 'overlay' || window.innerWidth < 640) {
+        this.$emit('close-sidebar', false)
+      }
     }
   }
 }
