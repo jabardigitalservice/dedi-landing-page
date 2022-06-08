@@ -31,7 +31,7 @@
           </jds-section-message>
 
           <div class="registration__form-content--container">
-            <p class="mb-3">
+            <p class="mb-3 required">
               Apakah desa tempat Bapak/Ibu tinggal dapat diakses oleh kendaraan?
             </p>
             <label v-for="(item, index) in optionsKendaraan" :key="index" class="custom-checkbox">
@@ -115,7 +115,7 @@
           </div>
 
           <div class="registration__form-content--container">
-            <p class="mb-3">
+            <p class="mb-3 required">
               Apakah desa tempat Bapak/Ibu tinggal sudah terdapat suplai listrik?
             </p>
             <jds-radio-button-group
@@ -186,7 +186,7 @@
           </div>
 
           <div class="registration__form-content--container">
-            <p class="mb-3">
+            <p class="mb-3 required">
               Apakah desa tempat Bapak/Ibu tinggal sudah terdapat jaringan telepon seluler?
             </p>
             <jds-radio-button-group
@@ -269,7 +269,7 @@
           </div>
 
           <div class="registration__form-content--container">
-            <p class="mb-3">
+            <p class="mb-3 required">
               Apakah desa tempat Bapak/Ibu tinggal sudah terdapat akses internet?
             </p>
             <jds-radio-button-group
