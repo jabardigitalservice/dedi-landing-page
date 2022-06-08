@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SidebarMobile :show="sidebarOpen" @close-sidebar="clsoeSidebar" />
+    <SidebarMobile :show="sidebarOpen" @close-sidebar="closeSidebar" />
     <Header @open-sidebar="openSidebar" />
     <Nuxt />
     <FooterRegistration class="hidden md:(block)" />
@@ -19,7 +19,7 @@ export default {
     openSidebar (value) {
       this.sidebarOpen = value
     },
-    clsoeSidebar (value) {
+    closeSidebar (value) {
       this.sidebarOpen = value
     }
   }

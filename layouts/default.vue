@@ -3,7 +3,7 @@
     <ModalJoinDedi />
     <ModalCriteriaMitra />
     <ModalCompetitionFlowDetail />
-    <SidebarMobile :show="sidebarOpen" @close-sidebar="clsoeSidebar" />
+    <SidebarMobile :show="sidebarOpen" @close-sidebar="closeSidebar" />
     <Header @open-sidebar="openSidebar" />
     <Nuxt />
     <Footer />
@@ -22,7 +22,7 @@ export default {
     openSidebar (value) {
       this.sidebarOpen = value
     },
-    clsoeSidebar (value) {
+    closeSidebar (value) {
       this.sidebarOpen = value
     }
   }
