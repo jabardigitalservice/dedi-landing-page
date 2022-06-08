@@ -117,19 +117,19 @@
             'footer__social-media-logo--close': !isOpenSM
           }"
         >
-          <a href="#" class="footer__social-media-logo-item">
+          <a href="https://www.facebook.com/jabardigitalservice" class="footer__social-media-logo-item">
             <img width="24" height="24" src="~/assets/logo/logo-facebook.svg" alt="Logo Facebook">
             <span class="footer__social-media-logo-item-text">Facebook</span>
           </a>
-          <a href="#" class="footer__social-media-logo-item">
+          <a href="https://www.youtube.com/c/JabarDigitalService" class="footer__social-media-logo-item">
             <img width="24" height="24" src="~/assets/logo/logo-youtube.svg" alt="Logo Facebook">
             <span class="footer__social-media-logo-item-text">Youtube</span>
           </a>
-          <a href="#" class="footer__social-media-logo-item">
+          <a href="https://www.instagram.com/jabardigitalservice/" class="footer__social-media-logo-item">
             <img width="24" height="24" src="~/assets/logo/logo-instagram.svg" alt="Logo Facebook">
             <span class="footer__social-media-logo-item-text">Instagram</span>
           </a>
-          <a href="#" class="footer__social-media-logo-item">
+          <a href="https://twitter.com/jabardigital" class="footer__social-media-logo-item">
             <img width="24" height="24" src="~/assets/logo/logo-twitter.svg" alt="Logo Facebook">
             <span class="footer__social-media-logo-item-text">Twitter</span>
           </a>
