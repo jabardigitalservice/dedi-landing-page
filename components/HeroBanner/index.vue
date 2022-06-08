@@ -135,21 +135,21 @@ export default {
 
 <style lang="postcss" scoped>
 .hero {
-    @apply relative w-full h-full;
+  @apply relative w-full h-full;
 
-    &::before {
-      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10;
-      content: "";
-      background-image: url('~/assets/images/MotifHeroBanner.png');
-      background-size: calc(max(100%, 1440px)) auto;
-      background-position-y: 95%;
-      @media only screen and (min-width: 1000px) {
-        background-position-y: 93%;
-      }
-      @media only screen and (min-width: 1280px) {
-        background-position-y: 88%;
-      }
+  &::before {
+    @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10;
+    content: "";
+    background-image: url('~/assets/images/MotifHeroBanner.png');
+    background-size: calc(max(100%, 1440px)) auto;
+    background-position-y: 95%;
+    @media only screen and (min-width: 1000px) {
+      background-position-y: 93%;
     }
+    @media only screen and (min-width: 1280px) {
+      background-position-y: 88%;
+    }
+  }
 }
 .hero-banner {
   @apply w-full h-[540px] sm:h-[590px];
@@ -186,8 +186,5 @@ export default {
 
 .swiper-container-horizontal > .swiper-pagination-bullets {
   @apply bottom-0 !important;
-}
-
-.swiper-wrapper {
 }
 </style>
