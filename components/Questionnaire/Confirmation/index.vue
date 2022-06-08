@@ -44,6 +44,7 @@
               placeholder="Cth: Agus Permadi"
               :error="!!(errors.name)"
               :error-message="errors.name"
+              required
             />
             <BaseInput
               v-model="params.posisi"
@@ -55,6 +56,7 @@
               placeholder="Cth: Kepala Desa Manyeti"
               :error="!!(errors.position)"
               :error-message="errors.position"
+              required
             />
             <div class="grid grid-cols-5 mt-6">
               <div class="registration__form-col-image">
@@ -81,7 +83,7 @@
                 </div>
               </div>
               <div class="registration__form-col-desc">
-                <div class="registration__form__subtitle">
+                <div class="registration__form__subtitle required">
                   Unggah SK Pengangkatan Kepala Desa
                 </div>
                 <div class="registration__form__placeholder">
@@ -131,6 +133,7 @@
                 :options="optionsCity"
                 label="Kabupaten/Kota"
                 placeholder="Masukkan nama Kabupaten/Kota"
+                required
               />
             </div>
             <div class="registration__form-content--container__form-group">
@@ -177,6 +180,7 @@
               placeholder="Cth: 0822 2068 9xxx"
               :error="!!(errors.phone)"
               :error-message="errors.phone"
+              required
             />
             <BaseInput
               v-model="params.email"
@@ -188,6 +192,7 @@
               placeholder="Cth: agus.permadi@gmail.com"
               :error="!!(errors.email)"
               :error-message="errors.email"
+              required
             />
           </div>
         </div>

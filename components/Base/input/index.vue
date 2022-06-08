@@ -1,11 +1,14 @@
 <template>
   <div class="input-text">
     <label
-      :class="{
-        'input-text__label' : true,
-        'input-text__label--italic': labelItalic,
-        'input-text__label--error' : error,
-      }"
+      :class="[
+        {
+          'input-text__label' : true,
+          'input-text__label--italic': labelItalic,
+          'input-text__label--error' : error,
+        },
+        { 'required': required }
+      ]"
       :for="label"
     >
       {{ label }}
@@ -155,6 +158,13 @@ export default {
     errorMessage: {
       type: String,
       default: ''
+    },
+    /**
+     * Error state
+     */
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
