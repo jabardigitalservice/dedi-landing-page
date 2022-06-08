@@ -6,7 +6,7 @@
       </div>
       <div class="registration__form-content">
         <div class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Komunitas apa saja yang saat ini ada di Desa Bapak/Ibu? (Boleh pilih dari satu)
           </p>
           <label v-for="(item, index) in communities" :key="index" class="custom-checkbox">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Apakah komunitas tersebut pernah mengadakan program atau pelatihan tentang teknologi digital?
           </p>
           <jds-radio-button-group
