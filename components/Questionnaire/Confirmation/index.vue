@@ -135,7 +135,6 @@
                 options-header="Kabupaten/Kota"
                 :options="optionsCity"
                 placeholder="Masukkan nama Kabupaten/Kota"
-                required
               />
             </div>
             <div class="registration__form-content--container__form-group">

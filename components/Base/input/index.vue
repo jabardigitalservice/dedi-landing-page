@@ -6,8 +6,8 @@
           'input-text__label' : true,
           'input-text__label--italic': labelItalic,
           'input-text__label--error' : error,
+          'required': required ,
         },
-        { 'required': required }
       ]"
       :for="label"
     >
