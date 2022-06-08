@@ -27,7 +27,7 @@
 export default {
   methods: {
     onClickCTA () {
-      window.open('https://api.whatsapp.com/send?phone=6281312848205', '_blank')
+      window.open('https://bit.ly/HotlineSayembaraDeDi2022', '_blank')
     }
   }
 }
