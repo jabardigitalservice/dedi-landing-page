@@ -1,13 +1,17 @@
 <template>
-  <div id="hero-banner">
+  <div>
     <swiper
+      id="hero-banner"
       ref="testimonials"
       :auto-update="true"
       :auto-destroy="true"
       :delete-instance-on-destroy="true"
       :cleanup-styles-on-destroy="true"
       :options="swiperOptions"
-      class="hero"
+      :class="{
+        'hero' : swiperOptions.pagination.el,
+        'hero-full': !swiperOptions.pagination.el
+      }"
     >
       <swiper-slide
         v-for="item in data"
@@ -36,7 +40,13 @@
           </div>
         </div>
       </swiper-slide>
-      <div slot="pagination" class="swiper-pagination-custom navigation__wrapper z-20 mt-2" />
+      <div
+        slot="pagination"
+        :class="{
+          'swiper-pagination-banner navigation__wrapper z-20': true,
+          'disabled': !swiperOptions.pagination.el
+        }"
+      />
     </swiper>
   </div>
 </template>
@@ -72,7 +82,7 @@ export default {
         spaceBetween: 16,
         passiveListeners: true,
         pagination: {
-          el: '.swiper-pagination-custom',
+          el: '.swiper-pagination-banner',
           type: 'bullets',
           clickable: true
         },
@@ -105,6 +115,13 @@ export default {
        */
       this.$emit('clickCTA', true)
     },
+    handleData () {
+      if (this.data.length <= 1) {
+        this.swiperOptions.pagination.el = null
+      } else {
+        this.swiperOptions.pagination.el = '.swiper-pagination-banner'
+      }
+    },
     async getDataHeroBanner () {
       const response = await this.$axios.get('/pages')
       const { data } = response.data
@@ -112,6 +129,7 @@ export default {
         const newData = data.filter(item => item.is_active).sort((a, b) => a.order - b.order)
         this.data.push(...newData)
       }
+      this.handleData()
     },
     inlineStyleBackground (img) {
       if (img && img.startsWith('http')) {
@@ -133,7 +151,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .hero {
   @apply relative w-full h-full;
 
@@ -147,6 +165,14 @@ export default {
       background-position-y: 89%;
     }
   }
+
+  &-full::before {
+      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10;
+      content: "";
+      background-image: url('~/assets/images/MotifHeroBanner.png');
+      background-size: calc(max(100%, 1440px)) auto;
+      background-position-y: 100%;
+    }
 }
 .hero-banner {
   @apply w-full h-[540px] sm:h-[590px];
@@ -183,5 +209,9 @@ export default {
 
 .swiper-container-horizontal > .swiper-pagination-bullets {
   @apply bottom-0 !important;
+}
+
+.swiper-pagination-banner.disabled {
+  display: none !important;
 }
 </style>
