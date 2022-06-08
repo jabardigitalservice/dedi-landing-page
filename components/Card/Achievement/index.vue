@@ -186,10 +186,6 @@ export default {
 </script>
 
 <style lang="postcss">
-  .swiper-wrapper {
-    @apply !pb-6;
-  }
-
   #achievement .swiper-slide {
     @apply sm:(w-[495px]) xl:(w-[unset])
   }
