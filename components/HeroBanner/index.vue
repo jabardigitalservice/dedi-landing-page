@@ -36,7 +36,7 @@
           </div>
         </div>
       </swiper-slide>
-      <div slot="pagination" class="swiper-pagination-custom navigation__wrapper z-20" />
+      <div slot="pagination" class="swiper-pagination-custom navigation__wrapper z-20 mt-2" />
     </swiper>
   </div>
 </template>
@@ -142,12 +142,9 @@ export default {
     content: "";
     background-image: url('~/assets/images/MotifHeroBanner.png');
     background-size: calc(max(100%, 1440px)) auto;
-    background-position-y: 95%;
-    @media only screen and (min-width: 1000px) {
-      background-position-y: 93%;
-    }
+    background-position-y: 92%;
     @media only screen and (min-width: 1280px) {
-      background-position-y: 88%;
+      background-position-y: 89%;
     }
   }
 }
