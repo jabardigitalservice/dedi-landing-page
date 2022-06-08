@@ -124,6 +124,9 @@
               Alamat Desa
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kabupaten/Kota
+              </div>
               <jds-select
                 v-model="cityId"
                 class="w-full mt-2"
@@ -131,12 +134,14 @@
                 filterable
                 options-header="Kabupaten/Kota"
                 :options="optionsCity"
-                label="Kabupaten/Kota"
                 placeholder="Masukkan nama Kabupaten/Kota"
                 required
               />
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kecamatan
+              </div>
               <jds-select
                 v-model="districtId"
                 :disabled="isDisabledOptionDistricts"
@@ -145,11 +150,13 @@
                 filterable
                 options-header="Kecamatan"
                 :options="optionsDistrict"
-                label="Kecamatan"
                 placeholder="Masukkan nama Kecamatan"
               />
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kelurahan/Desa
+              </div>
               <jds-select
                 v-model="villageId"
                 :disabled="isDisabledOptionVillages"
@@ -158,7 +165,6 @@
                 filterable
                 options-header="Kelurahan/Desa"
                 :options="optionsVillage"
-                label="Kelurahan/Desa"
                 placeholder="Masukkan nama Kelurahan/Desa"
                 :error-message="errors.village"
               />
