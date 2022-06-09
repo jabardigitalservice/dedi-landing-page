@@ -87,8 +87,8 @@
                   />
                 </BaseButton>
               </div>
-              <h4 class="registration-mitra__form-text--line">
-                <span class="registration-mitra__form-text--color">atau</span>
+              <h4 class="notification__content-action--line">
+                <span class="notification__content-action--color">atau</span>
               </h4>
             </div>
             <BaseButton
