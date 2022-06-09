@@ -6,7 +6,7 @@
       </div>
       <div v-show="!isShowNextQuestionnaire" class="registration__form-content">
         <div class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Dari pilihan berikut, sosial media apa yang dikelola secara resmi oleh perangkat desa Bapak/Ibu?
           </p>
           <label v-for="(item, index) in optionsSocialMedia" :key="index" class="custom-checkbox">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Apakah ada BUMDes (Badan Usaha Milik Desa) di desa Bapak/Ibu?
           </p>
           <jds-radio-button-group
@@ -242,7 +242,7 @@
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Apakah komoditas yang dikelola/produksi masih aktif pada BUMDes Bapak/Ibu?
           </p>
           <jds-radio-button-group
@@ -255,7 +255,7 @@
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Jika aktif apakah pendistribusian produk BUMDes sudah tergabung pada e-commerce (penjualan sistem elektronik)?
           </p>
           <jds-radio-button-group
@@ -268,7 +268,7 @@
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Jika sudah, platform e-commerce apa yang telah bergabung?
           </p>
           <label v-for="(item, index) in optionsECommerce" :key="index" class="custom-checkbox">
@@ -293,7 +293,7 @@
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Apakah desa Bapak/Ibu sudah terjangkau kurir logistik?
           </p>
           <jds-radio-button-group
@@ -308,7 +308,7 @@
 
       <div v-show="isShowNextQuestionnaire" class="registration__form-content">
         <div class="registration__form-content--container">
-          <p class="mb-3">
+          <p class="mb-3 required">
             Apakah desa tempat Bapak/Ibu tinggal memiliki potensi yang dapat dikembangkan?
           </p>
           <div class="custom-info-warning">

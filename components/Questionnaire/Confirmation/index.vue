@@ -44,6 +44,7 @@
               placeholder="Cth: Agus Permadi"
               :error="!!(errors.name)"
               :error-message="errors.name"
+              required
             />
             <BaseInput
               v-model="params.posisi"
@@ -55,6 +56,7 @@
               placeholder="Cth: Kepala Desa Manyeti"
               :error="!!(errors.position)"
               :error-message="errors.position"
+              required
             />
             <div class="grid grid-cols-5 mt-6">
               <div class="registration__form-col-image">
@@ -81,7 +83,7 @@
                 </div>
               </div>
               <div class="registration__form-col-desc">
-                <div class="registration__form__subtitle">
+                <div class="registration__form__subtitle required">
                   Unggah SK Pengangkatan Kepala Desa
                 </div>
                 <div class="registration__form__placeholder">
@@ -122,6 +124,9 @@
               Alamat Desa
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kabupaten/Kota
+              </div>
               <jds-select
                 v-model="cityId"
                 class="w-full mt-2"
@@ -129,11 +134,13 @@
                 filterable
                 options-header="Kabupaten/Kota"
                 :options="optionsCity"
-                label="Kabupaten/Kota"
                 placeholder="Masukkan nama Kabupaten/Kota"
               />
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kecamatan
+              </div>
               <jds-select
                 v-model="districtId"
                 :disabled="isDisabledOptionDistricts"
@@ -142,11 +149,13 @@
                 filterable
                 options-header="Kecamatan"
                 :options="optionsDistrict"
-                label="Kecamatan"
                 placeholder="Masukkan nama Kecamatan"
               />
             </div>
             <div class="registration__form-content--container__form-group">
+              <div class="input-text__label mt-2 required">
+                Kelurahan/Desa
+              </div>
               <jds-select
                 v-model="villageId"
                 :disabled="isDisabledOptionVillages"
@@ -155,7 +164,6 @@
                 filterable
                 options-header="Kelurahan/Desa"
                 :options="optionsVillage"
-                label="Kelurahan/Desa"
                 placeholder="Masukkan nama Kelurahan/Desa"
                 :error-message="errors.village"
               />
@@ -177,6 +185,7 @@
               placeholder="Cth: 0822 2068 9xxx"
               :error="!!(errors.phone)"
               :error-message="errors.phone"
+              required
             />
             <BaseInput
               v-model="params.email"
@@ -188,6 +197,7 @@
               placeholder="Cth: agus.permadi@gmail.com"
               :error="!!(errors.email)"
               :error-message="errors.email"
+              required
             />
           </div>
         </div>
