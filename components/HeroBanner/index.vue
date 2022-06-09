@@ -2,7 +2,7 @@
   <div>
     <swiper
       id="hero-banner"
-      ref="testimonials"
+      ref="heroBanner"
       :auto-update="true"
       :auto-destroy="true"
       :delete-instance-on-destroy="true"
@@ -12,6 +12,7 @@
         'hero' : swiperOptions.pagination.el,
         'hero-full': !swiperOptions.pagination.el
       }"
+      @click.native="slideClicked(swiper.activeIndex, $event)"
     >
       <swiper-slide
         v-for="item in data"
@@ -21,7 +22,6 @@
           <div
             class="hero-banner__main"
             :style="inlineStyleBackground(item.image.path)"
-            @click="onClickBanner(item.link)"
           >
             <!-- Temporary hide this section for next feature -->
             <div v-show="false" class="relative px-4 sm:pl-[15.5%]">
@@ -94,21 +94,33 @@ export default {
             spaceBetween: 16
           }
         }
-      }
+      },
+      slideLink: 'defaultLink'
     }
   },
   computed: {
     swiper () {
-      return this.$refs.testimonials.$swiper
+      return this.$refs.heroBanner.$swiper
     },
     defaultBgImage () {
       return require('~/assets/images/HeroBanner_withContext.svg')
     }
   },
-  created () {
+  mounted () {
     this.getDataHeroBanner()
   },
   methods: {
+    slideClicked (index, event) {
+      // find link by active index slide
+      const currentSlideData = this.data.filter((el, idx) => idx === index)
+      this.slideLink = currentSlideData[0].link
+
+      // only banner area that clickable
+      const findArea = Array.from(event.target.classList).findIndex(element => element === 'swiper-container')
+      if (findArea > -1) {
+        this.onClickBanner(this.slideLink)
+      }
+    },
     onClickCTA () {
       /**
        * Trigger open popup join desa digital
@@ -156,7 +168,7 @@ export default {
   @apply relative w-full h-full;
 
   &::before {
-    @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10;
+    @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
     content: "";
     background-image: url('~/assets/images/MotifHeroBanner.png');
     background-size: calc(max(100%, 1440px)) auto;
@@ -167,7 +179,7 @@ export default {
   }
 
   &-full::before {
-      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10;
+      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
       content: "";
       background-image: url('~/assets/images/MotifHeroBanner.png');
       background-size: calc(max(100%, 1440px)) auto;
@@ -178,7 +190,7 @@ export default {
   @apply w-full h-[540px] sm:h-[590px];
 
   &__main {
-    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative cursor-pointer;
+    @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
     background-position-x: 10%;
   }
 
