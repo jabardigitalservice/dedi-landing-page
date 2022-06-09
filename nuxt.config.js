@@ -62,7 +62,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/design-system.js' },
-    { src: '~/plugins/VueAwesomeSwiper.js', mode: 'client' }
+    { src: '~/plugins/VueAwesomeSwiper.js', mode: 'client' },
+    { src: '~/plugins/gtag' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -73,7 +74,6 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     'nuxt-windicss',
-    '@nuxtjs/google-analytics',
     '@nuxtjs/sentry',
     '@nuxtjs/google-fonts',
     '@nuxtjs/svg'
@@ -122,11 +122,6 @@ export default {
       }
     },
     display: 'swap'
-  },
-
-  // Google Analytics
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID // Use as fallback if no runtime config is provided
   },
 
   // Sentry
