@@ -238,6 +238,15 @@ export default {
           md:(w-[unset] active:w-[unset]);
         }
       }
+
+      &--line {
+        @apply w-full border-b-1 border-solid border-gray-200 text-center leading-[1.5px] mt-3 mb-6 mx-0;
+      }
+
+      &--color {
+        @apply font-sans font-normal text-[14px] leading-[0px] bg-white text-gray-500 px-2.5
+        md:(mb-3);
+      }
     }
   }
 }
