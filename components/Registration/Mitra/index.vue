@@ -147,7 +147,7 @@
                 <span class="font-sans text-bold text-gray-700">Masuk dengan Google</span>
               </BaseButton>
             </div>
-            <div class="registration-mitra__login">
+            <div v-show="isLogin" class="registration-mitra__login">
               Sudah punya akun?
               <nuxt-link to="/login" class="text-blue-600">
                 Masuk disini
@@ -185,7 +185,7 @@
                 @click="redirectEmail"
               />
             </div>
-            <div class="registration-mitra__login">
+            <div v-show="isLogin" class="registration-mitra__login">
               Sudah punya akun?
               <nuxt-link to="/login" class="text-blue-600">
                 Masuk disini
@@ -216,6 +216,7 @@ export default {
       isSuccessSubmit: false,
       isErrorEmailMessage: false,
       emailErrorMessage: '',
+      isLogin: false,
       form: {
         name: '',
         email: '',
