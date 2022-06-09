@@ -44,7 +44,7 @@
               {{ message }}
             </p>
             <p>
-              Form harus diisi sebelum <span class="notification__content-message--bold">tanggal 02/05/2022 pukul 17:00 WIB.</span> Jika terpilih, Tim Desa Digital akan menghubungi Anda untuk proses selanjutnya.
+              Form harus diisi sebelum <span class="notification__content-message--bold">tanggal 28 Juni 2022 pukul 17:00 WIB.</span> Jika terpilih, Tim Desa Digital akan menghubungi Anda untuk proses selanjutnya.
             </p>
           </div>
           <div class="notification__content-info">
@@ -87,8 +87,8 @@
                   />
                 </BaseButton>
               </div>
-              <h4 class="registration-mitra__form-text--line">
-                <span class="registration-mitra__form-text--color">atau</span>
+              <h4 class="notification__content-action--line">
+                <span class="notification__content-action--color">atau</span>
               </h4>
             </div>
             <BaseButton
@@ -237,6 +237,15 @@ export default {
           @apply w-full active:(w-[calc(100%-2px)])
           md:(w-[unset] active:w-[unset]);
         }
+      }
+
+      &--line {
+        @apply w-full border-b-1 border-solid border-gray-200 text-center leading-[1.5px] mt-3 mb-6 mx-0;
+      }
+
+      &--color {
+        @apply font-sans font-normal text-[14px] leading-[0px] bg-white text-gray-500 px-2.5
+        md:(mb-3);
       }
     }
   }
