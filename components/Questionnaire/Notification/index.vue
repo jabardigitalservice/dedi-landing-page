@@ -44,7 +44,7 @@
               {{ message }}
             </p>
             <p>
-              Form harus diisi sebelum <span class="notification__content-message--bold">tanggal 02/05/2022 pukul 17:00 WIB.</span> Jika terpilih, Tim Desa Digital akan menghubungi Anda untuk proses selanjutnya.
+              Form harus diisi sebelum <span class="notification__content-message--bold">tanggal 28 Juni 2022 pukul 17:00 WIB.</span> Jika terpilih, Tim Desa Digital akan menghubungi Anda untuk proses selanjutnya.
             </p>
           </div>
           <div class="notification__content-info">
