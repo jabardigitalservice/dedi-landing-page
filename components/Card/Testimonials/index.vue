@@ -72,7 +72,7 @@
           </div>
         </div>
       </swiper-slide>
-      <div slot="pagination" class=" swiper-pagination navigation__wrapper" />
+      <div slot="pagination" class="swiper-pagination navigation__wrapper mt-8" />
       <button slot="button-next" class="navigation navigation__wrapper swiper-button-next">
         <jds-icon class="navigation__button-right" size="16px" name="chevron-right" />
       </button>
@@ -219,7 +219,6 @@ export default {
 .swiper-container-horizontal > .swiper-pagination-bullets {
   position: relative !important;
   width: 100% !important;
-  bottom: -32px !important;
   @apply xl:(bottom-[-20px]) !important;
   margin-bottom: 32px !important;
   display: flex !important;
