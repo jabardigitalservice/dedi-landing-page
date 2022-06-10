@@ -20,6 +20,22 @@
             {{ content.desc }}
           </p>
         </transition>
+        <!-- <transition name="slide-fade-stage" mode="out-in">
+          <p :key="content.desc" class="info-village__info-desc">
+            {{ content.desc }}
+          </p>
+        </transition> -->
+        <transition-group
+          v-show="content.tahap === 'Desa Digital 4.0'"
+          tag="div"
+          class="info-village__info-thematic"
+          name="slide-fade-stage"
+          mode="out-in"
+        >
+          <p v-for="thematic in content.thematics" :key="thematic" class="info-village__info-desc info-village__info-desc--list">
+            Desa Digital {{ thematic }}.
+          </p>
+        </transition-group>
         <div class="info-village__info-box-pagination">
           <div
             :class="{
@@ -224,6 +240,18 @@ export default {
 
     &-desc {
       @apply mt-3 font-sans font-normal text-blue-gray-400 leading-[26px] text-center sm:(text-left);
+    }
+
+    &-thematic {
+      @apply !grid !grid-cols-2 !gap-2;
+    }
+
+    &-desc {
+      @apply mt-3 font-sans font-normal text-blue-gray-400 leading-[26px] text-center xl:(text-left);
+
+      &--list {
+        @apply list-item list-inside list-decimal;
+      }
     }
 
     &-box-pagination {
