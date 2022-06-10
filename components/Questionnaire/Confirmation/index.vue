@@ -355,8 +355,16 @@ export default {
       }
     },
     'params.nomor_telepon' () {
+      this.params.nomor_telepon = this.basicNumberNormalization(this.params.nomor_telepon)
+
       if (this.params.nomor_telepon.length < 1) {
         this.errors.phone = 'Isian nomor telepon wajib diisi.'
+      } else if (this.params.nomor_telepon.length < 9) {
+        this.errors.phone = 'Isian nomor telepon minimal 9 digit.'
+      } else if (this.params.nomor_telepon.length > 13) {
+        this.errors.phone = 'Isian nomor telepon maksimal 13 digit.'
+      } else if (!this.params.nomor_telepon.startsWith('08')) {
+        this.errors.phone = 'Isian nomor telepon tidak valid.'
       } else {
         this.errors.phone = ''
       }
@@ -496,6 +504,15 @@ export default {
           })
         }
       }
+    },
+    basicNumberNormalization (phone) {
+      phone = String(phone).trim()
+      if (phone.startsWith('+62')) {
+        phone = '0' + phone.slice(3)
+      } else if (phone.startsWith('62')) {
+        phone = '0' + phone.slice(2)
+      }
+      return phone.replace(/[- .]/g, '')
     }
   }
 }
