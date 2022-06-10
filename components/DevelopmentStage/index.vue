@@ -241,7 +241,7 @@ export default {
     }
 
     &-thematic {
-      @apply grid grid-cols-2;
+      @apply grid grid-cols-2 gap-2;
     }
 
     &-desc {
