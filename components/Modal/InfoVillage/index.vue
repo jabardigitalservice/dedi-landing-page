@@ -144,7 +144,10 @@ export default {
         {
           stage: 'Desa Digital 4.0',
           title: 'Implementasi Pemanfaatan Teknologi',
-          desc: 'Meningkatkan produktifitas dan kemandirian masyarakat desa dengan meluncurkan ragam desa tematik sesuai dengan potensi desa. Tematik yang sudah berjalan diantaranya:'
+          desc: 'Meningkatkan produktifitas dan kemandirian masyarakat desa dengan meluncurkan ragam desa tematik sesuai dengan potensi desa. Tematik yang sudah berjalan diantaranya:',
+          thematics: [
+            'Pertanian', 'Perikanan', 'Kesehatan', 'Pendidikan', 'Waste Management', 'Multimedia'
+          ]
         }
       ]
     }
