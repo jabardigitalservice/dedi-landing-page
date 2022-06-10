@@ -43,7 +43,7 @@
       <div
         slot="pagination"
         :class="{
-          'swiper-pagination-banner navigation__wrapper z-20': true,
+          'swiper-pagination-banner z-20': true,
           'disabled': !swiperOptions.pagination.el
         }"
       />
@@ -168,18 +168,15 @@ export default {
   @apply relative w-full h-full;
 
   &::before {
-    @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
+    @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
     content: "";
     background-image: url('~/assets/images/MotifHeroBanner.png');
     background-size: calc(max(100%, 1440px)) auto;
-    background-position-y: 92%;
-    @media only screen and (min-width: 1280px) {
-      background-position-y: 89%;
-    }
+    background-position-y: 94%;
   }
 
   &-full::before {
-      @apply bg-no-repeat w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
+      @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
       content: "";
       background-image: url('~/assets/images/MotifHeroBanner.png');
       background-size: calc(max(100%, 1440px)) auto;
@@ -187,7 +184,7 @@ export default {
     }
 }
 .hero-banner {
-  @apply w-full h-[540px] sm:h-[590px];
+  @apply w-full h-[540px] sm:h-[640px];
 
   &__main {
     @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
@@ -217,10 +214,6 @@ export default {
       sm:(w-auto active:(w-auto));
     }
   }
-}
-
-.swiper-container-horizontal > .swiper-pagination-bullets {
-  @apply bottom-0 !important;
 }
 
 .swiper-pagination-banner.disabled {
