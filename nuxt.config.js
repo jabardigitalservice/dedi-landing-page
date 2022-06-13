@@ -37,9 +37,7 @@ export default {
     axios: {
       baseUrl: process.env.BASE_URL + '/' + process.env.VERSION_ENDPOINT
     },
-    googleAnalytics: {
-      id: process.env.GOOGLE_ANALYTICS_ID
-    },
+    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
     sentry: {
       config: {
         environment: process.env.SENTRY_ENVIRONMENT
