@@ -95,7 +95,7 @@
               Bergabung sejak
             </div>
             <div class="partner__partner-item-boxjoin-joined-date">
-              {{ partner.created_at ? joinedSince(partner.created_at) : '-' }}
+              {{ partner.join_year || '-' }}
             </div>
           </div>
           <div class="partner__partner-item-boxjoin-totaljoin">
@@ -153,6 +153,7 @@ export default {
     } else {
       this.partners = data
     }
+    console.log(this.partners)
     this.query = { ...this.query, ...meta }
     if (this.totalPartner < meta.total) {
       this.totalPartner = meta.total
