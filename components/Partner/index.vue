@@ -153,7 +153,6 @@ export default {
     } else {
       this.partners = data
     }
-    console.log(this.partners)
     this.query = { ...this.query, ...meta }
     if (this.totalPartner < meta.total) {
       this.totalPartner = meta.total
