@@ -95,7 +95,7 @@
               Bergabung sejak
             </div>
             <div class="partner__partner-item-boxjoin-joined-date">
-              {{ partner.created_at ? joinedSince(partner.created_at) : '-' }}
+              {{ partner.join_year || '-' }}
             </div>
           </div>
           <div class="partner__partner-item-boxjoin-totaljoin">
