@@ -142,10 +142,7 @@ export default {
     async getDataHeroBanner () {
       const response = await this.$axios.get('/pages', { params: this.query })
       const { data } = response.data
-      if (Array.isArray(data) && data.length > 0) {
-        const newData = data.filter(item => item.is_active).sort((a, b) => a.order - b.order)
-        this.data.push(...newData)
-      }
+      this.data.push(...data)
       this.handleData()
     },
     inlineStyleBackground (img) {
