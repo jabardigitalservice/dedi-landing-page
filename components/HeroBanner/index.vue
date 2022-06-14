@@ -97,7 +97,7 @@ export default {
       },
       query: {
         is_active: true,
-        sort_by: 'desc',
+        sort_by: 'asc',
         order_by: 'order'
       },
       slideLink: 'defaultLink'
