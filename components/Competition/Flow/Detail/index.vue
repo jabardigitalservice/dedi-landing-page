@@ -43,6 +43,9 @@
                   <div class="modal-flow__container-body-right-title">
                     {{ item.title }}
                   </div>
+                  <div class="modal-flow__container-body-right-date">
+                    {{ item.date }}
+                  </div>
                   <div class="modal-flow__container-body-right-subtitle">
                     {{ item.subtitle }}
                   </div>
@@ -102,35 +105,40 @@ export default {
       data: [
         {
           id: 1,
-          title: '1. PENDAFTARAN',
+          title: 'PENDAFTARAN',
+          date: '14 - 28 Juni 2022',
           subtitle: 'Kepala Desa dan Mitra membuat akun dan melengkapi data yang dibutuhkan.',
           info: 'Khusus Kepala Desa, harus mengisi kuisioner Desa Digital untuk menentukan level desa terlebih dahulu.',
           img: require('~/assets/images/competition/IconAlurSayembara_1.svg')
         },
         {
           id: 2,
-          title: '2. PROSES MATCH-MAKING',
+          title: 'PROSES MATCH-MAKING',
+          date: '05 - 12 Juli 2022',
           subtitle: 'Proses ini dilakukan untuk memasangkan desa dan mitra dengan fokus pengembangan yang sama.',
           info: 'Penilaian dilakukan berdasarkan SOP yang berlaku.',
           img: require('~/assets/images/competition/IconAlurSayembara_2.svg')
         },
         {
           id: 3,
-          title: '3. PROSES AUDIENSI',
+          title: 'PROSES AUDIENSI',
+          date: '13 - 19 Juli 2022',
           subtitle: 'Desa terpilih kemudian dipertemukan denan mitra OPD terkait.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_3.svg')
         },
         {
           id: 4,
-          title: '4. IMPLEMENTASI DESA DIGITAL',
+          title: 'IMPLEMENTASI DESA DIGITAL',
+          date: '29 Juli - 31 Okt 2022',
           subtitle: 'Proses implementasi dan pendampingan inovasi teknologi dari mitra kepada desa.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_4.svg')
         },
         {
           id: 5,
-          title: '5. MONITORING DAN EVALUASI',
+          title: 'MONITORING DAN EVALUASI',
+          date: '21 Nov - 31 Des 2022',
           subtitle: 'Proses ini dilakukan kepada mitra dan desa.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
@@ -247,6 +255,10 @@ export default {
 
         &-title {
           @apply text-green-700 font-bold leading-normal;
+        }
+
+        &-date {
+          @apply text-gray-800  font-bold text-sm;
         }
 
         &-subtitle {
