@@ -55,7 +55,8 @@ export default {
       testimonialIsReady: false,
       meta: [],
       query: {
-        type: null
+        type: null,
+        is_active: true
       }
     }
   },
