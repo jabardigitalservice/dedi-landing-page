@@ -186,7 +186,7 @@ export default {
     }
 }
 .hero-banner {
-  @apply w-full h-[540px] sm:h-[640px];
+  @apply w-full h-[540px] sm:h-[680px];
 
   &__main {
     @apply bg-no-repeat bg-cover w-full h-full pt-[60px] relative;
