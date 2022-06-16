@@ -107,7 +107,7 @@ export default {
   }
 
   &__subheading {
-    @apply text-sm text-gray-700 text-center mt-6 sm:(leading-[23px] mt-5);
+    @apply text-sm text-blue-gray-600 text-center mt-6 sm:(leading-[23px] mt-5);
   }
 
   &__switch {
