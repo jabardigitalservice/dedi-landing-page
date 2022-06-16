@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'PageCompetition',
+  name: 'Sayembara',
   data () {
     return {
       modalOpen: false,

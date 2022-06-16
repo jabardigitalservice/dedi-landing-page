@@ -11,7 +11,7 @@
         </BaseButton>
       </div>
       <div class="header__action">
-        <BaseButton variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/competition')" />
+        <BaseButton variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
         <span class="text-gray-300">|</span>
         <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
       <!-- @Temporary hide login button -->
