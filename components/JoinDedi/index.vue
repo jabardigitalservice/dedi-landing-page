@@ -163,6 +163,14 @@
               </div>
             </div>
           </div>
+          <div class="modal__container-info">
+            <img width="16" height="16" src="~/assets/icons/IconInfo.svg" alt="Icon Info">
+            <div class="modal__container-info-content">
+              <p class="modal__container-info-content-text">
+                <span class="modal__container-info-content-text--bold">Disclaimer:</span> Pendaftaran sebagai desa penerima manfaat hanya dapat dilakukan oleh Kepala Desa.
+              </p>
+            </div>
+          </div>
           <div class="modal__container-button">
             <BaseButton class="modal__container-button-close" variant="secondary" label="Batal" @click="onClose" />
             <BaseButton class="modal__container-button-next" :variant="btnVariant" label="Lanjutkan" :disabled="btnDisabled" @click="onRegistration" />
@@ -283,8 +291,26 @@ export default {
 
     &-join-as {
       @apply grid gap-3 grid-cols-2 justify-between
-      sm:(gap-6 h-[329px] flex items-center justify-center);
+      sm:(gap-6 max-h-[257px] flex items-center justify-center);
     }
+
+    &-info {
+      @apply min-w-[250px] max-w-[725px] flex justify-center justify-items-start items-start gap-4 py-3.5 px-4 bg-blue-50 border border-blue-800 rounded-lg
+      sm:(mx-4)
+      md:(mx-6);
+
+     &-content {
+        @apply flex-grow;
+
+        &-text {
+          @apply items-start text-[14px] leading-[23px];
+
+          &--bold {
+            @apply text-gray-900 font-bold;
+          }
+        }
+      }
+  }
 
     &-button {
       @apply w-full sm:(py-2 flex justify-center gap-4);
