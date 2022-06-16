@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="criteria-mitra__action">
-        <BaseButton class="criteria-mitra__action-detail-btn" variant="secondary" label="Lihat Detail Kriteria Mitra Syembara Desa Digital" @click="onShowDetailContent" />
+        <BaseButton class="criteria-mitra__action-detail-btn" variant="secondary" label="Lihat Detail Kriteria Mitra Sayembara Desa Digital" @click="onShowDetailContent" />
       </div>
     </div>
   </div>
