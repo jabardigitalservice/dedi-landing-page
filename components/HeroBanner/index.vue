@@ -172,7 +172,7 @@ export default {
   &::before {
     @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
     content: "";
-    background-image: url('~/assets/images/MotifHeroBanner.png');
+    background-image: url('~/assets/images/HeroBanner_wave.svg');
     background-size: calc(max(100%, 1440px)) auto;
     background-position-y: 94%;
   }
@@ -180,7 +180,7 @@ export default {
   &-full::before {
       @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
       content: "";
-      background-image: url('~/assets/images/MotifHeroBanner.png');
+      background-image: url('~/assets/images/HeroBanner_wave.svg');
       background-size: calc(max(100%, 1440px)) auto;
       background-position-y: 100%;
     }
