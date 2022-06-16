@@ -106,7 +106,7 @@ export default {
         {
           id: 1,
           title: 'PENDAFTARAN',
-          date: '14 - 28 Juni 2022',
+          date: '22 Juni - 06 Juli 2022',
           subtitle: 'Kepala Desa dan Mitra membuat akun dan melengkapi data yang dibutuhkan.',
           info: 'Khusus Kepala Desa, harus mengisi kuisioner Desa Digital untuk menentukan level desa terlebih dahulu.',
           img: require('~/assets/images/competition/IconAlurSayembara_1.svg')
@@ -114,7 +114,7 @@ export default {
         {
           id: 2,
           title: 'PROSES MATCH-MAKING',
-          date: '05 - 12 Juli 2022',
+          date: '13 - 20 Juli 2022',
           subtitle: 'Proses ini dilakukan untuk memasangkan desa dan mitra dengan fokus pengembangan yang sama.',
           info: 'Penilaian dilakukan berdasarkan SOP yang berlaku.',
           img: require('~/assets/images/competition/IconAlurSayembara_2.svg')
@@ -122,7 +122,7 @@ export default {
         {
           id: 3,
           title: 'PROSES AUDIENSI',
-          date: '13 - 19 Juli 2022',
+          date: '21 - 27 Juli 2022',
           subtitle: 'Desa terpilih kemudian dipertemukan denan mitra OPD terkait.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_3.svg')
@@ -130,7 +130,7 @@ export default {
         {
           id: 4,
           title: 'IMPLEMENTASI DESA DIGITAL',
-          date: '29 Juli - 31 Okt 2022',
+          date: 'Agustus - Oktober 2022',
           subtitle: 'Proses implementasi dan pendampingan inovasi teknologi dari mitra kepada desa.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_4.svg')
@@ -138,7 +138,7 @@ export default {
         {
           id: 5,
           title: 'MONITORING DAN EVALUASI',
-          date: '21 Nov - 31 Des 2022',
+          date: 'September - Desember 2022',
           subtitle: 'Proses ini dilakukan kepada mitra dan desa.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
