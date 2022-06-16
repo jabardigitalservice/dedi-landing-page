@@ -172,10 +172,10 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="modal__container-button">
-            <BaseButton class="modal__container-button-close" variant="secondary" label="Batal" @click="onClose" />
-            <BaseButton class="modal__container-button-next" :variant="btnVariant" label="Lanjutkan" :disabled="btnDisabled" @click="onRegistration" />
+            <div class="modal__container-button">
+              <BaseButton class="modal__container-button-close" variant="secondary" label="Batal" @click="onClose" />
+              <BaseButton class="modal__container-button-next" :variant="btnVariant" label="Lanjutkan" :disabled="btnDisabled" @click="onRegistration" />
+            </div>
           </div>
         </div>
       </div>
@@ -284,7 +284,7 @@ export default {
     sm:px-12 sm:(rounded-2xl);
 
     &--overflow {
-      @apply h-52vh overflow-y-scroll flex flex-col gap-6 px-4
+      @apply h-68vh overflow-y-scroll flex flex-col gap-6 px-4
       sm:(h-full overflow-visible);
     }
 
