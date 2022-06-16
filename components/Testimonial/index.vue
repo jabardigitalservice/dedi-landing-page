@@ -153,11 +153,11 @@ export default {
     }
 
     &-description {
-      @apply font-sans text-sm leading-5 font-normal text-gray-700 sm:(leading-[23px]) xl:(w-[367px]);
+      @apply font-sans text-sm leading-5 font-normal text-blue-gray-700 sm:(leading-[23px]) xl:(w-[367px]);
     }
 
     &-text {
-      @apply mb-3.5 font-sans text-sm leading-[23px] font-normal text-gray-700
+      @apply mb-3.5 font-sans text-sm leading-[23px] font-normal text-blue-gray-700
       sm:(mt-0 pr-5 inline) lg:(mb-0);
     }
   }

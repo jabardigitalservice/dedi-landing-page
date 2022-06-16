@@ -156,7 +156,7 @@ export default {
     @apply px-[36px] py-4 xl:(px-[32px]);
   }
   &__text {
-    @apply mt-6 text-sm text-center text-gray-600 line-clamp-3
+    @apply mt-6 text-sm text-center text-blue-gray-700 line-clamp-3
     sm:(leading-[23px] line-clamp-2)
     xl:(mt-[12px] max-h-[92px] leading-[23px] line-clamp-4);
 
@@ -175,7 +175,7 @@ export default {
 
     &-profile {
       &-name {
-        @apply text-gray-700 text-sm font-bold
+        @apply text-blue-gray-700 text-sm font-bold
         sm:(leading-[23px]);
 
         &--hover{
@@ -183,7 +183,7 @@ export default {
         }
       }
       &-rule {
-        @apply text-gray-500 text-xs text-left leading-[19px];
+        @apply text-blue-gray-500 text-xs text-left leading-[19px];
 
         &--hover {
         @apply text-green-50;
