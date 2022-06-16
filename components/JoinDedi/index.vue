@@ -26,149 +26,151 @@
           <div class="modal__container-heading">
             Bergabung ke Desa Digital
           </div>
-          <div class="modal__container-subheading">
-            Sebelum melanjutkan, silahkan
-            <span class="font-bold">
-              pilih dan klik
-            </span>
-            role dibawah ini yang sesuai dengan Anda.
-          </div>
-          <div class="modal__container-join-as">
-            <div
-              tabindex="0"
-              :class="{
-                'join-as': true,
-                'join-as--active': isMitraSelected
-              }"
-              @click="onSelect('mitra')"
-              @mouseover="onHover('mitra')"
-              @mouseout="onHover(null)"
-            >
-              <img
-                v-if="isMitraSelected || isMitraHovered"
-                src="~/assets/images/GabungMitra.png"
-                alt="Gabung Mitra"
-                width="100%"
-                height="180px"
-                class="join-as__mitra"
+          <div class="modal__container--overflow">
+            <div class="modal__container-subheading">
+              Sebelum melanjutkan, silahkan
+              <span class="font-bold">
+                pilih dan klik
+              </span>
+              role dibawah ini yang sesuai dengan Anda.
+            </div>
+            <div class="modal__container-join-as">
+              <div
+                tabindex="0"
+                :class="{
+                  'join-as': true,
+                  'join-as--active': isMitraSelected
+                }"
+                @click="onSelect('mitra')"
+                @mouseover="onHover('mitra')"
+                @mouseout="onHover(null)"
               >
-              <img
-                v-else
-                src="~/assets/images/GabungMitraDisabled.png"
-                alt="Gabung Mitra Disabled"
-                width="100%"
-                height="180px"
-                class="join-as__mitra"
-              >
-              <div class="join-as__mitra-info-text">
-                <div class="flex flex-col gap-2">
-                  <div
-                    :class="{
-                      'join-as__mitra-title': true,
-                      'join-as__mitra-title--hover': isMitraHovered,
-                      'join-as__mitra-title--active': isMitraSelected
-                    }"
-                  >
-                    Gabung sebagai
+                <img
+                  v-if="isMitraSelected || isMitraHovered"
+                  src="~/assets/images/GabungMitra.png"
+                  alt="Gabung Mitra"
+                  width="100%"
+                  height="180px"
+                  class="join-as__mitra"
+                >
+                <img
+                  v-else
+                  src="~/assets/images/GabungMitraDisabled.png"
+                  alt="Gabung Mitra Disabled"
+                  width="100%"
+                  height="180px"
+                  class="join-as__mitra"
+                >
+                <div class="join-as__mitra-info-text">
+                  <div class="flex flex-col gap-2">
+                    <div
+                      :class="{
+                        'join-as__mitra-title': true,
+                        'join-as__mitra-title--hover': isMitraHovered,
+                        'join-as__mitra-title--active': isMitraSelected
+                      }"
+                    >
+                      Gabung sebagai
+                    </div>
+                    <div
+                      :class="{
+                        'join-as__mitra-subtitle': true,
+                        'join-as__mitra-subtitle--hover': isMitraHovered,
+                        'join-as__mitra-subtitle--active': isMitraSelected
+                      }"
+                    >
+                      Mitra
+                    </div>
                   </div>
                   <div
                     :class="{
-                      'join-as__mitra-subtitle': true,
-                      'join-as__mitra-subtitle--hover': isMitraHovered,
-                      'join-as__mitra-subtitle--active': isMitraSelected
+                      'join-as__mitra-boxicon': true,
+                      'join-as__mitra-boxicon--active': isMitraSelected
                     }"
                   >
-                    Mitra
+                    <div
+                      :class="{
+                        'join-as__mitra-icon': true,
+                        'join-as__mitra-icon--active': isMitraSelected
+                      }"
+                    >
+                      <IconCheckmark />
+                    </div>
                   </div>
                 </div>
-                <div
-                  :class="{
-                    'join-as__mitra-boxicon': true,
-                    'join-as__mitra-boxicon--active': isMitraSelected
-                  }"
+              </div>
+              <div
+                tabindex="0"
+                :class="{
+                  'join-as': true,
+                  'join-as--active': isDesaSelected
+                }"
+                @click="onSelect('desa')"
+                @mouseover="onHover('desa')"
+                @mouseout="onHover(null)"
+              >
+                <img
+                  v-if="isDesaSelected || isDesaHovered"
+                  src="~/assets/images/GabungDesa.png"
+                  alt="Gabung Desa"
+                  width="100%"
+                  height="180px"
+                  class="join-as__desa"
                 >
+                <img
+                  v-else
+                  src="~/assets/images/GabungDesaDisabled.png"
+                  alt="Gabung Desa Disabled"
+                  width="100%"
+                  height="180px"
+                  class="join-as__desa"
+                >
+                <div class="join-as__desa-info-text">
+                  <div class="flex flex-col gap-2">
+                    <div
+                      :class="{
+                        'join-as__desa-title': true,
+                        'join-as__desa-title--hover': isDesaHovered,
+                        'join-as__desa-title--active': isDesaSelected
+                      }"
+                    >
+                      Gabung sebagai
+                    </div>
+                    <div
+                      :class="{
+                        'join-as__desa-subtitle': true,
+                        'join-as__desa-subtitle--hover': isDesaHovered,
+                        'join-as__desa-subtitle--active': isDesaSelected
+                      }"
+                    >
+                      Desa
+                    </div>
+                  </div>
                   <div
                     :class="{
-                      'join-as__mitra-icon': true,
-                      'join-as__mitra-icon--active': isMitraSelected
+                      'join-as__desa-boxicon': true,
+                      'join-as__desa-boxicon--active': isDesaSelected
                     }"
                   >
-                    <IconCheckmark />
+                    <div
+                      :class="{
+                        'join-as__desa-icon': true,
+                        'join-as__desa-icon--active': isDesaSelected
+                      }"
+                    >
+                      <IconCheckmark />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              tabindex="0"
-              :class="{
-                'join-as': true,
-                'join-as--active': isDesaSelected
-              }"
-              @click="onSelect('desa')"
-              @mouseover="onHover('desa')"
-              @mouseout="onHover(null)"
-            >
-              <img
-                v-if="isDesaSelected || isDesaHovered"
-                src="~/assets/images/GabungDesa.png"
-                alt="Gabung Desa"
-                width="100%"
-                height="180px"
-                class="join-as__desa"
-              >
-              <img
-                v-else
-                src="~/assets/images/GabungDesaDisabled.png"
-                alt="Gabung Desa Disabled"
-                width="100%"
-                height="180px"
-                class="join-as__desa"
-              >
-              <div class="join-as__desa-info-text">
-                <div class="flex flex-col gap-2">
-                  <div
-                    :class="{
-                      'join-as__desa-title': true,
-                      'join-as__desa-title--hover': isDesaHovered,
-                      'join-as__desa-title--active': isDesaSelected
-                    }"
-                  >
-                    Gabung sebagai
-                  </div>
-                  <div
-                    :class="{
-                      'join-as__desa-subtitle': true,
-                      'join-as__desa-subtitle--hover': isDesaHovered,
-                      'join-as__desa-subtitle--active': isDesaSelected
-                    }"
-                  >
-                    Desa
-                  </div>
-                </div>
-                <div
-                  :class="{
-                    'join-as__desa-boxicon': true,
-                    'join-as__desa-boxicon--active': isDesaSelected
-                  }"
-                >
-                  <div
-                    :class="{
-                      'join-as__desa-icon': true,
-                      'join-as__desa-icon--active': isDesaSelected
-                    }"
-                  >
-                    <IconCheckmark />
-                  </div>
-                </div>
+            <div class="modal__container-info">
+              <img width="16" height="16" src="~/assets/icons/IconInfo.svg" alt="Icon Info">
+              <div class="modal__container-info-content">
+                <p class="modal__container-info-content-text">
+                  <span class="modal__container-info-content-text--bold">Disclaimer:</span> Pendaftaran sebagai desa penerima manfaat hanya dapat dilakukan oleh Kepala Desa.
+                </p>
               </div>
-            </div>
-          </div>
-          <div class="modal__container-info">
-            <img width="16" height="16" src="~/assets/icons/IconInfo.svg" alt="Icon Info">
-            <div class="modal__container-info-content">
-              <p class="modal__container-info-content-text">
-                <span class="modal__container-info-content-text--bold">Disclaimer:</span> Pendaftaran sebagai desa penerima manfaat hanya dapat dilakukan oleh Kepala Desa.
-              </p>
             </div>
           </div>
           <div class="modal__container-button">
@@ -280,6 +282,11 @@ export default {
   &__container {
     @apply bg-white rounded-t-2xl py-6 flex flex-col gap-6 px-4
     sm:px-12 sm:(rounded-2xl);
+
+    &--overflow {
+      @apply h-52vh overflow-y-scroll flex flex-col gap-6 px-4
+      sm:(h-full overflow-visible);
+    }
 
     &-heading {
       @apply font-roboto font-bold text-[21px] leading-[34px] text-green-700 text-center;
