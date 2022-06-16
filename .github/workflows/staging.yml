@@ -39,3 +39,6 @@ jobs:
             NUXT_ENV_GOOGLE_MAPS_API=${{ secrets.GOOGLE_MAPS_API }}
             GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID}}
             REDIRECT_URI=${{ secrets.REDIRECT_URI_STAGING }}
+            SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}
+            SENTRY_SAMPLE_RATE=${{ secrets.SENTRY_SAMPLE_RATE }}
