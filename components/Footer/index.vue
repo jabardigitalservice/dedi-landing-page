@@ -78,7 +78,7 @@
           </a>
         </div>
         <div
-          v-show="$route.name === 'competition'"
+          v-show="$route.name === 'sayembara'"
           :class="{
             'footer__sitemap-text': true,
             'footer__sitemap-text--open': isOpenSitemap,
