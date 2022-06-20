@@ -21,7 +21,7 @@
         </div>
         <div class="header-mobile__menu">
           <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Beranda" @click="$router.push('/')" />
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/competition')" />
+          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
           <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
         </div>
         <!-- The login button is temporarily hidden -->
