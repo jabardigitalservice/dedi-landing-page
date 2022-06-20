@@ -20,6 +20,17 @@
             {{ content.desc }}
           </p>
         </transition>
+        <transition-group
+          v-show="content.tahap === 'Desa Digital 4.0'"
+          tag="div"
+          class="about-dedi__info-thematic"
+          name="slide-fade"
+          mode="out-in"
+        >
+          <p v-for="thematic in content.thematics" :key="thematic" class="about-dedi__info-desc about-dedi__info-desc--list">
+            Desa Digital {{ thematic }}.
+          </p>
+        </transition-group>
         <div class="about-dedi__info-box-pagination">
           <div
             :class="{
@@ -150,7 +161,10 @@ export default {
           tahap: 'Desa Digital 4.0',
           title: 'Implementasi Pemanfaatan Teknologi',
           desc: 'Meningkatkan produktifitas dan kemandirian masyarakat desa dengan meluncurkan ragam desa tematik sesuai dengan potensi desa. Tematik yang sudah berjalan diantaranya:',
-          image: require('~/assets/images/about/tahap4.png')
+          image: require('~/assets/images/about/tahap4.png'),
+          thematics: [
+            'Pertanian', 'Perikanan', 'Kesehatan', 'Pendidikan', 'Waste Management', 'Multimedia'
+          ]
         }
       ]
     }
@@ -211,6 +225,18 @@ export default {
 
     &-desc {
       @apply mt-3 font-sans font-normal text-blue-gray-400 leading-[26px] text-center xl:(text-left);
+    }
+
+    &-thematic {
+      @apply grid grid-cols-2 gap-2;
+    }
+
+    &-desc {
+      @apply mt-3 font-sans font-normal text-blue-gray-400 leading-[26px] text-center xl:(text-left);
+
+      &--list {
+        @apply list-item list-inside list-decimal;
+      }
     }
 
     &-box-pagination {
