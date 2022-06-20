@@ -19,7 +19,7 @@
               Telepon/whatsapp
             </div>
             <div class="footer__info-desc">
-              +62 22 423248
+              +62 821-2567-5017
             </div>
           </div>
         </div>
