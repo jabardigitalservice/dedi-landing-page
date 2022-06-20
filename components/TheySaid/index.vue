@@ -149,7 +149,7 @@ export default {
           image: require('~/assets/images/about/cindy.png')
         },
         {
-          name: 'Jimy Candra  Gunawan',
+          name: 'Jimy Candra Gunawan',
           role: 'Project Officer Jabar Digital Service',
           feedback: 'Desa Digital diharapkan mampu menjadi katalisator untuk transformasi digital di pedesaan serta mendorong kolaborasi multi-stakeholder guna mewujudkan desa yang mandiri dan berkelanjutan.',
           image: require('~/assets/images/about/Jimy.png')
