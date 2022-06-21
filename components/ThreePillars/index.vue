@@ -3,7 +3,10 @@
     <div class="wrapper">
       <div class="pillars__title">
         <h1>Nilai yang Kami Tanamkan</h1>
-        <p>Ada tiga nilai utama yang selalu kami pegang teguh dalam menjalankan misi dari program Desa Digital.</p>
+        <p>
+          Nilai yang kami tanam selalu kami pegang teguh. Nilai ini yang menjadi kekuatan bagi kami dalam menjalankan
+          misi dari program Desa Digital.
+        </p>
       </div>
       <div class="pillars__main">
         <CardPillars />
@@ -33,7 +36,5 @@
   &__main {
     @apply pt-[32px] sm:(pt-[64px]);
   }
-
 }
-
 </style>

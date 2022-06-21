@@ -20,7 +20,7 @@ export default {
           id: 1,
           img: require('~/assets/images/about/Pilar_1_Dedi.svg'),
           title: 'INOVASI TEKNOLOGI',
-          desc: 'Bertindak responsif dalam memberikan solusi bagi pengembangan desa di Jawa Barat melalui beragam inovasi.'
+          desc: 'Responsif dalam memberikan solusi bagi pengembangan desa di Jawa Barat melalui beragam inovasi.'
         },
         {
           id: 2,
@@ -31,8 +31,8 @@ export default {
         {
           id: 3,
           img: require('~/assets/images/about/Pilar_3_Dedi.svg'),
-          title: 'INOVASI TEKNOLOGI',
-          desc: 'Mengadopsi sistem penta-helix, mengajak akademisi, pelaku usaha, komunitas hingga peran media untuk berkolaborasi dan ciptakan aksi.'
+          title: 'BERKEMBANG BERSAMA',
+          desc: 'Mengadopsi sistem pentahelix, mengajak akademisi, pelaku usaha, komunitas hingga peran media untuk berkolaborasi dan ciptakan aksi.'
         }
       ]
     }
@@ -54,7 +54,7 @@ export default {
     }
 
     img {
-      border-radius: 1rem 1rem 0 0;
+      @apply rounded-t-[15px] bg-cover bg-center;
     }
 
     h2 {
