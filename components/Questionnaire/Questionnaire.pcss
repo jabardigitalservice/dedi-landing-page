@@ -45,7 +45,9 @@
     }
 
     &-content {
-      @apply overflow-scroll h-auto md:(h-[330px]) xl:(h-[370px]);
+      scrollbar-color: #E0E0E0 white;
+      scrollbar-width: thin;
+      @apply overflow-y-scroll h-auto md:(h-[330px]) xl:(h-[370px]);
 
       &--container {
         @apply mt-5 px-4 py-5 border border-gray-200 rounded-lg;
