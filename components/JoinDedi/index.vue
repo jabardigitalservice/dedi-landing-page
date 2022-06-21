@@ -47,7 +47,7 @@
               >
                 <img
                   v-if="isMitraSelected || isMitraHovered"
-                  src="~/assets/images/GabungMitra.png"
+                  src="~/assets/images/GabungMitra_Aktif.svg"
                   alt="Gabung Mitra"
                   width="100%"
                   height="180px"
@@ -55,7 +55,7 @@
                 >
                 <img
                   v-else
-                  src="~/assets/images/GabungMitraDisabled.png"
+                  src="~/assets/images/GabungMitra_Abu.svg"
                   alt="Gabung Mitra Disabled"
                   width="100%"
                   height="180px"
@@ -111,7 +111,7 @@
               >
                 <img
                   v-if="isDesaSelected || isDesaHovered"
-                  src="~/assets/images/GabungDesa.png"
+                  src="~/assets/images/GabungDesa_Aktif.svg"
                   alt="Gabung Desa"
                   width="100%"
                   height="180px"
@@ -119,7 +119,7 @@
                 >
                 <img
                   v-else
-                  src="~/assets/images/GabungDesaDisabled.png"
+                  src="~/assets/images/GabungDesa_Abu.svg"
                   alt="Gabung Desa Disabled"
                   width="100%"
                   height="180px"
@@ -352,7 +352,7 @@ export default {
   }
 
   &__mitra, &__desa {
-    @apply bg-no-repeat h-[180px] w-full rounded-t-xl object-cover object-left-top;
+    @apply bg-no-repeat h-[180px] w-full rounded-t-[11px] bg-cover bg-center;
 
     &-info-text {
       @apply px-4 py-3 flex justify-between items-center;
@@ -362,11 +362,11 @@ export default {
       @apply text-gray-500 text-[12px] leading-[19px];
 
       &--active {
-        @apply text-gray-600;
+        @apply text-blue-gray-600;
       }
 
       &--hover {
-        @apply text-gray-600;
+        @apply text-blue-gray-600;
       }
     }
 
@@ -378,7 +378,7 @@ export default {
       }
 
       &--hover {
-        @apply text-gray-800;
+        @apply text-blue-gray-800;
       }
     }
 
