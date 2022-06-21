@@ -134,7 +134,7 @@ export default {
           name: 'Gumilar',
           role: 'Kepala Seksi Layanan Digital dan Informasi Jabar Digital Service',
           feedback: 'Dengan digitalisasi, semoga kesejahteraan masyarakat desa dapat meningkat, kapasitas masyarakat dapat berkembang, dan potensi desa tumbuh dengan maksimal.',
-          image: require('~/assets/images/about/Gumilar.png')
+          image: require('~/assets/images/about/gumilar.png')
         },
         {
           name: 'Rizi Advista Permana',
@@ -152,7 +152,7 @@ export default {
           name: 'Jimy Candra Gunawan',
           role: 'Project Officer Jabar Digital Service',
           feedback: 'Desa Digital diharapkan mampu menjadi katalisator untuk transformasi digital di pedesaan serta mendorong kolaborasi multi-stakeholder guna mewujudkan desa yang mandiri dan berkelanjutan.',
-          image: require('~/assets/images/about/Jimy.png')
+          image: require('~/assets/images/about/jimy.png')
         }
       ]
     }
