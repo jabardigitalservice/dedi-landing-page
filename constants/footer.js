@@ -12,7 +12,7 @@ export const mainFooters = [
   {
     id: 3,
     element: 'testimonial',
-    text: 'Testimoni User'
+    text: 'Testimonial'
   },
   {
     id: 4,

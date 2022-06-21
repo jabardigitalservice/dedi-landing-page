@@ -19,7 +19,7 @@
               Telepon/whatsapp
             </div>
             <div class="footer__info-desc">
-              +62 22 423248
+              +62 821-2567-5017
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@
           </a>
         </div>
         <div
-          v-show="$route.name === 'competition'"
+          v-show="$route.name === 'sayembara'"
           :class="{
             'footer__sitemap-text': true,
             'footer__sitemap-text--open': isOpenSitemap,
