@@ -7,7 +7,7 @@
             <img src="~/assets/images/about/Petik2.svg" alt="Petik 2">
             <div class="mt-4">
               <h2 class="they-said__info-title">
-                Kata Meraka
+                Kata Mereka
               </h2>
               <h2 class="they-said__info-title">
                 yang Ada di Balik Layar
