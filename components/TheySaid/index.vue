@@ -7,7 +7,7 @@
             <img src="~/assets/images/about/Petik2.svg" alt="Petik 2">
             <div class="mt-4">
               <h2 class="they-said__info-title">
-                Kata Meraka
+                Kata Mereka
               </h2>
               <h2 class="they-said__info-title">
                 yang Ada di Balik Layar
@@ -131,10 +131,10 @@ export default {
       content: {},
       contents: [
         {
-          name: 'Indah Dwianti',
-          role: 'Kepala Seksi Aplikasi dan Data Digital Jabar Digital Service',
-          feedback: 'Lewat Program Desa Digital, diharapkan kedepannya bisa menambah jumlah desa mandiri di Jawa Barat.',
-          image: require('~/assets/images/about/indah.png')
+          name: 'Gumilar',
+          role: 'Kepala Seksi Layanan Digital dan Informasi Jabar Digital Service',
+          feedback: 'Dengan digitalisasi, semoga kesejahteraan masyarakat desa dapat meningkat, kapasitas masyarakat dapat berkembang, dan potensi desa tumbuh dengan maksimal.',
+          image: require('~/assets/images/about/Gumilar.png')
         },
         {
           name: 'Rizi Advista Permana',
@@ -149,10 +149,10 @@ export default {
           image: require('~/assets/images/about/cindy.png')
         },
         {
-          name: 'Rohmat HIdayat',
+          name: 'Jimy Candra Gunawan',
           role: 'Project Officer Jabar Digital Service',
-          feedback: 'Program ini menjadi stimulus bagi desa dan mitra startup untuk membangun dan mengembangkan aktivitas bisnis di provinsi Jawa Barat.',
-          image: require('~/assets/images/about/opap.png')
+          feedback: 'Desa Digital diharapkan mampu menjadi katalisator untuk transformasi digital di pedesaan serta mendorong kolaborasi multi-stakeholder guna mewujudkan desa yang mandiri dan berkelanjutan.',
+          image: require('~/assets/images/about/Jimy.png')
         }
       ]
     }
