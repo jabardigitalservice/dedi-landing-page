@@ -1,70 +1,68 @@
 <template>
-  <div id="join-info" class="wrapper">
-    <div class="join-info">
-      <h4 class="join-info__heading">
-        Jadi Bagian Desa Digital, Jadi Bagian Perubahan
-      </h4>
-      <p class="join-info__subheading">
-        Bergabung sebagai desa ataupun mitra dengan ikuti tahapan berikut.
-      </p>
-      <div class="join-info__switch">
+  <div id="join-info" class="join-info">
+    <h4 class="join-info__heading">
+      Jadi Bagian Desa Digital, Jadi Bagian Perubahan
+    </h4>
+    <p class="join-info__subheading">
+      Bergabung sebagai desa ataupun mitra dengan ikuti tahapan berikut.
+    </p>
+    <div class="join-info__switch">
+      <div
+        :class="{
+          'join-info__switch--active': isDesa,
+          'join-info__switch--non-active': !isDesa,
+        }"
+        @click="flowSelected = 'Desa'"
+      >
         <div
           :class="{
-            'join-info__switch--active': isDesa,
-            'join-info__switch--non-active': !isDesa,
+            'join-info__switch--active-text': isDesa,
+            'join-info__switch--non-active-text': !isDesa
           }"
-          @click="flowSelected = 'Desa'"
         >
-          <div
-            :class="{
-              'join-info__switch--active-text': isDesa,
-              'join-info__switch--non-active-text': !isDesa
-            }"
-          >
-            Alur Desa
-          </div>
+          Alur Desa
         </div>
+      </div>
+      <div
+        :class="{
+          'join-info__switch--active': isMitra,
+          'join-info__switch--non-active': !isMitra,
+        }"
+        @click="flowSelected = 'Mitra'"
+      >
         <div
           :class="{
-            'join-info__switch--active': isMitra,
-            'join-info__switch--non-active': !isMitra,
+            'join-info__switch--active-text': isMitra,
+            'join-info__switch--non-active-text': !isMitra
           }"
-          @click="flowSelected = 'Mitra'"
         >
-          <div
-            :class="{
-              'join-info__switch--active-text': isMitra,
-              'join-info__switch--non-active-text': !isMitra
-            }"
-          >
-            Alur Mitra
-          </div>
+          Alur Mitra
         </div>
       </div>
-      <div class="join-info__infografik">
-        <img
-          v-show="isDesa"
-          class="max-w-max join-info__infografik-image"
-          width="932"
-          height="395"
-          src="~/assets/images/InfoJoinDesa.svg"
-          alt="Info Bergabung Desa"
-        >
-        <img
-          v-show="isMitra"
-          class="max-w-max join-info__infografik-image "
-          width="932"
-          height="395"
-          src="~/assets/images/InfoJoinMitra.svg"
-          alt="Info Bergabung Desa"
-        >
-      </div>
-      <BaseButton
-        class="join-info__cta"
-        label="Gabung Sekarang"
-        @click="onClickCTA"
-      />
     </div>
+    <div class="join-info__infografik">
+      <img
+        v-show="isDesa"
+        class="max-w-max join-info__infografik-image"
+        width="932"
+        height="395"
+        src="~/assets/images/InfoJoinDesa.svg"
+        alt="Info Bergabung Desa"
+      >
+      <img
+        v-show="isMitra"
+        class="max-w-max join-info__infografik-image "
+        width="932"
+        height="395"
+        src="~/assets/images/InfoJoinMitra.svg"
+        alt="Info Bergabung Desa"
+      >
+    </div>
+    <BaseButton
+      class="join-info__cta"
+      label="Gabung Sekarang"
+      @click="onClickCTA"
+    />
   </div>
 </template>
 
@@ -100,7 +98,7 @@ export default {
   background-repeat: no-repeat;
   background-position-x: 5%;
   background-position-y: 75%;
-  @apply py-6 flex flex-col items-center sm:py-10 lg:py-20;
+  @apply py-6 px-8 flex flex-col items-center sm:py-10 lg:py-20;
 
   &__heading {
     @apply font-serif font-bold text-blue-gray-800 text-[24px] leading-[36px] text-center sm:(text-[37px] leading-[60px] mt-8);
