@@ -20,9 +20,9 @@
           </BaseButton>
         </div>
         <div class="header-mobile__menu">
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Beranda" @click="$router.push('/')" />
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
+          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Beranda" @click="onClickMenu" />
+          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Sayembara Desa Digital" @click="onClickMenu('sayembara')" />
+          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Tentang Desa Digital" @click="onClickMenu('about')" />
         </div>
         <!-- The login button is temporarily hidden -->
         <div v-show="isLogin" class="header-mobile__login">
@@ -58,6 +58,20 @@ export default {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
         this.$emit('close-sidebar', false)
       }
+    },
+    onClickMenu (menu) {
+      switch (menu) {
+        case 'sayembara':
+          this.$router.push('/sayembara')
+          break
+        case 'about':
+          this.$router.push('/about')
+          break
+        default:
+          this.$router.push('/')
+          break
+      }
+      this.onCloseSidebar()
     }
   }
 }
