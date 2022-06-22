@@ -32,11 +32,18 @@ export default {
     mixins: resolve(__dirname, './mixins')
   },
 
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    headers: {
+      common: {
+        origin: process.env.APP_URL || null
+      }
+    },
+    baseUrl: process.env.BASE_URL + '/' + process.env.VERSION_ENDPOINT
+  },
+
   // Environment dynamic
   publicRuntimeConfig: {
-    axios: {
-      baseUrl: process.env.BASE_URL + '/' + process.env.VERSION_ENDPOINT
-    },
     googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
     sentry: {
       config: {
