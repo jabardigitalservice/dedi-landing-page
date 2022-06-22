@@ -1,39 +1,41 @@
 <template>
   <div id="village-criteria" class="village-criteria">
-    <div class="village-criteria__title">
-      <h1>Kriteria Desa Yang Dapat Mengikuti</h1>
-      <p>
-        Desa yang bisa ikut serta dalam sayembara ini adalah desa yang masuk dalam kategori
-        <strong class="text-white">Desa Level 3</strong> dan <strong class="text-white">Level 4</strong>
-        sesuai ketentuan berikut:
-      </p>
-    </div>
-    <div class="village-criteria__main">
-      <div class="village-criteria__main--wrapper">
-        <div class="village-criteria__main--wrapper-content">
-          <div v-for="index in 2" :key="data[index-1].id" class="col-span-1">
-            <div class="village-criteria__card">
-              <img class="village-criteria__card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
-              <div class="village-criteria__card--desc">
-                {{ data[index-1].desc }}
+    <div class="wrapper">
+      <div class="village-criteria__title">
+        <h1>Kriteria Desa Yang Dapat Mengikuti</h1>
+        <p>
+          Desa yang bisa ikut serta dalam sayembara ini adalah desa yang masuk dalam kategori
+          <strong class="text-white">Desa Level 3</strong> dan <strong class="text-white">Level 4</strong>
+          sesuai ketentuan berikut:
+        </p>
+      </div>
+      <div class="village-criteria__main">
+        <div class="village-criteria__main--wrapper">
+          <div class="village-criteria__main--wrapper-content">
+            <div v-for="index in 2" :key="data[index-1].id" class="col-span-1">
+              <div class="village-criteria__card">
+                <img class="village-criteria__card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
+                <div class="village-criteria__card--desc">
+                  {{ data[index-1].desc }}
+                </div>
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="village-criteria__card">
+                <img class="village-criteria__card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
+                <div class="village-criteria__card--desc">
+                  {{ data[2].desc }}
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-span-2">
-            <div class="village-criteria__card">
-              <img class="village-criteria__card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
-              <div class="village-criteria__card--desc">
-                {{ data[2].desc }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="village-criteria__main--wrapper-content">
-          <div v-for="index in 4" :key="data[index+2].id" class="col-span-1">
-            <div class="village-criteria__card">
-              <img class="village-criteria__card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
-              <div class="village-criteria__card--desc">
-                {{ data[index+2].desc }}
+          <div class="village-criteria__main--wrapper-content">
+            <div v-for="index in 4" :key="data[index+2].id" class="col-span-1">
+              <div class="village-criteria__card">
+                <img class="village-criteria__card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
+                <div class="village-criteria__card--desc">
+                  {{ data[index+2].desc }}
+                </div>
               </div>
             </div>
           </div>
