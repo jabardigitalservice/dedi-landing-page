@@ -106,7 +106,7 @@ export default {
         {
           id: 1,
           title: 'PENDAFTARAN',
-          date: '22 Juni - 06 Juli 2022',
+          date: '24 Juni - 08 Juli 2022',
           subtitle: 'Kepala Desa dan Mitra membuat akun dan melengkapi data yang dibutuhkan.',
           info: 'Khusus Kepala Desa, harus mengisi kuisioner Desa Digital untuk menentukan level desa terlebih dahulu.',
           img: require('~/assets/images/competition/IconAlurSayembara_1.svg')
@@ -114,7 +114,7 @@ export default {
         {
           id: 2,
           title: 'PROSES MATCH-MAKING',
-          date: '13 - 20 Juli 2022',
+          date: '15 - 22 Juli 2022',
           subtitle: 'Proses ini dilakukan untuk memasangkan desa dan mitra dengan fokus pengembangan yang sama.',
           info: 'Penilaian dilakukan berdasarkan SOP yang berlaku.',
           img: require('~/assets/images/competition/IconAlurSayembara_2.svg')
@@ -122,7 +122,7 @@ export default {
         {
           id: 3,
           title: 'PROSES AUDIENSI',
-          date: '21 - 27 Juli 2022',
+          date: '22 - 29 Juli 2022',
           subtitle: 'Desa terpilih kemudian dipertemukan denan mitra OPD terkait.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_3.svg')
