@@ -19,7 +19,7 @@
           Para petani ikan di 51 Desa juga telah merasakan manfaatnya. Mereka berhasil menurunkan jumlah kunjungan ke
           kolam dan Food Convertion Ratio (FCR) sebanyak 33.3% dan 15.4%, serta meningkatkan Survival Rate (SR) hingga
           50%. Bukti ini adalah sedikit dari yang kami capai. Bantu kami untuk terus menyebarkan dampak baik
-          seluas-luasnya bagi banyak penerima penerima manfaat lainnya.
+          seluas-luasnya bagi banyak penerima manfaat lainnya.
         </p>
       </div>
     </div>
