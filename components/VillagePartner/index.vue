@@ -74,10 +74,6 @@ export default {
           per_page: 7,
           is_active: true
         }
-      },
-      querys: {
-        per_page: 16,
-        current_page: 1
       }
     }
   },
