@@ -20,9 +20,18 @@
           </BaseButton>
         </div>
         <div class="header-mobile__menu">
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Beranda" @click="$router.push('/')" />
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
-          <BaseButton class="header-mobile__submenu" variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
+          <BaseButton
+            v-for="(button, index) in buttons"
+            :key="index"
+            :class="{
+              'header-mobile__submenu': true,
+              'header-mobile__submenu--actived': activeRoute === button.value
+            }"
+            variant="tertiary"
+            type="button"
+            :label="button.label"
+            @click="onClickMenu(button.value)"
+          />
         </div>
         <!-- The login button is temporarily hidden -->
         <div v-show="isLogin" class="header-mobile__login">
@@ -50,7 +59,25 @@ export default {
   },
   data () {
     return {
-      isLogin: false
+      isLogin: false,
+      buttons: [
+        {
+          value: 'index',
+          label: 'Beranda'
+        },
+        {
+          value: 'sayembara',
+          label: 'Sayembara Desa Digital'
+        },
+        {
+          value: 'about',
+          label: 'Tentang Desa Digital'
+        }]
+    }
+  },
+  computed: {
+    activeRoute () {
+      return this.$route.name
     }
   },
   methods: {
@@ -58,6 +85,20 @@ export default {
       if (closeOn !== 'overlay' || window.innerWidth < 640) {
         this.$emit('close-sidebar', false)
       }
+    },
+    onClickMenu (menu) {
+      switch (menu) {
+        case 'sayembara':
+          this.$router.push('/sayembara')
+          break
+        case 'about':
+          this.$router.push('/about')
+          break
+        default:
+          this.$router.push('/')
+          break
+      }
+      this.onCloseSidebar()
     }
   }
 }
