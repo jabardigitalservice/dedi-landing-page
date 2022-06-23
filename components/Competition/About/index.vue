@@ -55,9 +55,8 @@
                 Pengembangan potensi desa melalui <span class="competition-about__content-inovation-text-title--green">inovasi teknologi.</span>
               </h2>
               <p class="competition-about__content-inovation-text-info">
-                Kami percaya, untuk menjalankan aksi, butuh kerjasama dari berbagai pihak. Melalui Sayembara Desa Digital,
-                kami berusaha untuk mempertemukan calon mitra dengan desa penerima manfaat sesuai potensinya.
-                Melalui program ini juga pihak-pihak terkait akan saling diuntungkan.
+                Kepala Desa bisa mendaftarkan desanya sebagai penerima manfaat program dan mengembangkan potensi desa.
+                Calon mitra bisa berkontribusi dalam pengembangan potensi desa melalui inovasi teknologi dan memberikan dampak positif bagi pembangunan Jawa Barat.
               </p>
             </div>
             <img class="competition-about__content-inovation-image" src="~/assets/images/competition/about/CompetitionAboutInovation.svg" alt="Sayembara Inovasi">
