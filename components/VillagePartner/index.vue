@@ -12,8 +12,8 @@
         (IoT), dan berpartisipasi dalam pelatihan literasi digital.
       </p>
       <p class="village-partner__subheading">
-        Mengusung konsep pentahelix, kini 521 desa di Jawa Barat telah menjadi
-        penerima manfaat dan 31 mitra telah terhubung untuk berinovasi bersama.
+        Mengusung konsep pentahelix, kini {{ totalVillages }} desa di Jawa Barat telah menjadi
+        penerima manfaat dan {{ totalPartners }} mitra telah terhubung untuk berinovasi bersama.
       </p>
       <div class="village-partner__switch">
         <div
@@ -59,8 +59,31 @@
 export default {
   data () {
     return {
-      joinSelected: 'village'
+      joinSelected: 'village',
+      dataPartners: [],
+      dataVillages: [],
+      totalPartners: 0,
+      totalVillages: 0,
+      query: {
+        partnerQuery: {
+          per_page: 16,
+          current_page: 1
+        },
+        villageQuery: {
+          current_page: 1,
+          per_page: 7,
+          is_active: true
+        }
+      },
+      querys: {
+        per_page: 16,
+        current_page: 1
+      }
     }
+  },
+  async fetch () {
+    await this.fetchPartner()
+    await this.fetchVillage()
   },
   computed: {
     isvillage () {
@@ -68,6 +91,22 @@ export default {
     },
     isMitra () {
       return this.joinSelected === 'Mitra'
+    }
+  },
+  methods: {
+    async fetchPartner () {
+      const partnerResponse = await this.$axios.get('/partners', { params: this.query.partnerQuery })
+      const { data, meta } = partnerResponse.data
+      this.dataPartners = data
+      this.query.partnersQuery = { ...this.query.partnersQuery, ...meta }
+      this.totalPartners < meta.total ? this.totalPartners = meta.total : this.totalPartners = 0
+    },
+    async fetchVillage () {
+      const villageResponse = await this.$axios.get('/villages/list-with-location', { params: this.query.villageQuery })
+      const { data, meta } = villageResponse.data
+      this.dataVillages = data
+      this.query.villagesQuery = { ...this.query.villagesQuery, ...meta }
+      this.totalVillages < meta.total ? this.totalVillages = meta.total : this.totalVillages = 0
     }
   }
 }
