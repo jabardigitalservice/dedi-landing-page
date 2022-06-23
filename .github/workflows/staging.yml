@@ -43,5 +43,5 @@ jobs:
             SENTRY_ENABLED=${{ secrets.SENTRY_ENABLED }}
             SENTRY_SAMPLE_RATE=${{ secrets.SENTRY_SAMPLE_RATE }}
             APP_URL=${{ secrets.APP_URL_STAGING }}
-            BASE_URL=${{ secrets.BASE_URL_PROD }}
+            BASE_URL=${{ secrets.BASE_URL_STAGING }}
             VERSION_ENDPOINT=${{ secrets.VERSION_ENDPOINT }}
