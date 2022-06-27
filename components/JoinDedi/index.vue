@@ -280,11 +280,11 @@ export default {
   }
 
   &__container {
-    @apply bg-white rounded-t-2xl py-6 flex flex-col gap-6 px-4
-    sm:px-12 sm:(rounded-2xl);
+    @apply bg-white rounded-t-2xl py-6 flex flex-col px-4 rounded-2xl
+    md: (px-12);
 
     &--overflow {
-      @apply h-68vh overflow-y-scroll flex flex-col gap-6 px-4
+      @apply overflow-y-scroll flex flex-col
       sm:(h-full overflow-visible);
     }
 
@@ -293,16 +293,16 @@ export default {
     }
 
     &-subheading {
-      @apply text-sm leading-[20px] font-sans text-gray-800 font-normal text-center;
+      @apply text-sm leading-[20px] font-sans text-gray-800 font-normal text-center mt-6;
     }
 
     &-join-as {
-      @apply grid gap-3 grid-cols-2 justify-between
+      @apply grid gap-3 grid-cols-2 justify-between mt-6
       sm:(gap-6 max-h-[257px] flex items-center justify-center);
     }
 
     &-info {
-      @apply min-w-[250px] max-w-[725px] flex justify-center justify-items-start items-start gap-4 py-3.5 px-4 bg-blue-50 border border-blue-800 rounded-lg
+      @apply min-w-[250px] max-w-[725px] flex justify-center justify-items-start items-start gap-4 mt-6 py-3.5 px-4 bg-blue-50 border border-blue-800 rounded-lg
       sm:(mx-4)
       md:(mx-6);
 
@@ -317,10 +317,10 @@ export default {
           }
         }
       }
-  }
+    }
 
     &-button {
-      @apply w-full sm:(py-2 flex justify-center gap-4);
+      @apply w-full mt-6 sm:(flex justify-center gap-4 py-2);
 
       &-close {
         @apply !hidden
@@ -340,22 +340,27 @@ export default {
 }
 
 .join-as {
-  @apply border-[#D2D7DE] border rounded-xl cursor-pointer
-  sm:(h-[257px]);
+  @apply cursor-pointer flex flex-col justify-center
+  sm:(min-h-[257px]);
 
   &--active {
-    @apply border-green-700 border;
+    @apply border-green-700 border-[1.5px] rounded-[14px];
   }
 
   &:hover {
+    @apply rounded-[14px];
     box-shadow: 0 4px 20px rgba(65, 92, 132, 0.12);
   }
 
   &__mitra, &__desa {
-    @apply bg-no-repeat h-[180px] w-full rounded-t-[11px] bg-cover bg-center;
+    @apply  object-cover object-center h-[180px] w-[184px] rounded-t-xl border-0 md:(w-full);
+
+    img {
+      @apply h-full w-full;
+    }
 
     &-info-text {
-      @apply px-4 py-3 flex justify-between items-center;
+      @apply border-[#D2D7DE] border rounded-b-xl px-4 py-3 flex justify-between items-center;
     }
 
     &-title {
