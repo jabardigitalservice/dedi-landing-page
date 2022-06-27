@@ -141,7 +141,8 @@ export default {
       totalPartner: 0,
       query: {
         per_page: 16,
-        current_page: 1
+        current_page: 1,
+        is_verified: true
       }
     }
   },

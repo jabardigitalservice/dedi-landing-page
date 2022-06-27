@@ -67,7 +67,8 @@ export default {
       query: {
         partnerQuery: {
           per_page: 16,
-          current_page: 1
+          current_page: 1,
+          is_verified: true
         },
         villageQuery: {
           current_page: 1,
