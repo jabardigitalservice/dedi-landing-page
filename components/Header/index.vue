@@ -10,9 +10,27 @@
         </BaseButton>
       </div>
       <div class="header__action">
-        <BaseButton variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
+        <BaseButton
+          :class="{
+            'header__button': true,
+            'header__button--actived': activeRoute === 'sayembara'
+          }"
+          variant="tertiary"
+          type="button"
+          label="Sayembara Desa Digital"
+          @click="$router.push('/sayembara')"
+        />
         <span class="text-gray-300">|</span>
-        <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
+        <BaseButton
+          :class="{
+            'header__button': true,
+            'header__button--actived': activeRoute === 'about'
+          }"
+          variant="tertiary"
+          type="button"
+          label="Tentang Desa Digital"
+          @click="$router.push('/about')"
+        />
       <!-- @Temporary hide login button -->
       <!-- <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" /> -->
       </div>
@@ -22,6 +40,11 @@
 
 <script>
 export default {
+  computed: {
+    activeRoute () {
+      return this.$route.name
+    }
+  },
   methods: {
     openSidebar () {
       this.$emit('open-sidebar', true)
@@ -41,6 +64,14 @@ export default {
 
   &__action {
     @apply flex items-center gap-[16px] hidden sm:(gap-6 block);
+  }
+
+  &__button {
+    @apply text-gray-600 !important;
+
+    &--actived {
+      @apply text-green-700 !important;
+    }
   }
 
   &__icon-skeleton {
