@@ -131,6 +131,18 @@
 
 .form-text-area {
   @apply w-full border border-bg-gray-500 rounded-lg p-2;
+
+  &--error {
+    @apply border-red-700;
+  }
+
+  &--text {
+    @apply w-full outline-none border-none;
+  }
+
+  &--message {
+    @apply m-0 p-0 text-[13px] leading-[23px] text-red-700;
+  }
 }
 
 p {

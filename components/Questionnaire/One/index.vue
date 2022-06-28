@@ -258,13 +258,24 @@
               <p class="mb-3">
                 Tuliskan daftar penyedia layanan telekomunikasi yang ada di sekitar anda (Telkomsel/XL/Tri/dan lain-lain)
               </p>
-              <textarea
-                v-model="fasilitas_desa.jaringan_telepon.operator"
-                class="form-text-area"
-                name="Daftar layanan telekomunikasi"
-                placeholder="Masukkan daftar disini"
-                rows="5"
-              />
+              <div
+                :class="{
+                  'form-text-area' : true,
+                  'form-text-area--error' : showErrorMsg
+                }"
+              >
+                <textarea
+                  v-model="fasilitas_desa.jaringan_telepon.operator"
+                  class="form-text-area--text"
+                  name="Daftar layanan telekomunikasi"
+                  placeholder="Masukkan daftar disini"
+                  :error="!!(errors.telephone)"
+                  rows="5"
+                />
+              </div>
+              <p v-show="showErrorMsg" class="form-text-area--message">
+                {{ errors.telephone }}
+              </p>
             </div>
           </div>
 
@@ -341,13 +352,24 @@
               <p class="mb-3">
                 Tuliskan daftar website atau aplikasi yang sering diakses
               </p>
-              <textarea
-                v-model="fasilitas_desa.jaringan_internet.website"
-                class="form-text-area"
-                name="Daftar website / aplikasi"
-                placeholder="Masukkan daftar disini"
-                rows="5"
-              />
+              <div
+                :class="{
+                  'form-text-area' : true,
+                  'form-text-area--error' : showInternetErrorMsg
+                }"
+              >
+                <textarea
+                  v-model="fasilitas_desa.jaringan_internet.website"
+                  class="form-text-area--text"
+                  name="Daftar website / aplikasi"
+                  placeholder="Masukkan daftar disini"
+                  :error="!!(errors.internet)"
+                  rows="5"
+                />
+              </div>
+              <p v-show="showInternetErrorMsg" class="form-text-area--message">
+                {{ errors.internet }}
+              </p>
             </div>
           </div>
         </div>
@@ -444,15 +466,21 @@ export default {
       isShowVehicleImage: false,
       isShowElectrictImage: false,
       isShowProviderImage: false,
-      isShowInternetImage: false
+      isShowInternetImage: false,
+      showErrorMsg: false,
+      showInternetErrorMsg: false,
+      errors: {
+        telephone: null,
+        internet: null
+      }
     }
   },
   computed: {
     isValidatedQuestionnaire () {
       const isVehicleAccess = this.fasilitas_desa.akses_kendaraan.data.length !== 0
       const isPowerSupply = this.fasilitas_desa.suplai_listrik.data !== null
-      const isTelephone = this.fasilitas_desa.jaringan_telepon.data !== null
-      const isInternet = this.fasilitas_desa.jaringan_internet.data !== null
+      const isTelephone = this.fasilitas_desa.jaringan_telepon.data !== null && !(this.errors.telephone)
+      const isInternet = this.fasilitas_desa.jaringan_internet.data !== null && !(this.errors.internet)
 
       return (isVehicleAccess && isPowerSupply && isTelephone && isInternet)
     },
@@ -523,6 +551,16 @@ export default {
         this.isShowProviderImage = true
       }
     },
+    'fasilitas_desa.jaringan_telepon.operator' () {
+      const telephoneValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (telephoneValidation.test(this.fasilitas_desa.jaringan_telepon.operator)) {
+        this.showErrorMsg = true
+        this.errors.telephone = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showErrorMsg = false
+        this.errors.telephone = ''
+      }
+    },
     'fasilitas_desa.jaringan_internet.data' () {
       if (this.fasilitas_desa.jaringan_internet.data === 'Belum ada jaringan internet') {
         this.isShowInternetImage = false
@@ -543,6 +581,16 @@ export default {
       } else {
         this.isShowInternetImage = true
         this.$emit('onClickLevel', true)
+      }
+    },
+    'fasilitas_desa.jaringan_internet.website' () {
+      const internetValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (internetValidation.test(this.fasilitas_desa.jaringan_internet.website)) {
+        this.showInternetErrorMsg = true
+        this.errors.internet = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showInternetErrorMsg = false
+        this.errors.internet = ''
       }
     }
   },
