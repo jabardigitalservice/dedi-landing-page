@@ -161,27 +161,50 @@
           <p v-show="isShowBumdes" class="mb-3">
             Tuliskan nama BUMDes yang ada di desa Bapak/Ibu
           </p>
-          <textarea
+          <div
             v-show="isShowBumdes"
-            v-model="properties.tentang_bumdes.bumdes.bumdes"
-            class="form-text-area"
-            name="Nama BUMDes"
-            placeholder="Masukkan disini"
-            rows="3"
-          />
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showBumdesErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="properties.tentang_bumdes.bumdes.bumdes"
+              class="form-text-area--text"
+              name="Nama BUMDes"
+              placeholder="Masukkan disini"
+              :error="!!(errors.bumdes)"
+              rows="3"
+            />
+          </div>
+          <p v-show="showBumdesErrorMsg" class="form-text-area--message">
+            {{ errors.bumdes }}
+          </p>
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
           <p class="mb-3">
             Jika ada, komoditas apa yang dikelola/diproduksi oleh BUMDes di desa Bapak/Ibu?
           </p>
-          <textarea
-            v-model="properties.tentang_bumdes.komoditas.data"
-            class="form-text-area"
-            name="Daftar komoditas"
-            placeholder="Masukkan disini"
-            rows="3"
-          />
+          <div
+            v-show="isShowBumdes"
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showComodityErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="properties.tentang_bumdes.komoditas.data"
+              class="form-text-area--text"
+              name="Daftar komoditas"
+              placeholder="Masukkan disini"
+              :error="!!(errors.comodity)"
+              rows="3"
+            />
+          </div>
+          <p v-show="showComodityErrorMsg" class="form-text-area--message">
+            {{ errors.comodity }}
+          </p>
           <div class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
@@ -282,14 +305,25 @@
             >
             <span class="checkmark" />
           </label>
-          <textarea
+          <div
             v-show="isShowOtherECommerce"
-            v-model="properties.tentang_bumdes.ecommerce.ecommerce_lainnya"
-            class="form-text-area"
-            name="E-Commerce Lainnya"
-            placeholder="Masukkan E-Commerce lainnya disini"
-            rows="2"
-          />
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showEcommerceErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="properties.tentang_bumdes.ecommerce.ecommerce_lainnya"
+              class="form-text-area--text"
+              name="E-Commerce Lainnya"
+              placeholder="Masukkan E-Commerce lainnya disini"
+              :error="!!(errors.ecommerce)"
+              rows="2"
+            />
+          </div>
+          <p v-show="showEcommerceErrorMsg" class="form-text-area--message">
+            {{ errors.ecommerce }}
+          </p>
         </div>
 
         <div v-show="isShowBumdes" class="registration__form-content--container">
@@ -338,27 +372,49 @@
             >
             <span class="checkmark" />
           </label>
-          <textarea
+          <div
             v-show="isShowOtherPotency"
-            v-model="properties.potensi_desa.potensi_lainnya"
-            class="form-text-area"
-            name="Potensi Lainnya"
-            placeholder="Masukkan potensi lainnya disini"
-            rows="4"
-          />
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showOtherPotencyErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="properties.potensi_desa.potensi_lainnya"
+              class="form-text-area--text"
+              name="Potensi Lainnya"
+              placeholder="Masukkan potensi lainnya disini"
+              :error="!!(errors.otherPotency)"
+              rows="4"
+            />
+          </div>
+          <p v-show="showOtherPotencyErrorMsg" class="form-text-area--message">
+            {{ errors.otherPotency }}
+          </p>
         </div>
 
         <div v-show="isShowPotency" class="registration__form-content--container">
           <p class="mb-3">
             Jika ada, ceritakan potensi yang dapat dikembangkan dari desa tempat Bapak/Ibu tinggal?
           </p>
-          <textarea
-            v-model="properties.potensi_desa.potensi_dapat_dikembangkan"
-            class="form-text-area"
-            name="Daftar potensi"
-            placeholder="Masukkan disini"
-            rows="4"
-          />
+          <div
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showPotencyErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="properties.potensi_desa.potensi_dapat_dikembangkan"
+              class="form-text-area--text"
+              name="Daftar potensi"
+              placeholder="Masukkan disini"
+              :error="!!(errors.potency)"
+              rows="4"
+            />
+          </div>
+          <p v-show="showPotencyErrorMsg" class="form-text-area--message">
+            {{ errors.potency }}
+          </p>
           <div class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
@@ -545,15 +601,27 @@ export default {
       isShowOtherECommerce: false,
       isShowOtherPotency: false,
       socialMediaNoneOption: [],
-      villages
+      villages,
+      showBumdesErrorMsg: false,
+      showComodityErrorMsg: false,
+      showEcommerceErrorMsg: false,
+      showPotencyErrorMsg: false,
+      showOtherPotencyErrorMsg: false,
+      errors: {
+        bumdes: null,
+        comodity: null,
+        ecommerce: null,
+        otherPotency: null,
+        potency: null
+      }
     }
   },
   computed: {
     isBumdesCompleted () {
       const { komoditas, ecommerce, logistik } = this.properties.tentang_bumdes
       return !!((
-        komoditas.produktivitas &&
-        ecommerce.data.length &&
+        (komoditas.produktivitas && !this.errors.comodity) &&
+        (ecommerce.data.length && !this.errors.ecommerce) &&
         ecommerce.distribusi &&
         logistik
       ))
@@ -563,20 +631,20 @@ export default {
       if (this.isShowBumdes) {
         return !!((
           socialMedia.data.length &&
-          bumdes.data &&
+          (bumdes.data && !this.errors.bumdes) &&
           this.isBumdesCompleted
         ))
       } else {
         return !!((
           socialMedia.data.length &&
-          bumdes.data
+          (bumdes.data && !this.errors.bumdes)
         ))
       }
     },
     isPotencyCompleted () {
       const { data } = this.properties.potensi_desa
       return !!((
-        data.length
+        data.length && !this.errors.potency && !this.errors.otherPotency
       ))
     },
     buttonQuestionnaireVariant () {
@@ -649,6 +717,56 @@ export default {
         fileKomoditas.source = null
       } else {
         this.isShowBumdes = true
+      }
+    },
+    'properties.tentang_bumdes.bumdes.bumdes' () {
+      const bumdesValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (bumdesValidation.test(this.properties.tentang_bumdes.bumdes.bumdes)) {
+        this.showBumdesErrorMsg = true
+        this.errors.bumdes = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showBumdesErrorMsg = false
+        this.errors.bumdes = ''
+      }
+    },
+    'properties.tentang_bumdes.komoditas.data' () {
+      const comodityValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (comodityValidation.test(this.properties.tentang_bumdes.komoditas.data)) {
+        this.showComodityErrorMsg = true
+        this.errors.comodity = 'Format isian komoditas tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showComodityErrorMsg = false
+        this.errors.comodity = ''
+      }
+    },
+    'properties.tentang_bumdes.ecommerce.ecommerce_lainnya' () {
+      const ecommerceValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (ecommerceValidation.test(this.properties.tentang_bumdes.ecommerce.ecommerce_lainnya)) {
+        this.showEcommerceErrorMsg = true
+        this.errors.ecommerce = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showEcommerceErrorMsg = false
+        this.errors.ecommerce = ''
+      }
+    },
+    'properties.potensi_desa.potensi_lainnya' () {
+      const otherPotencyValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (otherPotencyValidation.test(this.properties.potensi_desa.potensi_lainnya)) {
+        this.showOtherPotencyErrorMsg = true
+        this.errors.otherPotency = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showOtherPotencyErrorMsg = false
+        this.errors.otherPotency = ''
+      }
+    },
+    'properties.potensi_desa.potensi_dapat_dikembangkan' () {
+      const PotencyValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (PotencyValidation.test(this.properties.potensi_desa.potensi_dapat_dikembangkan)) {
+        this.showPotencyErrorMsg = true
+        this.errors.potency = 'Format isian potensi tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showPotencyErrorMsg = false
+        this.errors.potency = ''
       }
     }
   },
