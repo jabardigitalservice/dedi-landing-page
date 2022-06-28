@@ -35,7 +35,7 @@
               Informasi Umum
             </div>
             <BaseInput
-              v-model="params.nama"
+              v-model.trim="params.nama"
               class="mt-2"
               label="Nama Lengkap"
               type="text"
@@ -47,7 +47,7 @@
               required
             />
             <BaseInput
-              v-model="params.posisi"
+              v-model.trim="params.posisi"
               class="mt-2"
               label="Jabatan"
               type="text"
