@@ -341,7 +341,7 @@ export default {
       }
     },
     'params.nama' () {
-      const nameValidation = /(?=.*[^A-Za-z0-9\s])/g
+      const nameValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
       if (nameValidation.test(this.params.nama)) {
         this.errors.name = 'Isian nama tidak diizinkan.'
       } else if (this.params.nama.length < 3) {
@@ -351,7 +351,7 @@ export default {
       }
     },
     'params.posisi' () {
-      const roleValidation = /(?=.*[^A-Za-z0-9\s])/g
+      const roleValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
       if (roleValidation.test(this.params.posisi)) {
         this.errors.position = 'Isian posisi tidak diizinkan.'
       } else if (this.params.posisi.length < 1) {
