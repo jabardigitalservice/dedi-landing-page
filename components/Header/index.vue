@@ -1,7 +1,6 @@
 <template>
   <header id="header" class="header">
     <div class="header__container wrapper">
-      <img class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__menu-icon--hidden">
         <BaseButton variant="tertiary-paddingless" @click="openSidebar">
@@ -48,12 +47,8 @@ export default {
     @apply h-8 w-6 sm:w-40 bg-white rounded-md;
   }
 
-  &__icon {
-    @apply cursor-pointer w-6 h-8 sm:hidden;
-  }
-
   &__icon-typo {
-    @apply cursor-pointer h-8 hidden sm:block;
+    @apply cursor-pointer h-8 w-auto sm:block;
   }
 
   &__menu-icon--hidden {
