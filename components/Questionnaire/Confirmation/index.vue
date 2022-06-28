@@ -341,14 +341,20 @@ export default {
       }
     },
     'params.nama' () {
-      if (this.params.nama.length < 3) {
+      const nameValidation = /(?=.*[^A-Za-z0-9\s])/g
+      if (nameValidation.test(this.params.nama)) {
+        this.errors.name = 'Isian nama tidak diizinkan.'
+      } else if (this.params.nama.length < 3) {
         this.errors.name = 'Isian nama minimal 3 karakter.'
       } else {
         this.errors.name = ''
       }
     },
     'params.posisi' () {
-      if (this.params.posisi.length < 1) {
+      const roleValidation = /(?=.*[^A-Za-z0-9\s])/g
+      if (roleValidation.test(this.params.posisi)) {
+        this.errors.position = 'Isian posisi tidak diizinkan.'
+      } else if (this.params.posisi.length < 1) {
         this.errors.position = 'Isian jabatan wajib diisi.'
       } else {
         this.errors.position = ''
