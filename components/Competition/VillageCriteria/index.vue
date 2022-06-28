@@ -1,39 +1,62 @@
 <template>
-  <div id="village-criteria" class="village-criteria">
-    <div class="wrapper">
+  <div id="village-criteria" class="village">
+    <div class="village-criteria">
       <div class="village-criteria__title">
         <h1>Kriteria Desa Yang Dapat Mengikuti</h1>
         <p>
           Desa yang bisa ikut serta dalam sayembara ini adalah desa yang masuk dalam kategori
-          <strong class="text-white">Desa Level 3</strong> dan <strong class="text-white">Level 4</strong>
+          <strong class="text-white">Desa Level 3.0</strong> dan <strong class="text-white">Level 4.0</strong>
           sesuai ketentuan berikut:
         </p>
       </div>
       <div class="village-criteria__main">
         <div class="village-criteria__main--wrapper">
           <div class="village-criteria__main--wrapper-content">
-            <div v-for="index in 2" :key="data[index-1].id" class="col-span-1">
+            <div
+              v-for="index in 3"
+              :key="data[index-1].id"
+              :class="{
+                'col-span-1': index < 3,
+                'col-span-2': index === 3
+              }"
+            >
               <div class="village-criteria__card">
-                <img class="village-criteria__card--img" height="136" width="auto" :src="data[index-1].img" :alt="`Kriteria desa ${data[index-1].id}`">
+                <img
+                  :class="{
+                    'village-criteria__card--img-md': index < 3,
+                    'village-criteria__card--img-lg': index === 3
+                  }"
+                  height="136"
+                  width="auto"
+                  :src="data[index-1].img"
+                  :alt="`Kriteria desa ${data[index-1].id}`"
+                >
                 <div class="village-criteria__card--desc">
                   {{ data[index-1].desc }}
                 </div>
               </div>
             </div>
-            <div class="col-span-2">
-              <div class="village-criteria__card">
-                <img class="village-criteria__card--img" height="126" width="auto" :src="data[2].img" :alt="`Kriteria desa ${data[2].id}`">
-                <div class="village-criteria__card--desc">
-                  {{ data[2].desc }}
-                </div>
-              </div>
-            </div>
           </div>
           <div class="village-criteria__main--wrapper-content">
-            <div v-for="index in 4" :key="data[index+2].id" class="col-span-1">
+            <div
+              v-for="index in 4"
+              :key="data[index+2].id"
+              class="col-span-1"
+            >
               <div class="village-criteria__card">
-                <img class="village-criteria__card--img" height="136" width="auto" :src="data[index+2].img" :alt="`Kriteria desa ${data[index+2].id}`">
-                <div class="village-criteria__card--desc">
+                <img
+                  class="village-criteria__card--img-md"
+                  height="136"
+                  width="auto"
+                  :src="data[index+2].img"
+                  :alt="`Kriteria desa ${data[index+2].id}`"
+                >
+                <div
+                  :class="{
+                    'village-criteria__card--desc': true,
+                    'village-criteria__card--desc-lg': index > 2,
+                  }"
+                >
                   {{ data[index+2].desc }}
                 </div>
               </div>
@@ -92,45 +115,56 @@ export default {
 </script>
 
 <style lang="postcss">
-.village-criteria {
-  @apply w-full h-full bg-[#292742] px-4 py-6 md:(px-6 py-10) lg:(py-[120px]);
+.village {
+  @apply w-full h-full bg-[#292742];
 
-  &__title {
-    h1 {
-      @apply text-[40px] leading-auto
-      text-center font-serif font-bold text-white;
+  &-criteria {
+    @apply max-w-7xl mx-auto px-4 py-6 lg:(px-6 py-10) xl:(py-[120px]);
+
+    &__title {
+      h1 {
+        @apply text-[40px] leading-auto
+        text-center font-serif font-bold text-white;
+      }
+
+      p {
+        @apply w-full h-full pt-8
+        text-center text-blue-gray-100
+      }
     }
 
-    p {
-      @apply w-full h-full pt-8
-      text-center text-blue-gray-100
+    &__main {
+      @apply pt-6 lg:(pt-[60px]);
+
+      &--wrapper {
+        @apply flex flex-col gap-[29px] md:(max-w-2xl mx-auto) lg:(grid-cols-1) xl:(grid grid-cols-2 max-w-[unset]);
+
+        &-content {
+          @apply flex flex-col gap-[29px] md:(grid grid-cols-2);
+        }
+      }
     }
-  }
 
-  &__main {
-    @apply pt-6 md:(pt-[60px]);
+    &__card {
+      @apply bg-white rounded-[20px] w-full h-auto border-none;
 
-    &--wrapper {
-      @apply flex flex-col gap-[29px] md:(grid-cols-1) lg:(grid grid-cols-2);
+      &--img {
+        &-md {
+          @apply w-full min-h-[136px] rounded-t-[20px] object-cover object-center border-none;
+        }
+        &-lg {
+          @apply w-full min-h-[126px] rounded-t-[20px] object-cover object-center border-none;
+        }
+      }
 
-      &-content {
-        @apply flex flex-col gap-[29px] md:(grid grid-cols-2);
+      &--desc {
+        @apply w-full h-full px-4 py-5 text-base text-left text-blue-gray-600;
+
+        &-lg {
+          @apply w-full h-full px-4 py-5 text-base text-left text-blue-gray-600 md:(h-[125px]);
+        }
       }
     }
   }
-
-  &__card {
-    @apply bg-white rounded-[20px] w-full h-auto border-none;
-
-    &--img {
-      border-radius: 20px 20px 0 0;
-    }
-
-    &--desc {
-      @apply w-full h-full px-4 py-5
-      text-sm text-left text-gray-800;
-    }
-  }
 }
-
 </style>
