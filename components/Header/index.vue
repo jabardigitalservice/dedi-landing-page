@@ -1,7 +1,6 @@
 <template>
   <header id="header" class="header">
     <div class="header__container wrapper">
-      <img class="header__icon" src="~/assets/logo/logo-dedi.svg" alt="Logo Desa Digital" @click="$router.push('/')">
       <img class="header__icon-typo" src="~/assets/logo/logo-dedi-typo.svg" alt="Logo Desa Digital Typography" @click="$router.push('/')">
       <div class="header__menu-icon--hidden">
         <BaseButton variant="tertiary-paddingless" @click="openSidebar">
@@ -11,9 +10,27 @@
         </BaseButton>
       </div>
       <div class="header__action">
-        <BaseButton variant="tertiary" type="button" label="Sayembara Desa Digital" @click="$router.push('/sayembara')" />
+        <BaseButton
+          :class="{
+            'header__button': true,
+            'header__button--actived': activeRoute === 'sayembara'
+          }"
+          variant="tertiary"
+          type="button"
+          label="Sayembara Desa Digital"
+          @click="$router.push('/sayembara')"
+        />
         <span class="text-gray-300">|</span>
-        <BaseButton variant="tertiary" type="button" label="Tentang Desa Digital" @click="$router.push('/about')" />
+        <BaseButton
+          :class="{
+            'header__button': true,
+            'header__button--actived': activeRoute === 'about'
+          }"
+          variant="tertiary"
+          type="button"
+          label="Tentang Desa Digital"
+          @click="$router.push('/about')"
+        />
       <!-- @Temporary hide login button -->
       <!-- <BaseButton variant="secondary" type="button" label="Masuk" @click="$router.push('/login')" /> -->
       </div>
@@ -23,6 +40,11 @@
 
 <script>
 export default {
+  computed: {
+    activeRoute () {
+      return this.$route.name
+    }
+  },
   methods: {
     openSidebar () {
       this.$emit('open-sidebar', true)
@@ -44,16 +66,20 @@ export default {
     @apply flex items-center gap-[16px] hidden sm:(gap-6 block);
   }
 
+  &__button {
+    @apply text-gray-600 !important;
+
+    &--actived {
+      @apply text-green-700 !important;
+    }
+  }
+
   &__icon-skeleton {
     @apply h-8 w-6 sm:w-40 bg-white rounded-md;
   }
 
-  &__icon {
-    @apply cursor-pointer w-6 h-8 sm:hidden;
-  }
-
   &__icon-typo {
-    @apply cursor-pointer h-8 hidden sm:block;
+    @apply cursor-pointer h-8 w-auto sm:block;
   }
 
   &__menu-icon--hidden {
