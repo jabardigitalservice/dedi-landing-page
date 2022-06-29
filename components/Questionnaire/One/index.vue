@@ -550,7 +550,7 @@ export default {
       }
     },
     'fasilitas_desa.jaringan_telepon.operator' () {
-      const telephoneValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const telephoneValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (telephoneValidation.test(this.fasilitas_desa.jaringan_telepon.operator)) {
         this.showErrorMsg = true
         this.errors.telephone = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
@@ -582,7 +582,7 @@ export default {
       }
     },
     'fasilitas_desa.jaringan_internet.website' () {
-      const internetValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const internetValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (internetValidation.test(this.fasilitas_desa.jaringan_internet.website)) {
         this.showInternetErrorMsg = true
         this.errors.internet = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
