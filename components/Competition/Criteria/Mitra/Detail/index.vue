@@ -184,6 +184,23 @@ export default {
     &-content {
       @apply h-[350px] overflow-y-scroll pt-6;
 
+      /* Scroll bar stylings */
+      scrollbar-color: #E0E0E0 white;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar {
+        @apply w-5 h-5;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+      }
+      /* End of scroll bar stylings */
+
       &-main {
         @apply grid grid-cols-[max-content,1fr] gap-6 mb-4;
 
