@@ -553,7 +553,7 @@ export default {
       const telephoneValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (telephoneValidation.test(this.fasilitas_desa.jaringan_telepon.operator)) {
         this.showErrorMsg = true
-        this.errors.telephone = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.telephone = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showErrorMsg = false
         this.errors.telephone = ''
@@ -585,7 +585,7 @@ export default {
       const internetValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (internetValidation.test(this.fasilitas_desa.jaringan_internet.website)) {
         this.showInternetErrorMsg = true
-        this.errors.internet = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.internet = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showInternetErrorMsg = false
         this.errors.internet = ''
