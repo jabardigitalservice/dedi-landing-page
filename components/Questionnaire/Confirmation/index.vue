@@ -343,7 +343,7 @@ export default {
     'params.nama' () {
       const nameValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (nameValidation.test(this.params.nama)) {
-        this.errors.name = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_-!@$&*?)'
+        this.errors.name = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else if (this.params.nama.length < 3) {
         this.errors.name = 'Isian nama minimal 3 karakter.'
       } else {
@@ -353,7 +353,7 @@ export default {
     'params.posisi' () {
       const roleValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (roleValidation.test(this.params.posisi)) {
-        this.errors.position = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.position = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else if (this.params.posisi.length < 1) {
         this.errors.position = 'Isian jabatan wajib diisi.'
       } else {
