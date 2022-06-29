@@ -136,26 +136,29 @@
         }
 
         &-list-village {
-          scrollbar-color: #E0E0E0 white;
-          scrollbar-width: thin;
           
           @apply h-[438px] !sm:w-[353px] w-[calc(100%+14px)] flex flex-row flex-wrap content-start gap-2 
           overflow-y-auto overflow-x-hidden;
 
-          &--close {
-            @apply overflow-y-hidden;
-          }
+          /* Scroll bar stylings */
+          scrollbar-color: #E0E0E0 transparent;
+          scrollbar-width: thin;
 
           &::-webkit-scrollbar{
-            @apply w-[6px];
+            @apply w-5 h-5;
           }
 
           &::-webkit-scrollbar-track {
-            @apply bg-white;
+            @apply bg-transparent;
           }
 
           &::-webkit-scrollbar-thumb {
-              @apply bg-gray-300 rounded-[6px];
+            @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+          }
+          /* End of scroll bar stylings */
+
+          &--close {
+            @apply overflow-y-hidden;
           }
 
           &-item {

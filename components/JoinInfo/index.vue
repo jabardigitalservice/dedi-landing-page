@@ -130,9 +130,24 @@ export default {
   }
 
   &__infografik {
-    scrollbar-color: #E0E0E0 white;
-    scrollbar-width: thin;
     @apply w-full max-h-max overflow-auto my-8 flex items-center justify-start lg:justify-center;
+
+    /* Scroll bar stylings */
+    scrollbar-color: #E0E0E0 transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      @apply w-5 h-5;
+    }
+
+    &::-webkit-scrollbar-track {
+      @apply bg-transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+    }
+    /* End of scroll bar stylings */
 
     &-image {
       width: 932px;

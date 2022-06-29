@@ -48,6 +48,23 @@ export default {
     &__main {
       @apply w-full h-full overflow-x-auto flex items-center justify-start lg:(justify-center);
 
+      /* Scroll bar stylings */
+      scrollbar-color: #E0E0E0 transparent;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar{
+        @apply w-5 h-5;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+      }
+      /* End of scroll bar stylings */
+
       &--img {
         @apply my-[60px] h-[323px] max-w-max md:(h-[361px] w-full);
       }

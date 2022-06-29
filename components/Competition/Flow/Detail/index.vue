@@ -226,6 +226,23 @@ export default {
     &-body {
       @apply pt-6 pr-6 h-[420px] overflow-auto;
 
+      /* Scroll bar stylings */
+      scrollbar-color: #E0E0E0 white;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar {
+        @apply w-5 h-5;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+      }
+      /* End of scroll bar stylings */
+
       &-wrapper {
         @apply grid grid-cols-4 md:(grid-cols-5);
       }

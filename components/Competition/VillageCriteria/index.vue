@@ -123,7 +123,7 @@ export default {
 
     &__title {
       h1 {
-        @apply text-[40px] leading-auto
+        @apply text-[40px] leading-normal
         text-center font-serif font-bold text-white;
       }
 

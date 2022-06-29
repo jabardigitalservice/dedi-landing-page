@@ -17,6 +17,23 @@
 
     &--body {
       @apply bg-white p-4 md:(p-8 mx-auto w-[640px] max-h-[calc(100vh-170px)] relative rounded-md overflow-y-auto);
+
+      /* Scroll bar stylings */
+      scrollbar-color: #E0E0E0 white;
+      scrollbar-width: thin;
+
+      &::-webkit-scrollbar {
+        @apply w-5 h-5;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+      }
+      /* End of scroll bar stylings */
     }
 
     &-form {

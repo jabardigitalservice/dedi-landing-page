@@ -109,24 +109,26 @@
     }
   }
 
-  &__partner {
-    scrollbar-color: #E0E0E0 white;
-    scrollbar-width: thin;
-    
+  &__partner {    
     @apply mt-[12px] h-[397px] flex flex-col gap-3 overflow-y-scroll overflow-x-hidden content-start
     sm:(mt-[16px] grid grid-cols-2 grid-rows-[max-content] h-[550px] gap-y-4 pr-4 w-[calc(100%+24px)]) lg:(grid grid-cols-4 grid-rows-[max-content]);
 
+    /* Scroll bar stylings */
+    scrollbar-color: #E0E0E0 transparent;
+    scrollbar-width: thin;
+
     &::-webkit-scrollbar{
-      @apply w-[6px];
+      @apply w-5 h-5;
     }
 
     &::-webkit-scrollbar-track {
-      @apply bg-white;
+      @apply bg-transparent;
     }
 
     &::-webkit-scrollbar-thumb {
-        @apply bg-gray-300 rounded-[6px];
+      @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
     }
+    /* End of scroll bar stylings */
 
     &-item {
       @apply max-h-max w-full bg-white rounded-lg py-4 px-6 cursor-pointer border border-transparent hover:(border border-green-700);

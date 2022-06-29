@@ -45,9 +45,24 @@
     }
 
     &-content {
+      @apply overflow-y-scroll h-auto md:(h-[330px]) xl:(h-[370px]);
+
+      /* Scroll bar stylings */
       scrollbar-color: #E0E0E0 white;
       scrollbar-width: thin;
-      @apply overflow-y-scroll h-auto md:(h-[330px]) xl:(h-[370px]);
+
+      &::-webkit-scrollbar {
+        @apply w-5 h-5;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-xl border-solid border-6 border-transparent bg-clip-content;
+      }
+      /* End of scroll bar stylings */
 
       &--container {
         @apply mt-5 px-4 py-5 border border-gray-200 rounded-lg;
