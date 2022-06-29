@@ -269,7 +269,6 @@
                   class="form-text-area--text"
                   name="Daftar layanan telekomunikasi"
                   placeholder="Masukkan daftar disini"
-                  :error="!!(errors.telephone)"
                   rows="5"
                 />
               </div>
@@ -363,7 +362,6 @@
                   class="form-text-area--text"
                   name="Daftar website / aplikasi"
                   placeholder="Masukkan daftar disini"
-                  :error="!!(errors.internet)"
                   rows="5"
                 />
               </div>

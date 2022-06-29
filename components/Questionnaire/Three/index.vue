@@ -173,7 +173,6 @@
               class="form-text-area--text"
               name="Nama BUMDes"
               placeholder="Masukkan disini"
-              :error="!!(errors.bumdes)"
               rows="3"
             />
           </div>
@@ -198,7 +197,6 @@
               class="form-text-area--text"
               name="Daftar komoditas"
               placeholder="Masukkan disini"
-              :error="!!(errors.comodity)"
               rows="3"
             />
           </div>
@@ -317,7 +315,6 @@
               class="form-text-area--text"
               name="E-Commerce Lainnya"
               placeholder="Masukkan E-Commerce lainnya disini"
-              :error="!!(errors.ecommerce)"
               rows="2"
             />
           </div>
@@ -384,7 +381,6 @@
               class="form-text-area--text"
               name="Potensi Lainnya"
               placeholder="Masukkan potensi lainnya disini"
-              :error="!!(errors.otherPotency)"
               rows="4"
             />
           </div>
@@ -408,7 +404,6 @@
               class="form-text-area--text"
               name="Daftar potensi"
               placeholder="Masukkan disini"
-              :error="!!(errors.potency)"
               rows="4"
             />
           </div>

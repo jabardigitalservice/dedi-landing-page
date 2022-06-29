@@ -118,7 +118,6 @@
               class="form-text-area--text"
               name="Pelatihan"
               placeholder="Masukkan daftar disini"
-              :error="!!(errors.training)"
               rows="5"
             />
           </div>
