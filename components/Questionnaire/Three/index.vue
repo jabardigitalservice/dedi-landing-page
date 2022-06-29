@@ -715,50 +715,50 @@ export default {
       }
     },
     'properties.tentang_bumdes.bumdes.bumdes' () {
-      const bumdesValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const bumdesValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (bumdesValidation.test(this.properties.tentang_bumdes.bumdes.bumdes)) {
         this.showBumdesErrorMsg = true
-        this.errors.bumdes = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.bumdes = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showBumdesErrorMsg = false
         this.errors.bumdes = ''
       }
     },
     'properties.tentang_bumdes.komoditas.data' () {
-      const comodityValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const comodityValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (comodityValidation.test(this.properties.tentang_bumdes.komoditas.data)) {
         this.showComodityErrorMsg = true
-        this.errors.comodity = 'Format isian komoditas tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.comodity = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showComodityErrorMsg = false
         this.errors.comodity = ''
       }
     },
     'properties.tentang_bumdes.ecommerce.ecommerce_lainnya' () {
-      const ecommerceValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const ecommerceValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (ecommerceValidation.test(this.properties.tentang_bumdes.ecommerce.ecommerce_lainnya)) {
         this.showEcommerceErrorMsg = true
-        this.errors.ecommerce = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.ecommerce = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showEcommerceErrorMsg = false
         this.errors.ecommerce = ''
       }
     },
     'properties.potensi_desa.potensi_lainnya' () {
-      const otherPotencyValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const otherPotencyValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (otherPotencyValidation.test(this.properties.potensi_desa.potensi_lainnya)) {
         this.showOtherPotencyErrorMsg = true
-        this.errors.otherPotency = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.otherPotency = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showOtherPotencyErrorMsg = false
         this.errors.otherPotency = ''
       }
     },
     'properties.potensi_desa.potensi_dapat_dikembangkan' () {
-      const PotencyValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      const PotencyValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (PotencyValidation.test(this.properties.potensi_desa.potensi_dapat_dikembangkan)) {
         this.showPotencyErrorMsg = true
-        this.errors.potency = 'Format isian potensi tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.potency = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showPotencyErrorMsg = false
         this.errors.potency = ''
