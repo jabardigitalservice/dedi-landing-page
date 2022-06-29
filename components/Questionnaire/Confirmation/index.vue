@@ -35,7 +35,7 @@
               Informasi Umum
             </div>
             <BaseInput
-              v-model="params.nama"
+              v-model.trim="params.nama"
               class="mt-2"
               label="Nama Lengkap"
               type="text"
@@ -47,7 +47,7 @@
               required
             />
             <BaseInput
-              v-model="params.posisi"
+              v-model.trim="params.posisi"
               class="mt-2"
               label="Jabatan"
               type="text"
@@ -341,14 +341,20 @@ export default {
       }
     },
     'params.nama' () {
-      if (this.params.nama.length < 3) {
+      const nameValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (nameValidation.test(this.params.nama)) {
+        this.errors.name = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else if (this.params.nama.length < 3) {
         this.errors.name = 'Isian nama minimal 3 karakter.'
       } else {
         this.errors.name = ''
       }
     },
     'params.posisi' () {
-      if (this.params.posisi.length < 1) {
+      const roleValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (roleValidation.test(this.params.posisi)) {
+        this.errors.position = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else if (this.params.posisi.length < 1) {
         this.errors.position = 'Isian jabatan wajib diisi.'
       } else {
         this.errors.position = ''

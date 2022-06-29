@@ -107,13 +107,23 @@
           <p class="mb-3">
             Pelatihan apa saja yang pernah diberikan?
           </p>
-          <textarea
-            v-model="literasi_digital.pelatihan.pelatihan"
-            class="form-text-area"
-            name="Pelatihan"
-            placeholder="Masukkan pelatihan disini"
-            rows="5"
-          />
+          <div
+            :class="{
+              'form-text-area' : true,
+              'form-text-area--error' : showTrainingErrorMsg
+            }"
+          >
+            <textarea
+              v-model.trim="literasi_digital.pelatihan.pelatihan"
+              class="form-text-area--text"
+              name="Pelatihan"
+              placeholder="Masukkan daftar disini"
+              rows="5"
+            />
+          </div>
+          <p v-show="showTrainingErrorMsg" class="form-text-area--message">
+            {{ errors.training }}
+          </p>
           <div class="grid grid-cols-5 mt-4">
             <div class="registration__form-col-image">
               <div
@@ -230,13 +240,18 @@ export default {
       showModalInfoVillage: false,
       villages,
       isShowTrainingImage: false,
-      isShowCommunityImage: false
+      isShowCommunityImage: false,
+      showTrainingErrorMsg: false,
+      errors: {
+        training: false,
+        community: false
+      }
     }
   },
   computed: {
     isValidatedQuestionnaireTwo () {
-      const isCommunityValidated = this.literasi_digital.komunitas.data.length !== 0
-      const isTraningValidated = this.literasi_digital.pelatihan.data !== null
+      const isCommunityValidated = this.literasi_digital.komunitas.data.length !== 0 && !this.errors.training
+      const isTraningValidated = this.literasi_digital.pelatihan.data !== null && !this.errors.community
 
       return (isCommunityValidated && isTraningValidated)
     },
@@ -288,6 +303,16 @@ export default {
       } else {
         this.isShowCommunityImage = true
         this.$emit('onClickLevel', true)
+      }
+    },
+    'literasi_digital.pelatihan.pelatihan' () {
+      const trainingValidation = /(?=.*[^A-Za-z0-9.,_!@$&*?\s])/g
+      if (trainingValidation.test(this.literasi_digital.pelatihan.pelatihan)) {
+        this.showTrainingErrorMsg = true
+        this.errors.training = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+      } else {
+        this.showTrainingErrorMsg = false
+        this.errors.training = ''
       }
     }
   },
