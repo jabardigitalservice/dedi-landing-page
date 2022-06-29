@@ -61,7 +61,7 @@ export default {
 
     @apply w-full h-full py-6
       md: (pt-15 pb-30)
-      lg: (py-8);
+      xl: (py-8);
 
     h1 {
       @apply text-[28px] font-serif font-bold text-blue-gray-800

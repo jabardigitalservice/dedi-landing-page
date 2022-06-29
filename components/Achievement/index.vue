@@ -19,7 +19,7 @@ export default {
   .achievement {
     @apply w-full h-full py-6 bg-[#FCFCFC]
     md: (py-15)
-    lg: (pt-30 pb-15);
+    xl: (pt-30 pb-15);
 
     h1 {
       @apply w-full h-full text-[28px] text-center leading-[42px] font-serif font-bold text-blue-gray-800
