@@ -38,8 +38,8 @@ export default {
     @apply w-full h-full bg-[#F8F8F6];
 
     &__content {
-      @apply w-full h-full flex flex-col-reverse
-      md: (grid grid-cols-2 justify-between items-center);
+      @apply w-full h-full flex flex-col-reverse py-6
+      md: (grid grid-cols-2 justify-between items-center py-unset);
 
       &-img {
         @apply w-full h-full flex items-end;
