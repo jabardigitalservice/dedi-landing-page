@@ -309,7 +309,7 @@ export default {
       const trainingValidation = /(?=.*[^A-Za-z0-9-.,_!@$&*?\s])/g
       if (trainingValidation.test(this.literasi_digital.pelatihan.pelatihan)) {
         this.showTrainingErrorMsg = true
-        this.errors.training = 'Format isian tidak valid. Karakter yang diperbolehkan (.,_!@$&*?)'
+        this.errors.training = 'Karakter yang diperbolehkan (-.,_!@$&*?)'
       } else {
         this.showTrainingErrorMsg = false
         this.errors.training = ''
