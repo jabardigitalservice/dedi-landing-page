@@ -17,7 +17,9 @@
 
 <style lang="postcss">
 .pillars {
-  @apply w-full h-full bg-[#F8F8F6] pt-20 pb-8 sm:(py-[120px]);
+  @apply w-full h-full bg-[#F8F8F6] py-6
+  md:(py-[60px])
+  xl:(py-[120px]);
 
   &__title {
 
