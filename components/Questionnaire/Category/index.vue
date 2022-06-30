@@ -35,6 +35,11 @@
           label="Daftar Sekarang"
           @click="onSubmitCategory"
         />
+        <BaseButton
+          class="w-[290px]"
+          variant="secondary"
+          label="Kembali"
+        />
       </div>
       <div class="category__action-cancel">
         <nuxt-link
