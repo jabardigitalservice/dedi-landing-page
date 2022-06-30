@@ -362,9 +362,10 @@ export default {
           const elkomunitas = this.$refs.komunitas.files[0]
           if (elkomunitas) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elkomunitas.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { komunitas } = this.files || {}
             if (isValidFormat) {
-              if (elkomunitas.size > 1000000) {
+              if (elkomunitas.size > maxAllowedSize) {
                 komunitas.isAttached = false
                 komunitas.fileImage = null
                 komunitas.source = null
@@ -374,24 +375,24 @@ export default {
                 komunitas.fileImage = this.setFile(elkomunitas)
                 komunitas.source = URL.createObjectURL(elkomunitas)
                 komunitas.uploadErrorMessage = ''
+                this.submitFile(this.files.komunitas.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.literasi_digital.komunitas.photo.path = path
+                    this.literasi_digital.komunitas.photo.source = source
+                    this.literasi_digital.komunitas.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    komunitas.isAttached = false
+                    komunitas.fileImage = null
+                    komunitas.uploadErrorMessage = 'Gambar foto komunitas gagal diupload'
+                  })
               }
             } else {
               komunitas.isAttached = false
               komunitas.fileImage = null
               komunitas.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.komunitas.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.literasi_digital.komunitas.photo.path = path
-                this.literasi_digital.komunitas.photo.source = source
-                this.literasi_digital.komunitas.photo.original_name = originalName
-              })
-              .catch(() => {
-                komunitas.isAttached = false
-                komunitas.fileImage = null
-                komunitas.uploadErrorMessage = 'Gambar foto komunitas gagal diupload'
-              })
           }
           break
         }
@@ -399,9 +400,10 @@ export default {
           const elpelatihan = this.$refs.pelatihan.files[0]
           if (elpelatihan) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elpelatihan.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { pelatihan } = this.files || {}
             if (isValidFormat) {
-              if (elpelatihan.size > 1000000) {
+              if (elpelatihan.size > maxAllowedSize) {
                 pelatihan.isAttached = false
                 pelatihan.fileImage = null
                 pelatihan.source = null
@@ -411,24 +413,24 @@ export default {
                 pelatihan.fileImage = this.setFile(elpelatihan)
                 pelatihan.source = URL.createObjectURL(elpelatihan)
                 pelatihan.uploadErrorMessage = ''
+                this.submitFile(this.files.pelatihan.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.literasi_digital.pelatihan.photo.path = path
+                    this.literasi_digital.pelatihan.photo.source = source
+                    this.literasi_digital.pelatihan.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    pelatihan.isAttached = false
+                    pelatihan.fileImage = null
+                    pelatihan.uploadErrorMessage = 'Gambar pelatihan gagal diupload'
+                  })
               }
             } else {
               pelatihan.isAttached = false
               pelatihan.fileImage = null
               pelatihan.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.pelatihan.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.literasi_digital.pelatihan.photo.path = path
-                this.literasi_digital.pelatihan.photo.source = source
-                this.literasi_digital.pelatihan.photo.original_name = originalName
-              })
-              .catch(() => {
-                pelatihan.isAttached = false
-                pelatihan.fileImage = null
-                pelatihan.uploadErrorMessage = 'Gambar pelatihan gagal diupload'
-              })
           }
           break
         }
