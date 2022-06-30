@@ -12,7 +12,7 @@
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
         <div v-if="showModalLevelDesa && isConfirmed">
-          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
+          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" @on-previous-questionnaire="onPreviousQuestionnaire" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
         </div>
       </div>
@@ -217,6 +217,33 @@ export default {
       if (this.isLevelThree) {
         this.showLevelThree = false
         this.showLevelTwo = true
+      }
+    },
+    onPreviousQuestionnaire () {
+      switch (this.params.level) {
+        case (1) : {
+          this.showModalLevelDesa = false
+          this.isLevelOne = true
+          this.showLevelOne = true
+          break
+        }
+        case (2) : {
+          this.showModalLevelDesa = false
+          this.isLevelTwo = true
+          this.showLevelTwo = true
+          break
+        }
+        case (3) : {
+          this.showModalLevelDesa = false
+          this.isLevelThree = true
+          this.showLevelThree = true
+          break
+        }
+        case (4) : {
+          this.showModalLevelDesa = false
+          this.isLevelFour = true
+          this.showLevelThree = true
+        }
       }
     },
     async onSubmit () {
