@@ -353,7 +353,7 @@ export default {
   }
 
   &__mitra, &__desa {
-    @apply  object-cover object-left-top h-[180px] w-[184px] rounded-t-xl border-0 md:(w-full);
+    @apply  object-cover object-left-top h-[180px] w-auto rounded-t-xl border-0 md:(w-full);
 
     img {
       @apply h-full w-full;
