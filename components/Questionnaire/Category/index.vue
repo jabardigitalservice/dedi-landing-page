@@ -39,6 +39,7 @@
           class="w-[290px]"
           variant="secondary"
           label="Kembali"
+          @click="onPrevious"
         />
       </div>
       <div class="category__action-cancel">
@@ -91,6 +92,9 @@ export default {
     },
     onSubmitCategory () {
       this.$emit('onSubmit')
+    },
+    onPrevious () {
+      this.$emit('on-previous-questionnaire')
     }
   }
 }
