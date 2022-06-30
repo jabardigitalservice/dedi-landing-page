@@ -644,9 +644,10 @@ export default {
           const elKendaraan = this.$refs.kendaraan.files[0]
           if (elKendaraan) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elKendaraan.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { kendaraan } = this.files || {}
             if (isValidFormat) {
-              if (elKendaraan.size > 1000000) {
+              if (elKendaraan.size > maxAllowedSize) {
                 kendaraan.isAttached = false
                 kendaraan.fileImage = null
                 kendaraan.source = null
@@ -656,24 +657,24 @@ export default {
                 kendaraan.fileImage = this.setFile(elKendaraan)
                 kendaraan.source = URL.createObjectURL(elKendaraan)
                 kendaraan.uploadErrorMessage = ''
+                this.submitFile(this.files.kendaraan.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.fasilitas_desa.akses_kendaraan.photo.path = path
+                    this.fasilitas_desa.akses_kendaraan.photo.source = source
+                    this.fasilitas_desa.akses_kendaraan.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    kendaraan.isAttached = false
+                    kendaraan.fileImage = null
+                    kendaraan.uploadErrorMessage = 'Gambar foto jalan/akses kendaraan gagal diupload'
+                  })
               }
             } else {
               kendaraan.isAttached = false
               kendaraan.fileImage = null
               kendaraan.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.kendaraan.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.fasilitas_desa.akses_kendaraan.photo.path = path
-                this.fasilitas_desa.akses_kendaraan.photo.source = source
-                this.fasilitas_desa.akses_kendaraan.photo.original_name = originalName
-              })
-              .catch(() => {
-                kendaraan.isAttached = false
-                kendaraan.fileImage = null
-                kendaraan.uploadErrorMessage = 'Gambar foto jalan/akses kendaraan gagal diupload'
-              })
           }
           break
         }
@@ -681,9 +682,10 @@ export default {
           const elListrik = this.$refs.listrik.files[0]
           if (elListrik) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elListrik.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { listrik } = this.files || {}
             if (isValidFormat) {
-              if (elListrik.size > 1000000) {
+              if (elListrik.size > maxAllowedSize) {
                 listrik.isAttached = false
                 listrik.fileImage = null
                 listrik.source = null
@@ -693,24 +695,24 @@ export default {
                 listrik.fileImage = this.setFile(elListrik)
                 listrik.source = URL.createObjectURL(elListrik)
                 listrik.uploadErrorMessage = ''
+                this.submitFile(this.files.listrik.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.fasilitas_desa.suplai_listrik.photo.path = path
+                    this.fasilitas_desa.suplai_listrik.photo.source = source
+                    this.fasilitas_desa.suplai_listrik.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    listrik.isAttached = false
+                    listrik.fileImage = null
+                    listrik.uploadErrorMessage = 'Gambar tiang listrik/peralatan elektronik gagal diupload'
+                  })
               }
             } else {
               listrik.isAttached = false
               listrik.fileImage = null
               listrik.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.listrik.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.fasilitas_desa.suplai_listrik.photo.path = path
-                this.fasilitas_desa.suplai_listrik.photo.source = source
-                this.fasilitas_desa.suplai_listrik.photo.original_name = originalName
-              })
-              .catch(() => {
-                listrik.isAttached = false
-                listrik.fileImage = null
-                listrik.uploadErrorMessage = 'Gambar tiang listrik/peralatan elektronik gagal diupload'
-              })
           }
           break
         }
@@ -718,9 +720,10 @@ export default {
           const elSeluler = this.$refs.seluler.files[0]
           if (elSeluler) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elSeluler.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { seluler } = this.files || {}
             if (isValidFormat) {
-              if (elSeluler.size > 1000000) {
+              if (elSeluler.size > maxAllowedSize) {
                 seluler.isAttached = false
                 seluler.fileImage = null
                 seluler.source = null
@@ -730,24 +733,24 @@ export default {
                 seluler.fileImage = this.setFile(elSeluler)
                 seluler.source = URL.createObjectURL(elSeluler)
                 seluler.uploadErrorMessage = ''
+                this.submitFile(this.files.seluler.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.fasilitas_desa.jaringan_telepon.photo.path = path
+                    this.fasilitas_desa.jaringan_telepon.photo.source = source
+                    this.fasilitas_desa.jaringan_telepon.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    seluler.isAttached = false
+                    seluler.fileImage = null
+                    seluler.uploadErrorMessage = 'Gambar tiang telepon/ screenshoot handphone gagal diupload'
+                  })
               }
             } else {
               seluler.isAttached = false
               seluler.fileImage = null
               seluler.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.seluler.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.fasilitas_desa.jaringan_telepon.photo.path = path
-                this.fasilitas_desa.jaringan_telepon.photo.source = source
-                this.fasilitas_desa.jaringan_telepon.photo.original_name = originalName
-              })
-              .catch(() => {
-                seluler.isAttached = false
-                seluler.fileImage = null
-                seluler.uploadErrorMessage = 'Gambar tiang telepon/ screenshoot handphone gagal diupload'
-              })
           }
           break
         }
@@ -755,9 +758,10 @@ export default {
           const elInternet = this.$refs.internet.files[0]
           if (elInternet) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elInternet.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { internet } = this.files || {}
             if (isValidFormat) {
-              if (elInternet.size > 1000000) {
+              if (elInternet.size > maxAllowedSize) {
                 internet.isAttached = false
                 internet.fileImage = null
                 internet.source = null
@@ -767,24 +771,24 @@ export default {
                 internet.fileImage = this.setFile(elInternet)
                 internet.source = URL.createObjectURL(elInternet)
                 internet.uploadErrorMessage = ''
+                this.submitFile(this.files.internet.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.fasilitas_desa.jaringan_internet.photo.path = path
+                    this.fasilitas_desa.jaringan_internet.photo.source = source
+                    this.fasilitas_desa.jaringan_internet.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    internet.isAttached = false
+                    internet.fileImage = null
+                    internet.uploadErrorMessage = 'Gambar modem/wifi/screenshoot handphone gagal diupload'
+                  })
               }
             } else {
               internet.isAttached = false
               internet.fileImage = null
               internet.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.internet.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.fasilitas_desa.jaringan_internet.photo.path = path
-                this.fasilitas_desa.jaringan_internet.photo.source = source
-                this.fasilitas_desa.jaringan_internet.photo.original_name = originalName
-              })
-              .catch(() => {
-                internet.isAttached = false
-                internet.fileImage = null
-                internet.uploadErrorMessage = 'Gambar modem/wifi/screenshoot handphone gagal diupload'
-              })
           }
           break
         }

@@ -457,25 +457,25 @@ export default {
             this.file.filePdf = this.setFile(elLetter)
             this.file.source = URL.createObjectURL(elLetter)
             this.file.uploadErrorMessage = ''
+            this.submitFile(this.file.filePdf)
+              .then((response) => {
+                const { source, original_name: originalName, path } = response || null
+                this.params.file.path = path
+                this.params.file.source = source
+                this.params.file.original_name = originalName
+              })
+              .catch(() => {
+                this.file.isAttached = false
+                this.file.filePdf = null
+                this.file.source = null
+                this.file.uploadErrorMessage = 'File SK gagal diupload'
+              })
           }
         } else {
           this.file.isAttached = false
           this.file.filePdf = null
           this.file.uploadErrorMessage = 'Maaf file yang anda masukkan tidak didukung'
         }
-        this.submitFile(this.file.filePdf)
-          .then((response) => {
-            const { source, original_name: originalName, path } = response || null
-            this.params.file.path = path
-            this.params.file.source = source
-            this.params.file.original_name = originalName
-          })
-          .catch(() => {
-            this.file.isAttached = false
-            this.file.filePdf = null
-            this.file.source = null
-            this.file.uploadErrorMessage = 'File SK gagal diupload'
-          })
       }
     },
     confirmData () {
