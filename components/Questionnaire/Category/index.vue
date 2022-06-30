@@ -135,7 +135,7 @@ export default {
     @apply text-center;
 
     &-signup {
-      @apply mb-4;
+      @apply mb-4 flex flex-col place-content-center items-center gap-4 sm:(items-stretch flex-row-reverse justify-center);
     }
 
     &-cancel {
