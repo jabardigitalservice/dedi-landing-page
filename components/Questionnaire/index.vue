@@ -3,15 +3,15 @@
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">
-        <div v-if="!isConfirmed">
+        <div v-show="!isConfirmed">
           <QuestionnaireConfirmation @onSubmit="confirmVillage" />
         </div>
-        <div v-if="!showModalLevelDesa && isConfirmed">
+        <div v-show="!showModalLevelDesa && isConfirmed">
           <QuestionnaireOne v-show="showLevelOne" @onClickLevel="validationQuestionnaireOne" @onSubmit="onNextLevelOne" />
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
-        <div v-if="showModalLevelDesa && isConfirmed">
+        <div v-show="showModalLevelDesa && isConfirmed">
           <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" @on-previous-questionnaire="onPreviousQuestionnaire" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
         </div>
