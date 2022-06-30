@@ -45,36 +45,37 @@
 export default {
   data () {
     return {
-      data: [{
-        id: 1,
-        image: require('@/assets/images/criteria/mitra/CriteriaMitraBusiness.svg'),
-        textImg: 'Proses Bisnis',
-        text: 'Memiliki Proses Bisnis Yang Berkelanjutan'
-      },
-      {
-        id: 2,
-        image: require('@/assets/images/criteria/mitra/CriteriaMitraAccess.svg'),
-        textImg: 'Akses Dashboard',
-        text: 'Menyepakati Pemberian Akses Dashboard dan Data'
-      },
-      {
-        id: 3,
-        image: require('@/assets/images/criteria/mitra/CriteriaMitraAdministrative.svg'),
-        textImg: 'Prasyarat Administrasi',
-        text: 'Memenuhi Prasyarat Administrasi'
-      },
-      {
-        id: 4,
-        image: require('@/assets/images/criteria/mitra/CriteriaMitraLocation.svg'),
-        textImg: 'Lokasi Kerja',
-        text: 'Memiliki Ajuan untuk Penempatan Lokasi Kerja'
-      },
-      {
-        id: 5,
-        image: require('@/assets/images/criteria/mitra/CriteriaMitraContact.svg'),
-        textImg: 'Kontak',
-        text: 'Memiliki Kontak dari'
-      }
+      data: [
+        {
+          id: 1,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraBusiness.svg'),
+          textImg: 'Proses Bisnis',
+          text: 'Memiliki Proses Bisnis Yang Berkelanjutan'
+        },
+        {
+          id: 2,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraAccess.svg'),
+          textImg: 'Akses Dashboard',
+          text: 'Menyepakati Pemberian Akses Dashboard dan Data'
+        },
+        {
+          id: 3,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraAdministrative.svg'),
+          textImg: 'Prasyarat Administrasi',
+          text: 'Memenuhi Prasyarat Administrasi'
+        },
+        {
+          id: 4,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraLocation.svg'),
+          textImg: 'Lokasi Kerja',
+          text: 'Memiliki Ajuan untuk Penempatan Lokasi Kerja'
+        },
+        {
+          id: 5,
+          image: require('@/assets/images/criteria/mitra/CriteriaMitraContact.svg'),
+          textImg: 'Kontak',
+          text: 'Memiliki Kontak dari'
+        }
       ],
       showDetailCriteria: false
     }
