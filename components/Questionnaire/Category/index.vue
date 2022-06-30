@@ -31,12 +31,12 @@
     <div class="category__action">
       <div class="category__action-signup">
         <BaseButton
-          class="w-[290px]"
+          class="category__action-signup--size"
           label="Daftar Sekarang"
           @click="onSubmitCategory"
         />
         <BaseButton
-          class="w-[290px]"
+          class="category__action-signup--size"
           variant="secondary"
           label="Kembali"
           @click="onPrevious"
@@ -139,7 +139,12 @@ export default {
     @apply text-center;
 
     &-signup {
-      @apply mb-4 flex flex-col place-content-center items-center gap-4 sm:(items-stretch flex-row-reverse justify-center);
+      @apply mb-4 flex flex-col items-center gap-4 sm:(items-stretch flex-row-reverse justify-center);
+
+      &--size {
+        @apply w-[290px] py-3.5 px-4 !important
+        sm:(py-2.5 !important);
+      }
     }
 
     &-cancel {
