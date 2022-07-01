@@ -225,24 +225,44 @@ export default {
           this.showModalLevelDesa = false
           this.isLevelOne = true
           this.showLevelOne = true
+          this.isLevelTwo = false
+          this.showLevelTwo = false
+          this.isLevelThree = false
+          this.showLevelThree = false
+          this.isLevelFour = false
           break
         }
         case (2) : {
           this.showModalLevelDesa = false
+          this.isLevelOne = false
+          this.showLevelOne = false
           this.isLevelTwo = true
           this.showLevelTwo = true
+          this.isLevelThree = false
+          this.showLevelThree = false
+          this.isLevelFour = false
           break
         }
         case (3) : {
           this.showModalLevelDesa = false
+          this.isLevelOne = false
+          this.showLevelOne = false
+          this.isLevelTwo = false
+          this.showLevelTwo = false
           this.isLevelThree = true
           this.showLevelThree = true
+          this.isLevelFour = false
           break
         }
         case (4) : {
           this.showModalLevelDesa = false
-          this.isLevelFour = true
+          this.isLevelOne = false
+          this.showLevelOne = false
+          this.isLevelTwo = false
+          this.showLevelTwo = false
+          this.isLevelThree = false
           this.showLevelThree = true
+          this.isLevelFour = true
         }
       }
     },
