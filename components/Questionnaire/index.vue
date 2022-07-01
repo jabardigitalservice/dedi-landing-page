@@ -3,16 +3,16 @@
     <div class="registration--position">
       <img class="registration__image" src="~/assets/images/FooterBanner.svg" alt="footer banner">
       <div class="registration__questionnaire">
-        <div v-if="!isConfirmed">
+        <div v-show="!isConfirmed">
           <QuestionnaireConfirmation @onSubmit="confirmVillage" />
         </div>
-        <div v-if="!showModalLevelDesa && isConfirmed">
+        <div v-show="!showModalLevelDesa && isConfirmed">
           <QuestionnaireOne v-show="showLevelOne" @onClickLevel="validationQuestionnaireOne" @onSubmit="onNextLevelOne" />
           <QuestionnaireTwo v-show="showLevelTwo" @onClickLevel="validationQuestionnaireTwo" @onPrev="onPrev" @onSubmit="onNextLevelTwo" />
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
-        <div v-if="showModalLevelDesa && isConfirmed">
-          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
+        <div v-show="showModalLevelDesa && isConfirmed">
+          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" @on-previous-questionnaire="onPreviousQuestionnaire" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
         </div>
       </div>
@@ -217,6 +217,53 @@ export default {
       if (this.isLevelThree) {
         this.showLevelThree = false
         this.showLevelTwo = true
+      }
+    },
+    onPreviousQuestionnaire () {
+      switch (this.params.level) {
+        case (1) : {
+          this.showModalLevelDesa = false
+          this.isLevelOne = true
+          this.showLevelOne = true
+          this.isLevelTwo = false
+          this.showLevelTwo = false
+          this.isLevelThree = false
+          this.showLevelThree = false
+          this.isLevelFour = false
+          break
+        }
+        case (2) : {
+          this.showModalLevelDesa = false
+          this.isLevelOne = false
+          this.showLevelOne = false
+          this.isLevelTwo = true
+          this.showLevelTwo = true
+          this.isLevelThree = false
+          this.showLevelThree = false
+          this.isLevelFour = false
+          break
+        }
+        case (3) : {
+          this.showModalLevelDesa = false
+          this.isLevelOne = false
+          this.showLevelOne = false
+          this.isLevelTwo = false
+          this.showLevelTwo = false
+          this.isLevelThree = true
+          this.showLevelThree = true
+          this.isLevelFour = false
+          break
+        }
+        case (4) : {
+          this.showModalLevelDesa = false
+          this.isLevelOne = false
+          this.showLevelOne = false
+          this.isLevelTwo = false
+          this.showLevelTwo = false
+          this.isLevelThree = false
+          this.showLevelThree = true
+          this.isLevelFour = true
+        }
       }
     },
     async onSubmit () {
