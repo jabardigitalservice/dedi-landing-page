@@ -73,7 +73,7 @@
           <div class="maps__boxmaps-sidebar-content-box-chips">
             <BaseChipsGroup class="maps__boxmaps-sidebar-content-chips" mandatory :values="listLevel" @onChange="onClickChipLevel" />
           </div>
-          <div class="maps__boxmaps-sidebar-content-text-join-dedi">
+          <div v-show="listVillageIsReady && listVillage.length" class="maps__boxmaps-sidebar-content-text-join-dedi">
             Total <strong class="maps__boxmaps-sidebar-content-total-join-dedi">{{ totalVillage }} desa</strong> telah bergabung
           </div>
           <div v-if="listVillageIsReady && !listVillage.length" class="maps__boxmaps-sidebar-content-empty-state">
