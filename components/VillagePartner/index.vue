@@ -143,11 +143,11 @@ export default {
   }
 
   &__switch {
-    @apply h-[60px] max-w-[376px] sm:w-[376px] rounded-[48px] bg-[#EBEEF3] my-8 flex;
+    @apply h-[60px] max-w-full sm:max-w-[376px] rounded-[48px] bg-[#EBEEF3] my-8 flex;
 
     &--active {
       box-shadow: 0px 4px 12px rgba(0, 27, 61, 0.08);
-      @apply bg-white rounded-[48px] max-w-[184px] sm:w-[184px] h-[52px] m-1 flex items-center justify-center transition-all delay-75;
+      @apply bg-white rounded-[48px] w-[184px] sm:max-w-[184px] h-[52px] m-1 flex items-center justify-center transition-all delay-75;
 
       &-text {
         @apply px-5 py-4 text-blue-gray-800 text-[16px] leading-[19px] font-bold text-center;
@@ -155,7 +155,7 @@ export default {
     }
 
     &--non-active {
-      @apply rounded-[48px] max-w-[184px] sm:w-[184px] h-[52px] m-1 flex items-center justify-center cursor-pointer;
+      @apply rounded-[48px] w-[184px] sm:max-w-[184px] h-[52px] m-1 flex items-center justify-center cursor-pointer;
 
       &-text {
         @apply px-5 py-4 text-blue-gray-400 text-[16px] leading-[19px] text-center;
