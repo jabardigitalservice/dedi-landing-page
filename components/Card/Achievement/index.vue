@@ -249,7 +249,7 @@ export default {
   }
 
   .achievement-nav {
-    @apply w-full h-full flex flex-row pt-6 gap-8 justify-center;
+    @apply w-full h-full flex flex-row pt-6 gap-8 justify-between mx-4 sm:mx-0;
 
     .button-left, .button-right {
       @apply w-[42px] h-[42px] bg-green-700 text-white font-light rounded-full
