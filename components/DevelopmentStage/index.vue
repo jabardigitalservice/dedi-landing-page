@@ -260,7 +260,7 @@ export default {
       @apply float-left mr-[12px] w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out;
 
       &--active {
-        @apply w-[44px] cursor-auto bg-green-600;
+        @apply w-[32px] cursor-auto bg-green-600;
       }
     }
 
