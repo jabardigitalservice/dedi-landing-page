@@ -4,9 +4,11 @@
     class="content"
   >
     <div v-for="content in contents" :key="content.id" class="card">
-      <img :src="content.img" :alt="`Pillar ${content.id}`">
-      <h2>{{ content.title }}</h2>
-      <p>{{ content.desc }}</p>
+      <img class="card-img" :src="content.img" :alt="`Pillar ${content.id}`">
+      <div class="card-text">
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.desc }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -46,25 +48,27 @@ export default {
   sm:(flex flex-row gap-12 space-y-0);
 
   .card {
-    @apply bg-white rounded-2xl h-[382px] w-[320px] !important;
+    @apply bg-white rounded-2xl min-h-[382px] h-auto w-full;
     box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.06) !important;
 
     &:nth-child(even) {
-      @apply h-[405px] !important;
+      @apply min-h-[405px];
     }
 
-    img {
-      @apply rounded-t-[15px] bg-cover bg-center;
+    &-img {
+      @apply rounded-t-[15px] object-cover object-center w-full;
     }
 
-    h2 {
-      @apply text-[20px] leading-[34px] pt-3
-      text-center font-roboto font-bold text-blue-gray-800
-    }
+    &-text {
+      @apply p-4 md:(px-8 pb-8);
 
-    p {
-      @apply w-full h-full pt-3 px-8
-      text-sm text-center text-blue-gray-700
+      h2 {
+        @apply text-[20px] leading-[32px] text-center font-roboto font-bold text-blue-gray-800;
+      }
+
+      p {
+        @apply w-full h-full pt-3 text-base text-center text-blue-gray-700 md:(text-sm);
+      }
     }
   }
 }

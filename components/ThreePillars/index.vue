@@ -1,6 +1,6 @@
 <template>
   <div id="three-pillars" class="pillars">
-    <div class="wrapper">
+    <div class="pillars__wrapper">
       <div class="pillars__title">
         <h1>Nilai yang Kami Tanamkan</h1>
         <p>
@@ -17,9 +17,11 @@
 
 <style lang="postcss">
 .pillars {
-  @apply w-full h-full bg-[#F8F8F6] py-6
-  md:(py-[60px])
-  xl:(py-[120px]);
+  @apply w-full h-full bg-[#F8F8F6];
+
+  &__wrapper {
+    @apply max-w-7xl mx-6 py-6 md:(py-[60px]) xl:(py-[120px] mx-auto);
+  }
 
   &__title {
 
