@@ -106,7 +106,7 @@ export default {
         {
           id: 1,
           title: 'PENDAFTARAN',
-          date: '24 Juni - 08 Juli 2022',
+          date: '24 Juni - 12 Juli 2022',
           subtitle: 'Kepala Desa dan Mitra membuat akun dan melengkapi data yang dibutuhkan.',
           info: 'Khusus Kepala Desa, harus mengisi kuisioner Desa Digital untuk menentukan level desa terlebih dahulu.',
           img: require('~/assets/images/competition/IconAlurSayembara_1.svg')
