@@ -1,8 +1,9 @@
 name: Desa Digital Production
 
 on:
-  release:
-    types: [created, published]
+  push:
+    tags:
+      - '*'
 
 jobs:
   docker:
