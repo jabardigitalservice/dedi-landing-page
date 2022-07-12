@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AboutBanner @onClickCTA="showModal" />
+    <AboutBanner />
     <Potency />
     <Achievement />
     <DevelopmentStage />
