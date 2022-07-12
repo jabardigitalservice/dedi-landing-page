@@ -142,7 +142,7 @@ export default {
           }
         }
       },
-      isConfirmed: false,
+      isConfirmed: true,
       isLevelOne: true,
       isLevelTwo: false,
       isLevelThree: false,

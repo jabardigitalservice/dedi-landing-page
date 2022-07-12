@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroBanner @clickCTA="showModal" />
+    <HeroBanner @clickCTA="onClickCTA" />
     <VillagePartner />
     <Testimonial />
     <JoinInfo />
@@ -21,6 +21,9 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
+    },
+    onClickCTA () {
+      this.$router.push({ path: '/registration', query: { option: 'desa' } })
     }
   }
 }
