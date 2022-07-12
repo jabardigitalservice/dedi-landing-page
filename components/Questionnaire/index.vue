@@ -12,7 +12,7 @@
           <QuestionnaireThree v-show="showLevelThree" @onClickLevel="validationQuestionnaireThree" @onPrev="onPrevQuestionnaireThree" @onSubmit="onNextLevelThree" />
         </div>
         <div v-if="showModalLevelDesa && isConfirmed">
-          <QuestionnaireCategory v-show="showCategory" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
+          <QuestionnaireCategory v-show="showCategory" :is-open-registration="isOpenRegistration" :chosen-level="params.level" :village-types="villages" @onSubmit="onSubmit" />
           <QuestionnaireNotification v-show="showNotification" :level="params.level" :potency-villages="params.properties.potensi_desa.data" />
         </div>
       </div>
@@ -147,6 +147,7 @@ export default {
       isLevelTwo: false,
       isLevelThree: false,
       isLevelFour: false,
+      isOpenRegistration: false, // variable to activate registration
       showLevelOne: true,
       showLevelTwo: false,
       showLevelThree: false,
