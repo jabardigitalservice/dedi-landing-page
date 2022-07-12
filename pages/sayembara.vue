@@ -1,11 +1,11 @@
 <template>
   <div>
-    <CompetitionBanner @onClickCTA="showModal" />
+    <CompetitionBanner />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra @on-click="showModalDetail" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
-    <CompetitionJoin @on-click-join="showModal" />
+    <CompetitionJoin />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <CompetitionCriteriaMitraDetail :show="modalDetail" @on-close-modal="onCloseModal" />
