@@ -108,7 +108,7 @@ export default {
       return this.$refs.heroBanner.$swiper
     },
     defaultBgImage () {
-      return require('~/assets/images/HeroBanner_withContext.svg')
+      return require('~/assets/images/HeroBanner_withContext_Update.svg')
     }
   },
   mounted () {
@@ -178,13 +178,20 @@ export default {
   }
 
   &-full::before {
-      @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
-      content: "";
-      background-image: url('~/assets/images/HeroBanner_wave.svg');
-      background-size: calc(max(100%, 1440px)) auto;
+    @apply bg-no-repeat bg-center w-full h-full absolute bottom-0 left-0 z-10 cursor-pointer;
+    content: "";
+    background-image: url('~/assets/images/HeroBanner_wave.svg');
+    background-size: calc(max(100%, 1440px)) auto;
+    background-position-y: 95%;
+  }
+
+  @media only screen and (min-width: 1460px) {
+    &-full::before {
       background-position-y: 100%;
     }
+  }
 }
+
 .hero-banner {
   @apply w-full h-[540px] sm:h-[680px];
 
