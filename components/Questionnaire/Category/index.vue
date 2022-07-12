@@ -14,10 +14,10 @@
         <p class="category__content-village-level">
           {{ village }}
         </p>
-        <p class="category__content-info">
+        <p v-if="isOpenRegistration" class="category__content-info">
           Agar desa Anda mendapatkan manfaat lebih besar. Yuk daftarkan desa Anda ke Desa Digital!
         </p>
-        <p class="category__content-info">
+        <p v-else class="category__content-info">
           Yuk cari tahu lebih lanjut tentang Desa Digital!
         </p>
       </div>
@@ -32,21 +32,21 @@
       </div>
     </div>
     <div class="category__action">
-      <div class="category__action-signup">
+      <div v-if="isOpenRegistration" class="category__action-signup">
         <BaseButton
           class="w-[290px]"
           label="Daftar Sekarang"
           @click="onSubmitCategory"
         />
       </div>
-      <div class="category__action-cancel">
+      <div v-if="isOpenRegistration" class="category__action-cancel">
         <nuxt-link
           to="/"
         >
           Nanti Saja
         </nuxt-link>
       </div>
-      <div class="category__action-signup">
+      <div v-if="!isOpenRegistration" class="category__action-signup">
         <BaseButton
           class="w-[290px]"
           label="Kembali ke Halaman Utama"
@@ -67,6 +67,10 @@ export default {
     chosenLevel: {
       type: Number,
       default: null
+    },
+    isOpenRegistration: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
