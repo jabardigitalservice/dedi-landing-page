@@ -3,7 +3,7 @@
     <HeroBanner @clickCTA="showModal" />
     <VillagePartner />
     <Testimonial />
-    <JoinInfo @clickCTA="showModal" />
+    <JoinInfo />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
