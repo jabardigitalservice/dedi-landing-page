@@ -17,6 +17,9 @@
         <p class="category__content-info">
           Agar desa Anda mendapatkan manfaat lebih besar. Yuk daftarkan desa Anda ke Desa Digital!
         </p>
+        <p class="category__content-info">
+          Yuk cari tahu lebih lanjut tentang Desa Digital!
+        </p>
       </div>
       <div class="category__content-image">
         <img
@@ -42,6 +45,13 @@
         >
           Nanti Saja
         </nuxt-link>
+      </div>
+      <div class="category__action-signup">
+        <BaseButton
+          class="w-[290px]"
+          label="Kembali ke Halaman Utama"
+          @click="$router.push('/')"
+        />
       </div>
     </div>
   </div>
