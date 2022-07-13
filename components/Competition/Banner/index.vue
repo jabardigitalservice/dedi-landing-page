@@ -17,7 +17,7 @@
             Jadi bagian dari Desa Digital sebagai desa penerima manfaat ataupun sebagai mitra dari desa.
           </p>
           <div class="competition-banner__info-cta">
-            <BaseButton class="competition-banner__info-cta-btn" label="Bergabung Sekarang" @click="onClickCTA" />
+            <BaseButton class="competition-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
           </div>
         </div>
         <img
@@ -35,7 +35,7 @@ export default {
   name: 'CompetitionBanner',
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA', true)
+      this.$emit('onClickCTA')
     }
   }
 }

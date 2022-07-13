@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="competition-join__action">
-          <BaseButton label="Bergabung Sekarang" @click="onClickJoin" />
+          <BaseButton label="Cek Level Desa" @click="onClickJoin" />
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 export default {
   methods: {
     onClickJoin () {
-      this.$emit('on-click-join', true)
+      this.$emit('on-click-join')
     }
   }
 }
