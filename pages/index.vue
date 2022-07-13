@@ -1,9 +1,9 @@
 <template>
   <div>
-    <HeroBanner @clickCTA="showModal" />
+    <HeroBanner @clickCTA="onClickCTA" />
     <VillagePartner />
     <Testimonial />
-    <JoinInfo @clickCTA="showModal" />
+    <JoinInfo />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
   </div>
@@ -21,6 +21,9 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
+    },
+    onClickCTA () {
+      this.$router.push({ path: '/registration', query: { option: 'desa' } })
     }
   }
 }

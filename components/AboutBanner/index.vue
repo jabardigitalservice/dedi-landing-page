@@ -13,7 +13,7 @@
           maksimalkan potensi desa.
         </p>
         <div class="about-banner__info-cta">
-          <BaseButton class="about-banner__info-cta-btn" label="Gabung Desa Digital" @click="onClickCTA" />
+          <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
         </div>
       </div>
       <img class="about-banner__image" src="~/assets/images/AboutBanner.png" alt="About Banner">
@@ -26,7 +26,7 @@ export default {
   name: 'ComponentBannerAbout',
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA', true)
+      this.$emit('onClickCTA')
     }
   }
 }

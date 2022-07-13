@@ -58,11 +58,6 @@
         alt="Info Bergabung Desa"
       >
     </div>
-    <BaseButton
-      class="join-info__cta"
-      label="Gabung Sekarang"
-      @click="onClickCTA"
-    />
   </div>
 </template>
 
@@ -79,14 +74,6 @@ export default {
     },
     isMitra () {
       return this.flowSelected === 'Mitra'
-    }
-  },
-  methods: {
-    onClickCTA () {
-      /**
-       * Trigger open popup join desa digital
-       */
-      this.$emit('clickCTA', true)
     }
   }
 }
