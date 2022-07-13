@@ -1,11 +1,11 @@
 <template>
   <div>
-    <CompetitionBanner />
+    <CompetitionBanner @onClickCTA="showQuestionnaire" />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra @on-click="showModalDetail" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
-    <CompetitionJoin />
+    <CompetitionJoin @on-click-join="showQuestionnaire" />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <CompetitionCriteriaMitraDetail :show="modalDetail" @on-close-modal="onCloseModal" />
@@ -39,6 +39,12 @@ export default {
     },
     onClickFlowDetail (value) {
       this.showModalCompetitionFlowDetail = value
+    },
+    showQuestionnaire () {
+      /**
+       * Trigger to open questionnaire page.
+       */
+      this.$router.push({ path: '/registration', query: { option: 'desa' } })
     }
   }
 }
