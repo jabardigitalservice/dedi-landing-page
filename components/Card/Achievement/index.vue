@@ -249,7 +249,7 @@ export default {
   }
 
   .achievement-nav {
-    @apply w-full h-full flex flex-row pt-6 gap-8 justify-center;
+    @apply w-full h-full flex flex-row pt-6 gap-8 justify-between mx-4 sm:mx-0;
 
     .button-left, .button-right {
       @apply w-[42px] h-[42px] bg-green-700 text-white font-light rounded-full
@@ -264,7 +264,7 @@ export default {
       @apply relative flex flex-row items-center justify-center !important;
 
       &-bullet {
-        @apply w-3 h-3 bg-gray-300 border-0 transition-all duration-300 !important;
+        @apply w-3 h-3 bg-gray-300 border-0 transition-all duration-300 ml-0 mr-3 !important;
 
         &-active {
           @apply w-8 h-3 bg-green-600 border-0 rounded-md !important;

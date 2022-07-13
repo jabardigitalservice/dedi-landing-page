@@ -856,9 +856,10 @@ export default {
           const elSocialMedia = this.$refs.socialMedia.files[0]
           if (elSocialMedia) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elSocialMedia.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { socialMedia } = this.files || {}
             if (isValidFormat) {
-              if (elSocialMedia.size > 1000000) {
+              if (elSocialMedia.size > maxAllowedSize) {
                 socialMedia.isAttached = false
                 socialMedia.fileImage = null
                 socialMedia.source = null
@@ -868,25 +869,25 @@ export default {
                 socialMedia.fileImage = this.setFile(elSocialMedia)
                 socialMedia.source = URL.createObjectURL(elSocialMedia)
                 socialMedia.uploadErrorMessage = ''
+                this.submitFile(this.files.socialMedia.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.properties.tentang_bumdes.sosial_media.photo.path = path
+                    this.properties.tentang_bumdes.sosial_media.photo.source = source
+                    this.properties.tentang_bumdes.sosial_media.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    socialMedia.isAttached = false
+                    socialMedia.fileImage = null
+                    socialMedia.source = null
+                    socialMedia.uploadErrorMessage = 'Gambar foto social media gagal diupload'
+                  })
               }
             } else {
               socialMedia.isAttached = false
               socialMedia.fileImage = null
               socialMedia.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.socialMedia.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.properties.tentang_bumdes.sosial_media.photo.path = path
-                this.properties.tentang_bumdes.sosial_media.photo.source = source
-                this.properties.tentang_bumdes.sosial_media.photo.original_name = originalName
-              })
-              .catch(() => {
-                socialMedia.isAttached = false
-                socialMedia.fileImage = null
-                socialMedia.source = null
-                socialMedia.uploadErrorMessage = 'Gambar foto social media gagal diupload'
-              })
           }
           break
         }
@@ -894,9 +895,10 @@ export default {
           const elBumdes = this.$refs.bumdes.files[0]
           if (elBumdes) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elBumdes.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { bumdes } = this.files || {}
             if (isValidFormat) {
-              if (elBumdes.size > 1000000) {
+              if (elBumdes.size > maxAllowedSize) {
                 bumdes.isAttached = false
                 bumdes.fileImage = null
                 bumdes.source = null
@@ -906,25 +908,25 @@ export default {
                 bumdes.fileImage = this.setFile(elBumdes)
                 bumdes.source = URL.createObjectURL(elBumdes)
                 bumdes.uploadErrorMessage = ''
+                this.submitFile(this.files.bumdes.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.properties.tentang_bumdes.bumdes.photo.path = path
+                    this.properties.tentang_bumdes.bumdes.photo.source = source
+                    this.properties.tentang_bumdes.bumdes.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    bumdes.isAttached = false
+                    bumdes.fileImage = null
+                    bumdes.source = null
+                    bumdes.uploadErrorMessage = 'Gambar BUMDes gagal diupload'
+                  })
               }
             } else {
               bumdes.isAttached = false
               bumdes.fileImage = null
               bumdes.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.bumdes.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.properties.tentang_bumdes.bumdes.photo.path = path
-                this.properties.tentang_bumdes.bumdes.photo.source = source
-                this.properties.tentang_bumdes.bumdes.photo.original_name = originalName
-              })
-              .catch(() => {
-                bumdes.isAttached = false
-                bumdes.fileImage = null
-                bumdes.source = null
-                bumdes.uploadErrorMessage = 'Gambar BUMDes gagal diupload'
-              })
           }
           break
         }
@@ -932,9 +934,10 @@ export default {
           const elKomoditas = this.$refs.komoditas.files[0]
           if (elKomoditas) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elKomoditas.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { komoditas } = this.files || {}
             if (isValidFormat) {
-              if (elKomoditas.size > 1000000) {
+              if (elKomoditas.size > maxAllowedSize) {
                 komoditas.isAttached = false
                 komoditas.fileImage = null
                 komoditas.source = null
@@ -944,25 +947,25 @@ export default {
                 komoditas.fileImage = this.setFile(elKomoditas)
                 komoditas.source = URL.createObjectURL(elKomoditas)
                 komoditas.uploadErrorMessage = ''
+                this.submitFile(this.files.komoditas.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.properties.tentang_bumdes.komoditas.photo.path = path
+                    this.properties.tentang_bumdes.komoditas.photo.source = source
+                    this.properties.tentang_bumdes.komoditas.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    komoditas.isAttached = false
+                    komoditas.fileImage = null
+                    komoditas.source = null
+                    komoditas.uploadErrorMessage = 'Gambar komoditas gagal diupload'
+                  })
               }
             } else {
               komoditas.isAttached = false
               komoditas.fileImage = null
               komoditas.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.komoditas.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.properties.tentang_bumdes.komoditas.photo.path = path
-                this.properties.tentang_bumdes.komoditas.photo.source = source
-                this.properties.tentang_bumdes.komoditas.photo.original_name = originalName
-              })
-              .catch(() => {
-                komoditas.isAttached = false
-                komoditas.fileImage = null
-                komoditas.source = null
-                komoditas.uploadErrorMessage = 'Gambar komoditas gagal diupload'
-              })
           }
           break
         }
@@ -970,9 +973,10 @@ export default {
           const elPotency = this.$refs.potency.files[0]
           if (elPotency) {
             const isValidFormat = ['image/png', 'image/jpeg'].includes(elPotency.type)
+            const maxAllowedSize = 5 * 1024 * 1024
             const { potency } = this.files || {}
             if (isValidFormat) {
-              if (elPotency.size > 1000000) {
+              if (elPotency.size > maxAllowedSize) {
                 potency.isAttached = false
                 potency.fileImage = null
                 potency.source = null
@@ -982,25 +986,25 @@ export default {
                 potency.fileImage = this.setFile(elPotency)
                 potency.source = URL.createObjectURL(elPotency)
                 potency.uploadErrorMessage = ''
+                this.submitFile(this.files.potency.fileImage)
+                  .then((response) => {
+                    const { source, original_name: originalName, path } = response || null
+                    this.properties.potensi_desa.photo.path = path
+                    this.properties.potensi_desa.photo.source = source
+                    this.properties.potensi_desa.photo.original_name = originalName
+                  })
+                  .catch(() => {
+                    potency.isAttached = false
+                    potency.fileImage = null
+                    potency.source = null
+                    potency.uploadErrorMessage = 'Gambar potensi desa gagal diupload'
+                  })
               }
             } else {
               potency.isAttached = false
               potency.fileImage = null
               potency.uploadErrorMessage = 'Maaf file yang anda masukan tidak didukung'
             }
-            this.submitFile(this.files.potency.fileImage)
-              .then((response) => {
-                const { source, original_name: originalName, path } = response || null
-                this.properties.potensi_desa.photo.path = path
-                this.properties.potensi_desa.photo.source = source
-                this.properties.potensi_desa.photo.original_name = originalName
-              })
-              .catch(() => {
-                potency.isAttached = false
-                potency.fileImage = null
-                potency.source = null
-                potency.uploadErrorMessage = 'Gambar potensi desa gagal diupload'
-              })
           }
           break
         }

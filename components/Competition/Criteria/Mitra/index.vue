@@ -1,6 +1,7 @@
 <template>
-  <div id="criteria-mitra" class="wrapper criteria-mitra">
+  <div id="criteria-mitra" class="criteria-mitra">
     <div class="criteria-mitra__wrapper">
+      <!-- Content Upper Section -->
       <div class="criteria-mitra__content">
         <div class="criteria-mitra__content-text">
           <h1 class="criteria-mitra__content-text-title">
@@ -11,22 +12,30 @@
             <strong>5 ketentuan</strong> berikut:
           </p>
         </div>
-        <div
-          v-for="item in CriteriaMitraContents"
-          :key="item.id"
-          class="criteria-mitra__content-provision"
-        >
-          <img class="criteria-mitra__content-provision-image" :src="item.image" :alt="item.textImg">
-          <p v-if="item.id < 5" class="criteria-mitra__content-provision-text">
-            {{ item.text }}
+        <div v-for="index in 2" :key="data[index-1].id" class="criteria-mitra__content-provision">
+          <img class="criteria-mitra__content-provision-image" :src="data[index-1].image" :alt="data[index-1].textImg">
+          <p class="criteria-mitra__content-provision-text">
+            {{ data[index-1].text }}
           </p>
-          <p v-if="item.id === 5" class="criteria-mitra__content-provision-text">
-            {{ item.text }} <span class="criteria-mitra__content-provision-text--italic">Local Champion</span>
+        </div>
+      </div>
+      <!-- Content Lower Section -->
+      <div class="criteria-mitra__content">
+        <div v-for="index in 3" :key="data[index+1].id" class="criteria-mitra__content-provision">
+          <img class="criteria-mitra__content-provision-image" :src="data[index+1].image" :alt="data[index+1].textImg">
+          <p class="criteria-mitra__content-provision-text">
+            {{ data[index+1].text }}
+            <em v-if="data[index+1].id === 5">Local Champion</em>
           </p>
         </div>
       </div>
       <div class="criteria-mitra__action">
-        <BaseButton class="criteria-mitra__action-detail-btn" variant="secondary" label="Lihat Detail Kriteria Mitra Sayembara Desa Digital" @click="onShowDetailContent" />
+        <BaseButton
+          class="criteria-mitra__action-detail-btn"
+          variant="secondary"
+          label="Lihat Detail Kriteria Mitra Sayembara Desa Digital"
+          @click="onShowDetailContent"
+        />
       </div>
     </div>
   </div>
@@ -36,7 +45,7 @@
 export default {
   data () {
     return {
-      CriteriaMitraContents: [
+      data: [
         {
           id: 1,
           image: require('@/assets/images/criteria/mitra/CriteriaMitraBusiness.svg'),
@@ -77,8 +86,9 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="postcss" scoped>
-@import './CriteriaMitra.pcss';
+  @import './CriteriaMitra.pcss';
 </style>
