@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="competition-join__action">
-          <BaseButton label="Cek Level Desa" @click="showQuestionnaire" />
+          <BaseButton label="Cek Level Desa" @click="onClickJoin" />
         </div>
       </div>
     </div>
@@ -22,13 +22,7 @@
 export default {
   methods: {
     onClickJoin () {
-      this.$emit('on-click-join', true)
-    },
-    showQuestionnaire () {
-      /**
-       * Trigger to open questionnaire page.
-       */
-      this.$router.push({ path: '/registration', query: { option: 'desa' } })
+      this.$emit('on-click-join')
     }
   }
 }
