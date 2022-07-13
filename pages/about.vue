@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AboutBanner />
+    <AboutBanner @onClickCTA="showQuestionnaire" />
     <Potency />
     <Achievement />
     <DevelopmentStage />
@@ -26,6 +26,12 @@ export default {
     },
     closeModal (value) {
       this.modalOpen = value
+    },
+    showQuestionnaire () {
+      /**
+       * Trigger to open questionnaire page.
+       */
+      this.$router.push({ path: '/registration', query: { option: 'desa' } })
     }
   }
 }
