@@ -14,7 +14,7 @@
             maksimalkan potensi desa.
           </p>
           <div class="about-banner__info-cta">
-            <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="showQuestionnaire" />
+            <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
           </div>
         </div>
         <img class="about-banner__image" src="~/assets/images/AboutBanner.png" alt="About Banner">
@@ -28,13 +28,7 @@ export default {
   name: 'ComponentBannerAbout',
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA', true)
-    },
-    showQuestionnaire () {
-      /**
-       * Trigger to open questionnaire page.
-       */
-      this.$router.push({ path: '/registration', query: { option: 'desa' } })
+      this.$emit('onClickCTA')
     }
   }
 }
