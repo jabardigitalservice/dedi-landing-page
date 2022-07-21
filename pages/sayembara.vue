@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CompetitionBanner @onClickCTA="showQuestionnaire" />
+    <CompetitionBanner @onClickCTA="onTriggerAnnouncement" />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra @on-click="showModalDetail" />
@@ -10,6 +10,7 @@
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
     <CompetitionCriteriaMitraDetail :show="modalDetail" @on-close-modal="onCloseModal" />
     <CompetitionFlowDetail :show="showModalCompetitionFlowDetail" @closeModalCompetitionFlowDetail="onClickFlowDetail" />
+    <Announcement :show="showAnnouncement" @on-close-modal="onTriggerAnnouncement" />
     <BaseToast />
   </div>
 </template>
@@ -21,7 +22,8 @@ export default {
     return {
       modalOpen: false,
       modalDetail: false,
-      showModalCompetitionFlowDetail: false
+      showModalCompetitionFlowDetail: false,
+      showAnnouncement: false
     }
   },
   methods: {
@@ -45,6 +47,12 @@ export default {
        * Trigger to open questionnaire page.
        */
       this.$router.push({ path: '/registration', query: { option: 'desa' } })
+    },
+    onCloseAnnouncement () {
+      this.showAnnouncement = false
+    },
+    onTriggerAnnouncement (value) {
+      this.showAnnouncement = value
     }
   }
 }

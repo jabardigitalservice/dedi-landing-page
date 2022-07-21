@@ -3,6 +3,7 @@
     <ModalJoinDedi />
     <ModalCriteriaMitra />
     <ModalCompetitionFlowDetail />
+    <ModalAnnouncement />
     <SidebarMobile :show="sidebarOpen" @close-sidebar="closeSidebar" />
     <Header @open-sidebar="openSidebar" />
     <Nuxt />

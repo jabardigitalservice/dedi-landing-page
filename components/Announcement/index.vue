@@ -17,7 +17,7 @@
       >
         <div class="modal__box">
           <div class="modal__box-image">
-            <button class="modal__box--circle">
+            <button class="modal__box--circle" @click="onClose">
               <IconTimes
                 class="icon__times"
               />
@@ -56,6 +56,11 @@ export default {
     show: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    onClose () {
+      this.$emit('on-close-modal', false)
     }
   }
 }
