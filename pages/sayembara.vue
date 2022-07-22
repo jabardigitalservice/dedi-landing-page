@@ -48,9 +48,6 @@ export default {
        */
       this.$router.push({ path: '/registration', query: { option: 'desa' } })
     },
-    onCloseAnnouncement () {
-      this.showAnnouncement = false
-    },
     onTriggerAnnouncement (value) {
       this.showAnnouncement = value
     }
