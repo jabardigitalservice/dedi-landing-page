@@ -182,13 +182,7 @@ export default {
     content: "";
     background-image: url('~/assets/images/HeroBanner_wave.svg');
     background-size: calc(max(100%, 1440px)) auto;
-    background-position-y: 95%;
-  }
-
-  @media only screen and (min-width: 1460px) {
-    &-full::before {
-      background-position-y: 100%;
-    }
+    background-position-y: 100%;
   }
 }
 
