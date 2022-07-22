@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CompetitionBanner @onClickCTA="showQuestionnaire" />
+    <CompetitionBanner />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
     <CompetitionCriteriaMitra @on-click="showModalDetail" />

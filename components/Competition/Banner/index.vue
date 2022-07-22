@@ -17,7 +17,7 @@
             Jadi bagian dari Desa Digital sebagai desa penerima manfaat ataupun sebagai mitra dari desa.
           </p>
           <div class="competition-banner__info-cta">
-            <BaseButton class="competition-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
+            <BaseButton class="competition-banner__info-cta-btn" label="Cek Hasil Sayembara" @click="onClickCTA" />
           </div>
         </div>
         <img
@@ -33,9 +33,37 @@
 <script>
 export default {
   name: 'CompetitionBanner',
+  data () {
+    return {
+      fileSecret: this.$config.apiSecretUpload
+    }
+  },
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA')
+      this.$axios.get('/files/download/PengumumanDesaTerpilih.pdf', {
+        headers: {
+          'x-api-key': this.fileSecret
+        }
+      }).then((response) => {
+        const { data } = response.data
+        const fileURL = data.path
+        const fileLink = document.createElement('a')
+
+        fileLink.href = fileURL
+        fileLink.setAttribute('target', '_blank')
+        fileLink.setAttribute('download', 'file.pdf')
+        document.body.appendChild(fileLink)
+
+        fileLink.click()
+      }).catch((error) => {
+        const { data } = error.response || {}
+        if (data?.error) {
+          this.$store.dispatch('toast/showToast', {
+            type: 'error',
+            message: data.error
+          })
+        }
+      })
     }
   }
 }
