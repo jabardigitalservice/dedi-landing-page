@@ -187,7 +187,7 @@ export default {
 
 <style lang="postcss">
   #achievement .swiper-slide {
-    @apply sm:(w-[495px]) xl:(w-[unset])
+    @apply sm:(w-[495px] my-6) xl:(w-[unset]) md:(my-8);
   }
 
   .achievement__main {
@@ -210,8 +210,7 @@ export default {
     }
 
     &-cards {
-      @apply w-full h-full relative items-center justify-center pt-6 gap-8
-      md: (pt-8);
+      @apply w-full h-full relative items-center justify-center gap-8;
 
       &__card {
         border-radius: 0.75rem 0.75rem 0 0;
