@@ -27,7 +27,7 @@
 export default {
   methods: {
     onClickCTA () {
-      window.open('https://bit.ly/HotlineSayembaraDeDi2022', '_blank')
+      window.open('https://bit.ly/HotlineDesaDigital', '_blank')
     }
   }
 }
