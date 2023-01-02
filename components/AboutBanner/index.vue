@@ -9,8 +9,7 @@
           Membawa Perubahan
         </h2>
         <p class="about-banner__info-desc">
-          Perluas jangkauan, kembangkan kapasitas masyarakat, dan
-          maksimalkan potensi desa.
+          Perluas jangkauan, kembangkan kapasitas masyarakat, dan maksimalkan potensi desa.
         </p>
         <div class="about-banner__info-cta">
           <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
