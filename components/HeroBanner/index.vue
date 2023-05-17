@@ -67,7 +67,7 @@ export default {
           id: 0,
           title: 'Saatnya semua menikmati manfaat teknologi',
           description: 'Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.',
-          link: 'defaultLink',
+          link: 'https://bit.ly/FormPendaftaranTahap1',
           is_active: false,
           order: 1,
           image: {
@@ -108,7 +108,7 @@ export default {
       return this.$refs.heroBanner.$swiper
     },
     defaultBgImage () {
-      return require('~/assets/images/HeroBanner_withContext_Update.svg')
+      return require('~/assets/images/HeroBanner.svg')
     }
   },
   mounted () {

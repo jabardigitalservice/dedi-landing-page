@@ -4,80 +4,19 @@
       Jadi Bagian Desa Digital, Jadi Bagian Perubahan
     </h4>
     <p class="join-info__subheading">
-      Bergabung sebagai desa ataupun mitra dengan ikuti tahapan berikut.
+      Bergabung sebagai desa dengan ikuti tahapan berikut.
     </p>
-    <div class="join-info__switch">
-      <div
-        :class="{
-          'join-info__switch--active': isDesa,
-          'join-info__switch--non-active': !isDesa,
-        }"
-        @click="flowSelected = 'Desa'"
-      >
-        <div
-          :class="{
-            'join-info__switch--active-text': isDesa,
-            'join-info__switch--non-active-text': !isDesa
-          }"
-        >
-          Alur Desa
-        </div>
-      </div>
-      <div
-        :class="{
-          'join-info__switch--active': isMitra,
-          'join-info__switch--non-active': !isMitra,
-        }"
-        @click="flowSelected = 'Mitra'"
-      >
-        <div
-          :class="{
-            'join-info__switch--active-text': isMitra,
-            'join-info__switch--non-active-text': !isMitra
-          }"
-        >
-          Alur Mitra
-        </div>
-      </div>
-    </div>
     <div class="join-info__infografik">
       <img
-        v-show="isDesa"
         class="max-w-max join-info__infografik-image"
         width="932"
         height="395"
         src="~/assets/images/InfoJoinDesa.svg"
         alt="Info Bergabung Desa"
       >
-      <img
-        v-show="isMitra"
-        class="max-w-max join-info__infografik-image "
-        width="932"
-        height="395"
-        src="~/assets/images/InfoJoinMitra.svg"
-        alt="Info Bergabung Desa"
-      >
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      flowSelected: 'Desa'
-    }
-  },
-  computed: {
-    isDesa () {
-      return this.flowSelected === 'Desa'
-    },
-    isMitra () {
-      return this.flowSelected === 'Mitra'
-    }
-  }
-}
-</script>
 
 <style lang="postcss">
 .join-info {
