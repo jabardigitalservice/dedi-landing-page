@@ -6,7 +6,6 @@
     <JoinInfo />
     <ContactUs />
     <JoinDedi :show="modalOpen" @closeModal="closeModal" />
-    <Announcement :show="showAnnouncement" @on-close-modal="onTriggerAnnouncement" />
   </div>
 </template>
 
@@ -18,11 +17,6 @@ export default {
       showAnnouncement: false
     }
   },
-  mounted () {
-    window.addEventListener('load', () => {
-      this.showAnnouncement = true
-    })
-  },
   methods: {
     showModal (value) {
       this.modalOpen = value
@@ -32,9 +26,6 @@ export default {
     },
     onClickCTA () {
       this.$router.push({ path: '/registration', query: { option: 'desa' } })
-    },
-    onTriggerAnnouncement (value) {
-      this.showAnnouncement = value
     }
   }
 }
