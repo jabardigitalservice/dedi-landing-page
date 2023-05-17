@@ -3,7 +3,6 @@
     <CompetitionBanner />
     <CompetitionAbout />
     <CompetitionVillageCriteria />
-    <CompetitionCriteriaMitra @on-click="showModalDetail" />
     <CompetitionFlow @onClickFlowDetail="onClickFlowDetail" />
     <CompetitionJoin @on-click-join="showQuestionnaire" />
     <ContactUs />
@@ -32,9 +31,6 @@ export default {
       this.modalOpen = value
     },
     onCloseModal (value) {
-      this.modalDetail = value
-    },
-    showModalDetail (value) {
       this.modalDetail = value
     },
     onClickFlowDetail (value) {
