@@ -5,8 +5,8 @@
         <h1>Kriteria Desa Yang Dapat Mengikuti</h1>
         <p>
           Desa yang bisa ikut serta dalam sayembara ini adalah desa yang masuk dalam kategori
-          <strong class="text-white">Desa Level 3.0</strong> dan <strong class="text-white">Level 4.0</strong>
-          sesuai ketentuan berikut:
+          <strong class="text-white">Level 4.0</strong>
+          dengan potensi pertanian dan perikanan sesuai ketentuan berikut:
         </p>
       </div>
       <div class="village-criteria__main">
