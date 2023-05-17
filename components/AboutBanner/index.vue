@@ -1,21 +1,18 @@
 <template>
-  <div id="about-banner" class="wrapper">
-    <div class="about-banner">
-      <div class="about-banner__wrapper">
-        <div class="about-banner__info">
-          <h2 class="about-banner__info-title">
-            Meniadakan Batasan Untuk
-          </h2>
-          <h2 class="about-banner__info-subtitle">
-            Membawa Perubahan
-          </h2>
-          <p class="about-banner__info-desc">
-            Perluas jangkauan, kembangkan kapasitas masyarakat, dan
-            maksimalkan potensi desa.
-          </p>
-          <div class="about-banner__info-cta">
-            <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
-          </div>
+  <div id="about-banner" class="about-banner">
+    <div class="about-banner__wrapper">
+      <div class="about-banner__info">
+        <h2 class="about-banner__info-title">
+          Meniadakan Batasan Untuk
+        </h2>
+        <h2 class="about-banner__info-subtitle">
+          Membawa Perubahan
+        </h2>
+        <p class="about-banner__info-desc">
+          Perluas jangkauan, kembangkan kapasitas masyarakat, dan maksimalkan potensi desa.
+        </p>
+        <div class="about-banner__info-cta">
+          <BaseButton class="about-banner__info-cta-btn" label="Daftar Sayembara" @click="onClickCTA" />
         </div>
         <img class="about-banner__image" src="~/assets/images/AboutBanner.png" alt="About Banner">
       </div>
@@ -26,9 +23,14 @@
 <script>
 export default {
   name: 'ComponentBannerAbout',
+  data () {
+    return {
+      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+    }
+  },
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA')
+      window.open(this.linkCTA, '_blank')
     }
   }
 }
