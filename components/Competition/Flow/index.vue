@@ -53,7 +53,7 @@ export default {
     }
 
     &__main {
-      @apply w-full h-full overflow-x-auto flex items-center justify-start my-[60px] lg:(justify-center);
+      @apply w-full h-full overflow-x-auto flex items-center justify-start my-[40px] lg:(justify-center);
 
       /* Scroll bar stylings */
       scrollbar-color: #E0E0E0 transparent;
