@@ -12,7 +12,7 @@
           Perluas jangkauan, kembangkan kapasitas masyarakat, dan maksimalkan potensi desa.
         </p>
         <div class="about-banner__info-cta">
-          <BaseButton class="about-banner__info-cta-btn" label="Cek Level Desa" @click="onClickCTA" />
+          <BaseButton class="about-banner__info-cta-btn" label="Daftar Sayembara" @click="onClickCTA" />
         </div>
       </div>
       <img class="about-banner__image" src="~/assets/images/AboutBanner.png" alt="About Banner">
@@ -23,9 +23,14 @@
 <script>
 export default {
   name: 'ComponentBannerAbout',
+  data () {
+    return {
+      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+    }
+  },
   methods: {
     onClickCTA () {
-      this.$emit('onClickCTA')
+      window.open(this.linkCTA, '_blank')
     }
   }
 }

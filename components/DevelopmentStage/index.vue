@@ -165,7 +165,7 @@ export default {
           desc: 'Meningkatkan produktifitas dan kemandirian masyarakat desa dengan meluncurkan ragam desa tematik sesuai dengan potensi desa. Tematik yang sudah berjalan diantaranya:',
           image: require('~/assets/images/about/tahap4.png'),
           thematics: [
-            'Pertanian', 'Perikanan', 'Kesehatan', 'Pendidikan', 'Waste Management', 'Multimedia'
+            'Pertanian', 'Perikanan', 'Kesehatan', 'Pendidikan', 'Waste Management', 'Multimedia', 'Peternakan'
           ]
         }
       ]
@@ -241,7 +241,7 @@ export default {
     }
 
     &-thematic {
-      @apply grid grid-cols-2 gap-2;
+      @apply grid md:(grid-cols-2 gap-2);
     }
 
     &-desc {

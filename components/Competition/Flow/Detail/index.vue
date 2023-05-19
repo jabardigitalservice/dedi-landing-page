@@ -144,7 +144,7 @@ export default {
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
         }
       ],
-      fileSecret: this.$config.apiSecretUpload
+      linkDocument: 'https://drive.google.com/file/d/1HHQaSMJl1N6wB3jJXaCZIeUrQAhy_FBJ/view?usp=sharing'
     }
   },
   methods: {
@@ -154,30 +154,7 @@ export default {
       }
     },
     onClickDownload () {
-      this.$axios.get('/files/download/probis_sayembara.pdf', {
-        headers: {
-          'x-api-key': this.fileSecret
-        }
-      }).then((response) => {
-        const { data } = response.data
-        const fileURL = data.path
-        const fileLink = document.createElement('a')
-
-        fileLink.href = fileURL
-        fileLink.setAttribute('target', '_blank')
-        fileLink.setAttribute('download', 'file.pdf')
-        document.body.appendChild(fileLink)
-
-        fileLink.click()
-      }).catch((error) => {
-        const { data } = error.response || {}
-        if (data?.error) {
-          this.$store.dispatch('toast/showToast', {
-            type: 'error',
-            message: data.error
-          })
-        }
-      })
+      window.open(this.linkDocument, '_blank')
     }
   }
 }
