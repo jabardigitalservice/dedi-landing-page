@@ -44,21 +44,16 @@ export const competitionFooters = [
   },
   {
     id: 4,
-    element: 'criteria-mitra',
-    text: 'Kriteria Mitra'
-  },
-  {
-    id: 5,
     element: 'competition-flow',
     text: 'Alur Sayembara Desa Digital'
   },
   {
-    id: 6,
+    id: 5,
     element: 'competition-join',
-    text: 'Gabung Desa Digital'
+    text: 'Daftar Sayembara'
   },
   {
-    id: 7,
+    id: 6,
     element: 'contact-us',
     text: 'Kontak Kami'
   }
@@ -68,7 +63,7 @@ export const aboutFooters = [
   {
     id: 1,
     element: 'about-banner',
-    text: 'Gabung Desa Digital'
+    text: 'Daftar Sayembara'
   },
   {
     id: 2,
