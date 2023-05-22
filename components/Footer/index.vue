@@ -16,10 +16,10 @@
           <img height="24" width="22" src="~/assets/icons/Phone.svg" alt="Icon Phone">
           <div>
             <div class="footer__info-title">
-              Telepon/whatsapp
+              Telepon/Whatsapp
             </div>
             <div class="footer__info-desc">
-              +62 821-2567-5017
+              +62 821-2603-0038
             </div>
           </div>
         </div>

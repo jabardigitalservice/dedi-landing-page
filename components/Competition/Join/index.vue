@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="competition-join__action">
-          <BaseButton label="Cek Level Desa" @click="onClickJoin" />
+          <BaseButton label="Daftar Sayembara" @click="onClickJoin" />
         </div>
       </div>
     </div>
@@ -20,9 +20,15 @@
 
 <script>
 export default {
+  name: 'CompetitionJoin',
+  data () {
+    return {
+      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+    }
+  },
   methods: {
     onClickJoin () {
-      this.$emit('on-click-join')
+      window.open(this.linkCTA, '_blank')
     }
   }
 }

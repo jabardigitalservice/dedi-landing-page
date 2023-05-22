@@ -106,45 +106,45 @@ export default {
         {
           id: 1,
           title: 'PENDAFTARAN',
-          date: '24 Juni - 12 Juli 2022',
-          subtitle: 'Kepala Desa dan Mitra membuat akun dan melengkapi data yang dibutuhkan.',
-          info: 'Khusus Kepala Desa, harus mengisi kuisioner Desa Digital untuk menentukan level desa terlebih dahulu.',
+          date: '23 Mei - 08 Juni 2023',
+          subtitle: 'Kepala Desa dan masyarakat umum mengakses website Desa Digital untuk daftar Sayembara Desa Digital 2023.',
+          info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_1.svg')
         },
         {
           id: 2,
           title: 'PROSES MATCH-MAKING',
-          date: '15 - 22 Juli 2022',
-          subtitle: 'Proses ini dilakukan untuk memasangkan desa dan mitra dengan fokus pengembangan yang sama.',
-          info: 'Penilaian dilakukan berdasarkan SOP yang berlaku.',
+          date: '08 - 30 Juni 2023',
+          subtitle: 'Proses ini dilakukan untuk melihat kesesuaian antara potensi desa dengan mitra Desa Digital terkait. Selama proses match-making, akan dilakukan proses validasi kepada calon penerima manfaat. Penilaiannya dilakukan berdasarkan dari Panduan Sayembara Desa Digital.',
+          info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_2.svg')
         },
         {
           id: 3,
           title: 'PROSES AUDIENSI',
-          date: '22 - 29 Juli 2022',
-          subtitle: 'Desa terpilih kemudian dipertemukan denan mitra OPD terkait.',
+          date: '03 - 07 Juli 2023',
+          subtitle: 'Penerima manfaat dan desa terpilih akan diundang untuk audiensi dengan tim Desa Digital, mitra Desa Digital dan Perangkat Daerah terkait.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_3.svg')
         },
         {
           id: 4,
           title: 'IMPLEMENTASI DESA DIGITAL',
-          date: 'Agustus - Oktober 2022',
-          subtitle: 'Proses implementasi dan pendampingan inovasi teknologi dari mitra kepada desa.',
+          date: 'Juli - September 2023',
+          subtitle: 'Proses implementasi dan pendampingan penggunaan alat pertanian/perikanan berbasis teknologi IoT dari mitra kepada penerima manfaat Desa Digital.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_4.svg')
         },
         {
           id: 5,
           title: 'MONITORING DAN EVALUASI',
-          date: 'September - Desember 2022',
-          subtitle: 'Proses ini dilakukan kepada mitra dan desa.',
+          date: 'September - November 2023',
+          subtitle: 'Proses ini dilakukan kepada mitra dan penerima manfaat Desa Digital.',
           info: '',
           img: require('~/assets/images/competition/IconAlurSayembara_5.svg')
         }
       ],
-      fileSecret: this.$config.apiSecretUpload
+      linkDocument: 'https://drive.google.com/file/d/1HHQaSMJl1N6wB3jJXaCZIeUrQAhy_FBJ/view?usp=sharing'
     }
   },
   methods: {
@@ -154,30 +154,7 @@ export default {
       }
     },
     onClickDownload () {
-      this.$axios.get('/files/download/probis_sayembara.pdf', {
-        headers: {
-          'x-api-key': this.fileSecret
-        }
-      }).then((response) => {
-        const { data } = response.data
-        const fileURL = data.path
-        const fileLink = document.createElement('a')
-
-        fileLink.href = fileURL
-        fileLink.setAttribute('target', '_blank')
-        fileLink.setAttribute('download', 'file.pdf')
-        document.body.appendChild(fileLink)
-
-        fileLink.click()
-      }).catch((error) => {
-        const { data } = error.response || {}
-        if (data?.error) {
-          this.$store.dispatch('toast/showToast', {
-            type: 'error',
-            message: data.error
-          })
-        }
-      })
+      window.open(this.linkDocument, '_blank')
     }
   }
 }
