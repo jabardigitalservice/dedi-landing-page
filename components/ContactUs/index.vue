@@ -27,7 +27,7 @@
 export default {
   methods: {
     onClickCTA () {
-      window.open('https://s.id/hotline-desadigital', '_blank')
+      window.open('https://bit.ly/HotlineDesaDigital', '_blank')
     }
   }
 }
