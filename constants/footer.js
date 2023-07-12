@@ -30,7 +30,7 @@ export const competitionFooters = [
   {
     id: 1,
     element: 'competition-banner',
-    text: 'Gabung Sayembara Desa Digital'
+    text: 'Cek Pemenang Sayembara'
   },
   {
     id: 2,
@@ -49,11 +49,6 @@ export const competitionFooters = [
   },
   {
     id: 5,
-    element: 'competition-join',
-    text: 'Daftar Sayembara'
-  },
-  {
-    id: 6,
     element: 'contact-us',
     text: 'Kontak Kami'
   }
@@ -63,7 +58,7 @@ export const aboutFooters = [
   {
     id: 1,
     element: 'about-banner',
-    text: 'Daftar Sayembara'
+    text: 'Cek Pemenang Sayembara'
   },
   {
     id: 2,

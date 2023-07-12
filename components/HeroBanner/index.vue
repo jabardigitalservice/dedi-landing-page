@@ -67,7 +67,7 @@ export default {
           id: 0,
           title: 'Saatnya semua menikmati manfaat teknologi',
           description: 'Bersama-sama, membuat desa lebih banyak kemajuan daripada yang kita bayangkan.',
-          link: 'https://bit.ly/FormPendaftaranTahap1',
+          link: 'https://drive.google.com/file/d/13Dxsg0w2JI__657jUFwktAcgbkaPVNK-/view?usp=drivesdk',
           is_active: false,
           order: 1,
           image: {
