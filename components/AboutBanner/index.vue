@@ -12,7 +12,7 @@
           Perluas jangkauan, kembangkan kapasitas masyarakat, dan maksimalkan potensi desa.
         </p>
         <div class="about-banner__info-cta">
-          <BaseButton class="about-banner__info-cta-btn" label="Daftar Sayembara" @click="onClickCTA" />
+          <BaseButton class="about-banner__info-cta-btn" label="Cek Pemenang Sayembara" @click="onClickCTA" />
         </div>
       </div>
       <img class="about-banner__image" src="~/assets/images/AboutBanner.png" alt="About Banner">
@@ -25,7 +25,7 @@ export default {
   name: 'ComponentBannerAbout',
   data () {
     return {
-      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+      linkCTA: 'https://drive.google.com/file/d/13Dxsg0w2JI__657jUFwktAcgbkaPVNK-/view?usp=drivesdk'
     }
   },
   methods: {
