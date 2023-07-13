@@ -11,7 +11,7 @@
           </h3>
         </div>
         <div class="competition-join__action">
-          <BaseButton label="Daftar Sayembara" @click="onClickJoin" />
+          <BaseButton label="Cek Pemenang Sayembara" @click="onClickJoin" />
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@ export default {
   name: 'CompetitionJoin',
   data () {
     return {
-      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+      linkCTA: 'https://drive.google.com/file/d/13Dxsg0w2JI__657jUFwktAcgbkaPVNK-/view?usp=drivesdk'
     }
   },
   methods: {

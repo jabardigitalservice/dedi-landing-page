@@ -17,7 +17,7 @@
             Jadi bagian dari Desa Digital sebagai desa penerima manfaat ataupun sebagai mitra dari desa.
           </p>
           <div class="competition-banner__info-cta">
-            <BaseButton class="competition-banner__info-cta-btn" label="Daftar Sayembara" @click="onClickCTA" />
+            <BaseButton class="competition-banner__info-cta-btn" label="Cek Pemenang Sayembara" @click="onClickCTA" />
           </div>
         </div>
         <img
@@ -35,7 +35,7 @@ export default {
   name: 'CompetitionBanner',
   data () {
     return {
-      linkCTA: 'https://bit.ly/FormPendaftaranTahap1'
+      linkCTA: 'https://drive.google.com/file/d/13Dxsg0w2JI__657jUFwktAcgbkaPVNK-/view?usp=drivesdk'
     }
   },
   methods: {
